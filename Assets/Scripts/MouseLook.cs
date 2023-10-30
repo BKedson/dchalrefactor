@@ -72,7 +72,7 @@ public class MouseLook : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = camLimited ? Color.red : Color.green;
-        Gizmos.DrawSphere(camTransform.position, camCollisionRadius);
+        Gizmos.DrawWireSphere(camTransform.position, camCollisionRadius);
     }
 
     public void SetSensitivities(float x, float y)
