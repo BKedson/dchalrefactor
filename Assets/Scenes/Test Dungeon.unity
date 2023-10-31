@@ -4069,7 +4069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7ed790031ca424298a0ea92e2a47cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipQuestions: 0
+  skipQuestions: 1
   questionUIRoot: {fileID: 1797188336}
   questionDisplayer: {fileID: 1153321620}
   answerInput: {fileID: 392428057}
@@ -4089,7 +4089,8 @@ MonoBehaviour:
   whatIsRoom:
     serializedVersion: 2
     m_Bits: 33554432
-  roomGenOffsetDist: 0
+  roomWidth: 30
+  roomGenOffsetDist: 20
   roomPrefabs:
   - prefab: {fileID: 7078008244495296768, guid: f104a60fb7ad67a4d80540abda686fca, type: 3}
     extraColCheckOffset: []

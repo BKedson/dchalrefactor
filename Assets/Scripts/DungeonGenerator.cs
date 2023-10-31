@@ -20,6 +20,7 @@ public class DungeonGenerator : MonoBehaviour
 
     [SerializeField] private LayerMask whatIsRoom;
 
+    [SerializeField] private float roomWidth;
     [SerializeField] private float roomGenOffsetDist;
     [SerializeField] private List<RoomTemplate> roomPrefabs;
     [SerializeField] private List<Tuple<GameObject, List<Vector2Int>>> templates;
@@ -166,8 +167,8 @@ public class DungeonGenerator : MonoBehaviour
                 foreach (Vector2Int offset in roomPrefabs[roomPrefabIdx].extraColCheckOffset)
                 {
                     Vector3 checkPos = targetPos +
-                        transformInfoToGenRoom.right * offset.x * roomGenOffsetDist +
-                        transformInfoToGenRoom.forward * offset.y * roomGenOffsetDist;
+                        transformInfoToGenRoom.right * offset.x * roomWidth +
+                        transformInfoToGenRoom.forward * offset.y * roomWidth;
                     noCollision &= !Physics.CheckBox(
                         checkPos,
                         Vector3.one,
@@ -231,11 +232,12 @@ public class DungeonGenerator : MonoBehaviour
         if (transformInfoToGenRoom)
         {
             Vector3 targetPos = transformInfoToGenRoom.position + transformInfoToGenRoom.forward * roomGenOffsetDist;
+            Gizmos.DrawWireCube(targetPos, new Vector3(2f, 2f, 2f));
             foreach (Vector2Int offset in roomPrefabs[roomPrefabIdx].extraColCheckOffset)
             {
                 Vector3 checkPos = targetPos +
-                    transformInfoToGenRoom.right * offset.x * roomGenOffsetDist +
-                    transformInfoToGenRoom.forward * offset.y * roomGenOffsetDist;
+                    transformInfoToGenRoom.right * offset.x * roomWidth +
+                    transformInfoToGenRoom.forward * offset.y * roomWidth;
                 Gizmos.DrawWireCube(checkPos, new Vector3(2f, 2f, 2f));
             }
         }
