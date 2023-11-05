@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 937759678842033776}
   - component: {fileID: 937759678842033777}
   - component: {fileID: 937759678842033782}
+  - component: {fileID: 9181107175173757120}
   m_Layer: 0
   m_Name: Generic Challenge
   m_TagString: Untagged
@@ -62,3 +63,16 @@ MonoBehaviour:
   blendDistance: 1
   weight: 1
   sharedProfile: {fileID: 0}
+--- !u!114 &9181107175173757120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937759678842033783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260505d43727ad64aa3d9fa9266bb565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState: 0

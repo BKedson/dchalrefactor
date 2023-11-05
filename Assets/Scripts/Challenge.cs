@@ -8,7 +8,7 @@ public abstract class Challenge : MonoBehaviour
     //stores the Question associated with this challenge
     public Question question;
     //stores the current state of the Door Challenge
-    public ChallengeState CurrentState = ChallengeState.WaitingForPlayer; //Default State
+    [SerializeField] protected ChallengeState CurrentState = ChallengeState.WaitingForPlayer; //Default State
     //stores the different states that the challenge could exist in relation to the player
     public enum ChallengeState{
         WaitingForPlayer,
