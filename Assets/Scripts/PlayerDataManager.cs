@@ -62,14 +62,4 @@ public static class PlayerDataManager : object
         //return the score
         return wingScore;
     }
-
-    public static void uploadToDatabase(){
-        HighScores.UploadScore(name, score * ((int)(10/getTime())), getTime(), 0);
-    }
-
-    public static void uploadToWingDatabase(int wingNum){
-        HighScores.UploadScore(name, wingScore * ((int)(10/getWingTime())), getWingTime(), wingNum);
-        resetTime();
-        UpdateWingScore(0);
-    }
 }
