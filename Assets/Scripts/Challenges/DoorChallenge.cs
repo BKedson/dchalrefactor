@@ -12,7 +12,7 @@ public class DoorChallenge : Challenge
     }
 
     //called when starting a challenge
-    public override void StartChallenge(){
+    public override void OnChallengeStart(){
         //Testing Debug Log
         Debug.Log("Challenge Started..");
 
@@ -21,7 +21,7 @@ public class DoorChallenge : Challenge
     }
 
     //called when the player gets a correct answer - challenge completed
-    public override void FinishChallenge(){
+    public override void OnChallengePass(){
         //Testing Debug Log
         Debug.Log("Challenge Completed..");
 
@@ -30,7 +30,7 @@ public class DoorChallenge : Challenge
     }
 
     //called when a challenge is forfeited
-    public override void ForfeitChallenge(){
+    public override void OnAttempCancel(){
         //Testing Debug Log
         Debug.Log("Challenge Forfeited..");
 
@@ -39,7 +39,7 @@ public class DoorChallenge : Challenge
     }
 
     //called when the player gets a wrong answer
-    public override void FailChallenge(){
+    public override void OnChallengeFail(){
         //Testing Debug Log
         Debug.Log("Challenge Failed..");
         //Trigger actions for a wrong answer like Trial account
