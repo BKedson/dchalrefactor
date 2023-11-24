@@ -13,7 +13,7 @@ public class DoorController : MonoBehaviour
         {
             if (Vector3.Dot(other.transform.position - transform.position, transform.forward) < 0)
             {
-                DungeonGenerator._instance.PrepareToGenRoom(transform, door);
+                //DungeonGenerator._instance.PrepareToGenRoom(transform, door);
                 UIManager._instance.SetUpQuestion(question, answer, QuestionType.DoorLock);
             }
             else

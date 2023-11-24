@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         currQType = qType;
         if (currQType == QuestionType.DoorLock && skipQuestions)
         {
-            DungeonGenerator._instance.OnCorrectAnswer();
+            //DungeonGenerator._instance.GenRoom();
 
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
             switch (currQType)
             {
                 case QuestionType.DoorLock:
-                    DungeonGenerator._instance.OnCorrectAnswer();
+                    //DungeonGenerator._instance.GenRoom();
                     break;
                 case QuestionType.RareLootLock:
                     break;
