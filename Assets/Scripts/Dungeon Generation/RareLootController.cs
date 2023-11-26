@@ -8,12 +8,12 @@ public class RareLootController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Rare Loot Close");
-        UIManager._instance.SetUpQuestion(question, answer, QuestionType.RareLootLock);
+        UIController._instance.SetUpQuestion(question, answer, QuestionType.RareLootLock);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        UIManager._instance.CancelAttempt();
+        UIController._instance.CancelAttempt();
     }
 
     public void SetUpQuestion(string q, string a)

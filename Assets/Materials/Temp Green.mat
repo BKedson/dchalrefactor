@@ -8,14 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Temp Green
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3a29b48c2241c52409e47f2a221d1bf3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -104,8 +103,8 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimCoe: 1
-    - _RimThreshold: 0.5
+    - _RimCoe: 0
+    - _RimThreshold: 1
     - _ShadowThreshold: 0.5
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
@@ -121,6 +120,7 @@ Material:
     - _Color: {r: 0.52002674, g: 0.8679245, b: 0.26747355, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SurfaceColor: {r: 0.52156866, g: 0.8666667, b: 0.26666668, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6391167393062577844
 MonoBehaviour:

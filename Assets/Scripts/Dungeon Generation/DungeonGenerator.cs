@@ -1,7 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MathType
+public enum MathTopic
 {
     Addition, Subtraction, Multiplication, Division, Fraction
 }
@@ -37,7 +38,7 @@ public class DungeonGenerator : MonoBehaviour
     //[SerializeField] private GameObject cluePrefab;
 
     [Header("Math Operation")]
-    [SerializeField] private MathType mathOperation;
+    [SerializeField] private MathTopic mathOperation;
 
     private int numRoomPlanned = 0;
     private bool[,] map;
@@ -58,18 +59,28 @@ public class DungeonGenerator : MonoBehaviour
         while (Mathf.Pow(2, maxRecursionDepth) - 1 < numRoomPerLv.x) maxRecursionDepth++;
     }
 
-    public MathType GetOperation()
+    public MathTopic GetTopic()
     {
         return mathOperation;
     }
 
-    public void SetOperation(MathType op)
+    public void SetTopic(MathTopic op)
     {
         mathOperation = op;
     }
 
     public void InitializeDungeon()
     {
+        StartCoroutine("InitiationCoroutine");
+    }
+
+    private IEnumerator InitiationCoroutine()
+    {
+        PlayerMovement._instance.enabled = false;
+
+        UIController._instance.StartTransition();
+        yield return new WaitForSeconds(UIController._instance.GetTransitionAnimLength());
+
         DestroyDungeon();
 
         InspectorValueAssertion();
@@ -90,6 +101,11 @@ public class DungeonGenerator : MonoBehaviour
                 if (map[i, j]) GenRoom(i, j);
             }
         }
+
+        PlayerMovement._instance.MoveToDungeon();
+        PlayerMovement._instance.enabled = true;
+
+        UIController._instance.EndTransition();
     }
 
     private void RecursivePlanRoom(Vector2Int currPos, int depth = 1)

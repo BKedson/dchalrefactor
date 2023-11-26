@@ -6,9 +6,9 @@ public enum QuestionType
     DoorLock, RareLootLock
 }
 
-public class UIManager : MonoBehaviour
+public class UIController : MonoBehaviour
 {
-    public static UIManager _instance;
+    public static UIController _instance;
 
     [SerializeField] private bool skipQuestions;
 
@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_InputField answerInput;
 
     [SerializeField] private GameObject DungeonExitComfirmationUI;
+
+    [SerializeField] private Animator transitionAnimator;
+    [SerializeField] private float transitionAnimLength;
 
     private string correctAnswer = "";
     private QuestionType currQType;
@@ -32,6 +35,12 @@ public class UIManager : MonoBehaviour
         questionUIRoot.SetActive(false);
     }
 
+    public void StartTransition() { transitionAnimator.SetTrigger("Transition Start"); }
+
+    public void EndTransition() { transitionAnimator.SetTrigger("Transition End"); }
+
+    public float GetTransitionAnimLength() { return transitionAnimLength; }
+
     public void SetUpQuestion(string question, string correctAns, QuestionType qType)
     {
         currQType = qType;
@@ -45,7 +54,7 @@ public class UIManager : MonoBehaviour
         {
             questionUIRoot.SetActive(true);
             questionDisplayer.text = question;
-            questionDisplayer.fontSize = (DungeonGenerator._instance.GetOperation() == MathType.Fraction) ? 80f : 130f;
+            questionDisplayer.fontSize = (DungeonGenerator._instance.GetTopic() == MathTopic.Fraction) ? 80f : 130f;
             answerInput.text = "";
             correctAnswer = correctAns;
 
