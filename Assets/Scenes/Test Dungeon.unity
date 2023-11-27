@@ -1752,7 +1752,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 37781559
+    m_Bits: 34607136
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3361,14 +3361,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff72e7fa47eb7fb4b86d2669f013776c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeonRoot: {fileID: 1069221993}
   roomPrefab: {fileID: 7078008244495296768, guid: f104a60fb7ad67a4d80540abda686fca, type: 3}
   doorPrefab: {fileID: 7540009276723834055, guid: b4704de55b8678645bf79c8bf2905be4, type: 3}
   numRoomPerLv: {x: 8, y: 10}
-  maxRecursionDepth: 2
+  maxRecursionDepth: 4
   roomOffset: 30
-  dungeonRoot: {fileID: 1069221993}
-  exitPrefab: {fileID: 0}
-  mathOperation: 0
+  lootTypes:
+  - name: 
+    lootPrefab: {fileID: 1977452321448469702, guid: a3424c5e7ab54984d9df0948328a7e4f, type: 3}
+    lootIconSprite: {fileID: 21300000, guid: 17886c8e5b6e3fc449e8f928b6a32d5e, type: 3}
+    generationChance: 0.8
+  - name: 
+    lootPrefab: {fileID: 7151816893708254087, guid: 5a2b051c7a780c446ab4daf7fea9b086, type: 3}
+    lootIconSprite: {fileID: 21300000, guid: 0207a75035cd64d4fba0e52814f94fa3, type: 3}
+    generationChance: 1
+  exitPrefab: {fileID: 855714455621078347, guid: b666a734fdb850a45b9f1fb1d056aba2, type: 3}
+  exitIcon: {fileID: 0}
+  mathTopic: 0
 --- !u!114 &1982955926
 MonoBehaviour:
   m_ObjectHideFlags: 0
