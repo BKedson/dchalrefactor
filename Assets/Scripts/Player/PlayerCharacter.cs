@@ -5,7 +5,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private int _health;
 	[SerializeField]private GameObject healthUI;
 	[SerializeField]private GameObject death;
-	[SerializeField] Pack backpack = null;
+	[SerializeField] PlayerInventory backpack = null;
 	public GameObject gunUI;
 	public GameObject gunHUD;
 	public GameObject swordUI;

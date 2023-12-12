@@ -53,6 +53,33 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwordSwap"",
+                    ""type"": ""Button"",
+                    ""id"": ""d33b1a5e-70f0-4a6c-bb65-a17749108f76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GunSwap"",
+                    ""type"": ""Button"",
+                    ""id"": ""9fdf20ab-844b-4c7a-8333-3e7efdc3b462"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ControllerSwap"",
+                    ""type"": ""Button"",
+                    ""id"": ""04750664-9c3b-4c79-8412-7fd5a3869b20"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +159,39 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09b10f71-2ac9-4d1d-b259-b933baa8b6ff"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwordSwap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae24b7c8-d5c1-48e8-9adf-0a2cb7dd8cf0"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GunSwap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77210c58-cc42-4bd6-9d16-3a85122413bb"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerSwap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +203,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_SwordSwap = m_Player.FindAction("SwordSwap", throwIfNotFound: true);
+        m_Player_GunSwap = m_Player.FindAction("GunSwap", throwIfNotFound: true);
+        m_Player_ControllerSwap = m_Player.FindAction("ControllerSwap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +268,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_SwordSwap;
+    private readonly InputAction m_Player_GunSwap;
+    private readonly InputAction m_Player_ControllerSwap;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -212,6 +278,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @SwordSwap => m_Wrapper.m_Player_SwordSwap;
+        public InputAction @GunSwap => m_Wrapper.m_Player_GunSwap;
+        public InputAction @ControllerSwap => m_Wrapper.m_Player_ControllerSwap;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +299,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @SwordSwap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwordSwap;
+                @SwordSwap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwordSwap;
+                @SwordSwap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwordSwap;
+                @GunSwap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunSwap;
+                @GunSwap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunSwap;
+                @GunSwap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunSwap;
+                @ControllerSwap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnControllerSwap;
+                @ControllerSwap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnControllerSwap;
+                @ControllerSwap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnControllerSwap;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +321,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @SwordSwap.started += instance.OnSwordSwap;
+                @SwordSwap.performed += instance.OnSwordSwap;
+                @SwordSwap.canceled += instance.OnSwordSwap;
+                @GunSwap.started += instance.OnGunSwap;
+                @GunSwap.performed += instance.OnGunSwap;
+                @GunSwap.canceled += instance.OnGunSwap;
+                @ControllerSwap.started += instance.OnControllerSwap;
+                @ControllerSwap.performed += instance.OnControllerSwap;
+                @ControllerSwap.canceled += instance.OnControllerSwap;
             }
         }
     }
@@ -252,5 +339,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnSwordSwap(InputAction.CallbackContext context);
+        void OnGunSwap(InputAction.CallbackContext context);
+        void OnControllerSwap(InputAction.CallbackContext context);
     }
 }

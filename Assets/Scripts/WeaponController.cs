@@ -15,16 +15,15 @@ public class WeaponController : MonoBehaviour
     public SoundEffectsManager manager;
     public bool inResearch;
     public RayShooter inp;
-    public Pack stuff;
+    public PlayerInventory stuff;
     public BoxCollider swordHitBox;
-
 
     // Start is called before the first frame update
     void Start()
     {
         inResearch = true;
         inp = gameObject.GetComponentInParent(typeof(RayShooter)) as RayShooter;
-        stuff = GetComponent<Pack>();
+        stuff = gameObject.GetComponentInParent<PlayerInventory>();
         anim = sword.GetComponent<Animator>();
         swordHitBox = sword.GetComponent<BoxCollider>();
         selectWeapon(-1);
@@ -36,29 +35,6 @@ public class WeaponController : MonoBehaviour
         if(currentWeapon == 0) canAttack = true;
         else canAttack = false;
 
-        if(Input.GetKeyDown("1") && stuff.checkIfCollected(1) && inResearch){
-            selectWeapon(0);
-            inp.hasRay = false;
-            inp.hasSword = true;
-            inp.hasFreeze = false;
-            inp.hasHack = false;
-        }  
-
-        if(Input.GetKeyDown("2") && stuff.checkIfCollected(2) && inResearch){
-               selectWeapon(1);
-            inp.hasRay = true;
-            inp.hasSword = false;
-            inp.hasFreeze = false;
-            inp.hasHack = false;
-        }
-
-        if(Input.GetKeyDown("3") && stuff.checkIfCollected(3) && inResearch){
-            selectWeapon(2);
-            inp.hasRay = false;
-            inp.hasSword = false;
-            inp.hasFreeze = false;
-            inp.hasHack = false;
-        }  
 
         if(Input.GetMouseButtonUp(0)){
             if(canAttack)   swordAttack();
@@ -66,6 +42,35 @@ public class WeaponController : MonoBehaviour
         else{
             anim.SetBool("Attack", false);
         }
+    }
+    public void swap(int i){
+        
+        if(i == 1 && stuff.checkIfCollected(1)){
+            selectWeapon(0);
+            inp.hasRay = false;
+            inp.hasSword = true;
+            inp.hasFreeze = false;
+            inp.hasHack = false;
+            Debug.Log("im dead");
+        }  
+
+        if(i == 2 && stuff.checkIfCollected(2)){
+               selectWeapon(1);
+            inp.hasRay = true;
+            inp.hasSword = false;
+            inp.hasFreeze = false;
+            inp.hasHack = false;
+            
+        }
+
+        if(i == 3 && stuff.checkIfCollected(3)){
+            selectWeapon(2);
+            inp.hasRay = false;
+            inp.hasSword = false;
+            inp.hasFreeze = false;
+            inp.hasHack = false;
+           
+        }  
     }
 
     public void swordAttack(){
@@ -75,13 +80,11 @@ public class WeaponController : MonoBehaviour
             swordHitBox.enabled = true;
             anim.SetBool("Attack", true);
             //play sword sound
-            manager.play("SwordAttack");   
         }
 
         //if gun is active
         if(transform.GetChild(1).gameObject.activeSelf){
-            //play sword sound
-            manager.play("LaserAttack");   
+            //play laser sound 
         }
 
     }

@@ -12,14 +12,14 @@ public class RayShooter : MonoBehaviour {
 	private Animator anim;
 	private GameObject reticle;
 	private float shrinkRate = 0.5f;
-	private Pack stuff;
+	private PlayerInventory stuff;
 	public GameObject laser;
 
 	void Start() {
 		reticle = GameObject.Find("Reticle");
 		_camera = GetComponent<Camera>();
 		anim = GetComponentInChildren<Animator>();
-		stuff = GetComponentInChildren<Pack>();
+		stuff = GetComponent<PlayerInventory>();
 		hasSword = false;
 		hasRay = false;
 
@@ -27,13 +27,6 @@ public class RayShooter : MonoBehaviour {
 		Cursor.visible = false;
 		laser.SetActive(false);
 
-		reticle = GameObject.Find("Reticle");
-		reticle.GetComponent<Text>().text = "+";
-		reticle.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
-		reticle.GetComponent<RectTransform>().position =
-            new Vector3(_camera.pixelWidth / 2.0f,
-                        _camera.pixelHeight / 2.0f,
-                        0.0f);
 	}
     
 

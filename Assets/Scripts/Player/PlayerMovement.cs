@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallRunFallSpeed;
 
     private PlayerInputAction playerInputAction;
+    private WeaponController weaponController;
 
     private CharacterController characterController;
     private bool grounded = false;
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 horizontalVelocity;
     private float yVelocity = 0f;
+    private PlayerInventory stuff;
 
     void Awake()
     {
@@ -57,8 +59,13 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Sprint.started += StartSprint => { sprinting = true; };
         playerInputAction.Player.Sprint.performed += StopSprint => { sprinting = false; };
         playerInputAction.Player.Jump.started += Jump;
+        playerInputAction.Player.GunSwap.started += gSwap;
+        playerInputAction.Player.SwordSwap.started += sSwap;
+        playerInputAction.Player.ControllerSwap.started += cSwap;
 
         characterController = GetComponent<CharacterController>();
+        weaponController = GetComponentInChildren<WeaponController>();
+        stuff = GetComponent<PlayerInventory>();
     }
 
     private void OnEnable()
@@ -66,6 +73,9 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Movement.Enable();
         playerInputAction.Player.Sprint.Enable();
         playerInputAction.Player.Jump.Enable();
+        playerInputAction.Player.SwordSwap.Enable();
+        playerInputAction.Player.GunSwap.Enable();
+        playerInputAction.Player.ControllerSwap.Enable();
     }
 
     private void OnDisable()
@@ -73,6 +83,9 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Movement.Disable();
         playerInputAction.Player.Sprint.Disable();
         playerInputAction.Player.Jump.Disable();
+        playerInputAction.Player.SwordSwap.Disable();
+        playerInputAction.Player.GunSwap.Disable();
+        playerInputAction.Player.ControllerSwap.Disable();
     }
 
     private void Update()
@@ -192,6 +205,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void gSwap(InputAction.CallbackContext ctx)
+    {
+        weaponController.swap(2);
+    }
+
+    private void sSwap(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("hello");
+        weaponController.swap(1);
+    }
+    private void cSwap(InputAction.CallbackContext ctx)
+    {
+        weaponController.swap(3);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = grounded ? Color.green : Color.red;
@@ -214,12 +242,18 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.Movement.Enable();
             playerInputAction.Player.Sprint.Enable();
             playerInputAction.Player.Jump.Enable();
+            playerInputAction.Player.SwordSwap.Enable();
+            playerInputAction.Player.GunSwap.Enable();
+            playerInputAction.Player.ControllerSwap.Enable();
         }
         else
         {
             playerInputAction.Player.Movement.Disable();
             playerInputAction.Player.Sprint.Disable();
             playerInputAction.Player.Jump.Disable();
+            playerInputAction.Player.SwordSwap.Disable();
+            playerInputAction.Player.GunSwap.Disable();
+            playerInputAction.Player.ControllerSwap.Disable();
         }
     }
 
