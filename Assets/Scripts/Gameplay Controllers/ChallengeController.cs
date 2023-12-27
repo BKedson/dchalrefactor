@@ -27,8 +27,8 @@ public class ChallengeController : IController<ChallengeController.ChallengeActi
     protected void OnTriggerEnter(Collider other) //when a player enters the challenge zone
     {
         if(other.GetComponent<Collider>().tag == "Player"){
-            HandleInputAction(ChallengeAction.WalkIn);
-        }     
+            HandleInputAction(ChallengeAction.WalkIn);  
+        }    
     }
 
     protected void OnTriggerStay(Collider other)

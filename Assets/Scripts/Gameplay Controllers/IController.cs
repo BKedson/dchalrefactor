@@ -18,7 +18,7 @@ public abstract class IController<InputAction, IState> : MonoBehaviour
     public OutputActionHandler outputAction;
 
     //Subscription to the StateMachineEvent delegate for output
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         //subscribes to the OnStateChange delegate from stateMachine
         eventHandler.OnStateChangeEvent += HandleOutputAction;

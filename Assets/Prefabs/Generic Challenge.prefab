@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 937759678842033776}
   - component: {fileID: 937759678842033777}
   - component: {fileID: 937759678842033782}
-  - component: {fileID: 9181107175173757120}
+  - component: {fileID: -3320800906079982461}
+  - component: {fileID: 8718208371296148011}
+  - component: {fileID: 7579700550311663236}
+  - component: {fileID: 5162690533181715890}
   m_Layer: 0
   m_Name: Generic Challenge
   m_TagString: Untagged
@@ -63,7 +66,48 @@ MonoBehaviour:
   blendDistance: 1
   weight: 1
   sharedProfile: {fileID: 0}
---- !u!114 &9181107175173757120
+--- !u!114 &-3320800906079982461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937759678842033783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9109e75026aa1dc4aafbc6b74236a2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventHandler: {fileID: 8718208371296148011}
+  manager: {fileID: 5162690533181715890}
+--- !u!114 &8718208371296148011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937759678842033783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83962786df72ce4fbfd71dc377f17c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: -3320800906079982461}
+  stateMachine: {fileID: 7579700550311663236}
+--- !u!114 &7579700550311663236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937759678842033783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67415131a2411c4c89552d7ca239336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventHandler: {fileID: 8718208371296148011}
+--- !u!114 &5162690533181715890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,4 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260505d43727ad64aa3d9fa9266bb565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState: 0
+  challengeStateMachine: {fileID: 7579700550311663236}
