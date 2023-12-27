@@ -41,13 +41,18 @@ namespace dchalrefactor.Scripts.Challenges
 
         //called to indicate whether the player has made an attempt
         public override bool AttemptChallenge(){
+            //Check input
+            if(Input.GetKeyDown("return")){
+                return true;
+            }
             //logic to check button presses related to answering the question
-            return false;
+            else{
+                return false;
+            }
         }
 
         //used to check whether the solution is correct
         public override bool IsCorrectSolution(){
-            //logic to check the correctness of a solution
             return false;
         }
     }

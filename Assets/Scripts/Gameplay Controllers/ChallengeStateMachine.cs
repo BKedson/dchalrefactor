@@ -9,6 +9,7 @@ public class ChallengeStateMachine : IStateMachine<ChallengeController.Challenge
     public enum ChallengeState{
         WaitingForPlayer,
         PlayerAttempting,
+        VerityCheck,
         Completed
     }
 
@@ -36,17 +37,23 @@ public class ChallengeStateMachine : IStateMachine<ChallengeController.Challenge
                     }
                 break;
             case ChallengeController.ChallengeAction.Pass:
-                if(GetCurrentState() == ChallengeState.PlayerAttempting)
+                if(GetCurrentState() == ChallengeState.VerityCheck)
                     {
                         ChangeState(ChallengeState.Completed, action);
                     }
                 break;
             case ChallengeController.ChallengeAction.Fail:
-                if(GetCurrentState() == ChallengeState.PlayerAttempting)
+                if(GetCurrentState() == ChallengeState.VerityCheck)
                     {
                         ChangeState(ChallengeState.PlayerAttempting, action);
                     }
                 break;  
+            case ChallengeController.ChallengeAction.Attempt:
+                if(GetCurrentState() == ChallengeState.PlayerAttempting)
+                    {
+                        ChangeState(ChallengeState.VerityCheck, action);
+                    }
+                break;
         }
     }
 }

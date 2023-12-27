@@ -14,6 +14,7 @@ public class ChallengeController : IController<ChallengeController.ChallengeActi
         Forfeit,
         Pass,
         Fail,
+        Attempt
     }
 
     //Start 
@@ -36,13 +37,7 @@ public class ChallengeController : IController<ChallengeController.ChallengeActi
         if(other.GetComponent<Collider>().tag == "Player"){
             //if while in Attempting - manager attempts the challenge
             if(challengeManager.AttemptChallenge()){
-                //check for correctness
-                if(challengeManager.IsCorrectSolution()){
-                    HandleInputAction(ChallengeAction.Pass);
-                }
-                else{
-                    HandleInputAction(ChallengeAction.Fail);
-                }
+                HandleInputAction(ChallengeAction.Attempt);
             }
         } 
     }
@@ -52,6 +47,18 @@ public class ChallengeController : IController<ChallengeController.ChallengeActi
         if(other.GetComponent<Collider>().tag == "Player"){
             HandleInputAction(ChallengeAction.Forfeit);
         }      
+    }
+
+    protected void PassOrFail() // called to pass or fail the player's attempt
+    {
+        bool isCorrectSolution = challengeManager.IsCorrectSolution();
+        if(isCorrectSolution)
+        {
+            HandleInputAction(ChallengeAction.Pass);
+        }
+        else{
+            HandleInputAction(ChallengeAction.Fail);
+        }
     }
 
     //OUTPUTS
@@ -70,7 +77,10 @@ public class ChallengeController : IController<ChallengeController.ChallengeActi
                 break;
             case ChallengeAction.Fail:
                 SetDelegate(challengeManager.OnChallengeFail);
-                break;  
+                break;
+            case ChallengeAction.Attempt:
+                SetDelegate(PassOrFail); 
+                break; 
         }
     }
 }
