@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //This class defines the base definition for any state machine in the game
-public abstract class IStateMachine<TControllerEvent,IState> : MonoBehaviour 
+public abstract class IStateMachine<InputAction,IState> : MonoBehaviour 
     where IState : System.Enum
-    where TControllerEvent : System.Enum
+    where InputAction : System.Enum
  {
     //reference to the Eventhandler
-    public IEventHandler<TControllerEvent,IState> eventHandler;
+    public IEventHandler<InputAction,IState> eventHandler;
     
     //declares a state Change delegate delegate
-    public delegate void StateChangeHandler(TControllerEvent action); 
+    public delegate void StateChangeHandler(InputAction action); 
     public event StateChangeHandler OnStateChange;
 
     //stores the current active state in this State machine among its siblings 
@@ -45,7 +45,7 @@ public abstract class IStateMachine<TControllerEvent,IState> : MonoBehaviour
         currentState  = newState;
     }
     //method to handle the changing of states for this state Machine
-    protected void ChangeState(IState newState, TControllerEvent action){
+    protected void ChangeState(IState newState, InputAction action){
         //sets the current state to the new State
         ChangeState(newState);
         //Invokes the OnStateChange delegate hence firing off all methods in the EventHandler subscribed to it
@@ -53,5 +53,5 @@ public abstract class IStateMachine<TControllerEvent,IState> : MonoBehaviour
     }
 
     //method to handle the state changes of this State machine - varies according to the state machine
-    protected abstract void HandleStateChange(TControllerEvent inputEvent);
+    protected abstract void HandleStateChange(InputAction inputEvent);
 }
