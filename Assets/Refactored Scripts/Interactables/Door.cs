@@ -19,7 +19,7 @@ public class Door : BaseInteractable
         
     }
 
-    public override void onInteract()
+    public override void OnInteract()
     {
         
     }

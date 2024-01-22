@@ -19,7 +19,22 @@ public class BasicBiped : BaseEnemy
     }
 
     // How does move work for a biped?
-    public override void Move()
+    internal override void Move()
+    {
+
+    }
+
+    internal override void Attack()
+    {
+
+    }
+
+    public override void OnHit()
+    {
+
+    }
+
+    internal override void Death()
     {
 
     }

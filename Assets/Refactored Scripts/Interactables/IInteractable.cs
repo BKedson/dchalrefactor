@@ -6,5 +6,5 @@ using UnityEngine;
 public interface IInteractable
 {
     // Defines behavior for this object when the player interacts with it.
-    void onInteract();
+    void OnInteract();
 }

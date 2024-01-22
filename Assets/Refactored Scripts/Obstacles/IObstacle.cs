@@ -6,5 +6,5 @@ using UnityEngine;
 public interface IObstacle
 {
     // Defines the behavior of this obstacle when it is activated
-    void activated();
+    void Activated();
 }

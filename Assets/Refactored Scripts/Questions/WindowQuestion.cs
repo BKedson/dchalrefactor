@@ -16,4 +16,14 @@ public class WindowQuestion : BaseQuestion
     {
         
     }
+
+    public override bool IsCorrect(double sol)
+    {
+        return true;
+    }
+
+    internal override void GenerateQuestion()
+    {
+
+    }
 }

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// CoreChallenge defines the basic functionality for the key "core" rooms, which serve as narrative climaxes and assessement periods.
-public class CoreChallenge : BaseChallenge
+// WindowChallenge defines the basic functionality for Foundry window challenges,
+// which give the player a window into the combat room and ask the player to assess enemy strength
+public class WindowChallenge : BaseChallenge
 {
     // Start is called before the first frame update
     void Start()
     {
-        question = new SimpleQuestion();
+        question = new WindowQuestion();
     }
 
     // Update is called once per frame
@@ -17,7 +18,7 @@ public class CoreChallenge : BaseChallenge
         
     }
 
-    public override void Abort()
+        public override void Abort()
     {
 
     }

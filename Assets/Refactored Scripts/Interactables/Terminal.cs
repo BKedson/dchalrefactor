@@ -17,7 +17,7 @@ public class Terminal : BaseInteractable
         
     }
 
-    public override void onInteract()
+    public override void OnInteract()
     {
         
     }

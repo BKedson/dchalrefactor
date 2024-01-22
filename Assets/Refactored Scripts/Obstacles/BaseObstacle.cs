@@ -6,5 +6,6 @@ using UnityEngine;
 // BaseObstacle should be extended by any interactable obstacles in combat challenges.
 public abstract class BaseObstacle : MonoBehaviour, IObstacle
 {
-    public abstract void activated();
+    internal int damage;
+    public abstract void Activated();
 }

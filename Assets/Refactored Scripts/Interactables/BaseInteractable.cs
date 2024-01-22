@@ -8,5 +8,5 @@ public abstract class BaseInteractable : MonoBehaviour, IInteractable
 {
     internal GameObject player;
 
-    public abstract void onInteract();
+    public abstract void OnInteract();
 }

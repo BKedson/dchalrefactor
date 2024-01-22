@@ -17,7 +17,7 @@ public class ShopTerminal : BaseInteractable
         
     }
 
-    public override void onInteract()
+    public override void OnInteract()
     {
         
     }

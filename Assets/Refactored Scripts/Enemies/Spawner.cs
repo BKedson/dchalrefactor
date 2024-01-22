@@ -21,7 +21,22 @@ public class Spawner : BaseEnemy
     }
 
     // How does move work for a spawner?
-    public override void Move()
+    internal override void Move()
+    {
+
+    }
+
+    internal override void Attack()
+    {
+
+    }
+
+    public override void OnHit()
+    {
+
+    }
+
+    internal override void Death()
     {
 
     }

@@ -21,7 +21,7 @@ public class TreasureChest : BaseInteractable
         
     }
 
-    public override void onInteract()
+    public override void OnInteract()
     {
         
     }

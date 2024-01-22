@@ -8,5 +8,14 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 {
     internal GameObject player;
 
-    public abstract void Move();
+    // Controls movement for this enemy
+    internal abstract void Move();
+
+    // Triggers an attack for this enemy
+    internal abstract void Attack();
+
+    // When this enemy dies
+    internal abstract void Death();
+
+    public abstract void OnHit();
 }
