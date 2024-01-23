@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoundryRoom : MonoBehaviour
+public class FoundryRoom : BaseRoom
 {
     // Start is called before the first frame update
     void Start()

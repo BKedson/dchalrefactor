@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatRoom : MonoBehaviour
+public class CombatRoom : BaseRoom
 {
     // Start is called before the first frame update
     void Start()
