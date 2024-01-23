@@ -6,7 +6,7 @@ using UnityEngine;
 // BaseEnemy should be extended by any enemies in combat encounters.
 public abstract class BaseEnemy : MonoBehaviour, IEnemy
 {
-    internal GameObject player;
+    protected internal GameObject player;
 
     // Controls movement for this enemy
     internal abstract void Move();

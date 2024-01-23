@@ -6,7 +6,7 @@ using UnityEngine;
 // BaseInteractable should be extended by any interactable objects in all challenges.
 public abstract class BaseInteractable : MonoBehaviour, IInteractable
 {
-    internal GameObject player;
+    protected internal GameObject player;
 
     public abstract void OnInteract();
 }

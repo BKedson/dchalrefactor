@@ -7,12 +7,13 @@ using UnityEngine;
 public abstract class BaseQuestion : MonoBehaviour, IQuestion
 {
     // The subject for this question
-    Subject subject;
+    protected internal Subject subject;
+
     // The solution for this Question
-    double solution;
+    protected internal double solution;
 
     // How difficult the question should be
-    int questionLevel;
+    protected internal int questionLevel;
 
     public abstract bool IsCorrect(double sol);
 

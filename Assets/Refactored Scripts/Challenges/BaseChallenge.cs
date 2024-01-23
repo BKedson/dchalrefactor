@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class BaseChallenge : MonoBehaviour, IChallenge
 {
     // The question for this challenge
-    internal BaseQuestion question;
+    protected internal BaseQuestion question;
 
     public abstract void Begin();
     public abstract void Fail();
