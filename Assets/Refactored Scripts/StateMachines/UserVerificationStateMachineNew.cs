@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO: Rename when refactor is complete
-public class NewWeaponController : MonoBehaviour
+public class UserVerificationStateMachineNew : BaseStateMachine
 {
     // Start is called before the first frame update
     void Start()
@@ -15,5 +14,15 @@ public class NewWeaponController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override NewState CurrentState()
+    {
+        return NewState.Finished;
+    }
+
+    public override bool IsValid(Action action)
+    {
+        return false;
     }
 }

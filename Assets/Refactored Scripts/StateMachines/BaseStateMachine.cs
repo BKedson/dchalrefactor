@@ -1,18 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
-public class BaseStateMachine : MonoBehaviour
+public abstract class BaseStateMachine : MonoBehaviour, IStateMachineNew
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public abstract bool IsValid(Action action);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract NewState CurrentState();
 }

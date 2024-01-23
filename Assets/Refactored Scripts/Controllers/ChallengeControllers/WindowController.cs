@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuStateMachine : BaseStateMachine
+// The controller for foundry window challenges.
+public class WindowController : BaseChallengeController
 {
     // Start is called before the first frame update
     void Start()
@@ -16,13 +17,13 @@ public class MenuStateMachine : BaseStateMachine
         
     }
 
-    public override NewState CurrentState()
+    public override void InputToAction()
     {
-        return NewState.Finished;
+
     }
 
-    public override bool IsValid(Action action)
+    public override void TakeAction(Action action)
     {
-        return false;
+
     }
 }

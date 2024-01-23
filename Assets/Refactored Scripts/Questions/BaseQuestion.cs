@@ -22,12 +22,4 @@ public abstract class BaseQuestion : MonoBehaviour, IQuestion
     {
 
     }
-
-    // The different possible subjects for a question
-    public enum Subject {
-        Addition,
-        Subtraction,
-        Multiplication,
-        Division
-    }
 }
