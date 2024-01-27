@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserVerificationStateMachine : IStateMachine<UserVerificationController.UVAction , UserVerificationStateMachine.UVState>
+public class UserVerificationStateMachine : BaseStateMachine<UserVerificationController.UVAction , UserVerificationStateMachine.UVState>
 {
     //stores the possible states that this state machine can exist in
     public enum UVState{

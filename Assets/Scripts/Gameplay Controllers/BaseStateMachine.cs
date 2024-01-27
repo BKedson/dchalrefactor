@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //This class defines the base definition for any state machine in the game
-public abstract class IStateMachine<InputAction,IState> : MonoBehaviour 
-    where IState : System.Enum
+public abstract class BaseStateMachine<InputAction,IState> : MonoBehaviour 
     where InputAction : System.Enum
+    where IState : System.Enum
  {
-    //reference to the Eventhandler
-    public IEventHandler<InputAction,IState> eventHandler;
+    //reference to the Logic Controller
+    public BaseController<InputAction,IState> controller;
     
-    //declares a state Change delegate delegate
+    //declares a state Change delegate
     public delegate void StateChangeHandler(InputAction action); 
     public event StateChangeHandler OnStateChange;
 
@@ -27,8 +27,8 @@ public abstract class IStateMachine<InputAction,IState> : MonoBehaviour
 
     protected virtual void Start()
     {
-        // Subscribes to the OnControllerEvent delegate from eventHandler
-        eventHandler.OnControllerEvent += HandleStateChange;
+        // Subscribes to the OnInputAction delegate from controller
+        controller.OnInputAction += HandleStateChange;
     }
 
     //default method that must be overriden to sure that a default state is set with its return value
@@ -53,5 +53,5 @@ public abstract class IStateMachine<InputAction,IState> : MonoBehaviour
     }
 
     //method to handle the state changes of this State machine - varies according to the state machine
-    protected abstract void HandleStateChange(InputAction inputEvent);
+    protected abstract void HandleStateChange(InputAction action);
 }

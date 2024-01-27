@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using dchalrefactor.Scripts.UserVerificationSystem;
 
-public class UserVerificationController : IController<UserVerificationController.UVAction , UserVerificationStateMachine.UVState>
+public class UserVerificationController : BaseController<UserVerificationController.UVAction , UserVerificationStateMachine.UVState>
 {
-    //stores the manager for this controller
+    //stores the transition manager for this controller
     UserVerification uvManager;
 
     //stores the possible input Actions for this Controller
@@ -25,10 +25,67 @@ public class UserVerificationController : IController<UserVerificationController
 
     //Start 
     protected virtual void Start(){
-        //type casting default IModel type manager to Challenge
-        uvManager = (UserVerification)manager;
+        
     }
 
+    //INPUTS 
+    //Button CLicks
+    protected void OnClickRegisterPage()
+    {
+        HandleInputAction(UVAction.RegisterPressed);
+    }
+
+    protected void OnClickGuestPage()
+    {
+        HandleInputAction(UVAction.Guest);
+    }
+
+    protected void OnClickRegisterCancel()
+    {
+        HandleInputAction(UVAction.CancelRegister);
+    }
+
+    protected void OnClickLogin()
+    {
+        HandleInputAction(UVAction.Login);
+    }
+
+    protected void OnClickRegisterUser()
+    {
+        HandleInputAction(UVAction.CheckAbsence);
+    }
+
+    protected void OnClickGuestUser()
+    {
+        HandleInputAction(UVAction.GuestUserCreated);
+    }
+
+    protected void OnClickGuestCancel()
+    {
+        HandleInputAction(UVAction.CancelGuest);
+    }
+
+    protected void RegisterUserAbsenceCheck()
+    {
+        //The normal condition would be if the user is absent
+        if(uvManager.IsUserPresent()){
+            HandleInputAction(UVAction.RegisterUserExists);
+        }
+        else{
+            HandleInputAction(UVAction.NewUserCreated);
+        }
+    }
+
+    protected void LoginUserPresenceCheck()
+    {
+        //The normal condition would be if the user is present
+        if(uvManager.IsUserPresent()){
+            HandleInputAction(UVAction.UserLoaded);
+        }
+        else{
+            HandleInputAction(UVAction.NoSuchLoginUser);
+        }    
+    }
     //OUTPUTS
     protected override void UpdateDelegate(UVAction action){
         //update the default delegate according to the action
