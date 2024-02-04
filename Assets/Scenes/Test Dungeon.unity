@@ -559,11 +559,6 @@ Transform:
   m_Father: {fileID: 1585961788}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &289782512 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 101050, guid: 2f7228b2925817c45bc75cd6f425945c, type: 3}
-  m_PrefabInstance: {fileID: 371154072}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &289782513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 457962, guid: 2f7228b2925817c45bc75cd6f425945c, type: 3}
@@ -1596,6 +1591,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 769399323}
     m_Modifications:
+    - target: {fileID: 32630650343589106, guid: f6c3a1588028af64985e3c6d41abb910, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5953977592163608830, guid: f6c3a1588028af64985e3c6d41abb910, type: 3}
       propertyPath: m_Name
       value: Sword8_Corrupted
@@ -1867,19 +1866,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 756186183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23b404b96121eb44dbd6f3f833b7d6a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3762a7cbed115044d956891243a8c5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sword: {fileID: 1734658889}
-  shrinkRay: {fileID: 289782512}
-  controller: {fileID: 811263110}
-  canAttack: 1
-  currentWeapon: 0
+  cur: {fileID: 0}
+  currentWeapon: -1
   manager: {fileID: 0}
   inResearch: 0
   inp: {fileID: 0}
   stuff: {fileID: 0}
-  swordHitBox: {fileID: 1734658893}
+  swordHitBox: {fileID: 0}
 --- !u!1 &769399322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,11 +1991,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f7228b2925817c45bc75cd6f425945c, type: 3}
---- !u!1 &811263110 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2970992253585686043, guid: 3a26cbd1f0988e646975e5c6ba0f2583, type: 3}
-  m_PrefabInstance: {fileID: 469422219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &811263111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2481700110876615841, guid: 3a26cbd1f0988e646975e5c6ba0f2583, type: 3}
@@ -3568,7 +3559,7 @@ MonoBehaviour:
     m_Bits: 33554432
   groundCheckRadius: 0.05
   jumpInterval: 0.1
-  jumpForce: 3
+  jumpForce: 8
   fallingBonus: 1
   wallCheckCenterOffset: {x: 0, y: 1, z: 0}
   wallCheckHorizontalOffset: 0.75
@@ -3668,38 +3659,9 @@ Transform:
   m_Father: {fileID: 1069221993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1734658889 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5953977592163608830, guid: f6c3a1588028af64985e3c6d41abb910, type: 3}
-  m_PrefabInstance: {fileID: 1034121816}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1734658890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6479298600411886148, guid: f6c3a1588028af64985e3c6d41abb910, type: 3}
-  m_PrefabInstance: {fileID: 1034121816}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1734658891
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734658889}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f8e5a5d419eccd642bac44fb7624e4d4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &1734658893 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 5773012935521969949, guid: f6c3a1588028af64985e3c6d41abb910, type: 3}
   m_PrefabInstance: {fileID: 1034121816}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1797188336

@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallRunFallSpeed;
 
     private PlayerInputAction playerInputAction;
-    private WeaponController weaponController;
+    private WeaponManager weaponManager;
 
     private CharacterController characterController;
     private bool grounded = false;
@@ -62,9 +62,10 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.GunSwap.started += gSwap;
         playerInputAction.Player.SwordSwap.started += sSwap;
         playerInputAction.Player.ControllerSwap.started += cSwap;
+        playerInputAction.Player.Attack.started += Attack;
 
         characterController = GetComponent<CharacterController>();
-        weaponController = GetComponentInChildren<WeaponController>();
+        weaponManager = GetComponentInChildren<WeaponManager>();
         stuff = GetComponent<PlayerInventory>();
     }
 
@@ -76,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.SwordSwap.Enable();
         playerInputAction.Player.GunSwap.Enable();
         playerInputAction.Player.ControllerSwap.Enable();
+        playerInputAction.Player.Attack.Enable();
     }
 
     private void OnDisable()
@@ -86,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.SwordSwap.Disable();
         playerInputAction.Player.GunSwap.Disable();
         playerInputAction.Player.ControllerSwap.Disable();
+        playerInputAction.Player.Attack.Enable();
     }
 
     private void Update()
@@ -193,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
         {
             wallState = WallState.NotOnWall;
         }
+        if(playerInputAction.Player.Attack.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
     }
 
     private void Jump(InputAction.CallbackContext ctx)
@@ -205,19 +209,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Attack(InputAction.CallbackContext ctx)
+    {
+        weaponManager.currentAttack(true);
+    }
+
     private void gSwap(InputAction.CallbackContext ctx)
     {
-        weaponController.swap(2);
+        weaponManager.swap(2);
     }
 
     private void sSwap(InputAction.CallbackContext ctx)
     {
         Debug.Log("hello");
-        weaponController.swap(1);
+        weaponManager.swap(1);
     }
     private void cSwap(InputAction.CallbackContext ctx)
     {
-        weaponController.swap(3);
+        weaponManager.swap(3);
     }
 
     private void OnDrawGizmosSelected()
