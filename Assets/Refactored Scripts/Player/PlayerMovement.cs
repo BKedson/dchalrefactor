@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.SwordSwap.Disable();
         playerInputAction.Player.GunSwap.Disable();
         playerInputAction.Player.ControllerSwap.Disable();
-        playerInputAction.Player.Attack.Enable();
+        playerInputAction.Player.Attack.Disable();
     }
 
     private void Update()
@@ -211,6 +211,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext ctx)
     {
+        
         weaponManager.currentAttack(true);
     }
 
@@ -254,6 +255,7 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.SwordSwap.Enable();
             playerInputAction.Player.GunSwap.Enable();
             playerInputAction.Player.ControllerSwap.Enable();
+            playerInputAction.Player.Attack.Enable();
         }
         else
         {
@@ -263,6 +265,7 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.SwordSwap.Disable();
             playerInputAction.Player.GunSwap.Disable();
             playerInputAction.Player.ControllerSwap.Disable();
+            playerInputAction.Player.Attack.Disable();
         }
     }
 

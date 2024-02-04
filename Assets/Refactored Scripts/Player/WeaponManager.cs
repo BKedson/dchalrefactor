@@ -24,29 +24,6 @@ public class WeaponManager : MonoBehaviour
         selectWeapon(-1);
     }
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        if(currentWeapon == 0){
-    //        canAttack = true;
-
-            if(Input.GetMouseButtonUp(0)){
-                cur.Attack(true);
-            }
-            else{
-                cur.Attack(false);
-            }
-        }
-        //else canAttack = false;
-
-
-        if(Input.GetMouseButtonUp(0)){
-            cur.Attack(canAttack);
-        }
-        else{
-            cur.Attack(false);
-        }*/
-    
     public void swap(int i){
         
         if(i == 1 && stuff.checkIfCollected(1)){
@@ -78,7 +55,9 @@ public class WeaponManager : MonoBehaviour
     }
 
     public void currentAttack(bool start){
-        cur.Attack(start);
+        if(currentWeapon != -1){
+            cur.Attack(start);
+        }
     }
 
     private void selectWeapon(int swap){
