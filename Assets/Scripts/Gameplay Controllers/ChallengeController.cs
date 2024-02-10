@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using dchalrefactor.Scripts.Challenges;
 
-public class ChallengeController : IController<ChallengeController.ChallengeAction, ChallengeStateMachine.ChallengeState>
+public class ChallengeController : BaseController<ChallengeController.ChallengeAction, ChallengeStateMachine.ChallengeState>
 {
-    //stores the manager for this controller
-    Challenge challengeManager;
+    //stores the transition manager for this controller
+    public Challenge challengeManager;
 
     //Defined actions for state Transitions
     public enum ChallengeAction{
@@ -19,8 +19,7 @@ public class ChallengeController : IController<ChallengeController.ChallengeActi
 
     //Start 
     protected virtual void Start(){
-        //type casting default IModel type manager to Challenge
-        challengeManager = (Challenge)manager;
+        
     }
 
     //INPUTS

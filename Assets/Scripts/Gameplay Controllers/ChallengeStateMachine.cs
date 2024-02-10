@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //This class defines a generic state machine for a challenge of the entire game
-public class ChallengeStateMachine : IStateMachine<ChallengeController.ChallengeAction, ChallengeStateMachine.ChallengeState>
+public class ChallengeStateMachine : BaseStateMachine<ChallengeController.ChallengeAction, ChallengeStateMachine.ChallengeState>
 {
     // Stores the possible Challenge states for the state machine
     public enum ChallengeState{

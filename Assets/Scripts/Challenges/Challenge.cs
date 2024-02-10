@@ -3,12 +3,10 @@ using System.Collections;
 
 namespace dchalrefactor.Scripts.Challenges
 {
-    public abstract class Challenge : IModel
+    public abstract class Challenge : MonoBehaviour
     {
         // Stores the Question associated with this challenge
         public Question question;
-        //Stores the State machine of this challenge
-        public ChallengeStateMachine challengeStateMachine;
         
         // Constructor
         public Challenge(Question question){

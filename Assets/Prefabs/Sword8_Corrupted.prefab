@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7945700126724685281}
   - component: {fileID: 5305305658019776811}
   - component: {fileID: 5773012935521969949}
-  - component: {fileID: 8796401702751088692}
+  - component: {fileID: 6909289312158524151}
+  - component: {fileID: 32630650343589106}
   m_Layer: 20
   m_Name: Sword8_Corrupted
   m_TagString: sword
@@ -96,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.52314156, y: 1.6519052, z: 0.120256916}
   m_Center: {x: 0.0000012604233, y: 1.2969705, z: -0.00000077010253}
---- !u!114 &8796401702751088692
+--- !u!114 &6909289312158524151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,6 +106,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 5953977592163608830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1adcb4bc2ac0d44fac94243f4b00acd, type: 3}
+  m_Script: {fileID: 11500000, guid: e0b1b97c014a64d498eefe608074d48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &32630650343589106
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953977592163608830}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f8e5a5d419eccd642bac44fb7624e4d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
