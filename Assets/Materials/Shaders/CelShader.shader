@@ -1,4 +1,4 @@
-Shader "Custom/SimpleColorCelShader"
+Shader "Custom/CelShader"
 {
 	Properties
 	{
@@ -13,7 +13,8 @@ Shader "Custom/SimpleColorCelShader"
 
 		_CustomShadowBias("Shadow Bias",  Range(0.0, 0.5)) = 0.01
 
-		_OutlineWidth("Outline Width",  Range(0.0, 0.01)) = 0.01
+		_OutlineWidth("Outline Width", Range(0.0, 0.1)) = 0.01
+		_OutlineColor("Outline Color", Color) = (1, 1, 1, 1)
 	}
 
 		SubShader
@@ -144,57 +145,56 @@ Shader "Custom/SimpleColorCelShader"
 				};
 
 				float _OutlineWidth;
+				float4 _OutlineColor;
 
 				v2f vert_outline(a2v v)
 				{
 					v2f o;
-					float3 normalWS = mul(UNITY_MATRIX_M, v.normalOS);
-					float4 vertexWS = mul(UNITY_MATRIX_M, v.vertexOS);
+					float3 normalCS = mul(UNITY_MATRIX_MVP, v.normalOS);
+					o.vertexCS = mul(UNITY_MATRIX_MVP, v.vertexOS);
+					o.vertexCS += float4(normalize(normalCS.xy) * _OutlineWidth, 0, 0);
 					//o.vertexCS.xy += normalize(TransformWorldToHClipDir(v.normalOS)).xy * _OutlineWidth * o.vertexCS.w;
 					//o.vertexCS += float4(normalize(normalCS).xy * _OutlineWidth * o.vertexCS.w, 0, 0);
-					vertexWS += float4(normalize(normalWS) * _OutlineWidth, 0);
-					o.vertexCS = mul(UNITY_MATRIX_VP, vertexWS);
 
 					return o;
 				}
 
 				float4 frag_outline(v2f i) : SV_Target
 				{
-					return float4(0, 0, 0, 1);
+					return _OutlineColor;
 				}
 				ENDHLSL
 			}
 
-				//// Shadow
-				//UsePass "VertexLit/SHADOWCASTER"
+			//// Shadow
+			//UsePass "VertexLit/SHADOWCASTER"
+			Pass
+			{
+				Name "ShadowCaster"
+				Tags{ "LightMode" = "ShadowCaster" }
 
-				Pass
+				HLSLPROGRAM
+
+				#pragma vertex vert_shadow
+				#pragma fragment frag_shadow
+				#pragma target 3.0
+
+				#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+
+				float4 vert_shadow(float4 vertex:POSITION, uint id : SV_VertexID, float3 normal : NORMAL) : SV_POSITION
 				{
-					Name "ShadowCaster"
-					Tags{ "LightMode" = "ShadowCaster" }
-
-					HLSLPROGRAM
-
-					#pragma vertex vert_shadow
-					#pragma fragment frag_shadow
-					#pragma target 3.0
-
-					#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-
-
-					float4 vert_shadow(float4 vertex:POSITION, uint id : SV_VertexID, float3 normal : NORMAL) : SV_POSITION
-					{
-						vertex = mul(UNITY_MATRIX_MVP, vertex);
-						normal = mul(UNITY_MATRIX_MVP, normal);
-						//vertex -= float4(normal * _ShadowBias, 0);
-						return vertex;
-					}
-
-					float4 frag_shadow(void) : COLOR
-					{
-						return 0;
-					}
-					ENDHLSL
+					vertex = mul(UNITY_MATRIX_MVP, vertex);
+					normal = mul(UNITY_MATRIX_MVP, normal);
+					//vertex -= float4(normal * _ShadowBias, 0);
+					return vertex;
 				}
+
+				float4 frag_shadow(void) : COLOR
+				{
+					return 0;
+				}
+				ENDHLSL
+			}
 		}
 }

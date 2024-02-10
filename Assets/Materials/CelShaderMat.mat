@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestMat
-  m_Shader: {fileID: 4800000, guid: 5deb6007a410f9242b944346c7b2690e, type: 3}
+  m_Name: CelShaderMat
+  m_Shader: {fileID: 4800000, guid: 3a29b48c2241c52409e47f2a221d1bf3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -30,12 +30,14 @@ Material:
     m_Floats:
     - _CustomShadowBias: 0.5
     - _DiffuseThreshold: 0.5
-    - _OutlineWidth: 0.005
+    - _OutlineWidth: 0.025
     - _RimCoe: 0
     - _RimThreshold: 1
     - _ShadowBias: 0
     - _ShadowThreshold: 0.5
     - _Smoothness: 1
     - _SpecularThreshold: 0.5
-    m_Colors: []
+    m_Colors:
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SurfaceColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   m_BuildTextureStacks: []
