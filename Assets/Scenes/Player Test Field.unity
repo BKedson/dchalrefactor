@@ -326,6 +326,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &359422212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5162690533181715890, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
+  m_PrefabInstance: {fileID: 1673172574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260505d43727ad64aa3d9fa9266bb565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &359422213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7579700550311663236, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
+  m_PrefabInstance: {fileID: 1673172574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67415131a2411c4c89552d7ca239336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &359422215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3320800906079982461, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
+  m_PrefabInstance: {fileID: 1673172574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9109e75026aa1dc4aafbc6b74236a2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &592070030
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +865,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3320800906079982461, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
+      propertyPath: stateMachine
+      value: 
+      objectReference: {fileID: 359422213}
+    - target: {fileID: -3320800906079982461, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
+      propertyPath: challengeManager
+      value: 
+      objectReference: {fileID: 359422212}
     - target: {fileID: 937759678842033776, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -884,7 +925,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7579700550311663236, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 359422215}
+    m_RemovedComponents:
+    - {fileID: 8718208371296148011, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a9240ad11e3d0a846ad8d40c15d52db3, type: 3}
 --- !u!1 &1750825869
 GameObject:
