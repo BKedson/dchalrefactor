@@ -33,18 +33,36 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwordSwap",
+                    "name": "Fire",
                     "type": "Button",
-                    "id": "d33b1a5e-70f0-4a6c-bb65-a17749108f76",
+                    "id": "ab96daa0-3254-49cd-8c33-da2227530beb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GunSwap",
+                    "name": "AltFire",
                     "type": "Button",
-                    "id": "9fdf20ab-844b-4c7a-8333-3e7efdc3b462",
+                    "id": "20bb0ef9-c814-4355-9ead-6189af3e00cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "befb657f-09e2-4881-bda9-a78e196e61b6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwordSwap",
+                    "type": "Button",
+                    "id": "d33b1a5e-70f0-4a6c-bb65-a17749108f76",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -149,12 +167,34 @@
                 },
                 {
                     "name": "",
-                    "id": "09b10f71-2ac9-4d1d-b259-b933baa8b6ff",
-                    "path": "<Keyboard>/1",
+                    "id": "eb154986-d7b3-4fb0-b0b7-43c404f9689e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwordSwap",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7496283-90a6-43f5-b29e-9b3490ce069f",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AltFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df9bf481-6fd8-4b13-86b0-fcd4b80c6538",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
