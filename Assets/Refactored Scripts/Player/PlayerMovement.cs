@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.GunSwap.started += gSwap;
         playerInputAction.Player.SwordSwap.started += sSwap;
         playerInputAction.Player.ControllerSwap.started += cSwap;
-        playerInputAction.Player.Attack.started += Attack;
+        playerInputAction.Player.Fire.started += Attack;
 
         characterController = GetComponent<CharacterController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.SwordSwap.Enable();
         playerInputAction.Player.GunSwap.Enable();
         playerInputAction.Player.ControllerSwap.Enable();
-        playerInputAction.Player.Attack.Enable();
+        playerInputAction.Player.Fire.Enable();
     }
 
     private void OnDisable()
@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.SwordSwap.Disable();
         playerInputAction.Player.GunSwap.Disable();
         playerInputAction.Player.ControllerSwap.Disable();
-        playerInputAction.Player.Attack.Disable();
+        playerInputAction.Player.Fire.Disable();
     }
 
     private void Update()
@@ -196,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
         {
             wallState = WallState.NotOnWall;
         }
-        if(playerInputAction.Player.Attack.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
+        if(playerInputAction.Player.Fire.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
     }
 
     private void Jump(InputAction.CallbackContext ctx)
@@ -255,7 +255,7 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.SwordSwap.Enable();
             playerInputAction.Player.GunSwap.Enable();
             playerInputAction.Player.ControllerSwap.Enable();
-            playerInputAction.Player.Attack.Enable();
+            playerInputAction.Player.Fire.Enable();
         }
         else
         {
@@ -265,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.SwordSwap.Disable();
             playerInputAction.Player.GunSwap.Disable();
             playerInputAction.Player.ControllerSwap.Disable();
-            playerInputAction.Player.Attack.Disable();
+            playerInputAction.Player.Fire.Disable();
         }
     }
 
