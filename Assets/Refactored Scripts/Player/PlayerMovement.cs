@@ -269,20 +269,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void MoveToDungeon()
-    {
-        characterController.enabled = false;
-        transform.position = Vector3.zero;
-        characterController.enabled = true;
-    }
-
-    public void LeaveDungeon()
-    {
-        characterController.enabled = false;
-        transform.position = new Vector3(0f, 50f, 0f);
-        characterController.enabled = true;
-    }
-
     public bool OnWallR()
     {
         return wallState == WallState.OnWallR;

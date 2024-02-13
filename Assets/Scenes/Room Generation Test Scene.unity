@@ -323,8 +323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonRoot: {fileID: 1610822979}
   roomPrefab: {fileID: 3992400806503070519, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
-  generateOffsetZ: 30
-  generateOffsetY: 15
+  generateOffsetZ: 62
+  generateOffsetY: 20
   initialGenOffset: {x: 0, y: 0, z: 5}
 --- !u!20 &788956727 stripped
 Camera:
@@ -688,6 +688,10 @@ PrefabInstance:
     - target: {fileID: 4175502220667200947, guid: a7bd1eb12e6381644a5c705e8bcc5768, type: 3}
       propertyPath: m_Name
       value: Test Foundry
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175502220667200947, guid: a7bd1eb12e6381644a5c705e8bcc5768, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5131323284757313181, guid: a7bd1eb12e6381644a5c705e8bcc5768, type: 3}
       propertyPath: m_Camera

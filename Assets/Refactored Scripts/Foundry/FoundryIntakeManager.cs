@@ -57,6 +57,6 @@ public class FoundryIntakeManager : MonoBehaviour
 
     public int GetPower()
     {
-        return (insertedOre ? insertedOre.GetComponent<OreManager>().GetPower() : 0);
+        return (insertedOre ? insertedOre.GetComponent<OreManager>().orePower : 0);
     }
 }
