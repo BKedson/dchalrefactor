@@ -59,9 +59,9 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Sprint.started += StartSprint => { sprinting = true; };
         playerInputAction.Player.Sprint.performed += StopSprint => { sprinting = false; };
         playerInputAction.Player.Jump.started += Jump;
-        playerInputAction.Player.GunSwap.started += gSwap;
-        playerInputAction.Player.SwordSwap.started += sSwap;
-        playerInputAction.Player.ControllerSwap.started += cSwap;
+        playerInputAction.Player.Swap1.started += sSwap;
+        playerInputAction.Player.Swap2.started += gSwap;
+        playerInputAction.Player.Swap3.started += cSwap;
         playerInputAction.Player.Attack.started += Attack;
 
         characterController = GetComponent<CharacterController>();
@@ -74,9 +74,9 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Movement.Enable();
         playerInputAction.Player.Sprint.Enable();
         playerInputAction.Player.Jump.Enable();
-        playerInputAction.Player.SwordSwap.Enable();
-        playerInputAction.Player.GunSwap.Enable();
-        playerInputAction.Player.ControllerSwap.Enable();
+        playerInputAction.Player.Swap1.Enable();
+        playerInputAction.Player.Swap2.Enable();
+        playerInputAction.Player.Swap3.Enable();
         playerInputAction.Player.Attack.Enable();
     }
 
@@ -85,9 +85,9 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Movement.Disable();
         playerInputAction.Player.Sprint.Disable();
         playerInputAction.Player.Jump.Disable();
-        playerInputAction.Player.SwordSwap.Disable();
-        playerInputAction.Player.GunSwap.Disable();
-        playerInputAction.Player.ControllerSwap.Disable();
+        playerInputAction.Player.Swap1.Disable();
+        playerInputAction.Player.Swap2.Disable();
+        playerInputAction.Player.Swap3.Disable();
         playerInputAction.Player.Attack.Disable();
     }
 
@@ -211,7 +211,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext ctx)
     {
-        
         weaponManager.currentAttack(true);
     }
 
@@ -222,7 +221,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void sSwap(InputAction.CallbackContext ctx)
     {
-        Debug.Log("hello");
         weaponManager.swap(1);
     }
     private void cSwap(InputAction.CallbackContext ctx)
@@ -252,9 +250,9 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.Movement.Enable();
             playerInputAction.Player.Sprint.Enable();
             playerInputAction.Player.Jump.Enable();
-            playerInputAction.Player.SwordSwap.Enable();
-            playerInputAction.Player.GunSwap.Enable();
-            playerInputAction.Player.ControllerSwap.Enable();
+            playerInputAction.Player.Swap1.Enable();
+            playerInputAction.Player.Swap2.Enable();
+            playerInputAction.Player.Swap3.Enable();
             playerInputAction.Player.Attack.Enable();
         }
         else
@@ -262,9 +260,9 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.Movement.Disable();
             playerInputAction.Player.Sprint.Disable();
             playerInputAction.Player.Jump.Disable();
-            playerInputAction.Player.SwordSwap.Disable();
-            playerInputAction.Player.GunSwap.Disable();
-            playerInputAction.Player.ControllerSwap.Disable();
+            playerInputAction.Player.Swap1.Disable();
+            playerInputAction.Player.Swap2.Disable();
+            playerInputAction.Player.Swap3.Disable();
             playerInputAction.Player.Attack.Disable();
         }
     }

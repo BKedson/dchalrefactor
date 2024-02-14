@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwordSwap",
+                    "name": "Swap1",
                     "type": "Button",
                     "id": "d33b1a5e-70f0-4a6c-bb65-a17749108f76",
                     "expectedControlType": "Button",
@@ -69,7 +69,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ControllerSwap",
+                    "name": "Swap2",
+                    "type": "Button",
+                    "id": "ab97dfa5-c7f0-42b6-8bc5-ec2c6f1a3488",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Swap3",
                     "type": "Button",
                     "id": "04750664-9c3b-4c79-8412-7fd5a3869b20",
                     "expectedControlType": "Button",
@@ -216,7 +225,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ControllerSwap",
+                    "action": "Swap3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -228,6 +237,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "73bf367e-389e-474b-9d10-792de000d809",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swap1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "052e943a-7a70-4758-88fb-a5b0b48c5098",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swap2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
