@@ -20,7 +20,7 @@ public class ElevatorManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (enabled && other.tag == "Player")
         {
             StartCoroutine("ElevatorOperation");
         }
