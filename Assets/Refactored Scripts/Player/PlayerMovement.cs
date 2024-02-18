@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 horizontalVelocity;
     private float yVelocity = 0f;
     private PlayerInventory stuff;
+    private bool stop = false;
 
     void Awake()
     {
@@ -102,101 +103,103 @@ public class PlayerMovement : MonoBehaviour
         //transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
 
         // Behavior while NOT wall running
-        if (wallState == WallState.NotOnWall)
-        {
-            // Ensure on ground
+        if(!stop){
+            if (wallState == WallState.NotOnWall)
+            {
+                // Ensure on ground
+                if (grounded)
+                {
+                    if (characterController.velocity.y <= 0)  // Not jumping
+                    {
+                        yVelocity = -0.1f;
+                    }
+                }
+                else
+                {
+                    yVelocity -= gravity * Time.fixedDeltaTime;
+                    if (characterController.velocity.y < 0 || playerInputAction.Player.Jump.phase == InputActionPhase.Waiting)
+                    {
+                        yVelocity -= fallingBonus;
+                    }
+                }
+            }
+            // Behavior wall running
+            else
+            {
+                yVelocity = -wallRunFallSpeed;
+            }
+
+            horizontalVelocity = playerInputAction.Player.Movement.ReadValue<Vector2>();
+
+            Vector3 movement;
+            if (wallState == WallState.NotOnWall)
+            {
+                movement =
+                    (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized * 
+                    (sprinting ? runSpeed : walkSpeed);
+            }
+            else
+            {
+                movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
+                movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
+            }
+            movement.y = yVelocity;
+            characterController.Move(movement * Time.fixedDeltaTime);
+
+            grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
+
             if (grounded)
-            {
-                if (characterController.velocity.y <= 0)  // Not jumping
-                {
-                    yVelocity = -0.1f;
-                }
-            }
-            else
-            {
-                yVelocity -= gravity * Time.fixedDeltaTime;
-                if (characterController.velocity.y < 0 || playerInputAction.Player.Jump.phase == InputActionPhase.Waiting)
-                {
-                    yVelocity -= fallingBonus;
-                }
-            }
-        }
-        // Behavior wall running
-        else
-        {
-            yVelocity = -wallRunFallSpeed;
-        }
-
-        horizontalVelocity = playerInputAction.Player.Movement.ReadValue<Vector2>();
-
-        Vector3 movement;
-        if (wallState == WallState.NotOnWall)
-        {
-            movement =
-                (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized * 
-                (sprinting ? runSpeed : walkSpeed);
-        }
-        else
-        {
-            movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
-            movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
-        }
-        movement.y = yVelocity;
-        characterController.Move(movement * Time.fixedDeltaTime);
-
-        grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
-
-        if (grounded)
-        {
-            wallState = WallState.NotOnWall;
-        }
-        else if (characterController.velocity.y <= 0.05f)
-        {
-            if (Physics.CheckSphere(
-                transform.position + wallCheckCenterOffset - transform.right * wallCheckHorizontalOffset,
-                wallCheckRadius,
-                whatIsEnvironment
-            ))
-            {
-                RaycastHit hit;
-                Physics.Raycast(
-                    transform.position + wallCheckCenterOffset,
-                   -transform.right,
-                    out hit,
-                    wallCheckHorizontalOffset + wallCheckRadius,
-                    whatIsEnvironment
-                );
-                wallNormal = hit.normal;
-                wallState = WallState.OnWallL;
-            }
-            else
-            if (Physics.CheckSphere(
-                transform.position + wallCheckCenterOffset + transform.right * wallCheckHorizontalOffset,
-                wallCheckRadius,
-                whatIsEnvironment
-            ))
-            {
-                RaycastHit hit;
-                Physics.Raycast(
-                    transform.position + wallCheckCenterOffset,
-                    transform.right,
-                    out hit,
-                    wallCheckHorizontalOffset + wallCheckRadius,
-                    whatIsEnvironment
-                );
-                wallNormal = hit.normal;
-                wallState = WallState.OnWallR;
-            }
-            else
             {
                 wallState = WallState.NotOnWall;
             }
+            else if (characterController.velocity.y <= 0.05f)
+            {
+                if (Physics.CheckSphere(
+                    transform.position + wallCheckCenterOffset - transform.right * wallCheckHorizontalOffset,
+                    wallCheckRadius,
+                    whatIsEnvironment
+                ))
+                {
+                    RaycastHit hit;
+                    Physics.Raycast(
+                        transform.position + wallCheckCenterOffset,
+                    -transform.right,
+                        out hit,
+                        wallCheckHorizontalOffset + wallCheckRadius,
+                        whatIsEnvironment
+                    );
+                    wallNormal = hit.normal;
+                    wallState = WallState.OnWallL;
+                }
+                else
+                if (Physics.CheckSphere(
+                    transform.position + wallCheckCenterOffset + transform.right * wallCheckHorizontalOffset,
+                    wallCheckRadius,
+                    whatIsEnvironment
+                ))
+                {
+                    RaycastHit hit;
+                    Physics.Raycast(
+                        transform.position + wallCheckCenterOffset,
+                        transform.right,
+                        out hit,
+                        wallCheckHorizontalOffset + wallCheckRadius,
+                        whatIsEnvironment
+                    );
+                    wallNormal = hit.normal;
+                    wallState = WallState.OnWallR;
+                }
+                else
+                {
+                    wallState = WallState.NotOnWall;
+                }
+            }
+            else  // Jumping (from ground)
+            {
+                wallState = WallState.NotOnWall;
+            }
+            if(playerInputAction.Player.Attack.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
         }
-        else  // Jumping (from ground)
-        {
-            wallState = WallState.NotOnWall;
-        }
-        if(playerInputAction.Player.Attack.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
     }
 
     private void Jump(InputAction.CallbackContext ctx)
@@ -226,6 +229,14 @@ public class PlayerMovement : MonoBehaviour
     private void cSwap(InputAction.CallbackContext ctx)
     {
         weaponManager.swap(3);
+    }
+
+    public void disable(){
+        stop = true;
+    }
+
+    public void enable(){
+        stop = false;
     }
 
     private void OnDrawGizmosSelected()
