@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Ore
       objectReference: {fileID: 0}
+    - target: {fileID: 281996818387040932, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}
 --- !u!4 &245146353 stripped
@@ -325,7 +329,7 @@ MonoBehaviour:
   roomPrefab: {fileID: 3992400806503070519, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
   generateOffsetZ: 62
   generateOffsetY: 20
-  initialGenOffset: {x: 0, y: 0, z: 5}
+  initialGenOffset: {x: 0, y: -20, z: 0}
 --- !u!20 &788956727 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2799179793794342531, guid: c63b4ec91e0a94c4d90cf0ffadd3c47f, type: 3}
@@ -390,6 +394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Ore
       objectReference: {fileID: 0}
+    - target: {fileID: 281996818387040932, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}
 --- !u!4 &1202957177 stripped
@@ -451,6 +459,10 @@ PrefabInstance:
     - target: {fileID: 281996818387040932, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}
       propertyPath: m_Name
       value: Test Ore
+      objectReference: {fileID: 0}
+    - target: {fileID: 281996818387040932, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}

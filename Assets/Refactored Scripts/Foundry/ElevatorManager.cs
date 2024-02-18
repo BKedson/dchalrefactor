@@ -43,7 +43,7 @@ public class ElevatorManager : MonoBehaviour
             {
                 pos.y += distMoved - moveHeight;
             }
-            
+
             transform.position = pos;
 
             yield return null;
@@ -51,5 +51,9 @@ public class ElevatorManager : MonoBehaviour
 
         PlayerMovement._instance.gameObject.transform.parent = null;
         PlayerMovement._instance.enabled = true;
+
+        transform.parent.GetComponent<FoundryRoom>().OnElevatorArrival();
+
+        enabled = false;
     }
 }

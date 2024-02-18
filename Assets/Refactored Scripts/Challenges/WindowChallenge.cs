@@ -15,10 +15,10 @@ public class WindowChallenge : BaseChallenge
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-        public override void Abort()
+    public override void Abort()
     {
 
     }
