@@ -24,14 +24,14 @@ public class ChallengeController : BaseController<ChallengeController.ChallengeA
 
     //INPUTS
     //concrete methods that are implemented by all challenges
-    protected void OnTriggerEnter(Collider other) //when a player enters the challenge zone
+    protected virtual void OnTriggerEnter(Collider other) //when a player enters the challenge zone
     {
         if(other.GetComponent<Collider>().tag == "Player"){
             HandleInputAction(ChallengeAction.WalkIn);  
         }    
     }
 
-    protected void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if(other.GetComponent<Collider>().tag == "Player"){
             //if while in Attempting - manager attempts the challenge
@@ -41,7 +41,7 @@ public class ChallengeController : BaseController<ChallengeController.ChallengeA
         } 
     }
 
-    protected void OnTriggerExit(Collider other) //when the player leaves the challenge zone
+    protected virtual void OnTriggerExit(Collider other) //when the player leaves the challenge zone
     {
         if(other.GetComponent<Collider>().tag == "Player"){
             HandleInputAction(ChallengeAction.Forfeit);
