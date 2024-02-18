@@ -4,26 +4,19 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class WanderingAI : MonoBehaviour {
-	public SceneController sc;
 	public float speed = 3.0f;
-	public float obstacleRange = 4.0f;
 	private Animator anim;
 	private bool _alive;
 	public bool broken;
 	public NavMeshAgent navMeshAgent;
-	public float initWaitTime = 4;
-	public float initRotate = 2;
-	public float viewAng = 90;
-	public float viewRad = 15;
+	public float initWaitTime = 4f;
+	public float initRotate = 2f;
+	public float viewAng = 90f;
+	public float viewRad = 15f;
 	public LayerMask player;
 	public LayerMask obstacles;
-	public float meshRes = 1f;
-	public int edgeIter = 4;
-	public float edgeDist = 0.5f;
-	public bool left = true;
 	public float rotSpeed = 70f;
 	private Vector3 minSize = new Vector3(0.7f,0.7f,0.7f);
-	Vector3 playLastPos = Vector3.zero;
 	Vector3 playerPos;
 	float waitTime;
 	float rotateTime;
@@ -40,7 +33,7 @@ public class WanderingAI : MonoBehaviour {
 		_alive = true;
 		playerPos = Vector3.zero;
 		patrolling = true;
-		seen = false;
+		//seen = false;
 		inRange = false;	
 		Move(speed);
 
@@ -53,7 +46,8 @@ public class WanderingAI : MonoBehaviour {
 	}
 	
 	void Update() {
-		if(_alive){
+		if(_alive){//near check at start
+			//if near then attack
 			View(); // continuously check if player is in line of sight
 			if(!patrolling){
 				chase();
@@ -92,15 +86,14 @@ public class WanderingAI : MonoBehaviour {
 	}
 
 	private void chase(){
-		near = false;
-		playLastPos = Vector3.zero;
-		if(!seen){ // when seen start sprint anim and adjust speed, set target to player
-			anim.SetBool("Spotted", true);
-			Move(5.0f);
-			navMeshAgent.SetDestination(playerPos);
-		}
+		//near = false;
+		 // when seen start sprint anim and adjust speed, set target to player
+		anim.SetBool("Spotted", true);
+		Move(5.0f);
+		navMeshAgent.SetDestination(playerPos);
+		
 		if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
-			if(waitTime <= 0 && !seen && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f){
+			if(waitTime <= 0 && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f){
 				patrolling = true;
 				near = false;
 				Move(speed); //when out of range return to patrol behavior
@@ -144,14 +137,12 @@ public class WanderingAI : MonoBehaviour {
         }
         isWandering = false;
 	}
-	
 
 	void Stop(){ // stop mving
 		navMeshAgent.isStopped = true;
 		navMeshAgent.speed = 0;
 		isWandering = false;
 	}
-
 
 	void LookingForP(Vector3 player){
 		navMeshAgent.SetDestination(player);
@@ -173,10 +164,10 @@ public class WanderingAI : MonoBehaviour {
 		Collider[] pInRange = Physics.OverlapSphere(transform.position, viewRad, player);
 		for(int i = 0; i < pInRange.Length;i++){
 			Transform pPos = pInRange[i].transform;
-			Vector3 toPLayer = (pPos.position - transform.position).normalized;
-			if(Vector3.Angle(transform.forward, toPLayer) < viewAng/2){ // if player is within range of bots forward view vectors
-				float dTP = Vector3.Distance(transform.position, pPos.position);
-				if(!Physics.Raycast(transform.position, toPLayer, dTP, obstacles)){ // if there are no obstacles between bot and player set varaibles accordingly
+			Vector3 toPlayer = (pPos.position - transform.position).normalized;
+			if(Vector3.Angle(transform.forward, toPlayer) < viewAng/2){ // if player is within range of bot's forward view vectors
+				float distToPlayer = Vector3.Distance(transform.position, pPos.position);
+				if(!Physics.Raycast(transform.position, toPlayer, distToPlayer, obstacles)){ // if there are no obstacles between bot and player set varaibles accordingly
 					inRange = true;
 					patrolling = false;
 					isWandering = false;
@@ -207,13 +198,9 @@ public class WanderingAI : MonoBehaviour {
 		_alive = alive;
 	}
 
-	//death by sword
+	//damage player
 	public void OnTriggerEnter(Collider other){
-		//call the death function
-		if(other.CompareTag("sword")){
-			//calling the death function on this actor
-			death(this.gameObject);
-			}
+		//
 	}
 
 	//shrink to death
@@ -221,20 +208,11 @@ public class WanderingAI : MonoBehaviour {
 		if(this.gameObject.transform.localScale.x > minSize.x){
 			this.gameObject.transform.localScale *= 0.99f;
 		}
-		else{
-			//call the death function
-			Debug.Log("bleh");
-			death(this.gameObject);
-		}
 	}
 
-	//The AI Death Function
-	//This function will be called to handle the death of this AI actor
-	public void death(GameObject objectToDelete){
-		//Destroy the gameObject that called this function
-		Destroy(objectToDelete);
-		//Add to the AI death count on the canvas - This is handled by the "PointsAndScoreController" class
-		PointsAndScoreController.Instance.incrementEnemyPoints();
+
+	public void OnDestroy(){
+		//for animation (item drops ???)
 	}
 
 
