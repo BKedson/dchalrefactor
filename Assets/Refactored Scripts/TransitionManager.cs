@@ -6,18 +6,6 @@ using UnityEngine.SceneManagement;
 public class TransitionManager : MonoBehaviour
 {
 
-    public static TransitionManager transitionMan;
-
-    private void Awake() {
-        // Don't destroy the transition manager on load, but do destroy if there are duplicates
-        if(transitionMan) {
-            DestroyImmediate(gameObject);
-        } else {
-            DontDestroyOnLoad(gameObject);
-            transitionMan = this;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,8 +39,19 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
+    public void Menu() {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void Controls() {
+        SceneManager.LoadScene("Controls");
+    }
+
+    public void Difficulty() {
+        SceneManager.LoadScene("Difficulty");
+    }
+
     public void Quit() {
         Application.Quit();
     }
-
 }

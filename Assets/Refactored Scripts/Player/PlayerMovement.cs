@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 horizontalVelocity;
     private float yVelocity = 0f;
     private PlayerInventory stuff;
+    private bool stop = false;
 
     void Awake()
     {
@@ -59,10 +60,10 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Sprint.started += StartSprint => { sprinting = true; };
         playerInputAction.Player.Sprint.performed += StopSprint => { sprinting = false; };
         playerInputAction.Player.Jump.started += Jump;
-        playerInputAction.Player.GunSwap.started += gSwap;
-        playerInputAction.Player.SwordSwap.started += sSwap;
-        playerInputAction.Player.ControllerSwap.started += cSwap;
-        playerInputAction.Player.Fire.started += Attack;
+        playerInputAction.Player.Swap1.started += sSwap;
+        playerInputAction.Player.Swap2.started += gSwap;
+        playerInputAction.Player.Swap3.started += cSwap;
+        playerInputAction.Player.Attack.started += Attack;
 
         characterController = GetComponent<CharacterController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
@@ -74,10 +75,10 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Movement.Enable();
         playerInputAction.Player.Sprint.Enable();
         playerInputAction.Player.Jump.Enable();
-        playerInputAction.Player.SwordSwap.Enable();
-        playerInputAction.Player.GunSwap.Enable();
-        playerInputAction.Player.ControllerSwap.Enable();
-        playerInputAction.Player.Fire.Enable();
+        playerInputAction.Player.Swap1.Enable();
+        playerInputAction.Player.Swap2.Enable();
+        playerInputAction.Player.Swap3.Enable();
+        playerInputAction.Player.Attack.Enable();
     }
 
     private void OnDisable()
@@ -85,10 +86,10 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Movement.Disable();
         playerInputAction.Player.Sprint.Disable();
         playerInputAction.Player.Jump.Disable();
-        playerInputAction.Player.SwordSwap.Disable();
-        playerInputAction.Player.GunSwap.Disable();
-        playerInputAction.Player.ControllerSwap.Disable();
-        playerInputAction.Player.Fire.Disable();
+        playerInputAction.Player.Swap1.Disable();
+        playerInputAction.Player.Swap2.Disable();
+        playerInputAction.Player.Swap3.Disable();
+        playerInputAction.Player.Attack.Disable();
     }
 
     private void Update()
@@ -102,95 +103,102 @@ public class PlayerMovement : MonoBehaviour
         //transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
 
         // Behavior while NOT wall running
-        if (wallState == WallState.NotOnWall)
-        {
-            // Ensure on ground
+        if(!stop){
+            if (wallState == WallState.NotOnWall)
+            {
+                // Ensure on ground
+                if (grounded)
+                {
+                    if (characterController.velocity.y <= 0)  // Not jumping
+                    {
+                        yVelocity = -0.1f;
+                    }
+                }
+                else
+                {
+                    yVelocity -= gravity * Time.fixedDeltaTime;
+                    if (characterController.velocity.y < 0 || playerInputAction.Player.Jump.phase == InputActionPhase.Waiting)
+                    {
+                        yVelocity -= fallingBonus;
+                    }
+                }
+            }
+            // Behavior wall running
+            else
+            {
+                yVelocity = -wallRunFallSpeed;
+            }
+
+            horizontalVelocity = playerInputAction.Player.Movement.ReadValue<Vector2>();
+
+            Vector3 movement;
+            if (wallState == WallState.NotOnWall)
+            {
+                movement =
+                    (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized * 
+                    (sprinting ? runSpeed : walkSpeed);
+            }
+            else
+            {
+                movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
+                movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
+            }
+            movement.y = yVelocity;
+            characterController.Move(movement * Time.fixedDeltaTime);
+
+            grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
+
             if (grounded)
-            {
-                if (characterController.velocity.y <= 0)  // Not jumping
-                {
-                    yVelocity = -0.1f;
-                }
-            }
-            else
-            {
-                yVelocity -= gravity * Time.fixedDeltaTime;
-                if (characterController.velocity.y < 0 || playerInputAction.Player.Jump.phase == InputActionPhase.Waiting)
-                {
-                    yVelocity -= fallingBonus;
-                }
-            }
-        }
-        // Behavior wall running
-        else
-        {
-            yVelocity = -wallRunFallSpeed;
-        }
-
-        horizontalVelocity = playerInputAction.Player.Movement.ReadValue<Vector2>();
-
-        Vector3 movement;
-        if (wallState == WallState.NotOnWall)
-        {
-            movement =
-                (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized * 
-                (sprinting ? runSpeed : walkSpeed);
-        }
-        else
-        {
-            movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
-            movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
-        }
-        movement.y = yVelocity;
-        characterController.Move(movement * Time.fixedDeltaTime);
-
-        grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
-
-        if (grounded)
-        {
-            wallState = WallState.NotOnWall;
-        }
-        else if (characterController.velocity.y <= 0.05f)
-        {
-            if (Physics.CheckSphere(
-                transform.position + wallCheckCenterOffset - transform.right * wallCheckHorizontalOffset,
-                wallCheckRadius,
-                whatIsEnvironment
-            ))
-            {
-                RaycastHit hit;
-                Physics.Raycast(
-                    transform.position + wallCheckCenterOffset,
-                   -transform.right,
-                    out hit,
-                    wallCheckHorizontalOffset + wallCheckRadius,
-                    whatIsEnvironment
-                );
-                wallNormal = hit.normal;
-                wallState = WallState.OnWallL;
-            }
-            else
-            if (Physics.CheckSphere(
-                transform.position + wallCheckCenterOffset + transform.right * wallCheckHorizontalOffset,
-                wallCheckRadius,
-                whatIsEnvironment
-            ))
-            {
-                RaycastHit hit;
-                Physics.Raycast(
-                    transform.position + wallCheckCenterOffset,
-                    transform.right,
-                    out hit,
-                    wallCheckHorizontalOffset + wallCheckRadius,
-                    whatIsEnvironment
-                );
-                wallNormal = hit.normal;
-                wallState = WallState.OnWallR;
-            }
-            else
             {
                 wallState = WallState.NotOnWall;
             }
+            else if (characterController.velocity.y <= 0.05f)
+            {
+                if (Physics.CheckSphere(
+                    transform.position + wallCheckCenterOffset - transform.right * wallCheckHorizontalOffset,
+                    wallCheckRadius,
+                    whatIsEnvironment
+                ))
+                {
+                    RaycastHit hit;
+                    Physics.Raycast(
+                        transform.position + wallCheckCenterOffset,
+                    -transform.right,
+                        out hit,
+                        wallCheckHorizontalOffset + wallCheckRadius,
+                        whatIsEnvironment
+                    );
+                    wallNormal = hit.normal;
+                    wallState = WallState.OnWallL;
+                }
+                else
+                if (Physics.CheckSphere(
+                    transform.position + wallCheckCenterOffset + transform.right * wallCheckHorizontalOffset,
+                    wallCheckRadius,
+                    whatIsEnvironment
+                ))
+                {
+                    RaycastHit hit;
+                    Physics.Raycast(
+                        transform.position + wallCheckCenterOffset,
+                        transform.right,
+                        out hit,
+                        wallCheckHorizontalOffset + wallCheckRadius,
+                        whatIsEnvironment
+                    );
+                    wallNormal = hit.normal;
+                    wallState = WallState.OnWallR;
+                }
+                else
+                {
+                    wallState = WallState.NotOnWall;
+                }
+            }
+            else  // Jumping (from ground)
+            {
+                wallState = WallState.NotOnWall;
+            }
+            if(playerInputAction.Player.Attack.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
         }
         else  // Jumping (from ground)
         {
@@ -211,7 +219,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext ctx)
     {
-        
         weaponManager.currentAttack(true);
     }
 
@@ -222,12 +229,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void sSwap(InputAction.CallbackContext ctx)
     {
-        Debug.Log("hello");
         weaponManager.swap(1);
     }
     private void cSwap(InputAction.CallbackContext ctx)
     {
         weaponManager.swap(3);
+    }
+
+    public void disable(){
+        stop = true;
+    }
+
+    public void enable(){
+        stop = false;
     }
 
     private void OnDrawGizmosSelected()
@@ -252,20 +266,20 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.Movement.Enable();
             playerInputAction.Player.Sprint.Enable();
             playerInputAction.Player.Jump.Enable();
-            playerInputAction.Player.SwordSwap.Enable();
-            playerInputAction.Player.GunSwap.Enable();
-            playerInputAction.Player.ControllerSwap.Enable();
-            playerInputAction.Player.Fire.Enable();
+            playerInputAction.Player.Swap1.Enable();
+            playerInputAction.Player.Swap2.Enable();
+            playerInputAction.Player.Swap3.Enable();
+            playerInputAction.Player.Attack.Enable();
         }
         else
         {
             playerInputAction.Player.Movement.Disable();
             playerInputAction.Player.Sprint.Disable();
             playerInputAction.Player.Jump.Disable();
-            playerInputAction.Player.SwordSwap.Disable();
-            playerInputAction.Player.GunSwap.Disable();
-            playerInputAction.Player.ControllerSwap.Disable();
-            playerInputAction.Player.Fire.Disable();
+            playerInputAction.Player.Swap1.Disable();
+            playerInputAction.Player.Swap2.Disable();
+            playerInputAction.Player.Swap3.Disable();
+            playerInputAction.Player.Attack.Disable();
         }
     }
 

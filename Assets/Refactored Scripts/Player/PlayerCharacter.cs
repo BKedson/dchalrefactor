@@ -54,6 +54,7 @@ public class PlayerCharacter : MonoBehaviour {
 		}
 	}
 
+	//use this and add an indicator on run
 	public void Hurt(int damage) {
 		_health -= damage;
 		var textComp = healthUI.GetComponent<Text>();

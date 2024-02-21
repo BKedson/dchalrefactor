@@ -5,6 +5,9 @@ namespace dchalrefactor.Scripts.Challenges
 {
     public class DoorChallenge : Challenge
     {
+        //VARIABLES
+        //Stores the animator for the door
+        public Animator anim;
         //---METHODS---
         //constructor
         public DoorChallenge(Question question) : base(question){ }
@@ -17,6 +20,7 @@ namespace dchalrefactor.Scripts.Challenges
         public override void OnChallengeStart(){
             //Testing Debug Log
             Debug.Log("Challenge Started..");
+            anim.SetTrigger("Open_Door");
         }
 
         //called when the player gets a correct answer - challenge completed
@@ -29,6 +33,7 @@ namespace dchalrefactor.Scripts.Challenges
         public override void OnAttempCancel(){
             //Testing Debug Log
             Debug.Log("Challenge Forfeited..");
+            anim.SetTrigger("Close_Door");
         }
 
         //called when the player gets a wrong answer
