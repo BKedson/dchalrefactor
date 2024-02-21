@@ -15,9 +15,14 @@ public class DungeonGeneratorEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if (EditorApplication.isPlaying == true && GUILayout.Button("Generate Dungeon"))
+        if (EditorApplication.isPlaying && GUILayout.Button("Generate Rom"))
         {
-            targetGenerator.InitializeDungeon();
+            targetGenerator.GenRoom();
+        }
+
+        if (EditorApplication.isPlaying && GUILayout.Button("Destroy Room"))
+        {
+            targetGenerator.DestroyRoom();
         }
     }
 }

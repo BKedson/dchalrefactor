@@ -200,6 +200,11 @@ public class PlayerMovement : MonoBehaviour
             }
             if(playerInputAction.Player.Attack.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
         }
+        else  // Jumping (from ground)
+        {
+            wallState = WallState.NotOnWall;
+        }
+        if(playerInputAction.Player.Fire.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
     }
 
     private void Jump(InputAction.CallbackContext ctx)
@@ -276,20 +281,6 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.Swap3.Disable();
             playerInputAction.Player.Attack.Disable();
         }
-    }
-
-    public void MoveToDungeon()
-    {
-        characterController.enabled = false;
-        transform.position = Vector3.zero;
-        characterController.enabled = true;
-    }
-
-    public void LeaveDungeon()
-    {
-        characterController.enabled = false;
-        transform.position = new Vector3(0f, 50f, 0f);
-        characterController.enabled = true;
     }
 
     public bool OnWallR()

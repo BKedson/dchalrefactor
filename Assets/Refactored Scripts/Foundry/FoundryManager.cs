@@ -7,6 +7,8 @@ public class FoundryManager : BaseInteractable
     [SerializeField] private FoundryIntakeManager intake3;
     [SerializeField] private int targetPowerLv;
 
+    public bool weaponForged { get; private set; } = false;
+
     public override void OnInteract()
     {
         int totalP = intake1.GetPower() * 100 + intake2.GetPower() * 10 + intake3.GetPower();
@@ -22,5 +24,7 @@ public class FoundryManager : BaseInteractable
         {
             Debug.Log("Forge overpowered weapon");
         }
+
+        weaponForged = true;
     }
 }

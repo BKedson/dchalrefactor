@@ -8,17 +8,16 @@ public class PlayerFoundryInteraction : MonoBehaviour
     [Header("Ore Selection Settings")]
     [SerializeField] private Transform camTransform;
     [SerializeField] private float pickUpDist;
-    [SerializeField] private LayerMask whatIsOre;
+    [SerializeField] private LayerMask whatToAim;
     [Header("Ore Behavior Settings")]
     [SerializeField] private Transform oreFloatCenter;
     [SerializeField] private float oreAttractionForce;
-    [SerializeField] private float oreFloatDrag;
 
     private PlayerInputAction playerInputAction;
 
-    private GameObject targetedOre;
-    //private GameObject currentOre;
-    private Rigidbody currentOreRGBD;  // Save reference once to avoid frequent Getcomponent
+    private OreManager targetedOre;
+    private OreManager currentOre;
+    //private Rigidbody currentOreRGBD;  // Save reference once to avoid frequent Getcomponent
     private FoundryIntakeManager targetIntake;
     private RaycastHit hit;
 
@@ -50,82 +49,69 @@ public class PlayerFoundryInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Physics.OverlapBox(camTransform.position + camTransform.forward * pickUpDist / 2f, )
-        if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, pickUpDist, whatIsOre))
+        if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, pickUpDist, whatToAim))
         {
+            // Aiming at an ore
             if (hit.collider.tag == "Ore")
             {
-                if (targetIntake)
-                {
-                    targetIntake.Unselect();
-                }
+                if (targetIntake) targetIntake.Unselect();
                 targetIntake = null;
 
                 // If the targeted ore is not the one previously targeted
-                if (targetedOre && hit.collider.gameObject != targetedOre)
+                if (targetedOre && hit.collider.gameObject != targetedOre.gameObject)
                 {
-                    targetedOre.GetComponent<MeshRenderer>().enabled = false;
+                    targetedOre.Highlight(false);
                 }
-                targetedOre = hit.collider.gameObject;
+                targetedOre = hit.collider.GetComponent<OreManager>();
+                targetedOre.Highlight(true);
 
-                // If the targeted ore is not the currently held one
-                if (!currentOreRGBD || targetedOre != currentOreRGBD.gameObject)
-                {
-                    targetedOre.GetComponent<MeshRenderer>().enabled = true;
-                }
+                //// If the targeted ore is not the currently held one
+                //if (!currentOre || targetedOre != currentOre)
+                //{
+                //    targetedOre.GetComponent<MeshRenderer>().enabled = true;
+                //}
             }
+            // Aiming at an intake
             else if (hit.collider.tag == "Foundry Intake")
             {
-                if (targetedOre)
-                {
-                    targetedOre.GetComponent<MeshRenderer>().enabled = false;
-                }
+                if (targetedOre) targetedOre.Highlight(false);
                 targetedOre = null;
 
                 targetIntake = hit.collider.GetComponent<FoundryIntakeManager>();
                 targetIntake.Select();
             }
+            // Aiming at other interactables
             else
             {
-                if (targetedOre)
-                {
-                    targetedOre.GetComponent<MeshRenderer>().enabled = false;
-                }
+                if (targetedOre) targetedOre.Highlight(false);
                 targetedOre = null;
 
-                if (targetIntake)
-                {
-                    targetIntake.Unselect();
-                }
+                if (targetIntake) targetIntake.Unselect();
                 targetIntake = null;
             }
         }
         else
         {
-            if (targetedOre)
-            {
-                targetedOre.GetComponent<MeshRenderer>().enabled = false;
-            }
+            if (targetedOre) targetedOre.Highlight(false);
             targetedOre = null;
 
-            if (targetIntake)
-            {
-                targetIntake.Unselect();
-            }
+            if (targetIntake) targetIntake.Unselect();
             targetIntake = null;
         }
+
+        if (currentOre) currentOre.Highlight(true);
     }
 
     private void FixedUpdate()
     {
-        if (currentOreRGBD)
+        if (currentOre)
         {
-            Vector3 posDiff = oreFloatCenter.position - currentOreRGBD.position;
+            Vector3 posDiff = oreFloatCenter.position - currentOre.transform.position;
 
             float d = posDiff.magnitude;
             d = Mathf.Min(d * d, 9f);
 
-            currentOreRGBD.AddForce(posDiff.normalized * oreAttractionForce * d);
+            currentOre.Drag(posDiff.normalized * oreAttractionForce * d);
         }
     }
 
@@ -133,38 +119,33 @@ public class PlayerFoundryInteraction : MonoBehaviour
     {
         if (targetedOre)
         {
-            Debug.Log(targetedOre.gameObject);
-            if (currentOreRGBD)
-            {
-                currentOreRGBD.drag = 1;
-                currentOreRGBD.useGravity = true;
-                currentOreRGBD = null;
-            }
-            currentOreRGBD = targetedOre.GetComponent<Rigidbody>();
-            currentOreRGBD.drag = oreFloatDrag;
-            currentOreRGBD.useGravity = false;
+            if (currentOre) currentOre.OnDrop();
+
+            currentOre = targetedOre.GetComponent<OreManager>();
+            currentOre.OnPickUp();
 
             targetedOre.GetComponent<MeshRenderer>().enabled = false;
         }
         else if(targetIntake)
         {
-            if (currentOreRGBD)
+            // Try to insert
+            if (currentOre)
             {
-                currentOreRGBD.GetComponent<Collider>().enabled = false;
-                if (targetIntake.Insert(currentOreRGBD.gameObject))
+                if (targetIntake.Insert(currentOre.gameObject))
                 {
-                    currentOreRGBD = null;
+                    currentOre.OnInsert();
+                    currentOre = null;
                 }
             }
+            // Try to get by q ejecting inserted ore
             else
             {
                 GameObject obj = targetIntake.Eject();
                 if (obj)
                 {
-                    currentOreRGBD = obj.GetComponent<Rigidbody>();
-                    currentOreRGBD.GetComponent<Collider>().enabled = true;
-                    currentOreRGBD.drag = oreFloatDrag;
-                    currentOreRGBD.useGravity = false;
+                    currentOre = obj.GetComponent<OreManager>();
+                    currentOre.OnEject();
+                    currentOre.OnPickUp();
                 }
             }
         }
@@ -172,11 +153,10 @@ public class PlayerFoundryInteraction : MonoBehaviour
 
     private void DropDown(InputAction.CallbackContext ctx)
     {
-        if (currentOreRGBD)
+        if (currentOre)
         {
-            currentOreRGBD.drag = 1;
-            currentOreRGBD.useGravity = true;
-            currentOreRGBD = null;
+            currentOre.OnDrop();
+            currentOre = null;
         }
     }
 

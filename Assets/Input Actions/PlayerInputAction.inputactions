@@ -80,16 +80,16 @@
                 {
                     "name": "Swap3",
                     "type": "Button",
-                    "id": "04750664-9c3b-4c79-8412-7fd5a3869b20",
+                    "id": "1d5b908f-3619-48ad-8669-ada082aba15e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "ControllerSwap",
                     "type": "Button",
-                    "id": "1d5b908f-3619-48ad-8669-ada082aba15e",
+                    "id": "04750664-9c3b-4c79-8412-7fd5a3869b20",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -209,17 +209,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ae24b7c8-d5c1-48e8-9adf-0a2cb7dd8cf0",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GunSwap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "77210c58-cc42-4bd6-9d16-3a85122413bb",
                     "path": "<Keyboard>/3",
                     "interactions": "",
@@ -231,12 +220,62 @@
                 },
                 {
                     "name": "",
+                    "id": "ae24b7c8-d5c1-48e8-9adf-0a2cb7dd8cf0",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GunSwap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "82d24d11-caf4-4fa4-b18b-36e0c6203650",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "GunSwap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf725a54-b19c-46a9-994b-b419e2eeb1c5",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwordSwap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "b0aceb1f-dc03-45ec-b276-62d96e6a5b32",
+            "actions": [
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "a5470fda-2e4e-4004-8b34-ae552b5b4e63",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "13464e55-e3f8-43a5-9c31-362fd49edd53",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
