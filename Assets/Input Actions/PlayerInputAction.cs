@@ -107,15 +107,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ControllerSwap"",
-                    ""type"": ""Button"",
-                    ""id"": ""04750664-9c3b-4c79-8412-7fd5a3869b20"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -339,7 +330,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Swap1 = m_Player.FindAction("Swap1", throwIfNotFound: true);
         m_Player_Swap2 = m_Player.FindAction("Swap2", throwIfNotFound: true);
         m_Player_Swap3 = m_Player.FindAction("Swap3", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Escape = m_UI.FindAction("Escape", throwIfNotFound: true);
@@ -411,8 +401,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Swap1;
     private readonly InputAction m_Player_Swap2;
     private readonly InputAction m_Player_Swap3;
-    private readonly InputAction m_Player_Attack;
-
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -426,8 +414,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Swap1 => m_Wrapper.m_Player_Swap1;
         public InputAction @Swap2 => m_Wrapper.m_Player_Swap2;
         public InputAction @Swap3 => m_Wrapper.m_Player_Swap3;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
-
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -464,9 +450,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Swap3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwap3;
                 @Swap3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwap3;
                 @Swap3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwap3;
-                @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -498,9 +481,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Swap3.started += instance.OnSwap3;
                 @Swap3.performed += instance.OnSwap3;
                 @Swap3.canceled += instance.OnSwap3;
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -549,7 +529,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnSwap1(InputAction.CallbackContext context);
         void OnSwap2(InputAction.CallbackContext context);
         void OnSwap3(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

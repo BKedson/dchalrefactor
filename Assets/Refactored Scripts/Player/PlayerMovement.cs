@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Swap1.started += sSwap;
         playerInputAction.Player.Swap2.started += gSwap;
         playerInputAction.Player.Swap3.started += cSwap;
-        playerInputAction.Player.Attack.started += Attack;
+        playerInputAction.Player.Fire.started += Attack;
 
         characterController = GetComponent<CharacterController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Swap1.Enable();
         playerInputAction.Player.Swap2.Enable();
         playerInputAction.Player.Swap3.Enable();
-        playerInputAction.Player.Attack.Enable();
+        playerInputAction.Player.Fire.Enable();
     }
 
     private void OnDisable()
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Swap1.Disable();
         playerInputAction.Player.Swap2.Disable();
         playerInputAction.Player.Swap3.Disable();
-        playerInputAction.Player.Attack.Disable();
+        playerInputAction.Player.Fire.Disable();
     }
 
     private void Update()
@@ -198,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 wallState = WallState.NotOnWall;
             }
-            if(playerInputAction.Player.Attack.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
+            if(playerInputAction.Player.Fire.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
         }
         else  // Jumping (from ground)
         {
@@ -269,7 +269,7 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.Swap1.Enable();
             playerInputAction.Player.Swap2.Enable();
             playerInputAction.Player.Swap3.Enable();
-            playerInputAction.Player.Attack.Enable();
+            playerInputAction.Player.Fire.Enable();
         }
         else
         {
@@ -279,7 +279,7 @@ public class PlayerMovement : MonoBehaviour
             playerInputAction.Player.Swap1.Disable();
             playerInputAction.Player.Swap2.Disable();
             playerInputAction.Player.Swap3.Disable();
-            playerInputAction.Player.Attack.Disable();
+            playerInputAction.Player.Fire.Disable();
         }
     }
 
