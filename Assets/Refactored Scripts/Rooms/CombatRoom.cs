@@ -53,6 +53,12 @@ public class CombatRoom : BaseRoom
             case 3:
                 InstantiateRoom3();
                 break;
+            case 4:
+                InstantiateRoom4();
+                break;
+            case 5:
+                InstantiateRoom4();
+                break;
             default:
                 InstantiateRoom1();
                 break;
@@ -72,6 +78,12 @@ public class CombatRoom : BaseRoom
                 break;
             case 3:
                 InstantiateRoom3();
+                break;
+            case 4:
+                InstantiateRoom4();
+                break;
+            case 5:
+                InstantiateRoom5();
                 break;
             default:
                 InstantiateRoom1();
@@ -105,4 +117,22 @@ public class CombatRoom : BaseRoom
         Instantiate(enemyPrefab, new Vector3(-4.3f, 1, 23 + playerZero), Quaternion.Euler(0, 0, 0));
         Instantiate(enemyPrefab, new Vector3(4.3f, 1, 23 + playerZero), Quaternion.Euler(0, 0, 0));
     }
+
+    // Creates Room 4, a maze-like room with long walls and traps
+    private void InstantiateRoom4() {
+        Instantiate(wallPrefab, new Vector3(-5, wallHeight/2, 10 + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
+        Instantiate(wallPrefab, new Vector3(5, wallHeight/2, 20 + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
+        Instantiate(wallPrefab, new Vector3(-5, wallHeight/2, 30 + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
+
+        // Replace with enemy spawn functionality
+        Instantiate(enemyPrefab, new Vector3(10, 1, 10 + playerZero), Quaternion.Euler(0, 0, 0));
+        Instantiate(enemyPrefab, new Vector3(-10, 1, 20 + playerZero), Quaternion.Euler(0, 0, 0));
+        Instantiate(enemyPrefab, new Vector3(10, 1, 30 + playerZero), Quaternion.Euler(0, 0, 0));
+    }
+
+    // Creates Room 5, a complex room with raised platforms
+    private void InstantiateRoom5() {
+
+    }
+    
 }
