@@ -4,7 +4,7 @@ using System.Collections;
 namespace dchalrefactor.Scripts.Challenges
 {
     public abstract class Challenge : MonoBehaviour
-    {
+    { 
         // Stores the Question associated with this challenge
         public Question question;
         
