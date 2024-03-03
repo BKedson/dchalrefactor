@@ -9,6 +9,7 @@ public class WanderingAI : MonoBehaviour {
 	private bool _alive;
 	public bool broken;
 	public NavMeshAgent navMeshAgent;
+	Vector3 playLastPos = Vector3.zero;
 	public float initWaitTime = 4f;
 	public float initRotate = 2f;
 	public float viewAng = 90f;
@@ -33,7 +34,7 @@ public class WanderingAI : MonoBehaviour {
 		_alive = true;
 		playerPos = Vector3.zero;
 		patrolling = true;
-		//seen = false;
+		seen = false;
 		inRange = false;	
 		Move(speed);
 
@@ -86,7 +87,8 @@ public class WanderingAI : MonoBehaviour {
 	}
 
 	private void chase(){
-		//near = false;
+		near = false;
+		playLastPos = Vector3.zero;
 		 // when seen start sprint anim and adjust speed, set target to player
 		anim.SetBool("Spotted", true);
 		Move(5.0f);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 476c77dfbdef10d4c9935d2f462cab44, type: 2}
 --- !u!1 &14016225
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &328553092
 Transform:
@@ -572,9 +572,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 8027016305892009555, guid: 4a5644a649ef2ee4093131c6eaadbc4a, type: 3}
-  enemyPrefab: {fileID: 7991632087556104648, guid: d607ce5293566d4428699eb7a31bc378, type: 3}
+  enemyPrefab: {fileID: 1765116360898588, guid: e070419e29355e7478ba9e671f230549, type: 3}
   spikePrefab: {fileID: 1115696336633506674, guid: a2fb4eb5848335748a6ebcd6eff48a36, type: 3}
-  reset: 0
+  resetRoom: -1
 --- !u!4 &553238775
 Transform:
   m_ObjectHideFlags: 0
