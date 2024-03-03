@@ -5,12 +5,13 @@ using UnityEngine;
 // WindowQuestions are simple applied math problems that use assessing enemy strength to represent arithmetic problems.
 public class WindowQuestion : BaseQuestion
 {
-    private List<int> enemyStrengths;
+    private List<int> enemyStrengths = new List<int>();
     private int numEnemies = 1;
     private int minEnemies = 1;
     private int maxEnemies = 5;
     private int minEnemyStrength = 1;
     private int maxEnemyStrength = 9;
+    public bool testGenerate = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,17 @@ public class WindowQuestion : BaseQuestion
     // Update is called once per frame
     void Update()
     {
-        
+        if (testGenerate) {
+            subject = Subject.Addition;
+            GenerateQuestion();
+            testGenerate = false;
+        }
     }
 
     public override bool IsCorrect(double sol)
     {
         return true;
     }
-
 
     internal override void GenerateQuestion()
     {
@@ -51,8 +55,6 @@ public class WindowQuestion : BaseQuestion
                 GenerateAdditionQuestion();
                 break;
         }
-
-        Debug.Log(solution);
     }
 
     // All enemies have different strengths, must be added together
@@ -64,6 +66,11 @@ public class WindowQuestion : BaseQuestion
 
         foreach (int enemyStrength in enemyStrengths) {
             solution += enemyStrength;
+        }
+
+        Debug.Log("Solution: " + solution + "\nEnemies: ");
+        foreach (int enemyStrength in enemyStrengths) {
+            Debug.Log(enemyStrength);
         }
     }
 
