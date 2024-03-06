@@ -13,6 +13,7 @@ public class Spikes : BaseObstacle
         // Set inherited fields
         damage = 1;
         player = GameObject.Find("Player");
+        Debug.Log(player.name);
     }
 
     // Update is called once per frame
@@ -23,13 +24,17 @@ public class Spikes : BaseObstacle
 
     // Damages the player when they enter and every [cooldown] seconds afterwards
     void OnTriggerEnter(Collider col) {
-        inSpikes = true;
-        StartCoroutine(DamageLoop());
+        if (col.gameObject.Equals(player)) {
+            inSpikes = true;
+            StartCoroutine(DamageLoop());
+        }
     }
 
     // Stops damaging the player when they leave the spikes
     void OnTriggerExit(Collider col) {
-        inSpikes = false;
+        if (col.gameObject.Equals(player)) {
+            inSpikes = false;
+        }
     }
 
     // Continues damaging the player as long as they remain in the spikes
@@ -43,7 +48,7 @@ public class Spikes : BaseObstacle
 
     // Damages the player
     void Stab() {
+        // player.GetComponent<PlayerCharacter>().Hurt(damage);
         Debug.Log("stab!");
-        // player.Damage(damage);
     }
 }
