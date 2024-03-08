@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FoundryRoom : BaseRoom
 {
@@ -7,6 +8,7 @@ public class FoundryRoom : BaseRoom
     [SerializeField] private Animator door1Animator;
     [SerializeField] private Animator door2Animator;
     [SerializeField] private GameObject surveillanceCam;
+    [SerializeField] private ScriptableRendererData renderData;
 
     private bool doorOpened = false;
     private GameObject playerRef;
@@ -15,6 +17,8 @@ public class FoundryRoom : BaseRoom
     void Awake()
     {
         playerRef = GameObject.Find("Player");
+
+        foreach (ScriptableRendererFeature feature in renderData.rendererFeatures) { feature.SetActive(false); }
     }
 
     // Update is called once per frame
@@ -57,6 +61,8 @@ public class FoundryRoom : BaseRoom
 
         surveillanceCam.SetActive(true);
 
+        foreach (ScriptableRendererFeature feature in renderData.rendererFeatures) { feature.SetActive(true); }
+
         // Transition end
     }
 
@@ -71,6 +77,8 @@ public class FoundryRoom : BaseRoom
         yield return new WaitForSeconds(0);
 
         surveillanceCam.SetActive(false);
+
+        foreach (ScriptableRendererFeature feature in renderData.rendererFeatures) { feature.SetActive(false); }
 
         playerRef.SetActive(true);
 
