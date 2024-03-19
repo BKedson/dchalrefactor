@@ -15,7 +15,7 @@ public class CombatRoom : BaseRoom
     [SerializeField] private GameObject cPlatformLeftPrefab;
     [SerializeField] private GameObject cPlatformCenterPrefab;
     [SerializeField] private GameObject uFloorPrefab;
-
+    [SerializeField] private GameObject spikeSafetyNetPrefab;
 
     // Selects the next spawned room, 1-indexed
     public int resetRoom = -1;
@@ -45,6 +45,7 @@ public class CombatRoom : BaseRoom
 
     private void Reset() {
         GameObject[] destructibles = GameObject.FindGameObjectsWithTag("EditorOnly");
+        player.transform.position = new Vector3(0, 5, 0);
 
         for (int i = 0; i < destructibles.Length; i++) {
             Destroy(destructibles[i].gameObject);
@@ -203,6 +204,7 @@ public class CombatRoom : BaseRoom
         Instantiate(uFloorPrefab, new Vector3(-15f, -0.1f, 36f + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
 
         Instantiate(spikePrefab, new Vector3(-0.1f, 0, 19 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
+        Instantiate(spikeSafetyNetPrefab, new Vector3(-0.1f, 0, 19 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
 
         // Replace with enemy spawn functionality
         Instantiate(enemyPrefab, new Vector3(-10.1f, 3.1f, 15.2f + playerZero), Quaternion.Euler(0, 0, 0));

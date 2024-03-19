@@ -10,7 +10,6 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Vector3 checkCenterOffset;
     [SerializeField] private float checkRadius;
     [SerializeField] private LayerMask whatIsCollectable;
-    [SerializeField] private TMP_Text clueNumDisplay;
 
     private int clueNum;
     private int money;
@@ -41,11 +40,6 @@ public class PlayerInventory : MonoBehaviour
         }
 
         
-    }
-
-    private void LateUpdate()
-    {
-        clueNumDisplay.text = clueNum.ToString("D2");
     }
 
     //private void OnDrawGizmos()
