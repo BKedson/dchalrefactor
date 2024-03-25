@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
 
     public void ChangeDiffuclty(Difficulty difficulty) {
         globalDifficulty = difficulty;
+        PlayerPrefs.SetInt("difficulty", (int)globalDifficulty);
+    }
+
+    public Difficulty GetDifficulty(){
+        globalDifficulty = (Difficulty) PlayerPrefs.GetInt("difficulty");
+        return globalDifficulty;
     }
 
     // Changes the controls based on player input. If an illegal or duplicate button is selected, nothing happens
