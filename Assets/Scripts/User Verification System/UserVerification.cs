@@ -6,18 +6,37 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
 {
     public class UserVerification : MonoBehaviour
     {
+        //stores the UI Pages for the User Verification System
+        public GameObject StartPage;
+        public GameObject GuestPage;
+        public GameObject LoginPage;
+        public GameObject RegisterPage;
+
         //methods to handle different Actions during User verification
         public void OnRegisterPressed()
         {
             //Load the Register UI Page
+            RegisterPage.SetActive(true);
         }
 
         public void OnRegisterCancel()
         {
-            //Revert to the Login UI Page
+            //Revert to the Start UI Page
+            RegisterPage.SetActive(false);
         }
         
-        public void OnLogin()
+        public void OnLoginPressed()
+        {
+            //Load the Login UI Page
+            LoginPage.SetActive(true);
+        }
+
+        public void OnLoginCancel()
+        {
+            //Revert to the Login UI Page
+            LoginPage.SetActive(false);
+        }
+        public void OnLoginAttempt()
         {
             //Query the database for presence or absence of user
         }
@@ -50,11 +69,13 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         public void OnGuestPressed()
         {
             //Load the Guest UI Page
+            GuestPage.SetActive(true);
         }
 
         public void OnGuestCancel()
         {
-            //Revert to the Login UI Page
+            //Revert to the Start UI Page
+            GuestPage.SetActive(false);
         }
 
         public void OnGuestCreated()

@@ -6,116 +6,125 @@ using dchalrefactor.Scripts.UserVerificationSystem;
 public class UserVerificationController : BaseController<UserVerificationController.UVAction , UserVerificationStateMachine.UVState>
 {
     //stores the transition manager for this controller
-    UserVerification uvManager;
+    public UserVerification uvManager;
 
     //stores the possible input Actions for this Controller
-    public enum UVAction{
-        RegisterPressed,
-        CancelRegister,
-        Login,
-        NoSuchLoginUser,
-        UserLoaded,
-        CheckAbsence,
-        RegisterUserExists,
-        NewUserCreated,
-        Guest,
-        CancelGuest,
-        GuestUserCreated
+    public enum UVAction
+    {
+        GuestButtonClick, CancelGuest, GuestUserCreated, RegisterButtonClick, CancelRegister, LoginButtonClick, CancelLogin, 
+        RegisterOperation, RegisterErrorUserExists, LoginOperation, LoginErrorNoSuchUser, RegisterUserCreated, LoginUserLoaded
     }
-
+    
     //Start 
-    protected virtual void Start(){
-        
+    protected virtual void Start(){   
     }
 
     //INPUTS 
-    //Button CLicks
-    protected void OnClickRegisterPage()
+    //PAGES-------------------------------------------------------
+    public void OnClickRegisterPage()
     {
-        HandleInputAction(UVAction.RegisterPressed);
+        HandleInputAction(UVAction.RegisterButtonClick);
     }
 
-    protected void OnClickGuestPage()
+    public void OnClickGuestPage()
     {
-        HandleInputAction(UVAction.Guest);
+        HandleInputAction(UVAction.GuestButtonClick);
     }
 
-    protected void OnClickRegisterCancel()
+    public void OnClickLoginPage()
+    {
+        HandleInputAction(UVAction.LoginButtonClick);
+    }
+
+    //CANCEL BUTTONS------------------------------------------------
+    public void OnClickRegisterCancel()
     {
         HandleInputAction(UVAction.CancelRegister);
     }
 
-    protected void OnClickLogin()
-    {
-        HandleInputAction(UVAction.Login);
-    }
-
-    protected void OnClickRegisterUser()
-    {
-        HandleInputAction(UVAction.CheckAbsence);
-    }
-
-    protected void OnClickGuestUser()
-    {
-        HandleInputAction(UVAction.GuestUserCreated);
-    }
-
-    protected void OnClickGuestCancel()
+    public void OnClickGuestCancel()
     {
         HandleInputAction(UVAction.CancelGuest);
     }
 
-    protected void RegisterUserAbsenceCheck()
+    public void OnClickLoginCancel()
+    {
+        HandleInputAction(UVAction.CancelLogin);
+    }
+
+    //OPERATIONS-------------------------------------------------------
+    public void OnClickLogin()
+    {
+        HandleInputAction(UVAction.LoginOperation);
+    }
+
+    public void OnClickRegister()
+    {
+        HandleInputAction(UVAction.RegisterOperation);
+    }
+
+    //USER CREATIONS AND PROCEED TO MAIN MENU----------------------------
+    public void OnClickGuest()
+    {
+        HandleInputAction(UVAction.GuestUserCreated);
+    }
+
+    //ERROR CHECKS AND CLOUD VERIFICATION--------------------------------
+    public void RegisterUserAbsenceCheck()
     {
         //The normal condition would be if the user is absent
         if(uvManager.IsUserPresent()){
-            HandleInputAction(UVAction.RegisterUserExists);
+            HandleInputAction(UVAction.RegisterErrorUserExists);
         }
         else{
-            HandleInputAction(UVAction.NewUserCreated);
+            HandleInputAction(UVAction.RegisterUserCreated);
         }
     }
 
-    protected void LoginUserPresenceCheck()
+    public void LoginUserPresenceCheck()
     {
         //The normal condition would be if the user is present
-        if(uvManager.IsUserPresent()){
-            HandleInputAction(UVAction.UserLoaded);
+        if(uvManager.IsUserPresent())
+        {
+            HandleInputAction(UVAction.LoginUserLoaded);
         }
-        else{
-            HandleInputAction(UVAction.NoSuchLoginUser);
+        else
+        {
+            HandleInputAction(UVAction.LoginErrorNoSuchUser);
         }    
     }
-    //OUTPUTS
+    //------------------------------------------------------------------
+    //OUTPUTS-----------------------------------------------------------
+    //------------------------------------------------------------------
     protected override void UpdateDelegate(UVAction action){
         //update the default delegate according to the action
         switch(action)
         {
-            case UVAction.RegisterPressed:
+            case UVAction.RegisterButtonClick:
                 SetDelegate(uvManager.OnRegisterPressed);
                 break;
             case UVAction.CancelRegister:
                 SetDelegate(uvManager.OnRegisterCancel);
                 break;
-            case UVAction.Login:
-                SetDelegate(uvManager.OnLogin);
+            case UVAction.LoginButtonClick:
+                SetDelegate(uvManager.OnLoginPressed);
                 break;
-            case UVAction.NoSuchLoginUser:
+            case UVAction.LoginErrorNoSuchUser:
                 SetDelegate(uvManager.OnLoginInvalid);
                 break;
-            case UVAction.UserLoaded:
+            case UVAction.LoginUserLoaded:
                 SetDelegate(uvManager.OnLoginValid); 
                 break; 
-            case UVAction.CheckAbsence:
+            case UVAction.RegisterOperation:
                 SetDelegate(uvManager.OnRegisterAttempt); 
                 break;
-            case UVAction.RegisterUserExists:
+            case UVAction.RegisterErrorUserExists:
                 SetDelegate(uvManager.OnRegisterInvalid); 
                 break;
-            case UVAction.NewUserCreated:
+            case UVAction.RegisterUserCreated:
                 SetDelegate(uvManager.OnRegisterValid); 
                 break;
-            case UVAction.Guest:
+            case UVAction.GuestButtonClick:
                 SetDelegate(uvManager.OnGuestPressed); 
                 break;
             case UVAction.CancelGuest:
@@ -123,6 +132,12 @@ public class UserVerificationController : BaseController<UserVerificationControl
                 break;
             case UVAction.GuestUserCreated:
                 SetDelegate(uvManager.OnGuestCreated); 
+                break;
+            case UVAction.LoginOperation:
+                SetDelegate(uvManager.OnLoginAttempt); 
+                break;
+            case UVAction.CancelLogin:
+                SetDelegate(uvManager.OnLoginCancel); 
                 break;
         }
     }
