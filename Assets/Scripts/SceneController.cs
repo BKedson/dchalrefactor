@@ -23,7 +23,6 @@ public class SceneController : MonoBehaviour {
 	}
 
 	public void SpawnEnemyGroups(){
-		PointsAndScoreController.Instance.resetEnemyPoints();
 		for(int i = 0; i < enemiesToAdd;i++ ){
 				if(i < 2){
 					_enemies.Add(SpawnEnemy(gameObject.transform.position));	
