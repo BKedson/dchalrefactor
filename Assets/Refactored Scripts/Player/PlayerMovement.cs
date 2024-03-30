@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
                     RaycastHit hit;
                     Physics.Raycast(
                         transform.position + wallCheckCenterOffset,
-                    -transform.right,
+                        -transform.right,
                         out hit,
                         wallCheckHorizontalOffset + wallCheckRadius,
                         whatIsEnvironment
