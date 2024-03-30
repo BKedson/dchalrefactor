@@ -17,7 +17,7 @@ public abstract class BaseQuestion : MonoBehaviour, IQuestion
 
     public abstract bool IsCorrect(double sol);
 
-    internal abstract void GenerateQuestion();
+    public abstract void GenerateQuestion();
 
     void IQuestion.GenerateQuestion()
     {

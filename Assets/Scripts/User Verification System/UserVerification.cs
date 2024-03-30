@@ -1,72 +1,93 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace dchalrefactor.Scripts.UserVerificationSystem
 {
     public class UserVerification : MonoBehaviour
     {
-        //methods to handle different Actions during User verification
+        //stores the UI Pages for the User Verification System
+        public GameObject StartPage;
+        public GameObject GuestPage;
+        public GameObject LoginPage;
+        public GameObject RegisterPage;
+        public GameObject PromptIndicator;
+        public GameObject PromptErrorText;
+
+        //-----------------------------------------------------------------------------------------
+        //methods to handle different Actions during User verification-----------------------------
         public void OnRegisterPressed()
         {
             //Load the Register UI Page
+            RegisterPage.SetActive(true);
         }
 
         public void OnRegisterCancel()
         {
-            //Revert to the Login UI Page
+            //Revert to the Start UI Page
+            RegisterPage.SetActive(false);
         }
         
-        public void OnLogin()
+        public void OnLoginPressed()
         {
-            //Query the database for presence or absence of user
+            //Load the Login UI Page
+            LoginPage.SetActive(true);
+        }
+
+        public void OnLoginCancel()
+        {
+            //Revert to the Login UI Page
+            LoginPage.SetActive(false);
         }
 
         public void OnLoginInvalid()
         {
+            Debug.Log("Login Invalid!");
             //Result from Query - false, activate false indicator UI element on Login Page
+            PromptErrorText.GetComponent<TMP_Text>().text = "Login Invalid!";
         }
 
         public void OnLoginValid()
         {
-            //Result from Query - true, Load the user's data into the game
-        }
-
-        public void OnRegisterAttempt()
-        {
-            //Query the database for presence or absence of user
+            //Load the user's data into the game - go to start menu
         }
 
         public void OnRegisterInvalid()
         {
             //Result from Query - false, activate false indicator UI element on Login Page
+            PromptErrorText.GetComponent<TMP_Text>().text = "Registration Invalid!";
         }
 
         public void OnRegisterValid()
         {
-            //Result from Query - true, Load new user's data into the game
+            //Load new user's data into the game - go to start menu
         }
 
         public void OnGuestPressed()
         {
             //Load the Guest UI Page
+            GuestPage.SetActive(true);
         }
 
         public void OnGuestCancel()
         {
-            //Revert to the Login UI Page
+            //Revert to the Start UI Page
+            GuestPage.SetActive(false);
         }
 
         public void OnGuestCreated()
         {
-            //Load new User's data into the game
+            //Load new User's data into the game - go to start menu
         }
 
-        //Method to check user presence or absence in Database
-        public bool IsUserPresent(){
-            //return true or false
-            //future implementation to handle exceptions when it comes to database queries
-            return true;
+        //------------------------------------------------------------------------------------------
+        //ADDITONAL HELPER METHODS------------------------------------------------------------------
+        //Username Error Indicator
+        public void IndicateError()
+        {
+            //simply sets it active
+            //or start the animator
         }
     }
 }

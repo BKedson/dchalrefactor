@@ -26,7 +26,21 @@ public class DifficultyManager : MonoBehaviour
         mediumDescription = "The game is medium.";
         hardDescription = "The game is hard.";
 
-        descriptionText.GetComponent<TextMeshProUGUI>().text = easyDescription;
+        Difficulty difficulty = gameManager.GetComponent<GameManager>().GetDifficulty();
+
+        switch (difficulty) {
+            case Difficulty.Easy:
+                descriptionText.GetComponent<TextMeshProUGUI>().text = easyDescription;
+                break;
+            case Difficulty.Medium:
+                descriptionText.GetComponent<TextMeshProUGUI>().text = mediumDescription;
+                break;
+            case Difficulty.Hard:
+                descriptionText.GetComponent<TextMeshProUGUI>().text = hardDescription;
+                break;
+            default:
+                break;
+        }
     }
 
     // Update is called once per frame

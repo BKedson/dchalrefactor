@@ -6,25 +6,26 @@ public class UserVerificationStateMachine : BaseStateMachine<UserVerificationCon
 {
     //stores the possible states that this state machine can exist in
     public enum UVState{
+        StartPage,
         LoginPage,
         RegisterPage,
         GuestPage,
         PresenceCheck,
         AbsenceCheck,
-        StartMenu,
+        MainMenu,
     }
 
     //overriding to set the default state
     protected override UVState GetDefaultState(){
-        return UVState.LoginPage;
+        return UVState.StartPage;
     }
 
     protected override void HandleStateChange(UserVerificationController.UVAction action){
         // Handle state transitions and state-specific logic here - make sure the current state matches the current action to cause a transition
         switch(action)
         {
-            case UserVerificationController.UVAction.RegisterPressed:
-                if(GetCurrentState() == UVState.LoginPage)
+            case UserVerificationController.UVAction.RegisterButtonClick:
+                if(GetCurrentState() == UVState.StartPage)
                     {
                         ChangeState(UVState.RegisterPage, action);
                     }
@@ -32,47 +33,47 @@ public class UserVerificationStateMachine : BaseStateMachine<UserVerificationCon
             case UserVerificationController.UVAction.CancelRegister:
                 if(GetCurrentState() == UVState.RegisterPage)
                     {
+                        ChangeState(UVState.StartPage, action);
+                    }
+                break;
+            case UserVerificationController.UVAction.LoginButtonClick:
+                if(GetCurrentState() == UVState.StartPage)
+                    {
                         ChangeState(UVState.LoginPage, action);
                     }
                 break;
-            case UserVerificationController.UVAction.Login:
-                if(GetCurrentState() == UVState.LoginPage)
-                    {
-                        ChangeState(UVState.PresenceCheck, action);
-                    }
-                break;
-            case UserVerificationController.UVAction.NoSuchLoginUser:
+            case UserVerificationController.UVAction.LoginErrorNoSuchUser:
                 if(GetCurrentState() == UVState.PresenceCheck)
                     {
                         ChangeState(UVState.LoginPage, action);
                     }
                 break;  
-            case UserVerificationController.UVAction.UserLoaded:
+            case UserVerificationController.UVAction.LoginUserLoaded:
                 if(GetCurrentState() == UVState.PresenceCheck)
                     {
-                        ChangeState(UVState.StartMenu, action);
+                        ChangeState(UVState.MainMenu, action);
                     }
                 break;
-            case UserVerificationController.UVAction.CheckAbsence:
+            case UserVerificationController.UVAction.RegisterOperation:
                 if(GetCurrentState() == UVState.RegisterPage)
                     {
                         ChangeState(UVState.AbsenceCheck, action);
                     }
                 break;
-            case UserVerificationController.UVAction.RegisterUserExists:
+            case UserVerificationController.UVAction.RegisterErrorUserExists:
                 if(GetCurrentState() == UVState.AbsenceCheck)
                     {
-                        ChangeState(UVState.LoginPage, action);
+                        ChangeState(UVState.RegisterPage, action);
                     }
                 break;
-            case UserVerificationController.UVAction.NewUserCreated:
-                if(GetCurrentState() == UVState.LoginPage)
+            case UserVerificationController.UVAction.RegisterUserCreated:
+                if(GetCurrentState() == UVState.AbsenceCheck)
                     {
-                        ChangeState(UVState.StartMenu, action);
+                        ChangeState(UVState.MainMenu, action);
                     }
                 break;
-            case UserVerificationController.UVAction.Guest:
-                if(GetCurrentState() == UVState.LoginPage)
+            case UserVerificationController.UVAction.GuestButtonClick:
+                if(GetCurrentState() == UVState.StartPage)
                     {
                         ChangeState(UVState.GuestPage, action);
                     }
@@ -80,13 +81,25 @@ public class UserVerificationStateMachine : BaseStateMachine<UserVerificationCon
             case UserVerificationController.UVAction.CancelGuest:
                 if(GetCurrentState() == UVState.GuestPage)
                     {
-                        ChangeState(UVState.LoginPage, action);
+                        ChangeState(UVState.StartPage, action);
                     }
                 break;
             case UserVerificationController.UVAction.GuestUserCreated:
                 if(GetCurrentState() == UVState.GuestPage)
                     {
-                        ChangeState(UVState.StartMenu, action);
+                        ChangeState(UVState.MainMenu, action);
+                    }
+                break;
+            case UserVerificationController.UVAction.LoginOperation:
+                if(GetCurrentState() == UVState.LoginPage)
+                    {
+                        ChangeState(UVState.PresenceCheck, action);
+                    }
+                break;
+            case UserVerificationController.UVAction.CancelLogin:
+                if(GetCurrentState() == UVState.LoginPage)
+                    {
+                        ChangeState(UVState.StartPage, action);
                     }
                 break;
         }
