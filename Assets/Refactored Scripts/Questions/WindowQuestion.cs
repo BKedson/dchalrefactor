@@ -15,7 +15,7 @@ public class WindowQuestion : BaseQuestion
     private int addSolutionFactor = 1;
     private int multSolutionFactor = 1;
 
-    // 0-10 scale that describes how likely a solution is to break down into complex parts that require carrying
+    // 0-9 scale that describes how likely a solution is to break down into complex parts that require carrying
     private int questionComplexity = 0;
 
     // The minimum and maximum number of enemies for the question on the current diffiuclty and settings
@@ -25,6 +25,7 @@ public class WindowQuestion : BaseQuestion
     // The difficulty of the question
     private Difficulty difficulty = Difficulty.Easy;
 
+    // Console testing
     public int testGenerateDifficultyAddition = -1;
     public int testGeneratDifficultyMultiplication = -1;
     public int testGeneratDifficultySubtraction = -1;
@@ -32,6 +33,7 @@ public class WindowQuestion : BaseQuestion
     // Start is called before the first frame update
     void Start()
     {
+        subject = Subject.Addition;
         // TODO: Set difficulty to current difficulty
         SetInitialComplexity();
     }
@@ -39,6 +41,7 @@ public class WindowQuestion : BaseQuestion
     // Update is called once per frame
     void Update()
     {
+        // Console testing
         if (testGenerateDifficultyAddition >= 0) {
             subject = Subject.Addition;
             difficulty = (Difficulty) testGenerateDifficultyAddition;
@@ -63,19 +66,21 @@ public class WindowQuestion : BaseQuestion
         }
     }
 
+    // If the player is correct, increase complexity, if they are wrong, decrease complexity (for future questions) 
     public override bool IsCorrect(double sol)
     {
         if (sol == solution) {
-            questionComplexity = Math.Min(10, questionComplexity + 1);
+            questionComplexity = Math.Min(9, questionComplexity + 1);
             return true;
         }
         questionComplexity = Math.Max(0, questionComplexity - 1);
         return false;
     }
 
-    internal override void GenerateQuestion()
-    {   
+    public override void GenerateQuestion() {   
         numEnemies = UnityEngine.Random.Range(minEnemies, maxEnemies + 1);
+        
+        enemyStrengths.Clear();
 
         switch(subject) {
             case Subject.Addition:
@@ -95,6 +100,7 @@ public class WindowQuestion : BaseQuestion
                 break;
         }
 
+        // Console testing
         Debug.Log(difficulty + " Solution: " + solution + "\nEnemies: ");
         foreach (int enemyStrength in enemyStrengths) {
             Debug.Log(enemyStrength);
@@ -191,5 +197,14 @@ public class WindowQuestion : BaseQuestion
             addSolutionFactor = UnityEngine.Random.Range(11, 20);
             multSolutionFactor = 3;
         }
+    }
+
+    // GETTERS AND SETTERS
+    public void SetSubject(Subject sub) {
+        subject = sub;
+    }
+
+    public List<int> EnemyStrengths() {
+        return enemyStrengths;
     }
 }
