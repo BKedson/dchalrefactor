@@ -52,7 +52,7 @@ public class ElevatorManager : MonoBehaviour
         PlayerMovement._instance.gameObject.transform.parent = null;
         PlayerMovement._instance.enabled = true;
 
-        transform.parent.GetComponent<FoundryRoom>().OnElevatorArrival();
+        //transform.parent.GetComponent<FoundryRoom>().OnElevatorArrival();
 
         enabled = false;
     }
