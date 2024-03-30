@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace dchalrefactor.Scripts.UserVerificationSystem
 {
@@ -11,8 +12,11 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         public GameObject GuestPage;
         public GameObject LoginPage;
         public GameObject RegisterPage;
+        public GameObject PromptIndicator;
+        public GameObject PromptErrorText;
 
-        //methods to handle different Actions during User verification
+        //-----------------------------------------------------------------------------------------
+        //methods to handle different Actions during User verification-----------------------------
         public void OnRegisterPressed()
         {
             //Load the Register UI Page
@@ -36,34 +40,28 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
             //Revert to the Login UI Page
             LoginPage.SetActive(false);
         }
-        public void OnLoginAttempt()
-        {
-            //Query the database for presence or absence of user
-        }
 
         public void OnLoginInvalid()
         {
+            Debug.Log("Login Invalid!");
             //Result from Query - false, activate false indicator UI element on Login Page
+            PromptErrorText.GetComponent<TMP_Text>().text = "Login Invalid!";
         }
 
         public void OnLoginValid()
         {
-            //Result from Query - true, Load the user's data into the game
-        }
-
-        public void OnRegisterAttempt()
-        {
-            //Query the database for presence or absence of user
+            //Load the user's data into the game - go to start menu
         }
 
         public void OnRegisterInvalid()
         {
             //Result from Query - false, activate false indicator UI element on Login Page
+            PromptErrorText.GetComponent<TMP_Text>().text = "Registration Invalid!";
         }
 
         public void OnRegisterValid()
         {
-            //Result from Query - true, Load new user's data into the game
+            //Load new user's data into the game - go to start menu
         }
 
         public void OnGuestPressed()
@@ -80,14 +78,16 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
 
         public void OnGuestCreated()
         {
-            //Load new User's data into the game
+            //Load new User's data into the game - go to start menu
         }
 
-        //Method to check user presence or absence in Database
-        public bool IsUserPresent(){
-            //return true or false
-            //future implementation to handle exceptions when it comes to database queries
-            return true;
+        //------------------------------------------------------------------------------------------
+        //ADDITONAL HELPER METHODS------------------------------------------------------------------
+        //Username Error Indicator
+        public void IndicateError()
+        {
+            //simply sets it active
+            //or start the animator
         }
     }
 }
