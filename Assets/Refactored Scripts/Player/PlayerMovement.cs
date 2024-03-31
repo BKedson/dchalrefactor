@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerInputAction playerInputAction;
     private WeaponManager weaponManager;
-
+    private int _health;
     private CharacterController characterController;
     private bool grounded = false;
 
