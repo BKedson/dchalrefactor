@@ -25,7 +25,7 @@ public class SimpleQuestion : BaseQuestion
         return true;
     }
 
-    internal override void GenerateQuestion()
+    public override void GenerateQuestion()
     {
 
     }

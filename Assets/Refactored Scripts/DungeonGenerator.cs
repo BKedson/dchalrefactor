@@ -9,9 +9,8 @@ public class DungeonGenerator : MonoBehaviour
 
     [Header("Room Generation")]
     [SerializeField] private GameObject roomPrefab;
-    [SerializeField] private float generateOffsetZ;
-    [SerializeField] private float generateOffsetY;
     [SerializeField] private Vector3 initialGenOffset;
+    [SerializeField] private Vector3 genOffset;
 
     private Vector3 nextGenPos;
     private GameObject currentRoom;
@@ -35,7 +34,7 @@ public class DungeonGenerator : MonoBehaviour
         lastRoom = currentRoom;
 
         currentRoom = Instantiate(roomPrefab, nextGenPos, Quaternion.identity, dungeonRoot);
-        nextGenPos += Vector3.forward * generateOffsetZ + Vector3.down * generateOffsetY;
+        nextGenPos += genOffset;
     }
 
     public void DestroyRoom()
@@ -49,11 +48,11 @@ public class DungeonGenerator : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            Gizmos.DrawCube(nextGenPos, new Vector3(20, 1, 20));
+            Gizmos.DrawCube(nextGenPos + new Vector3(0, 0, 10), new Vector3(20, 1, 20));
         }
         else
         {
-            Gizmos.DrawCube(initialGenOffset + Vector3.down * 0.5f, new Vector3(20.01f, 1.01f, 20.01f));
+            Gizmos.DrawCube(initialGenOffset + new Vector3(0, 0, 10), new Vector3(20, 1, 20));
         }
     }
 }

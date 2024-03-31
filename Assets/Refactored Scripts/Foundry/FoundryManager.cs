@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FoundryManager : BaseInteractable
 {
@@ -6,8 +7,7 @@ public class FoundryManager : BaseInteractable
     [SerializeField] private FoundryIntakeManager intake2;
     [SerializeField] private FoundryIntakeManager intake3;
     [SerializeField] private int targetPowerLv;
-
-    public bool weaponForged { get; private set; } = false;
+    [SerializeField] private UnityEvent OnWeaponForged;
 
     public override void OnInteract()
     {
@@ -25,6 +25,6 @@ public class FoundryManager : BaseInteractable
             Debug.Log("Forge overpowered weapon");
         }
 
-        weaponForged = true;
+        OnWeaponForged.Invoke();
     }
 }
