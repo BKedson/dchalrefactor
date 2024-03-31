@@ -7,6 +7,7 @@ using UnityEngine.AI;
 
 public class CombatRoom : BaseRoom
 {
+    // Level object prefabs
     [SerializeField] private GameObject wallPrefab;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject spikePrefab;
@@ -18,12 +19,15 @@ public class CombatRoom : BaseRoom
     [SerializeField] private GameObject uFloorPrefab;
     [SerializeField] private GameObject spikeSafetyNetPrefab;
 
-    // Selects the next spawned room, 1-indexed
-    public int resetRoom = -1;
     private GameObject player;
     private float wallHeight = 2.5f;
     private float wallThickness = 1.2f;
+
+    // Selects the next spawned room, 1-indexed (for editor testing)
+    public int resetRoom = -1;
+    // The z-coordinate reference for spawning objects and enemies in the level
     private float playerZero = 0;
+    // The minimum and maximum difficulty room that can spawn with the current settings 
     private int easiestRoom = 1;
     private int hardestRoom = 3;
 
@@ -39,11 +43,13 @@ public class CombatRoom : BaseRoom
     // Update is called once per frame
     void Update()
     {
+        // Editor testing
         if (resetRoom != -1) {
             Reset();
         }
     }
 
+    // Editor testing
     private void Reset() {
         GameObject[] destructibles = GameObject.FindGameObjectsWithTag("EditorOnly");
         player.transform.position = new Vector3(0, 5, 0);
@@ -84,7 +90,7 @@ public class CombatRoom : BaseRoom
         resetRoom = -1;
     }
 
-    // Randomly generates a new room based on the current
+    // Randomly generates a new room based on the current settings
     private void GenerateNewRoom() {    
         int roomType = Random.Range(easiestRoom, hardestRoom + 1);
         switch(roomType) {
@@ -157,7 +163,7 @@ public class CombatRoom : BaseRoom
         Instantiate(enemyPrefab, new Vector3(10, 1, 30 + playerZero), Quaternion.Euler(0, 0, 0));
     }
 
-    // Creates Room 5, a complex room with raised platforms
+    // Creates Room 5, a room with spikes and a raised platform in the center
     private void InstantiateRoom5() {
         Instantiate(twoWayRaisedPlatformPrefab, new Vector3(2.3f, -0.1f, 15 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
 
@@ -172,6 +178,7 @@ public class CombatRoom : BaseRoom
         Instantiate(enemyPrefab, new Vector3(-0.35f, 2.3f, 16.74f + playerZero), Quaternion.Euler(0, 0, 0));
     }
 
+    // Creates room 6, a room with a large raised platform in the center and enemies in the corners of the platform
     private void InstantiateRoom6() {
         Instantiate(fourPointRampMapPrefab, new Vector3(-10.2f, 1.7f, 1.9f + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
@@ -182,6 +189,7 @@ public class CombatRoom : BaseRoom
         Instantiate(enemyPrefab, new Vector3(8.6f, 2.6f, 26.9f + playerZero), Quaternion.Euler(0, 0, 0));
     }
 
+    // Creates room 7, a room with enemies on raised platforms on both the left and right
     private void InstantiateRoom7() {
         Instantiate(cPlatformRightPrefab, new Vector3(4.4f, -1f, 28f + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
         Instantiate(cPlatformLeftPrefab, new Vector3(-3f, -1f, 8.1f + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
@@ -198,7 +206,7 @@ public class CombatRoom : BaseRoom
 
     }
 
-    
+    // Creates room 8, a complex room with a pit of spikes in the center, traps and enemies along the sides, and enemies on a platform across the room
     private void InstantiateRoom8() {
         Instantiate(twoWayRaisedPlatformPrefab, new Vector3(3.5f, 2.1f, -2.2f + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(2f, 2f, 2f);
         Instantiate(cPlatformCenterPrefab, new Vector3(-10f, 1.86f, 30f + playerZero), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
