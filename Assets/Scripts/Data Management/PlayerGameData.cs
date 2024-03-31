@@ -9,4 +9,8 @@ public class PlayerGameData
     public string FirstName;
     public string NickName;
     public int CodeNumber;
+    public int AdditionDifficulty;
+    public int SubtractionDifficulty;
+    public int MultiplicationDifficulty;
+    public int DivisionDifficulty;
 }

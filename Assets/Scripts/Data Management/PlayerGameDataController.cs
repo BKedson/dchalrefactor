@@ -11,9 +11,14 @@ public class PlayerGameDataController : MonoBehaviour
     public string FirstName { get; set; }
     public string NickName  { get; set; }
     public int CodeNumber   { get; set; }
+    public int AdditionDifficulty { get; set; }
+    public int SubtractionDifficulty { get; set; }
+    public int MultiplicationDifficulty { get; set; }
+    public int DivisionDifficulty { get; set; }
 
     //---------------------------------------------------------------------
     //INITIALIZE DATA FOR THE CONTROLLER - from manager to controller
+
     public void InitializeGameData()
     {
         UnpackGameDataFile(dataManager.loginGameData);
@@ -34,6 +39,10 @@ public class PlayerGameDataController : MonoBehaviour
         data.FirstName = FirstName;
         data.NickName = NickName;
         data.CodeNumber = CodeNumber;
+        data.AdditionDifficulty = AdditionDifficulty;
+        data.SubtractionDifficulty = SubtractionDifficulty;
+        data.MultiplicationDifficulty = MultiplicationDifficulty;
+        data.DivisionDifficulty = DivisionDifficulty;
         return data;
     }
 
@@ -45,5 +54,22 @@ public class PlayerGameDataController : MonoBehaviour
         FirstName = data.FirstName;
         NickName = data.NickName;
         CodeNumber = data.CodeNumber;
+        AdditionDifficulty = data.AdditionDifficulty;
+        SubtractionDifficulty = data.SubtractionDifficulty;
+        MultiplicationDifficulty = data.MultiplicationDifficulty;
+        DivisionDifficulty = data.DivisionDifficulty;
+    }
+
+    public PlayerGameData DefaultGameDataFile(string firstName, string nickName, int codeNumber)
+    {
+        PlayerGameData data = new PlayerGameData();
+        data.FirstName = firstName;
+        data.NickName = nickName;
+        data.CodeNumber = codeNumber;
+        data.AdditionDifficulty = 1;
+        data.SubtractionDifficulty = 1;
+        data.MultiplicationDifficulty = 1;
+        data.DivisionDifficulty = 1;
+        return data;
     }
 }

@@ -102,6 +102,18 @@ public class UserVerificationStateMachine : BaseStateMachine<UserVerificationCon
                         ChangeState(UVState.StartPage, action);
                     }
                 break;
+            case UserVerificationController.UVAction.LoginInputError:
+                if(GetCurrentState() == UVState.PresenceCheck)
+                    {
+                        ChangeState(UVState.LoginPage, action);
+                    }
+                break;
+            case UserVerificationController.UVAction.RegisterInputError:
+                if(GetCurrentState() == UVState.AbsenceCheck)
+                    {
+                        ChangeState(UVState.RegisterPage, action);
+                    }
+                break;
         }
     }
 }
