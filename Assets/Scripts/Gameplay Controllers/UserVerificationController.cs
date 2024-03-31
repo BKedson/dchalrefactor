@@ -8,8 +8,9 @@ public class UserVerificationController : BaseController<UserVerificationControl
 {
     //stores the transition manager for this controller
     public UserVerification uvManager;
-    //stores a reference to the Player Data Manager for the player
+    //stores a reference to the Player Data Manager and data controller for the player
     public PlayerDataManager dataManager;
+    public PlayerGameDataController dataController;
 
     //store the UI elements associated with the Player's Identity
     public GameObject LoginFirstNameInput;
@@ -18,12 +19,15 @@ public class UserVerificationController : BaseController<UserVerificationControl
     public GameObject RegisterFirstNameInput;
     public GameObject RegisterNickNameInput;
     public GameObject RegisterCodeNumberInput;
+    private string firstName;
+    private string nickName;
+    private int codeNumber;
 
     //stores the possible input Actions for this Controller
     public enum UVAction
     {
-        GuestButtonClick, CancelGuest, GuestUserCreated, RegisterButtonClick, CancelRegister, LoginButtonClick, CancelLogin, 
-        RegisterOperation, RegisterErrorUserExists, LoginOperation, LoginErrorNoSuchUser, RegisterUserCreated, LoginUserLoaded
+        GuestButtonClick, CancelGuest, GuestUserCreated, RegisterButtonClick, CancelRegister, LoginButtonClick, CancelLogin, LoginInputError,
+        RegisterOperation, RegisterErrorUserExists, LoginOperation, LoginErrorNoSuchUser, RegisterUserCreated, LoginUserLoaded, RegisterInputError
     }
     
     //Start 
@@ -74,48 +78,53 @@ public class UserVerificationController : BaseController<UserVerificationControl
         HandleInputAction(UVAction.RegisterOperation);
     }
 
-    //USER CREATIONS AND PROCEED TO MAIN MENU----------------------------
+    //USER CREATIONS AND PROCEED TO MAIN MENU-------------------------------------------------------------------
     public void OnClickGuest()
     {
         HandleInputAction(UVAction.GuestUserCreated);
     }
 
-    //ERROR CHECKS AND CLOUD VERIFICATION--------------------------------
-    public void RegisterUserAbsenceCheck()
+    //ERROR CHECKS AND CLOUD VERIFICATION------------------------------------------------------------------------
+    public async void RegisterUserAbsenceCheck()
     {
         //check Input credentials - if invalid, call manager error
         if(!AreRegisterCredentialInputsValid())
         {
             //returns the state machine to the RegisterPage state
-            HandleInputAction(UVAction.RegisterErrorUserExists);
-            //enables the error indicator
-            uvManager.IndicateError();
+            HandleInputAction(UVAction.RegisterInputError);
         }
         
         //Check with the data manager for succesful registration
-        if(dataManager.IsRegisrationSuccessful(GenerateRegisterCredentials()[0],GenerateRegisterCredentials()[1]))
+        else if(await dataManager.IsRegisrationSuccessful(GenerateRegisterCredentials()[0],GenerateRegisterCredentials()[1]))
         {
+            //loading game file into manager-loginData
+            dataManager.InitializeGameLoginData(firstName, nickName, codeNumber);
+            //cache the data to the controller-from loginData to dataController
+            dataController.UnpackGameDataFile(dataManager.loginGameData);
+            //Call the MainMenu sequence after loading the data
             HandleInputAction(UVAction.RegisterUserCreated);
-            //Then download the default data
         }
         else{
             HandleInputAction(UVAction.RegisterErrorUserExists);
         }
     }
 
-    public void LoginUserPresenceCheck()
+    public async void LoginUserPresenceCheck()
     {
         //check Input credentials - if invalid, call manager error
         if(!AreLoginCredentialInputsValid())
         {
             //returns the state machine to the RegisterPage state
-            HandleInputAction(UVAction.LoginErrorNoSuchUser);
-            //enables the error indicator
-            uvManager.IndicateError();
+            HandleInputAction(UVAction.LoginInputError);
         }
         //The normal condition would be if the user is present
-        if(dataManager.IsLoginSuccessful(GenerateLoginCredentials()[0],GenerateLoginCredentials()[1]))
+        else if(await dataManager.IsLoginSuccessful(GenerateLoginCredentials()[0],GenerateLoginCredentials()[1]))
         {
+            //download the file from the cloud to the manager's login file
+            dataManager.RetrieveGameDataFromCloud();
+            //cache the data file from the manager to the dataController
+            dataController.UnpackGameDataFile(dataManager.loginGameData);
+            //Call the MainMenu sequence after loading the data
             HandleInputAction(UVAction.LoginUserLoaded);
         }
         else
@@ -123,29 +132,26 @@ public class UserVerificationController : BaseController<UserVerificationControl
             HandleInputAction(UVAction.LoginErrorNoSuchUser);
         }    
     }
-    //MASTER METHOD FOR CREDENTIALS---------------------------------
+
+    //MASTER METHOD FOR CREDENTIALS-------------------------------------------------------------------------
     protected bool AreLoginCredentialInputsValid()
     {
         //check if the names and number are valid
-        string firstName = NameToString(LoginFirstNameInput);
-        string nickName = NameToString(LoginNickNameInput);
-        int codeNumber = NumberToInteger(LoginCodeNumberInput);
+        firstName = NameToString(LoginFirstNameInput);
+        nickName = NameToString(LoginNickNameInput);
+        codeNumber = NumberToInteger(LoginCodeNumberInput);
         return IsUserNameValid(firstName) && IsUserNameValid(nickName) && IsCodeNumberValid(codeNumber);
     }
-        protected bool AreRegisterCredentialInputsValid()
+    protected bool AreRegisterCredentialInputsValid()
     {
         //check if the names and number are valid
-        string firstName = NameToString(RegisterFirstNameInput);
-        string nickName = NameToString(RegisterNickNameInput);
-        int codeNumber = NumberToInteger(RegisterCodeNumberInput);
+        firstName = NameToString(RegisterFirstNameInput);
+        nickName = NameToString(RegisterNickNameInput);
+        codeNumber = NumberToInteger(RegisterCodeNumberInput);
         return IsUserNameValid(firstName) && IsUserNameValid(nickName) && IsCodeNumberValid(codeNumber);
     }
     protected string[] GenerateLoginCredentials()
     {
-        //obtain the info
-        string firstName = NameToString(LoginFirstNameInput);
-        string nickName = NameToString(LoginNickNameInput);
-        int codeNumber = NumberToInteger(LoginCodeNumberInput);
         //standardize the first name and nickname
         firstName = UsernameToTitleCase(firstName);
         nickName = UsernameToTitleCase(nickName);
@@ -158,10 +164,6 @@ public class UserVerificationController : BaseController<UserVerificationControl
     }
     protected string[] GenerateRegisterCredentials()
     {
-        //obtain the info
-        string firstName = NameToString(RegisterFirstNameInput);
-        string nickName = NameToString(RegisterNickNameInput);
-        int codeNumber = NumberToInteger(RegisterCodeNumberInput);
         //standardize the first name and nickname
         firstName = UsernameToTitleCase(firstName);
         nickName = UsernameToTitleCase(nickName);
@@ -276,6 +278,12 @@ public class UserVerificationController : BaseController<UserVerificationControl
                 break;
             case UVAction.CancelLogin:
                 SetDelegate(uvManager.OnLoginCancel); 
+                break;
+            case UVAction.RegisterInputError:
+                SetDelegate(uvManager.OnRegisterInputError); 
+                break;
+            case UVAction.LoginInputError:
+                SetDelegate(uvManager.OnLoginInputError); 
                 break;
         }
     }

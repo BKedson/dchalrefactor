@@ -8,9 +8,14 @@ using System.Threading.Tasks;
 
 public class PlayerDataManager : MonoBehaviour
 {
+    //Stores this Player's credentials
+    private string playerUsername;
+    private string playerPassword;
     //stores login game data and session game date
     public PlayerGameData loginGameData;
     public PlayerGameData sessionGameData;
+    //Stores a reference to the PlayerDataManager for this player
+    public PlayerGameDataController dataController;
     // Start is called before the first frame update
     async void Start()
     {
@@ -23,12 +28,15 @@ public class PlayerDataManager : MonoBehaviour
         
     }
     //INTERMEDIATE HELPER METHODS------------------------------------------
-    //Used to check the sign up - registratin operation
-    public bool IsRegisrationSuccessful(string username, string password)
+    //Used to check the sign up - registration operation
+    public async Task<bool> IsRegisrationSuccessful(string username, string password)
     {
         try
         {
-            SignUpWithUsernamePassword(username, password);
+            await SignUpWithUsernamePassword(username, password);
+            //retrieve and store the username and password - this happens when registration is successful
+            playerUsername = username;
+            playerPassword = password;
             return true;
         }
         catch (AuthenticationException ex)
@@ -45,14 +53,16 @@ public class PlayerDataManager : MonoBehaviour
             Debug.LogException(ex);
             return false;
         }
-        return false;
     }
     //Used to check the sign in - login operation
-    public bool IsLoginSuccessful(string username, string password)
+    public async Task<bool> IsLoginSuccessful(string username, string password)
     {
         try
         {
-            SignInWithUsernamePassword(username, password);
+            await SignInWithUsernamePassword(username, password);
+            //retrieve and store the username and password - this happens when logging in is successful
+            playerUsername = username;
+            playerPassword = password;
             return true;
         }
         catch (AuthenticationException ex)
@@ -69,19 +79,43 @@ public class PlayerDataManager : MonoBehaviour
             //Debug.LogException(ex);
             return false;
         }
-        return false;
     }
 
-    //CLOUD INTERATIONS----------------------------------------------------
+    //CLOUD AND DATA INTERATIONS----------------------------------------------------
     //Saves data from the session data file to the Cloud Storage
     public async void SaveGameDataToCloud()
     {
-
+        PlayerGameData data = sessionGameData;
+        //creates a key - username
+        string key = playerUsername;
+        //creates the value, the json data file
+        string value = JsonUtility.ToJson(data);
+        //creates the dictionary
+        var dataToSave = new Dictionary<string,object>{{key, value}};
+        //saves the data to the cloud
+        await CloudSaveService.Instance.Data.ForceSaveAsync(dataToSave);
     }
     //Retrieves data from the online storage to the login data file
     public async void RetrieveGameDataFromCloud()
     {
+        //should save to the login file
+        PlayerGameData data = new PlayerGameData();
+        //stores the json file from the cloud 
+        Dictionary<string,string> dataToLoad = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string>{playerUsername});
+        //Obtain the data from the specific key
+        string jsonFile = dataToLoad[playerUsername].ToString();
+        //Serialize from json to object
+        loginGameData = JsonUtility.FromJson<PlayerGameData>(jsonFile);
+        
+    }
 
+    public void InitializeGameLoginData(string firstName, string nickName, int codeNumber)
+    {
+        //load default file
+        loginGameData = dataController.DefaultGameDataFile(firstName, nickName, codeNumber);
+        //send a version of the file to the cloud
+        sessionGameData = loginGameData;
+        SaveGameDataToCloud();
     }
 
     //Signs Up a new user
