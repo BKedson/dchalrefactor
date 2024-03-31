@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using dchalrefactor.Scripts.Animations.UI.LoginMenu.Classes;
 
 namespace dchalrefactor.Scripts.UserVerificationSystem
 {
@@ -12,8 +13,9 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         public GameObject GuestPage;
         public GameObject LoginPage;
         public GameObject RegisterPage;
-        public GameObject PromptIndicator;
         public GameObject PromptErrorText;
+        //stores the Animations Class for the Start Menu/ User Verification
+        public StartMenuAnimations MenuAnim;
 
         //-----------------------------------------------------------------------------------------
         //methods to handle different Actions during User verification-----------------------------
@@ -43,25 +45,47 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
 
         public void OnLoginInvalid()
         {
+            //Indicate error
+            IndicateError();
             Debug.Log("Login Invalid!");
             //Result from Query - false, activate false indicator UI element on Login Page
-            PromptErrorText.GetComponent<TMP_Text>().text = "Login Invalid!";
+            PromptErrorText.GetComponent<TMP_Text>().text = "Login Failed!";
+        }
+
+        public void OnLoginInputError()
+        {
+            //Indicate error
+            IndicateError();
+            //Invalid input
+            PromptErrorText.GetComponent<TMP_Text>().text = "Check your names and number!";
         }
 
         public void OnLoginValid()
         {
-            //Load the user's data into the game - go to start menu
+            //Load the user's data into the game - go to Main menu
+            Debug.Log("Load the Main Menu");
         }
 
         public void OnRegisterInvalid()
         {
+            //Indicate error
+            IndicateError();
             //Result from Query - false, activate false indicator UI element on Login Page
-            PromptErrorText.GetComponent<TMP_Text>().text = "Registration Invalid!";
+            PromptErrorText.GetComponent<TMP_Text>().text = "Registration Failed!";
+        }
+
+        public void OnRegisterInputError()
+        {
+            //Indicate error
+            IndicateError();
+            //Invalid input
+            PromptErrorText.GetComponent<TMP_Text>().text = "Check your names and number!";
         }
 
         public void OnRegisterValid()
         {
-            //Load new user's data into the game - go to start menu
+            //Load new user's data into the game - go to Main menu
+            Debug.Log("Load the Main Menu");
         }
 
         public void OnGuestPressed()
@@ -87,7 +111,7 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         public void IndicateError()
         {
             //simply sets it active
-            //or start the animator
+            MenuAnim.PromptError();
         }
     }
 }
