@@ -48,7 +48,7 @@ public class Spikes : BaseObstacle
 
     // Damages the player
     void Stab() {
-        // player.GetComponent<PlayerCharacter>().Hurt(damage);
+        player.GetComponent<PlayerCharacter>().Hurt(damage);
         Debug.Log("stab!");
     }
 }
