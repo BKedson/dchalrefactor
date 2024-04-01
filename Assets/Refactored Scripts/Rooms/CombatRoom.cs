@@ -35,11 +35,7 @@ public class CombatRoom : BaseRoom
     private float baseZ = 0;
     // The minimum and maximum difficulty room that can spawn with the current settings 
     private int easiestRoom = 1;
-    private int hardestRoom = 3;
-
-    // Enemy x and z positions as they are spawned
-    float xPos;
-    float zPos;
+    private int hardestRoom = 8;
 
     // The number of enemies that still need to be spawned in the level
     int numEnemiesToSpawn;
@@ -79,6 +75,9 @@ public class CombatRoom : BaseRoom
         for (int i = 0; i < destructibles.Length; i++) {
             Destroy(destructibles[i].gameObject);
         }
+
+        numEnemies = 5;
+        enemyStrengths = new List<int> {1, 2, 3, 4, 5};
 
         switch(resetRoom) {
             case 1:
@@ -121,7 +120,7 @@ public class CombatRoom : BaseRoom
 
         // TODO: Implement communication with WindowQuestion
         numEnemies = 5;
-        enemyStrengths = new List<int> {1, 2, 3, 4};
+        enemyStrengths = new List<int> {1, 2, 3, 4, 5};
 
         switch(roomType) {
             case 1:
@@ -162,7 +161,7 @@ public class CombatRoom : BaseRoom
     private void InstantiateRoom1Enemies() {
         numEnemiesToSpawn = numEnemies;
 
-        SpawnEnemies(0f, 1f, 17f, numEnemies - 1);
+        SpawnEnemies(0f, 1f, 17f, numEnemies);
     }
 
     // Creates Room 2, a simple room with walls and enemies on the left and right and enemies in the center
@@ -341,14 +340,6 @@ public class CombatRoom : BaseRoom
 
         float y = 2.5f;
 
-        //  Instantiate(enemyPrefab, new Vector3(-10.5f, onPlatformEnemyHeight, 14.3f + baseZ), Quaternion.Euler(0, 0, 0));
-        // Instantiate(enemyPrefab, new Vector3(-10.5f, onPlatformEnemyHeight, 20f + baseZ), Quaternion.Euler(0, 0, 0));
-        // Instantiate(enemyPrefab, new Vector3(-5.14f, onPlatformEnemyHeight, 25.5f + baseZ), Quaternion.Euler(0, 0, 0));
-        // Instantiate(enemyPrefab, new Vector3(11.7f, onPlatformEnemyHeight, 14.3f + baseZ), Quaternion.Euler(0, 0, 0));
-        // Instantiate(enemyPrefab, new Vector3(11.7f, onPlatformEnemyHeight, 20f + baseZ), Quaternion.Euler(0, 0, 0));
-        // Instantiate(enemyPrefab, new Vector3(7.14f, onPlatformEnemyHeight, 25.5f + baseZ), Quaternion.Euler(0, 0, 0));
-
-        
         // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
         if (remainder != 0) {
             SpawnEnemies(-10.5f, y, 14.3f, Math.Min(remainder, 1));
@@ -417,10 +408,14 @@ public class CombatRoom : BaseRoom
     
     // Spawns enemies at general (x, y, z) locations
     private void SpawnEnemies(float x, float yPos, float z, int timesToSpawn) {
+        float xPos;
+        float zPos;
+
         for (int i = 0; i < timesToSpawn; i++) {
             xPos = baseX + x + UnityEngine.Random.Range(-2, 2);
             zPos = baseZ + z + UnityEngine.Random.Range(-2, 2);
-            Instantiate(enemyPrefab, new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, 180, 0)).GetComponent<BaseEnemy>().SetStrength(enemyStrengths.IndexOf(numEnemiesToSpawn));
+            
+            Instantiate(enemyPrefab, new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, 180, 0)).GetComponent<BaseEnemy>().SetStrength(enemyStrengths[numEnemiesToSpawn - 1]);
             numEnemiesToSpawn--;
         }
     }
