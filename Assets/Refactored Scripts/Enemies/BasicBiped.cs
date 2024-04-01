@@ -43,7 +43,6 @@ public class BasicBiped : BaseEnemy
     // GETTERS AND SETTERS
     public override void SetStrength(int stren) {
         strength = stren;
-        Debug.Log(strength);
     }
 
     public override int Strength() {

@@ -49,12 +49,15 @@ public class CombatRoom : BaseRoom
     // The number of extra spawns
     int remainder;
 
+    // TODO: Stop enemies from spawning in walls
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        baseX = player.transform.position.x;
-        baseZ = player.transform.position.z;
+        baseX = GameObject.Find("Door 2").transform.position.x;
+        baseZ = GameObject.Find("Door 2").transform.position.z + 3f;
+        GenerateNewRoom();
     }
 
     // Update is called once per frame
@@ -62,8 +65,8 @@ public class CombatRoom : BaseRoom
     {
         // Editor testing
         if (resetRoom != -1) {
-            baseX = player.transform.position.x;
-            baseZ = player.transform.position.z;
+            // baseX = player.transform.position.x;
+            // baseZ = player.transform.position.z;
             Reset();
         }
     }
@@ -76,8 +79,8 @@ public class CombatRoom : BaseRoom
             Destroy(destructibles[i].gameObject);
         }
 
-        numEnemies = 5;
-        enemyStrengths = new List<int> {1, 2, 3, 4, 5};
+        numEnemies = 10;
+        enemyStrengths = new List<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         switch(resetRoom) {
             case 1:
@@ -114,9 +117,6 @@ public class CombatRoom : BaseRoom
     // Randomly generates a new room based on the current settings
     public void GenerateNewRoom() {    
         int roomType = UnityEngine.Random.Range(easiestRoom, hardestRoom + 1);
-
-        baseX = player.transform.position.x;
-        baseZ = player.transform.position.z;
 
         // TODO: Implement communication with WindowQuestion
         numEnemies = 5;
@@ -412,7 +412,7 @@ public class CombatRoom : BaseRoom
         float zPos;
 
         for (int i = 0; i < timesToSpawn; i++) {
-            xPos = baseX + x + UnityEngine.Random.Range(-2, 2);
+            xPos = baseX + x + UnityEngine.Random.Range(-1, 1);
             zPos = baseZ + z + UnityEngine.Random.Range(-2, 2);
             
             Instantiate(enemyPrefab, new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, 180, 0)).GetComponent<BaseEnemy>().SetStrength(enemyStrengths[numEnemiesToSpawn - 1]);

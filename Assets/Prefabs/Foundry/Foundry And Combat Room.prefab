@@ -164,7 +164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5559141780948188147
 Transform:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &32976682215506108
 Transform:
   m_ObjectHideFlags: 0
@@ -862,7 +862,7 @@ Transform:
   m_GameObject: {fileID: 3992400807153391760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 40, y: 1, z: 40}
+  m_LocalScale: {x: 30, y: 1, z: 40}
   m_Children: []
   m_Father: {fileID: 3286562823056498316}
   m_RootOrder: 3
@@ -1098,6 +1098,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3286562823056498316}
+  - component: {fileID: 1113977160967789713}
   m_Layer: 0
   m_Name: Combat Area
   m_TagString: Untagged
@@ -1124,6 +1125,29 @@ Transform:
   m_Father: {fileID: 3992400806503070536}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1113977160967789713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480679001208371907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c854fef290995244791ba2d3540cf693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallPrefab: {fileID: 8027016305892009555, guid: 4a5644a649ef2ee4093131c6eaadbc4a, type: 3}
+  enemyPrefab: {fileID: 7991632087556104648, guid: d607ce5293566d4428699eb7a31bc378, type: 3}
+  spikePrefab: {fileID: 1115696336633506674, guid: a2fb4eb5848335748a6ebcd6eff48a36, type: 3}
+  twoWayRaisedPlatformPrefab: {fileID: 1532478503658609790, guid: dccdd52e9a3dea540975e92fedfed2f3, type: 3}
+  fourPointRampMapPrefab: {fileID: 4224752736464509364, guid: 31bd24ddb5fd47e489e90f83b90c2744, type: 3}
+  cPlatformRightPrefab: {fileID: 3469482462473537772, guid: 97e83e5c6064edc4cacfeb23478fed76, type: 3}
+  cPlatformLeftPrefab: {fileID: 2337840612895960281, guid: 94ab9190c2c69ec4ea70ef0e02ef2e73, type: 3}
+  cPlatformCenterPrefab: {fileID: 4015674755491055892, guid: 5300f8beac8664540b14dd5f0d40e7e6, type: 3}
+  uFloorPrefab: {fileID: 3029437925202826868, guid: 04686ff1195f85a44afa4f21e28e1c9e, type: 3}
+  spikeSafetyNetPrefab: {fileID: 8753650289372032446, guid: 16b5fdc2c2505964f88406fb18ab4caf, type: 3}
+  resetRoom: -1
 --- !u!1 &6020062996132266213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1742,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4ee1974de2c76cd428b59db02df09422, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ee1974de2c76cd428b59db02df09422, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1045805833137155094, guid: 4ee1974de2c76cd428b59db02df09422, type: 3}
       propertyPath: m_Layer
