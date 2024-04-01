@@ -40,4 +40,13 @@ public class Spawner : BaseEnemy
     {
 
     }
+
+    // GETTERS AND SETTERS
+    public override void SetStrength(int stren) {
+        strength = stren;
+    }
+
+    public override int Strength() {
+        return strength;
+    }
 }

@@ -1,6 +1,9 @@
 // using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
 // using System.Numerics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -22,22 +25,40 @@ public class CombatRoom : BaseRoom
     private GameObject player;
     private float wallHeight = 2.5f;
     private float wallThickness = 1.2f;
+    private int numEnemies = 5;
+    private List<int> enemyStrengths = new List<int>();
 
     // Selects the next spawned room, 1-indexed (for editor testing)
     public int resetRoom = -1;
-    // The z-coordinate reference for spawning objects and enemies in the level
-    private float playerZero = 0;
+    // The coordinate reference for spawning objects and enemies in the level
+    private float baseX = 0;
+    private float baseZ = 0;
     // The minimum and maximum difficulty room that can spawn with the current settings 
     private int easiestRoom = 1;
     private int hardestRoom = 3;
+
+    // Enemy x and z positions as they are spawned
+    float xPos;
+    float zPos;
+
+    // The number of enemies that still need to be spawned in the level
+    int numEnemiesToSpawn;
+
+    // The number of different spawn locations
+    int numSpawns;
+
+    // The number of spawns per location
+    int spawnsPerLoc;
+
+    // The number of extra spawns
+    int remainder;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        playerZero = player.transform.position.z;
-
-        GenerateNewRoom();
+        baseX = player.transform.position.x;
+        baseZ = player.transform.position.z;
     }
 
     // Update is called once per frame
@@ -45,6 +66,8 @@ public class CombatRoom : BaseRoom
     {
         // Editor testing
         if (resetRoom != -1) {
+            baseX = player.transform.position.x;
+            baseZ = player.transform.position.z;
             Reset();
         }
     }
@@ -52,7 +75,6 @@ public class CombatRoom : BaseRoom
     // Editor testing
     private void Reset() {
         GameObject[] destructibles = GameObject.FindGameObjectsWithTag("EditorOnly");
-        player.transform.position = new Vector3(0, 5, 0);
 
         for (int i = 0; i < destructibles.Length; i++) {
             Destroy(destructibles[i].gameObject);
@@ -91,8 +113,16 @@ public class CombatRoom : BaseRoom
     }
 
     // Randomly generates a new room based on the current settings
-    private void GenerateNewRoom() {    
-        int roomType = Random.Range(easiestRoom, hardestRoom + 1);
+    public void GenerateNewRoom() {    
+        int roomType = UnityEngine.Random.Range(easiestRoom, hardestRoom + 1);
+
+        baseX = player.transform.position.x;
+        baseZ = player.transform.position.z;
+
+        // TODO: Implement communication with WindowQuestion
+        numEnemies = 5;
+        enemyStrengths = new List<int> {1, 2, 3, 4};
+
         switch(roomType) {
             case 1:
                 InstantiateRoom1();
@@ -126,100 +156,272 @@ public class CombatRoom : BaseRoom
 
     // Creates Room 1, a simple room with enemies in the center
     private void InstantiateRoom1() {
-        // Replace with enemy spawn functionality
-        Instantiate(enemyPrefab, new Vector3(0, 1, 17 + playerZero), Quaternion.Euler(0, 0, 0));
+        InstantiateRoom1Enemies();
+    }
+
+    private void InstantiateRoom1Enemies() {
+        numEnemiesToSpawn = numEnemies;
+
+        SpawnEnemies(0f, 1f, 17f, numEnemies - 1);
     }
 
     // Creates Room 2, a simple room with walls and enemies on the left and right and enemies in the center
     private void InstantiateRoom2() {
-        Instantiate(wallPrefab, new Vector3(7, wallHeight/2, 7 + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(8, wallHeight, wallThickness);
-        Instantiate(wallPrefab, new Vector3(-7, wallHeight/2, 7 + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(8, wallHeight, wallThickness);
+        Instantiate(wallPrefab, new Vector3(7, wallHeight/2, 7 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(8, wallHeight, wallThickness);
+        Instantiate(wallPrefab, new Vector3(-7, wallHeight/2, 7 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(8, wallHeight, wallThickness);
         
-        // Replace with enemy spawn functionality
-        Instantiate(enemyPrefab, new Vector3(0, 1, 17 + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-13, 1, 1 + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(13, 1, 1 + playerZero), Quaternion.Euler(0, 0, 0));
+        InstantiateRoom2Enemies();
     }
+
+    private void InstantiateRoom2Enemies() {
+        numEnemiesToSpawn = numEnemies;
+        numSpawns = 3;
+        spawnsPerLoc = numEnemies / numSpawns;
+        remainder = numEnemies % numSpawns;
+        
+        // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
+        if (remainder != 0) {
+            SpawnEnemies(0f, 1f, 17f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(-13f, 1f, 1f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(13f, 1f, 1f, Math.Min(remainder, 1));
+        }
+
+        SpawnEnemies(0f, 1f, 17f, spawnsPerLoc);
+        SpawnEnemies(-13f, 1f, 1f, spawnsPerLoc);
+        SpawnEnemies(13f, 1f, 1f, spawnsPerLoc);
+    }
+
 
     // Creates Room 3, a simple room with spikes and enemies in the center
     private void InstantiateRoom3() {
-        Instantiate(spikePrefab, new Vector3(0, 0, 15 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(18, 0.5f, 1f);
+        Instantiate(spikePrefab, new Vector3(0, 0, 15 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(18, 0.5f, 1f);
 
-        // Replace with enemy spawn functionality
-        Instantiate(enemyPrefab, new Vector3(0, 1, 10 + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-4.3f, 1, 23 + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(4.3f, 1, 23 + playerZero), Quaternion.Euler(0, 0, 0));
+        InstantiateRoom3Enemies();
+    }
+
+    private void InstantiateRoom3Enemies() {
+        numEnemiesToSpawn = numEnemies;
+        numSpawns = 3;
+        spawnsPerLoc = numEnemies / numSpawns;
+        remainder = numEnemies % numSpawns;
+        
+        // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
+        if (remainder != 0) {
+            SpawnEnemies(0f, 1f, 10f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(-4.3f, 1f, 23f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(4.3f, 1f, 23f, Math.Min(remainder, 1));
+        }
+
+        SpawnEnemies(0f, 1f, 10f, spawnsPerLoc);
+        SpawnEnemies(-4.3f, 1f, 23f, spawnsPerLoc);
+        SpawnEnemies(4.3f, 1f, 23f, spawnsPerLoc);
     }
 
     // Creates Room 4, a maze-like room with long walls and traps
     private void InstantiateRoom4() {
-        Instantiate(wallPrefab, new Vector3(-5, wallHeight/2, 10 + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
-        Instantiate(wallPrefab, new Vector3(5, wallHeight/2, 20 + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
-        Instantiate(wallPrefab, new Vector3(-5, wallHeight/2, 30 + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
+        Instantiate(wallPrefab, new Vector3(-5, wallHeight/2, 10 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
+        Instantiate(wallPrefab, new Vector3(5, wallHeight/2, 20 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
+        Instantiate(wallPrefab, new Vector3(-5, wallHeight/2, 30 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
 
-        // Replace with enemy spawn functionality
-        Instantiate(enemyPrefab, new Vector3(10, 1, 10 + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-10, 1, 20 + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(10, 1, 30 + playerZero), Quaternion.Euler(0, 0, 0));
+        InstantiateRoom4Enemies();
+    }
+
+    private void InstantiateRoom4Enemies() {
+        numEnemiesToSpawn = numEnemies;
+        numSpawns = 3;
+        spawnsPerLoc = numEnemies / numSpawns;
+        remainder = numEnemies % numSpawns;
+        
+        // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
+        if (remainder != 0) {
+            SpawnEnemies(-10f, 1f, 20f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(10f, 1f, 10f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(10f, 1f, 30f, Math.Min(remainder, 1));
+        }
+
+        SpawnEnemies(-10f, 1f, 20f, spawnsPerLoc);
+        SpawnEnemies(10f, 1f, 10f, spawnsPerLoc);
+        SpawnEnemies(4.3f, 1f, 30f, spawnsPerLoc);
     }
 
     // Creates Room 5, a room with spikes and a raised platform in the center
     private void InstantiateRoom5() {
-        Instantiate(twoWayRaisedPlatformPrefab, new Vector3(2.3f, -0.1f, 15 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        Instantiate(twoWayRaisedPlatformPrefab, new Vector3(2.3f, -0.1f, 15 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
 
-        Instantiate(spikePrefab, new Vector3(0, 0, 10 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 1f);
-        Instantiate(spikePrefab, new Vector3(-10, 0, 17 + playerZero), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(5f, 0.5f, 1f);
-        Instantiate(spikePrefab, new Vector3(10, 0, 17 + playerZero), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(5f, 0.5f, 1f);
-        Instantiate(spikePrefab, new Vector3(0, 0, 25 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 1f);
+        Instantiate(spikePrefab, new Vector3(0, 0, 10 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 1f);
+        Instantiate(spikePrefab, new Vector3(-10, 0, 17 + baseZ), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(5f, 0.5f, 1f);
+        Instantiate(spikePrefab, new Vector3(10, 0, 17 + baseZ), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(5f, 0.5f, 1f);
+        Instantiate(spikePrefab, new Vector3(0, 0, 25 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 1f);
 
-        // Replace with enemy spawn functionality
-        Instantiate(enemyPrefab, new Vector3(10, 1, 5 + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-10, 1, 5 + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-0.35f, 2.3f, 16.74f + playerZero), Quaternion.Euler(0, 0, 0));
+        InstantiateRoom5Enemies();
+    }
+
+    private void InstantiateRoom5Enemies() {
+        numEnemiesToSpawn = numEnemies;
+        numSpawns = 3;
+        spawnsPerLoc = numEnemies / numSpawns;
+        remainder = numEnemies % numSpawns;
+        
+        // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
+        if (remainder != 0) {
+            SpawnEnemies(-0.35f, 2.3f, 16.74f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(-10f, 1f, 5f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(10f, 1f, 5f, Math.Min(remainder, 1));
+        }
+
+        SpawnEnemies(-0.35f, 2.3f, 16.74f, spawnsPerLoc);
+        SpawnEnemies(-10f, 1f, 5f, spawnsPerLoc);
+        SpawnEnemies(10f, 1f, 5f, spawnsPerLoc);
     }
 
     // Creates room 6, a room with a large raised platform in the center and enemies in the corners of the platform
     private void InstantiateRoom6() {
-        Instantiate(fourPointRampMapPrefab, new Vector3(-10.2f, 1.7f, 1.9f + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        Instantiate(fourPointRampMapPrefab, new Vector3(-10.2f, 1.7f, 1.9f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
-        // Replace with enemy spawn functionality
-        Instantiate(enemyPrefab, new Vector3(-7.4f, 2.6f, 5.5f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(8.6f, 2.6f, 5.5f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-7.4f, 2.6f, 26.9f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(8.6f, 2.6f, 26.9f + playerZero), Quaternion.Euler(0, 0, 0));
+        InstantiateRoom6Enemies();
+    }
+
+    private void InstantiateRoom6Enemies() {
+        numEnemiesToSpawn = numEnemies;
+        numSpawns = 4;
+        spawnsPerLoc = numEnemies / numSpawns;
+        remainder = numEnemies % numSpawns;
+        
+        float  y = 2.6f;
+
+        // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
+        if (remainder != 0) {
+            SpawnEnemies(-7.4f, y, 5.5f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(8.6f, y, 5.5f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(-7.4f, y, 26.9f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(8.6f, y, 26.9f, Math.Min(remainder, 1));
+        }
+
+        SpawnEnemies(-7.4f, y, 5.5f, spawnsPerLoc);
+        SpawnEnemies(8.6f, y, 5.5f, spawnsPerLoc);
+        SpawnEnemies(-7.4f, y, 26.9f, spawnsPerLoc);
+        SpawnEnemies(8.6f, y, 26.9f, spawnsPerLoc);
     }
 
     // Creates room 7, a room with enemies on raised platforms on both the left and right
     private void InstantiateRoom7() {
-        Instantiate(cPlatformRightPrefab, new Vector3(4.4f, -1f, 28f + playerZero), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
-        Instantiate(cPlatformLeftPrefab, new Vector3(-3f, -1f, 8.1f + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
+        Instantiate(cPlatformRightPrefab, new Vector3(4.4f, -1f, 28f + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
+        Instantiate(cPlatformLeftPrefab, new Vector3(-3f, -1f, 8.1f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
 
-        float onPlatformEnemyHeight = 2.5f;
+        InstantiateRoom7Enemies();       
+    }
 
-        // Replace with enemy spawn functionality
-        Instantiate(enemyPrefab, new Vector3(-10.5f, onPlatformEnemyHeight, 14.3f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-10.5f, onPlatformEnemyHeight, 20f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-5.14f, onPlatformEnemyHeight, 25.5f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(11.7f, onPlatformEnemyHeight, 14.3f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(11.7f, onPlatformEnemyHeight, 20f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(7.14f, onPlatformEnemyHeight, 25.5f + playerZero), Quaternion.Euler(0, 0, 0));
+    private void InstantiateRoom7Enemies() {
+        numEnemiesToSpawn = numEnemies;
+        numSpawns = 6;
+        spawnsPerLoc = numEnemies / numSpawns;
+        remainder = numEnemies % numSpawns;
 
+        float y = 2.5f;
+
+        //  Instantiate(enemyPrefab, new Vector3(-10.5f, onPlatformEnemyHeight, 14.3f + baseZ), Quaternion.Euler(0, 0, 0));
+        // Instantiate(enemyPrefab, new Vector3(-10.5f, onPlatformEnemyHeight, 20f + baseZ), Quaternion.Euler(0, 0, 0));
+        // Instantiate(enemyPrefab, new Vector3(-5.14f, onPlatformEnemyHeight, 25.5f + baseZ), Quaternion.Euler(0, 0, 0));
+        // Instantiate(enemyPrefab, new Vector3(11.7f, onPlatformEnemyHeight, 14.3f + baseZ), Quaternion.Euler(0, 0, 0));
+        // Instantiate(enemyPrefab, new Vector3(11.7f, onPlatformEnemyHeight, 20f + baseZ), Quaternion.Euler(0, 0, 0));
+        // Instantiate(enemyPrefab, new Vector3(7.14f, onPlatformEnemyHeight, 25.5f + baseZ), Quaternion.Euler(0, 0, 0));
+
+        
+        // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
+        if (remainder != 0) {
+            SpawnEnemies(-10.5f, y, 14.3f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(-10.5f, y, 20f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(-5.14f, y, 25.5f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(11.7f, y, 14.3f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(11.7f, y, 20f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(7.14f, y, 25.5f, Math.Min(remainder, 1));
+        }
+
+        SpawnEnemies(-10.5f, y, 14.3f, spawnsPerLoc);
+        SpawnEnemies(-10.5f, y, 20f, spawnsPerLoc);
+        SpawnEnemies(-5.14f, y, 25.5f, spawnsPerLoc);
+        SpawnEnemies(11.7f, y, 14.3f, spawnsPerLoc);
+        SpawnEnemies(11.7f, y, 20f, spawnsPerLoc);
+        SpawnEnemies(7.14f, y, 25.5f, spawnsPerLoc);
     }
 
     // Creates room 8, a complex room with a pit of spikes in the center, traps and enemies along the sides, and enemies on a platform across the room
     private void InstantiateRoom8() {
-        Instantiate(twoWayRaisedPlatformPrefab, new Vector3(3.5f, 2.1f, -2.2f + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(2f, 2f, 2f);
-        Instantiate(cPlatformCenterPrefab, new Vector3(-10f, 1.86f, 30f + playerZero), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
-        Instantiate(uFloorPrefab, new Vector3(-15f, -0.1f, 36f + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
+        Instantiate(twoWayRaisedPlatformPrefab, new Vector3(3.5f, 2.1f, -2.2f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(2f, 2f, 2f);
+        Instantiate(cPlatformCenterPrefab, new Vector3(-10f, 1.86f, 30f + baseZ), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
+        Instantiate(uFloorPrefab, new Vector3(-15f, -0.1f, 36f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
 
-        Instantiate(spikePrefab, new Vector3(-0.1f, 0, 19 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
-        Instantiate(spikeSafetyNetPrefab, new Vector3(-0.1f, 0, 19 + playerZero), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
+        Instantiate(spikePrefab, new Vector3(-0.1f, 0, 19 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
+        Instantiate(spikeSafetyNetPrefab, new Vector3(-0.1f, 0, 19 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
 
-        // Replace with enemy spawn functionality
-        Instantiate(enemyPrefab, new Vector3(-10.1f, 3.1f, 15.2f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-10.1f, 3.1f, 15.2f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(-5.75f, 5.6f, 32f + playerZero), Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyPrefab, new Vector3(5.75f, 5.6f, 32f + playerZero), Quaternion.Euler(0, 0, 0));
+        InstantiateRoom8Enemies();
+    }
+
+    private void InstantiateRoom8Enemies() {
+        numEnemiesToSpawn = numEnemies;
+        numSpawns = 4;
+        spawnsPerLoc = numEnemies / numSpawns;
+        remainder = numEnemies % numSpawns;
+        
+        // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
+        if (remainder != 0) {
+            SpawnEnemies(-10.1f, 3.1f, 15.2f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(10f, 3.1f, 15.2f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(-5.75f, 5.6f, 32f, Math.Min(remainder, 1));
+            remainder --;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(5.75f, 5.6f, 32f, Math.Min(remainder, 1));
+        }
+
+        SpawnEnemies(-10.1f, 3.1f, 15.2f, spawnsPerLoc);
+        SpawnEnemies(10f, 3.1f, 15.2f, spawnsPerLoc);
+        SpawnEnemies(-5.75f, 5.6f, 32f, spawnsPerLoc);
+        SpawnEnemies(5.75f, 5.6f, 32f, spawnsPerLoc);
     }
     
+    // Spawns enemies at general (x, y, z) locations
+    private void SpawnEnemies(float x, float yPos, float z, int timesToSpawn) {
+        for (int i = 0; i < timesToSpawn; i++) {
+            xPos = baseX + x + UnityEngine.Random.Range(-2, 2);
+            zPos = baseZ + z + UnityEngine.Random.Range(-2, 2);
+            Instantiate(enemyPrefab, new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, 180, 0)).GetComponent<BaseEnemy>().SetStrength(enemyStrengths.IndexOf(numEnemiesToSpawn));
+            numEnemiesToSpawn--;
+        }
+    }
 }

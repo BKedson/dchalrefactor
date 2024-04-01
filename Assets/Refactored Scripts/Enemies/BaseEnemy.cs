@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class BaseEnemy : MonoBehaviour, IEnemy
 {
     protected internal GameObject player;
+    protected internal int strength;
 
     // Controls movement for this enemy
     internal abstract void Move();
@@ -18,4 +19,8 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     internal abstract void Death();
 
     public abstract void OnHit();
+
+    public abstract void SetStrength(int stren);
+
+    public abstract int Strength();
 }
