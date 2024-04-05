@@ -199,7 +199,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -935,12 +935,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camTransform: {fileID: 1027987280}
   pickUpDist: 15
-  whatIsOre:
+  whatToAim:
     serializedVersion: 2
-    m_Bits: 2097152
+    m_Bits: 0
   oreFloatCenter: {fileID: 1268707226}
   oreAttractionForce: 50
-  oreFloatDrag: 10
 --- !u!1 &1234118742
 GameObject:
   m_ObjectHideFlags: 0
