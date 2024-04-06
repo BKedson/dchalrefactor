@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.AI.Navigation;
 
 // using System.Numerics;
 using UnityEngine;
@@ -21,6 +22,7 @@ public class CombatRoom : BaseRoom
     [SerializeField] private GameObject cPlatformCenterPrefab;
     [SerializeField] private GameObject uFloorPrefab;
     [SerializeField] private GameObject spikeSafetyNetPrefab;
+    [SerializeField] private NavMeshSurface surface;
 
     private GameObject player;
     private float wallHeight = 2.5f;
@@ -54,10 +56,19 @@ public class CombatRoom : BaseRoom
     // Start is called before the first frame update
     void Start()
     {
+        GameObject referenceObject;
         player = GameObject.Find("Player");
-        baseX = GameObject.Find("Door 2").transform.position.x;
-        baseZ = GameObject.Find("Door 2").transform.position.z + 3f;
-        GenerateNewRoom();
+
+        referenceObject = GameObject.Find("Door 2");
+
+        if (referenceObject == null) {
+            referenceObject = player;
+        }
+
+        baseX = referenceObject.transform.position.x;
+        baseZ = referenceObject.transform.position.z + 8f;
+
+        // GenerateNewRoom();
     }
 
     // Update is called once per frame
@@ -111,6 +122,7 @@ public class CombatRoom : BaseRoom
                 InstantiateRoom1();
                 break;
         } 
+        surface.BuildNavMesh();
         resetRoom = -1;
     }
 
@@ -150,12 +162,14 @@ public class CombatRoom : BaseRoom
             default:
                 InstantiateRoom1();
                 break;
-        } 
+        }
+        surface.BuildNavMesh();
     }
 
     // Creates Room 1, a simple room with enemies in the center
     private void InstantiateRoom1() {
         InstantiateRoom1Enemies();
+
     }
 
     private void InstantiateRoom1Enemies() {
@@ -291,7 +305,7 @@ public class CombatRoom : BaseRoom
 
     // Creates room 6, a room with a large raised platform in the center and enemies in the corners of the platform
     private void InstantiateRoom6() {
-        Instantiate(fourPointRampMapPrefab, new Vector3(-10.2f, 1.7f, 1.9f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        Instantiate(fourPointRampMapPrefab, new Vector3(-10.2f, 1.5f, 1.9f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
         InstantiateRoom6Enemies();
     }
