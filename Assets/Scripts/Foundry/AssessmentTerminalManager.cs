@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class AssessmentTerminalManager : BaseInteractable
 {
     [SerializeField] private GameObject surveillanceCam;
+    [SerializeField] private TMP_InputField inputField;
     [SerializeField] private GameObject separatorWall;
 
     private GameObject playerRef;
@@ -38,6 +41,8 @@ public class AssessmentTerminalManager : BaseInteractable
         playerRef.SetActive(false);
         surveillanceCam.SetActive(true);
 
+        Cursor.lockState = CursorLockMode.None;
+
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
     }
@@ -50,10 +55,29 @@ public class AssessmentTerminalManager : BaseInteractable
         surveillanceCam.SetActive(false);
         playerRef.SetActive(true);
 
+        Cursor.lockState = CursorLockMode.Locked;
+
         separatorWall.SetActive(false);
 
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
 
+    }
+
+    public void OnSubmit()
+    {
+        int ans = Int32.Parse(inputField.text);
+
+        // TODO: Communicate with WindowQuestion
+        // Correct answer
+        if (true)
+        {
+            StartCoroutine("QuitAssessmentChallenge");
+        }
+        // Incorrect answer
+        else
+        {
+
+        }
     }
 }
