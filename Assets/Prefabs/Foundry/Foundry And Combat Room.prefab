@@ -1077,6 +1077,7 @@ GameObject:
   - component: {fileID: 3992400807153391764}
   - component: {fileID: 3992400807153391763}
   - component: {fileID: 3992400807153391762}
+  - component: {fileID: 6881362737427260376}
   m_Layer: 25
   m_Name: Combat Area Floor
   m_TagString: Untagged
@@ -1170,6 +1171,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6881362737427260376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992400807153391760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 719b8df04c3cfd84b85f99ffaa891f12, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &4239388163234995546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1435,7 @@ MonoBehaviour:
   cPlatformCenterPrefab: {fileID: 4015674755491055892, guid: 5300f8beac8664540b14dd5f0d40e7e6, type: 3}
   uFloorPrefab: {fileID: 3029437925202826868, guid: 04686ff1195f85a44afa4f21e28e1c9e, type: 3}
   spikeSafetyNetPrefab: {fileID: 8753650289372032446, guid: 16b5fdc2c2505964f88406fb18ab4caf, type: 3}
-  surface: {fileID: 0}
+  surface: {fileID: 6881362737427260376}
   resetRoom: -1
 --- !u!1 &6020062996132266213
 GameObject:
