@@ -58,10 +58,7 @@ public class PlayerFoundryInteraction : MonoBehaviour
                 targetIntake = null;
 
                 // If the targeted ore is not the one previously targeted
-                if (targetedOre && hit.collider.gameObject != targetedOre.gameObject)
-                {
-                    targetedOre.Highlight(false);
-                }
+                if (targetedOre && hit.collider.gameObject != targetedOre.gameObject) targetedOre.Highlight(false);
                 targetedOre = hit.collider.GetComponent<OreManager>();
                 targetedOre.Highlight(true);
 
@@ -77,6 +74,7 @@ public class PlayerFoundryInteraction : MonoBehaviour
                 if (targetedOre) targetedOre.Highlight(false);
                 targetedOre = null;
 
+                if (targetIntake && targetIntake.gameObject != hit.collider.gameObject) targetIntake.Unselect();
                 targetIntake = hit.collider.GetComponent<FoundryIntakeManager>();
                 targetIntake.Select();
             }
