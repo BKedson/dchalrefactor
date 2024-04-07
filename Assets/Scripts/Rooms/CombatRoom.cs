@@ -68,7 +68,7 @@ public class CombatRoom : BaseRoom
         baseX = referenceObject.transform.position.x;
         baseZ = referenceObject.transform.position.z + 8f;
 
-        // GenerateNewRoom();
+        GenerateNewRoom();
     }
 
     // Update is called once per frame
@@ -122,7 +122,6 @@ public class CombatRoom : BaseRoom
                 InstantiateRoom1();
                 break;
         } 
-        surface.BuildNavMesh();
         resetRoom = -1;
     }
 
@@ -163,13 +162,12 @@ public class CombatRoom : BaseRoom
                 InstantiateRoom1();
                 break;
         }
-        surface.BuildNavMesh();
     }
 
     // Creates Room 1, a simple room with enemies in the center
     private void InstantiateRoom1() {
         InstantiateRoom1Enemies();
-
+        StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom1Enemies() {
@@ -183,7 +181,11 @@ public class CombatRoom : BaseRoom
         Instantiate(wallPrefab, new Vector3(7, wallHeight/2, 7 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(8, wallHeight, wallThickness);
         Instantiate(wallPrefab, new Vector3(-7, wallHeight/2, 7 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(8, wallHeight, wallThickness);
         
+        surface.BuildNavMesh();
+
         InstantiateRoom2Enemies();
+
+        StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom2Enemies() {
@@ -213,7 +215,11 @@ public class CombatRoom : BaseRoom
     private void InstantiateRoom3() {
         Instantiate(spikePrefab, new Vector3(0, 0, 15 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(18, 0.5f, 1f);
 
+        surface.BuildNavMesh();
+
         InstantiateRoom3Enemies();
+
+        StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom3Enemies() {
@@ -244,7 +250,11 @@ public class CombatRoom : BaseRoom
         Instantiate(wallPrefab, new Vector3(5, wallHeight/2, 20 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
         Instantiate(wallPrefab, new Vector3(-5, wallHeight/2, 30 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
 
+        surface.BuildNavMesh();
+
         InstantiateRoom4Enemies();
+
+        StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom4Enemies() {
@@ -278,7 +288,11 @@ public class CombatRoom : BaseRoom
         Instantiate(spikePrefab, new Vector3(10, 0, 17 + baseZ), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(5f, 0.5f, 1f);
         Instantiate(spikePrefab, new Vector3(0, 0, 25 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 1f);
 
+        surface.BuildNavMesh();
+
         InstantiateRoom5Enemies();
+
+        StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom5Enemies() {
@@ -307,7 +321,11 @@ public class CombatRoom : BaseRoom
     private void InstantiateRoom6() {
         Instantiate(fourPointRampMapPrefab, new Vector3(-10.2f, 1.5f, 1.9f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
+        surface.BuildNavMesh();
+
         InstantiateRoom6Enemies();
+                
+        StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom6Enemies() {
@@ -343,7 +361,11 @@ public class CombatRoom : BaseRoom
         Instantiate(cPlatformRightPrefab, new Vector3(4.4f, -1f, 28f + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
         Instantiate(cPlatformLeftPrefab, new Vector3(-3f, -1f, 8.1f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
 
-        InstantiateRoom7Enemies();       
+        surface.BuildNavMesh();
+
+        InstantiateRoom7Enemies();    
+
+        StartCoroutine(Rebuild());   
     }
 
     private void InstantiateRoom7Enemies() {
@@ -391,7 +413,11 @@ public class CombatRoom : BaseRoom
         Instantiate(spikePrefab, new Vector3(-0.1f, 0, 19 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
         Instantiate(spikeSafetyNetPrefab, new Vector3(-0.1f, 0, 19 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
 
+        surface.BuildNavMesh();
+
         InstantiateRoom8Enemies();
+
+        StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom8Enemies() {
@@ -432,5 +458,10 @@ public class CombatRoom : BaseRoom
             Instantiate(enemyPrefab, new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, 180, 0)).GetComponent<BaseEnemy>().SetStrength(enemyStrengths[numEnemiesToSpawn - 1]);
             numEnemiesToSpawn--;
         }
+    }
+
+    IEnumerator Rebuild() {
+        yield return new WaitForSeconds(0.000001f);
+        surface.BuildNavMesh();
     }
 }
