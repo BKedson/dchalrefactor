@@ -32,27 +32,28 @@ public class AssessmentTerminalManager : BaseInteractable
 
     IEnumerator StartAssessmentChallenge()
     {
-        // Transition start
-        yield return new WaitForSeconds(0 /*To be changed*/);
+        TransitionUIManager._instance.StartTransition();
+        yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
 
         playerRef.SetActive(false);
         surveillanceCam.SetActive(true);
 
-        // Transition end
-        yield return new WaitForSeconds(0 /*To be changed*/);
+        TransitionUIManager._instance.EndTransition();
+        yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
     }
 
     IEnumerator QuitAssessmentChallenge()
     {
-        // Transition start
-        yield return new WaitForSeconds(0 /*To be changed*/);
+        TransitionUIManager._instance.StartTransition();
+        yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
 
         surveillanceCam.SetActive(false);
         playerRef.SetActive(true);
 
-        // Transition end
-        yield return new WaitForSeconds(0 /*To be changed*/);
-
         separatorWall.SetActive(false);
+
+        TransitionUIManager._instance.EndTransition();
+        yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
+
     }
 }
