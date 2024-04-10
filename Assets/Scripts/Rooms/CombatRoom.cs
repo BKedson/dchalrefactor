@@ -24,6 +24,7 @@ public class CombatRoom : BaseRoom
     [SerializeField] private GameObject spikeSafetyNetPrefab;
     [SerializeField] private NavMeshSurface surface;
 
+    private GameManager gameManager;
     private GameObject player;
     private float wallHeight = 2.5f;
     private float wallThickness = 1.2f;
@@ -56,6 +57,15 @@ public class CombatRoom : BaseRoom
     // Start is called before the first frame update
     void Start()
     {
+
+        // Find the game manager script
+        GameObject gameManagerObject = GameObject.Find("Game Manager"); 
+        if (gameManagerObject) {
+            gameManager = gameManagerObject.GetComponent<GameManager>();
+        } else {
+            // Error
+        }
+
         GameObject referenceObject;
         player = GameObject.Find("Player");
 
@@ -90,8 +100,9 @@ public class CombatRoom : BaseRoom
             Destroy(destructibles[i].gameObject);
         }
 
-        numEnemies = 10;
-        enemyStrengths = new List<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        enemyStrengths = gameManager.GetCurrEnemyStrengths();
+        numEnemies = enemyStrengths.Count;
+        Debug.Log("Num enemies: " + numEnemies);
 
         switch(resetRoom) {
             case 1:
@@ -129,9 +140,8 @@ public class CombatRoom : BaseRoom
     public void GenerateNewRoom() {    
         int roomType = UnityEngine.Random.Range(easiestRoom, hardestRoom + 1);
 
-        // TODO: Implement communication with WindowQuestion
-        numEnemies = 5;
-        enemyStrengths = new List<int> {1, 2, 3, 4, 5};
+        enemyStrengths = gameManager.GetCurrEnemyStrengths();
+        numEnemies = enemyStrengths.Count;
 
         switch(roomType) {
             case 1:

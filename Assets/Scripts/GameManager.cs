@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager manager;
     bool canChangeControls = true;
     Difficulty globalDifficulty = Difficulty.Easy;
+    private int questionComplexity = 0;
+
+    // The solution and list of enemy strengths for the current question
+    private double currQuestionSol;
+    public List<int> currEnemyStrengths;
+
+    private void Awake()
+    {
+        if(manager) {
+            DestroyImmediate(gameObject);
+        } else {
+            DontDestroyOnLoad(gameObject);
+            manager = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +34,8 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    // GETTERS AND SETTERS
 
     public void ChangeDiffuclty(Difficulty difficulty) {
         globalDifficulty = difficulty;
@@ -61,5 +79,29 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public int GetQuestionComplexity() {
+        return questionComplexity;
+    }
+
+    public void SetQuestionComplexity(int complexity) {
+        questionComplexity = complexity;
+    }
+
+    public double GetCurrQuestionSol() {
+        return currQuestionSol;
+    }
+
+    public void SetCurrQuestionSol(double sol) {
+        currQuestionSol = sol;
+    }
+
+    public List<int> GetCurrEnemyStrengths() {
+        return currEnemyStrengths;
+    }
+
+    public void SetCurrEnemyStrengths(List<int> enemyStrengths) {
+        currEnemyStrengths = enemyStrengths;
     }
 }

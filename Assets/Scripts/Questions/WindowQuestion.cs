@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 // WindowQuestions are simple applied math problems that use assessing enemy strength to represent arithmetic problems.
 public class WindowQuestion : BaseQuestion
 {
+    private GameManager gameManager;
     // The number and strength of enemies associated with this question
     private List<int> enemyStrengths = new List<int>();
     // The number of enemies (and hence, the number of splits) for this question
@@ -33,9 +34,24 @@ public class WindowQuestion : BaseQuestion
     // Start is called before the first frame update
     void Start()
     {
-        subject = Subject.Addition;
-        // TODO: Set difficulty to current difficulty
-        SetInitialComplexity();
+        // Find the game manager script
+        GameObject gameManagerObject = GameObject.Find("Game Manager"); 
+        if (gameManagerObject) {
+            gameManager = gameManagerObject.GetComponent<GameManager>();
+        } else {
+            // Error
+        }
+
+        subject = subject == null ? Subject.Addition : subject;
+        difficulty = gameManager.GetDifficulty();
+        if (gameManager.GetQuestionComplexity() == null) {
+            SetInitialComplexity();
+        } else {
+            questionComplexity = gameManager.GetQuestionComplexity();
+            SetParameters();
+        }
+
+        GenerateQuestion();
     }
 
     // Update is called once per frame
@@ -48,21 +64,18 @@ public class WindowQuestion : BaseQuestion
             SetInitialComplexity();
             GenerateQuestion();
             testGenerateDifficultyAddition = -1;
-            enemyStrengths.Clear();
         } else if (testGeneratDifficultyMultiplication >= 0) {
             subject = Subject.Multiplication;
             difficulty = (Difficulty) testGeneratDifficultyMultiplication;
             SetInitialComplexity();
             GenerateQuestion();
             testGeneratDifficultyMultiplication = -1;
-            enemyStrengths.Clear();
         }   else if (testGeneratDifficultySubtraction >= 0) {
             subject = Subject.Subtraction;
             difficulty = (Difficulty) testGeneratDifficultySubtraction;
             SetInitialComplexity();
             GenerateQuestion();
             testGeneratDifficultySubtraction = -1;
-            enemyStrengths.Clear();
         }
     }
 
@@ -71,9 +84,11 @@ public class WindowQuestion : BaseQuestion
     {
         if (sol == solution) {
             questionComplexity = Math.Min(9, questionComplexity + 1);
+            gameManager.SetQuestionComplexity(questionComplexity);
             return true;
         }
         questionComplexity = Math.Max(0, questionComplexity - 1);
+        gameManager.SetQuestionComplexity(questionComplexity);
         return false;
     }
 
@@ -99,6 +114,9 @@ public class WindowQuestion : BaseQuestion
                 GenerateAdditionQuestion();
                 break;
         }
+
+        gameManager.SetCurrQuestionSol(solution);
+        gameManager.SetCurrEnemyStrengths(enemyStrengths);
 
         // Console testing
         Debug.Log(difficulty + " Solution: " + solution + "\nEnemies: ");
@@ -206,5 +224,9 @@ public class WindowQuestion : BaseQuestion
 
     public List<int> EnemyStrengths() {
         return enemyStrengths;
+    }
+
+    public double Solution() {
+        return solution;
     }
 }
