@@ -18,7 +18,10 @@ public class PlayerGameDataController : MonoBehaviour
 
     //---------------------------------------------------------------------
     //INITIALIZE DATA FOR THE CONTROLLER - from manager to controller
-
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     public void InitializeGameData()
     {
         UnpackGameDataFile(dataManager.loginGameData);

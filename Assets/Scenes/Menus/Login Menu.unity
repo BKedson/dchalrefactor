@@ -2230,7 +2230,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3148,6 +3148,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555626881}
   m_CullTransparentMesh: 1
+--- !u!1 &618385904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 618385907}
+  - component: {fileID: 618385906}
+  - component: {fileID: 618385905}
+  m_Layer: 0
+  m_Name: Data Management
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &618385905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618385904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28523c6c7fd17504e99f1551fe6cc17c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataManager: {fileID: 618385906}
+--- !u!114 &618385906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618385904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe28f595b8f3134fbbabfaaadea69f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loginGameData:
+    FirstName: 
+    NickName: 
+    CodeNumber: 0
+    AdditionDifficulty: 0
+    SubtractionDifficulty: 0
+    MultiplicationDifficulty: 0
+    DivisionDifficulty: 0
+  sessionGameData:
+    FirstName: 
+    NickName: 
+    CodeNumber: 0
+    AdditionDifficulty: 0
+    SubtractionDifficulty: 0
+    MultiplicationDifficulty: 0
+    DivisionDifficulty: 0
+  dataController: {fileID: 618385905}
+--- !u!4 &618385907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618385904}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625608282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,7 +3658,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3717,7 +3792,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -5971,14 +6046,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 1296332185}
   uvManager: {fileID: 1296332187}
-  dataManager: {fileID: 0}
-  dataController: {fileID: 0}
-  LoginFirstNameInput: {fileID: 0}
-  LoginNickNameInput: {fileID: 0}
-  LoginCodeNumberInput: {fileID: 0}
-  RegisterFirstNameInput: {fileID: 0}
-  RegisterNickNameInput: {fileID: 0}
-  RegisterCodeNumberInput: {fileID: 0}
+  dataManager: {fileID: 618385906}
+  dataController: {fileID: 618385905}
+  LoginFirstNameInput: {fileID: 2012147320}
+  LoginNickNameInput: {fileID: 1512949608}
+  LoginCodeNumberInput: {fileID: 1539690720}
+  RegisterFirstNameInput: {fileID: 757000789}
+  RegisterNickNameInput: {fileID: 1735967320}
+  RegisterCodeNumberInput: {fileID: 818597254}
 --- !u!114 &1296332187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7766,7 +7841,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -7900,7 +7975,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -8937,7 +9012,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -9898,7 +9973,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -10083,3 +10158,4 @@ SceneRoots:
   - {fileID: 1296332184}
   - {fileID: 1332889877}
   - {fileID: 1047356899}
+  - {fileID: 618385907}
