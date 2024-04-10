@@ -84,6 +84,9 @@ public class CombatRoom : BaseRoom
     // Update is called once per frame
     void Update()
     {
+        if (enemyStrengths.Count == 0) {
+            GenerateNewRoom();
+        }
         // Editor testing
         if (resetRoom != -1) {
             // baseX = player.transform.position.x;
