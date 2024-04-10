@@ -21,8 +21,7 @@ public class OreManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        billboardTransform.position = transform.position + (Camera.main.transform.position - transform.position).normalized * 1f;
-        billboardTransform.rotation = Quaternion.identity;
+        billboardTransform.position = transform.position + (Camera.main.transform.position - transform.position).normalized;
     }
 
     public void Highlight(bool toHighlight)

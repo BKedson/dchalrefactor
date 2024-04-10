@@ -20,7 +20,7 @@ public class SurveillanceCamManager : MonoBehaviour
     {
         playerInputAction = new PlayerInputAction();
 
-        playerInputAction.UI.Escape.performed += (InputAction.CallbackContext ctx) => { OnQuit.Invoke(); };
+        //playerInputAction.UI.Escape.performed += (InputAction.CallbackContext ctx) => { OnQuit.Invoke(); };
 
         foreach (ScriptableRendererFeature feature in features) { feature.SetActive(false); }
     }
