@@ -26,7 +26,7 @@ namespace dchalrefactor.Scripts.Animations.PlayerMovement
         }
 
 
-        public void GetInStance()
+        public void GetIntoStance()
         {
             currentPlayerAnimator.SetTrigger("IdleFight");
         }
