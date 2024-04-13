@@ -19,6 +19,7 @@ public class WanderingAI : MonoBehaviour {
 	public float rotSpeed = 70f;
 	private Vector3 minSize = new Vector3(0.7f,0.7f,0.7f);
 	Vector3 playerPos;
+	float newDestinationCD = 0.5f;
 	float waitTime;
 	float rotateTime;
 	bool inRange;
@@ -50,20 +51,11 @@ public class WanderingAI : MonoBehaviour {
 		if(_alive){//near check at start
 			//if near then attack
 			View(); // continuously check if player is in line of sight
-			if(!patrolling){
+			if(!patrolling && newDestinationCD <= 0){
+				newDestinationCD = 0.5f;
 				chase();
 			}
 			else if(!isWandering) {
-				/*if(inRange){ // if player in line of sight range
-					if(rotateTime <= 0){
-						Move(5.0f); // increase run speed and search based on last known pos of player
-						LookingForP(playLastPos);
-					}
-					else{
-						//Stop();
-						//rotateTime -= Time.deltaTime;
-					}
-				}*/
 				Move(speed);
 				StartCoroutine(patrol());
 			}
@@ -82,7 +74,7 @@ public class WanderingAI : MonoBehaviour {
 				anim.SetBool("Patrol", true);
 				transform.position += transform.forward * speed * Time.deltaTime;
 			}
-		
+			newDestinationCD -= Time.deltaTime;
 		}
 	}
 
@@ -118,6 +110,7 @@ public class WanderingAI : MonoBehaviour {
         int rotateLorR = Random.Range(1, 2);
         int walkWait = Random.Range(1, 5);
         int walkTime = Random.Range(1, 6);
+		
 		isWandering = true;
 
         yield return new WaitForSeconds(walkWait);
