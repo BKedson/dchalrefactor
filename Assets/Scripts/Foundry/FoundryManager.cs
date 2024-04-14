@@ -1,118 +1,102 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-
-public enum MathType
-{
-    Addition, Subtraction, Multiplication, Division
-}
 
 public class FoundryManager : BaseInteractable
 {
     [SerializeField] private GameObject intakePrefab;
     [SerializeField] private GameObject sectorPrefab;
     [SerializeField] private float intakeWidth;
-    [SerializeField] private MathType mathType;
-    [SerializeField] private int targetPowerLv;
+    [SerializeField] private WindowQuestion windowQuestion;
+    [SerializeField] private Subject mathType;
     [SerializeField] private UnityEvent OnWeaponForged;
 
-    private FoundryIntakeManager[] intakeGroup1;
-    private FoundryIntakeManager[] intakeGroup2;
-    private int expectedVal1 = 0;
-    private int expectedVal2 = 0;
-
-    public bool weaponForged { get; private set; } = false;
+    private List<FoundryIntakeManager>[] intakeGroups;
+    private List<int> targetPowerLvs;
 
     private void Awake()
     {
-        switch (mathType)
+        windowQuestion.GenerateQuestion();
+        targetPowerLvs = windowQuestion.GetEnemyStrengths();
+
+        string s = "";
+        foreach (int i in targetPowerLvs)
         {
-            case MathType.Addition:
-                expectedVal1 = Random.Range(1, targetPowerLv);
-                expectedVal2 = targetPowerLv - expectedVal1;
-                break;
-            case MathType.Multiplication:
-                for (int i = (int)Mathf.Ceil(Mathf.Sqrt(targetPowerLv)); i < targetPowerLv; i++)
+            s += i + " ";
+        }
+        Debug.Log(s);
+        //targetPowerLvTotal = 0;
+
+        //switch (mathType)
+        //{
+        //    case Subject.Addition:
+        //        foreach (int i in targetPowerLvs) targetPowerLvTotal += i;
+        //        break;
+        //    case Subject.Multiplication:
+        //        foreach (int i in targetPowerLvs) targetPowerLvTotal += i;
+        //        break;
+        //}
+
+        int[] valDigitNums = new int[targetPowerLvs.Count];
+        int totalDigitNum = 0;
+        intakeGroups = new List<FoundryIntakeManager>[targetPowerLvs.Count];
+        for (int i = 0; i < targetPowerLvs.Count; i++)
+        {
+            for (valDigitNums[i] = 1; valDigitNums[i] < 10; valDigitNums[i]++)
+            {
+                totalDigitNum++;
+
+                if (Mathf.Pow(10, valDigitNums[0]) > targetPowerLvs[i])
                 {
-                    float j = (float)targetPowerLv / i;
-                    if (j == (int)j)
-                    {
-                        expectedVal1 = i;
-                        expectedVal2 = (int)j;
-                    }
+                    break;
                 }
-                break;
-        }
-        Debug.Log(expectedVal1 + ", " + expectedVal2);
-
-        int val1DigitNum, val2DigitNum = 0;
-        for (val1DigitNum = 1; val1DigitNum < 10; val1DigitNum++)
-        {
-            if (Mathf.Pow(10, val1DigitNum) > expectedVal1)
-            {
-                break;
             }
         }
-        for (val2DigitNum = 1; val2DigitNum < 10; val2DigitNum++)
-        {
-            if (Mathf.Pow(10, val2DigitNum) > expectedVal2)
-            {
-                break;
-            }
-        }
-        Debug.Log(val1DigitNum + ", " + val2DigitNum);
-        intakeGroup1 = new FoundryIntakeManager[val1DigitNum];
-        intakeGroup2 = new FoundryIntakeManager[val2DigitNum];
+        totalDigitNum += targetPowerLvs.Count - 1;
 
-        int totalDigit = val1DigitNum + 1 + val2DigitNum;
-        GameObject obj;
-        for (int i = 0; i < val1DigitNum; i++)
+        int digitCounter = 0;
+        for (int i = 0; i < targetPowerLvs.Count; i++)
         {
-            obj = Instantiate(intakePrefab, transform);
-            obj.transform.localPosition = new Vector3(intakeWidth * (i - totalDigit / 2), 0f, 0f);
-            intakeGroup1[i] = obj.GetComponent<FoundryIntakeManager>();
-        }
-        obj = Instantiate(sectorPrefab, transform);
-        obj.transform.localPosition = new Vector3(intakeWidth * (val1DigitNum - totalDigit / 2), 0f, 0f);
-        for (int i = val1DigitNum + 1; i < totalDigit; i++)
-        {
-            obj = Instantiate(intakePrefab, transform);
-            obj.transform.localPosition = new Vector3(intakeWidth * (i - totalDigit / 2), 0f, 0f);
-            intakeGroup2[i - val1DigitNum - 1] = obj.GetComponent<FoundryIntakeManager>();
+            intakeGroups[i] = new List<FoundryIntakeManager>();
+            for (int j = 0; j < valDigitNums[i]; j++)
+            {
+                GameObject intake = Instantiate(intakePrefab, transform);
+                intake.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigitNum / 2f + 0.5f), 0f, 0f);
+                intakeGroups[i].Add(intake.GetComponent<FoundryIntakeManager>());
+
+                digitCounter++;
+            }
+
+            if (i + 1 == targetPowerLvs.Count) break;
+
+            GameObject sector = Instantiate(sectorPrefab, transform);
+            sector.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigitNum / 2f + 0.5f), 0f, 0f);
+
+            digitCounter++;
         }
     }
 
     public override void OnInteract()
     {
-        int num1 = 0;
-        foreach (FoundryIntakeManager intake in intakeGroup1)
+        int totalAns = 0;
+        for (int i = 1; i < targetPowerLvs.Count; i++)
         {
-            num1 = num1 * 10 + intake.GetPower();
-        }
-        int num2 = 0;
-        foreach (FoundryIntakeManager intake in intakeGroup1)
-        {
-            num2 = num2 * 10 + intake.GetPower();
-        }
-
-        int totalP = 0;
-        switch (mathType)
-        {
-            case MathType.Addition:
-                totalP = num1 + num2;
-                break;
+            int ans = 0;
+            foreach (FoundryIntakeManager intake in intakeGroups[i])
+            {
+                ans = ans * 10 + intake.GetPower();
+            }
+            totalAns += ans;
         }
 
-        if (totalP == targetPowerLv)
+        if (windowQuestion.IsCorrect(totalAns))
         {
             Debug.Log("Forge correct weapon");
         }
-        else if (totalP < targetPowerLv)
-        {
-            Debug.Log("Forge underpowered weapon");
-        }
         else
         {
-            Debug.Log("Forge overpowered weapon");
+            Debug.Log("Forge wrong weapon");
         }
 
         OnWeaponForged.Invoke();

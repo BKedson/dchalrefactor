@@ -51,7 +51,7 @@ public class WindowQuestion : BaseQuestion
             SetParameters();
         }
 
-        GenerateQuestion();
+        //GenerateQuestion();
     }
 
     // Update is called once per frame
@@ -115,14 +115,14 @@ public class WindowQuestion : BaseQuestion
                 break;
         }
 
-        gameManager.SetCurrQuestionSol(solution);
-        gameManager.SetCurrEnemyStrengths(enemyStrengths);
+        //gameManager.SetCurrQuestionSol(solution);
+        //gameManager.SetCurrEnemyStrengths(enemyStrengths);
 
         // Console testing
         Debug.Log(difficulty + " Solution: " + solution + "\nEnemies: ");
-        foreach (int enemyStrength in enemyStrengths) {
-            Debug.Log(enemyStrength);
-        }
+        //foreach (int enemyStrength in enemyStrengths) {
+        //    Debug.Log(enemyStrength);
+        //}
     }
 
     // All enemies have different strengths, must be added together
@@ -222,7 +222,7 @@ public class WindowQuestion : BaseQuestion
         subject = sub;
     }
 
-    public List<int> EnemyStrengths() {
+    public List<int> GetEnemyStrengths() {
         return enemyStrengths;
     }
 

@@ -894,8 +894,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3992400806503070536}
-  - component: {fileID: 5796322228244186114}
   - component: {fileID: 2703513900669857223}
+  - component: {fileID: 5796322228244186114}
   m_Layer: 0
   m_Name: Foundry And Combat Room
   m_TagString: Untagged
@@ -923,22 +923,6 @@ Transform:
   - {fileID: 8899068056319087833}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5796322228244186114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3992400806503070519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4f11989eee77f4bb95a1670f934809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foundryManager: {fileID: 5230012447451515390}
-  door1Animator: {fileID: 4099193420695045968}
-  door2Animator: {fileID: 1704971014110646691}
-  surveillanceCam: {fileID: 6816787618325967029}
 --- !u!65 &2703513900669857223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -960,6 +944,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 6, z: 8}
   m_Center: {x: 0, y: 3, z: 46}
+--- !u!114 &5796322228244186114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992400806503070519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4f11989eee77f4bb95a1670f934809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foundryManager: {fileID: 5230012447451515390}
+  door1Animator: {fileID: 4099193420695045968}
+  door2Animator: {fileID: 1704971014110646691}
+  surveillanceCam: {fileID: 6816787618325967029}
 --- !u!1 &3992400807106637478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3286562823056498316}
   - component: {fileID: 1113977160967789713}
+  - component: {fileID: 4443511613275565488}
   m_Layer: 0
   m_Name: Combat Area
   m_TagString: Untagged
@@ -1420,7 +1421,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5480679001208371907}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c854fef290995244791ba2d3540cf693, type: 3}
   m_Name: 
@@ -1437,6 +1438,22 @@ MonoBehaviour:
   spikeSafetyNetPrefab: {fileID: 8753650289372032446, guid: 16b5fdc2c2505964f88406fb18ab4caf, type: 3}
   surface: {fileID: 6881362737427260376}
   resetRoom: -1
+--- !u!114 &4443511613275565488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480679001208371907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f7fc47beb71c6469ce9b3ebfbe84a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subject: 2
+  testGenerateDifficultyAddition: -1
+  testGeneratDifficultyMultiplication: -1
+  testGeneratDifficultySubtraction: -1
 --- !u!1 &6020062996132266213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2514,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Foundry
       objectReference: {fileID: 0}
+    - target: {fileID: 4175502220667200947, guid: a7bd1eb12e6381644a5c705e8bcc5768, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405473323401288680, guid: a7bd1eb12e6381644a5c705e8bcc5768, type: 3}
+      propertyPath: windowQuestion
+      value: 
+      objectReference: {fileID: 4443511613275565488}
     - target: {fileID: 8405473323401288680, guid: a7bd1eb12e6381644a5c705e8bcc5768, type: 3}
       propertyPath: OnWeaponForged.m_PersistentCalls.m_Calls.Array.size
       value: 1
