@@ -31,7 +31,6 @@ public class WindowQuestion : BaseQuestion
     public int testGeneratDifficultyMultiplication = -1;
     public int testGeneratDifficultySubtraction = -1;
 
-    // Start is called before the first frame update
     void Start()
     {
         // Find the game manager script
@@ -92,6 +91,27 @@ public class WindowQuestion : BaseQuestion
         return false;
     }
 
+    public void GenerateInitialQuestion() {
+        // Find the game manager script
+        GameObject gameManagerObject = GameObject.Find("Game Manager"); 
+        if (gameManagerObject) {
+            gameManager = gameManagerObject.GetComponent<GameManager>();
+        } else {
+            // Error
+        }
+
+        subject = subject == null ? Subject.Addition : subject;
+        difficulty = gameManager.GetDifficulty();
+        if (gameManager.GetQuestionComplexity() == null) {
+            SetInitialComplexity();
+        } else {
+            questionComplexity = gameManager.GetQuestionComplexity();
+            SetParameters();
+        }
+
+        GenerateQuestion();
+    }
+
     public override void GenerateQuestion() {   
         numEnemies = UnityEngine.Random.Range(minEnemies, maxEnemies + 1);
         
@@ -115,8 +135,8 @@ public class WindowQuestion : BaseQuestion
                 break;
         }
 
-        //gameManager.SetCurrQuestionSol(solution);
-        //gameManager.SetCurrEnemyStrengths(enemyStrengths);
+        gameManager.SetCurrQuestionSol(solution);
+        gameManager.SetCurrEnemyStrengths(enemyStrengths);
 
         // Console testing
         Debug.Log(difficulty + " Solution: " + solution + "\nEnemies: ");

@@ -17,7 +17,7 @@ public class FoundryManager : BaseInteractable
 
     private void Awake()
     {
-        windowQuestion.GenerateQuestion();
+        windowQuestion.GenerateInitialQuestion();
         targetPowerLvs = windowQuestion.GetEnemyStrengths();
 
         string s = "";
