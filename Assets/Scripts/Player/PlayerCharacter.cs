@@ -35,16 +35,16 @@ public class PlayerCharacter : MonoBehaviour {
 	//use this and add an indicator on run
 	public void Hurt(int damage) {
 		_health -= damage;
-		var textComp = healthUI.GetComponent<TMP_Text>();
+		var textComp = healthUI.GetComponentInChildren<TMP_Text>();
 		string hp = "";
 		for(int i = 0; i<_health;i++){
 			hp = hp + "*";
 		}
 		if(_health > 0){
-			textComp.text = "Health: " + _health + " " + hp;
+			textComp.text = "Health " + _health + " " + hp;
 		}
 		else{
-			textComp.text = "Health: " + _health + " " + hp;
+			textComp.text = "Health " + _health + " " + hp;
 			death.SetActive(true);
 		}
 		Debug.Log("Health: " + _health);

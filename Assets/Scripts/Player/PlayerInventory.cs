@@ -65,6 +65,7 @@ public class PlayerInventory : MonoBehaviour
         //if the item is a sword
         if(itemtoAdd.tag == "sword"){
             //set the corresponding boolean in the array to true
+            Debug.Log("GET");
             items[0] = true;
         }
         //if the item is a gun
