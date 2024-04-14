@@ -31,7 +31,6 @@ public class WindowQuestion : BaseQuestion
     public int testGeneratDifficultyMultiplication = -1;
     public int testGeneratDifficultySubtraction = -1;
 
-    // Start is called before the first frame update
     void Start()
     {
         // Find the game manager script
@@ -51,7 +50,7 @@ public class WindowQuestion : BaseQuestion
             SetParameters();
         }
 
-        GenerateQuestion();
+        //GenerateQuestion();
     }
 
     // Update is called once per frame
@@ -92,6 +91,27 @@ public class WindowQuestion : BaseQuestion
         return false;
     }
 
+    public void GenerateInitialQuestion() {
+        // Find the game manager script
+        GameObject gameManagerObject = GameObject.Find("Game Manager"); 
+        if (gameManagerObject) {
+            gameManager = gameManagerObject.GetComponent<GameManager>();
+        } else {
+            // Error
+        }
+
+        subject = subject == null ? Subject.Addition : subject;
+        difficulty = gameManager.GetDifficulty();
+        if (gameManager.GetQuestionComplexity() == null) {
+            SetInitialComplexity();
+        } else {
+            questionComplexity = gameManager.GetQuestionComplexity();
+            SetParameters();
+        }
+
+        GenerateQuestion();
+    }
+
     public override void GenerateQuestion() {   
         numEnemies = UnityEngine.Random.Range(minEnemies, maxEnemies + 1);
         
@@ -120,9 +140,9 @@ public class WindowQuestion : BaseQuestion
 
         // Console testing
         Debug.Log(difficulty + " Solution: " + solution + "\nEnemies: ");
-        foreach (int enemyStrength in enemyStrengths) {
-            Debug.Log(enemyStrength);
-        }
+        //foreach (int enemyStrength in enemyStrengths) {
+        //    Debug.Log(enemyStrength);
+        //}
     }
 
     // All enemies have different strengths, must be added together
@@ -222,7 +242,7 @@ public class WindowQuestion : BaseQuestion
         subject = sub;
     }
 
-    public List<int> EnemyStrengths() {
+    public List<int> GetEnemyStrengths() {
         return enemyStrengths;
     }
 

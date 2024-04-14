@@ -13,7 +13,6 @@ public class Spikes : BaseObstacle
         // Set inherited fields
         damage = 1;
         player = GameObject.Find("Player");
-        Debug.Log(player.name);
     }
 
     // Update is called once per frame

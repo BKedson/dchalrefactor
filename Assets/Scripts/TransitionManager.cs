@@ -21,13 +21,13 @@ public class TransitionManager : MonoBehaviour
         if (PlayerPrefs.HasKey("CurrentLevel")) {
             SceneManager.LoadScene(PlayerPrefs.GetString("CurrentLevel"));
         } else {
-            PlayerPrefs.SetString("CurrentLevel", "Test Combat Room");
-            SceneManager.LoadScene("Test Combat Room");
+            PlayerPrefs.SetString("CurrentLevel", "Room Generation Test Scene");
+            SceneManager.LoadScene("Room Generation Test Scene");
         }
     }
 
     public void NewGame() {
-        SceneManager.LoadScene("Test Combat Room");
+        SceneManager.LoadScene("Room Generation Test Scene");
     }
 
     public void Options() {
