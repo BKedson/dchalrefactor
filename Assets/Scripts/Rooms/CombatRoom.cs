@@ -182,6 +182,8 @@ public class CombatRoom : BaseRoom
 
     private void InstantiateRoom1Enemies() {
         numEnemiesToSpawn = numEnemies;
+        
+        surface.BuildNavMesh();
 
         SpawnEnemies(0f, 1f, 17f, numEnemies);
     }
