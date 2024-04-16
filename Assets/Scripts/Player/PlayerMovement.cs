@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 horizontalVelocity;
     private float yVelocity = 0f;
+    private Vector3 movement;
     private PlayerInventory stuff;
     private bool stop = false;
 
@@ -105,8 +106,9 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(wallState);
         //transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
 
-        // Behavior while NOT wall running
-        if(!stop){
+        if(!stop)
+        {
+            // Behavior while NOT wall running
             if (wallState == WallState.NotOnWall)
             {
                 // Ensure on ground
@@ -134,20 +136,25 @@ public class PlayerMovement : MonoBehaviour
 
             horizontalVelocity = playerInputAction.Player.Movement.ReadValue<Vector2>();
 
-            Vector3 movement;
             if (wallState == WallState.NotOnWall)
             {
+                // Running/walking speed
                 movement =
-                    (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized * 
+                    (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized *
                     (sprinting ? runSpeed : walkSpeed);
+                // Sprinting: if the player is walking/running slowly or running/running fast
             }
             else
             {
                 movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
                 movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
             }
+
             movement.y = yVelocity;
+            //call jump anim here
+            
             characterController.Move(movement * Time.fixedDeltaTime);
+            //call movement animation here
 
             grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
 
@@ -210,10 +217,39 @@ public class PlayerMovement : MonoBehaviour
         if(playerInputAction.Player.Fire.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
     }
 
+    private void LateUpdate()
+    {
+        // -------------------------------------------------------------------------------------------------------- Run Anim
+        if (movement.magnitude > 0)
+        {
+            if (sprinting)
+            {
+                // Running fast
+            }
+            else
+            {
+                // Running slowly
+            }
+        }
+        else
+        {
+            // Idel anim
+        }
+    }
+
     private void Jump(InputAction.CallbackContext ctx)
     {
         if (grounded && Time.time - lastJumpTime > jumpInterval)
         {
+            // ----------------------------------------------------------------------------------------------------------- Jump Anim
+            if (movement.magnitude > 0)
+            {
+                // Jump in motion
+            }
+            else
+            {
+                // Jump when standing still
+            }
             yVelocity = jumpForce;
             lastJumpTime = Time.time;
             grounded = false;
