@@ -14,7 +14,7 @@ public class BillboardText : MonoBehaviour
 
     void Update() {
         if (gameObject.GetComponentInParent<BasicBiped>() != null)
-            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "" + gameObject.GetComponentInParent<BasicBiped>().Strength();
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "" + gameObject.GetComponentInParent<BasicBiped>().GetStrength();
     }
 
     void LateUpdate()

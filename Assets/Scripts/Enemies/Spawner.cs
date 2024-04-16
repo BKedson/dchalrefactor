@@ -46,7 +46,15 @@ public class Spawner : BaseEnemy
         strength = stren;
     }
 
-    public override int Strength() {
+    public override void SetDamage(int dam) {
+        damage = dam;
+    }
+
+    public override int GetDamage() {
+        return damage;
+    }
+
+    public override int GetStrength() {
         return strength;
     }
 }

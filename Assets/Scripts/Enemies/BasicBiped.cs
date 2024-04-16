@@ -10,6 +10,7 @@ public class BasicBiped : BaseEnemy
     {
         // Example for finding and setting the player object
         player = GameObject.Find("Player");
+        damage = 1;
     }
 
     // Update is called once per frame
@@ -45,7 +46,15 @@ public class BasicBiped : BaseEnemy
         strength = stren;
     }
 
-    public override int Strength() {
+    public override void SetDamage(int dam) {
+        damage = dam;
+    }
+
+    public override int GetDamage() {
+        return damage;
+    }
+
+    public override int GetStrength() {
         return strength;
     }
 

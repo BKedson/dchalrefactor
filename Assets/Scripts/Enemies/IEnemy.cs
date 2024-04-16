@@ -7,8 +7,8 @@ public interface IEnemy
 {
     // When this enemy is hit
     void OnHit();
-
+    int GetStrength();
+    int GetDamage();
     void SetStrength(int stren);
-
-    int Strength();
+    void SetDamage(int dam);
 }

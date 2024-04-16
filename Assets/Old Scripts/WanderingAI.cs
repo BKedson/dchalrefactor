@@ -194,34 +194,6 @@ public class WanderingAI : MonoBehaviour {
 		_alive = alive;
 	}
 
-	//damage player
-	public void OnTriggerEnter(Collider other){
-		if(other.CompareTag("Player")){
-			beingHit = true;
-			StartCoroutine(DamageLoop(other));
-		}
-	}
-
-	public void OnTriggerExit(Collider col){
-		if (col.CompareTag("Player")) {
-            beingHit = false;
-        }
-	}
-
-    IEnumerator DamageLoop(Collider other) {
-        Stab(other);
-        yield return new WaitForSeconds(1);
-        if (beingHit) {
-            StartCoroutine(DamageLoop(other));
-        }
-    }
-
-    // Damages the player
-    void Stab(Collider other) {
-        other.gameObject.GetComponent<PlayerCharacter>().Hurt(1);
-        Debug.Log("stab!");
-    }
-
 	//shrink to death
 	public void Shrink(){
 		if(this.gameObject.transform.localScale.x > minSize.x){
