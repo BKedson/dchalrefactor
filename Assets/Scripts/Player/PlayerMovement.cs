@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using dchalrefactor.Scripts.Animations.PlayerMovement;
 
 enum WallState
 {
@@ -10,6 +11,8 @@ enum WallState
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement _instance;
+    //stores the Animations class for the player
+    public PlayerAnimations animations;
 
     [Header("Movement Speed")]
     [SerializeField][Min(0)] private float walkSpeed;
@@ -214,12 +217,16 @@ public class PlayerMovement : MonoBehaviour
             yVelocity = jumpForce;
             lastJumpTime = Time.time;
             grounded = false;
+            //Call the animation-----------------------------------------------------------------------------------------------
+            animations.Jump();
         }
     }
 
     private void Attack(InputAction.CallbackContext ctx)
     {
         weaponManager.currentAttack(true);
+        //Call the animation---------------------------------------------------------------------------------------------------
+        animations.Attack();
     }
 
     private void gSwap(InputAction.CallbackContext ctx)

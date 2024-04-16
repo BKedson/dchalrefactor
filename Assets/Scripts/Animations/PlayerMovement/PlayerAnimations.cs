@@ -46,6 +46,16 @@ namespace dchalrefactor.Scripts.Animations.PlayerMovement
             currentPlayerAnimator.SetBool("RunFast", true);
         }
 
+        public void StopRunSlow()
+        {
+            currentPlayerAnimator.SetBool("RunSlow", false);
+        }
+
+        public void StopRunFast()
+        {
+            currentPlayerAnimator.SetBool("RunFast", false);
+        }
+
         public void Attack()
         {
             currentPlayerAnimator.SetTrigger("SwordSlash");
