@@ -146,8 +146,12 @@ public class PlayerMovement : MonoBehaviour
                 movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
                 movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
             }
+
             movement.y = yVelocity;
+            //call jump anim here
+            
             characterController.Move(movement * Time.fixedDeltaTime);
+            //call movement animation here
 
             grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
 
