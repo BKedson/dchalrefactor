@@ -222,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 horizontalMovement = new Vector3(movement.x, 0f, movement.z);
         float horizontalMagnitude = horizontalMovement.magnitude;
 
-        Debug.Log(horizontalMagnitude + "");
+        // Debug.Log(horizontalMagnitude + "");
         // -------------------------------------------------------------------------------------------------------- Run Anim
         if (horizontalMagnitude > 3)
         {

@@ -140,10 +140,10 @@ public class WindowQuestion : BaseQuestion
         gameManager.SetCurrEnemyStrengths(enemyStrengths);
 
         // Console testing
-        Debug.Log(difficulty + " Solution: " + solution + "\nEnemies: ");
-        foreach (int enemyStrength in enemyStrengths) {
-           Debug.Log(enemyStrength);
-        }
+        // Debug.Log(difficulty + " Solution: " + solution + "\nEnemies: ");
+        // foreach (int enemyStrength in enemyStrengths) {
+        //    Debug.Log(enemyStrength);
+        // }
     }
 
     // All enemies have different strengths, must be added together
