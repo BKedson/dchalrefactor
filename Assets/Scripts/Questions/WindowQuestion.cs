@@ -99,6 +99,8 @@ public class WindowQuestion : BaseQuestion
                 gameManager.SetQuestionComplexity(questionComplexity);
             }
 
+            Debug.Log("Right answer streak: " + correctStreak);
+
             return true;
         }
 
@@ -110,6 +112,8 @@ public class WindowQuestion : BaseQuestion
             questionComplexity = Math.Max(0, questionComplexity - 1);
             gameManager.SetQuestionComplexity(questionComplexity);
         }
+
+        Debug.Log("Wrong answer streak: " + incorrectStreak);
 
         return false;
     }

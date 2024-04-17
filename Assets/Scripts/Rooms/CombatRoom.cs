@@ -38,7 +38,7 @@ public class CombatRoom : BaseRoom
     private float baseZ = 0;
     // The minimum and maximum difficulty room that can spawn with the current settings 
     private int easiestRoom = 1;
-    private int hardestRoom = 8;
+    private int hardestRoom = 7;
 
     // The number of enemies that still need to be spawned in the level
     int numEnemiesToSpawn;
