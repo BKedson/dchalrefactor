@@ -18,6 +18,14 @@ public class WindowQuestion : BaseQuestion
 
     // 0-9 scale that describes how likely a solution is to break down into complex parts that require carrying
     private int questionComplexity = 0;
+
+    // How many right or wrong questions warrant a bump or decrease in diffiuclty?
+    private int wrongAnswerThreshold = 2;
+    private int rightAnswerThreshold = 2;
+    private int correctStreak = 0;
+    private int incorrectStreak = 0;
+
+    // Does the question require the player to carry digits?
     private  bool noCarry = true;
 
     // The minimum and maximum number of enemies for the question on the current diffiuclty and settings
@@ -54,7 +62,6 @@ public class WindowQuestion : BaseQuestion
         //GenerateQuestion();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Console testing
@@ -79,19 +86,35 @@ public class WindowQuestion : BaseQuestion
         }
     }
 
-    // If the player is correct, increase complexity, if they are wrong, decrease complexity (for future questions) 
+    // Did the player correctly calculate the solution? 
     public override bool IsCorrect(double sol)
     {
         if (sol == solution) {
-            questionComplexity = Math.Min(9, questionComplexity + 1);
-            gameManager.SetQuestionComplexity(questionComplexity);
+            correctStreak++;
+            incorrectStreak = 0;
+
+            // Increases complexity for future problems if the player is easily answering questions
+            if (correctStreak >= rightAnswerThreshold) {
+                questionComplexity = Math.Min(9, questionComplexity + 1);
+                gameManager.SetQuestionComplexity(questionComplexity);
+            }
+
             return true;
         }
-        questionComplexity = Math.Max(0, questionComplexity - 1);
-        gameManager.SetQuestionComplexity(questionComplexity);
+
+        correctStreak = 0;
+        incorrectStreak++;
+
+        // Decreases complexity for future problems if the player is struggling
+        if (incorrectStreak >= wrongAnswerThreshold) {
+            questionComplexity = Math.Max(0, questionComplexity - 1);
+            gameManager.SetQuestionComplexity(questionComplexity);
+        }
+
         return false;
     }
 
+    // Sets data from the GameManager if not set in Start, then generates a question
     public void GenerateInitialQuestion() {
         // Find the game manager script
         GameObject gameManagerObject = GameObject.Find("Game Manager"); 
@@ -263,7 +286,7 @@ public class WindowQuestion : BaseQuestion
 
     // Adjusts solution generation based on complexity
     private void SetParameters() {
-        // Easy questions have few (1-3) enemies, small and round solutions (ex. 10), and require little carrying
+        // Easy questions have few (1-3) enemies, small and round solutions (ex. 10), and require no carrying
         if (questionComplexity < 3) {
             minEnemies = 2;
             maxEnemies = 3;
