@@ -219,21 +219,34 @@ public class PlayerMovement : MonoBehaviour
 
     private void LateUpdate()
     {
+        Vector3 horizontalMovement = new Vector3(movement.x, 0f, movement.z);
+        float horizontalMagnitude = horizontalMovement.magnitude;
+
+        Debug.Log(horizontalMagnitude + "");
         // -------------------------------------------------------------------------------------------------------- Run Anim
-        if (movement.magnitude > 0)
+        if (horizontalMagnitude > 3)
         {
             if (sprinting)
             {
-                // Running fast
+                //Stop Running Slow if the player was running slow
+                animations.StopRunSlow();
+                // Running fast-------------------------------------------------------------------------------------------
+                animations.RunFast();
+                
             }
             else
             {
+                //Stop Running Fast if the player was running Fast--------------------------------------------------------
+                animations.StopRunFast();
                 // Running slowly
+                animations.RunSlow();
             }
         }
         else
         {
             // Idel anim
+            animations.StopRunSlow();
+            animations.StopRunFast();
         }
     }
 
@@ -242,14 +255,6 @@ public class PlayerMovement : MonoBehaviour
         if (grounded && Time.time - lastJumpTime > jumpInterval)
         {
             // ----------------------------------------------------------------------------------------------------------- Jump Anim
-            if (movement.magnitude > 0)
-            {
-                // Jump in motion
-            }
-            else
-            {
-                // Jump when standing still
-            }
             yVelocity = jumpForce;
             lastJumpTime = Time.time;
             grounded = false;
