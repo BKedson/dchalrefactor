@@ -1,27 +1,33 @@
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer), typeof(Rigidbody))]
 public class OreManager : MonoBehaviour
 {
     [SerializeField] private Transform billboardTransform;
+    [SerializeField] private TMP_Text powerDisplay;
     [SerializeField] public int orePower { get; private set; }
 
     private MeshRenderer meshRenderer;
     private Rigidbody rgbd;
-    private Collider collider;
 
     // Start is called before the first frame update
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         rgbd = GetComponent<Rigidbody>();
-        collider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         billboardTransform.position = transform.position + (Camera.main.transform.position - transform.position).normalized;
+    }
+
+    public void SetPower(int power)
+    {
+        orePower = power;
+        powerDisplay.text = power.ToString();
     }
 
     public void Highlight(bool toHighlight)
@@ -50,13 +56,13 @@ public class OreManager : MonoBehaviour
 
     public void OnInsert()
     {
-        collider.enabled = false;
+        GetComponent<Collider>().enabled = false;
 
         Highlight(false);
     }
 
     public void OnEject()
     {
-        collider.enabled = true;
+        GetComponent<Collider>().enabled = true;
     }
 }

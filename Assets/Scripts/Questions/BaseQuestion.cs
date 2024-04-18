@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class BaseQuestion : MonoBehaviour, IQuestion
 {
     // The subject for this question
-    [SerializeField] protected internal Subject subject;
+    [SerializeField] public Subject subject { get; protected set; }
 
     // The solution for this Question
     protected internal double solution;

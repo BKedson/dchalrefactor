@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 // WindowQuestions are simple applied math problems that use assessing enemy strength to represent arithmetic problems.
 public class WindowQuestion : BaseQuestion
@@ -190,7 +188,7 @@ public class WindowQuestion : BaseQuestion
                 int ones = UnityEngine.Random.Range(1, (remainingSolution % 10) - (i - 1));
                 int tens = 10 * UnityEngine.Random.Range(0, (remainingSolution / 10));
                 enemyStrength = ones + tens;
-                Debug.Log(tens + " + " + ones);
+                //Debug.Log(tens + " + " + ones);
             } else {
                 enemyStrength = UnityEngine.Random.Range(1, remainingSolution - (i - 1));
             }
