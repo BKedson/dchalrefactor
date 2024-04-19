@@ -42,6 +42,8 @@ public class AssessmentTerminalManager : BaseInteractable
         surveillanceCam.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
+        inputField.Select();
+        inputField.ActivateInputField();
 
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());

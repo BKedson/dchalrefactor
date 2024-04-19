@@ -38,14 +38,10 @@ public class CreditsBehavior : MonoBehaviour
             Vector3 currPosition = gameObject.transform.position;
 
             //reset height of credits when scroll is complete
-            if (currPosition.y - creditsLength/2 >= creditsLength){ 
+            if (currPosition.y - creditsLength >= creditsLength*2){ 
                 gameObject.transform.position = new Vector3(currPosition.x, startHeight, currPosition.z);
 
             //reset height of credits when reverse scroll is complete
-            }else if(currPosition.y < startHeight){
-                gameObject.transform.position = new Vector3(currPosition.x, creditsLength*11/8, currPosition.z);
-                
-            //scroll
             }else{ 
                 gameObject.transform.position = new Vector3(currPosition.x, currPosition.y + scrollSpeed*Time.deltaTime, currPosition.z);
             }
