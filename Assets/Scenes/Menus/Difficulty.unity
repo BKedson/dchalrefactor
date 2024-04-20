@@ -924,12 +924,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 205938561}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1057144611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -91.69999, y: -93.95}
-  m_SizeDelta: {x: -621.4, y: -398.69998}
+  m_AnchoredPosition: {x: -251.12, y: -130.44998}
+  m_SizeDelta: {x: 128.59991, y: 1.2999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409969460
 MonoBehaviour:
@@ -977,7 +977,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1191,12 +1203,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1785023435}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 891219187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -289.94998, y: -163.55}
-  m_SizeDelta: {x: -612.69995, y: -398.1}
+  m_AnchoredPosition: {x: -249.65, y: -200.05}
+  m_SizeDelta: {x: 137.29999, y: 1.8999634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &524667634
 MonoBehaviour:
@@ -1244,7 +1256,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1324,12 +1348,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1761316645}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 891219187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -289.94998, y: -93.95}
-  m_SizeDelta: {x: -612.69995, y: -398.69998}
+  m_AnchoredPosition: {x: -249.65, y: -130.44998}
+  m_SizeDelta: {x: 137.29999, y: 1.2999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &580578876
 MonoBehaviour:
@@ -1377,7 +1401,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1711,12 +1747,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 297850214}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1646720938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 293.80002, y: -27.180004}
-  m_SizeDelta: {x: -619.8, y: -398.15997}
+  m_AnchoredPosition: {x: -250.59995, y: -63.680004}
+  m_SizeDelta: {x: 130.19995, y: 1.8399963}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &705374943
 MonoBehaviour:
@@ -1764,7 +1800,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1975,7 +2023,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1552503937}
+  - {fileID: 580578875}
+  - {fileID: 524667633}
   m_Father: {fileID: 1984561778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2112,12 +2163,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1189709611}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1067749131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 101.550026, y: -93.95}
-  m_SizeDelta: {x: -623.50006, y: -398.69998}
+  m_AnchoredPosition: {x: -250.34991, y: -130.44998}
+  m_SizeDelta: {x: 126.49988, y: 1.2999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &902238442
 MonoBehaviour:
@@ -2165,7 +2216,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2242,7 +2305,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2108175654}
+  - {fileID: 409969459}
+  - {fileID: 1739163237}
   m_Father: {fileID: 1984561778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2510,7 +2576,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1614712955}
+  - {fileID: 902238441}
+  - {fileID: 1360333713}
   m_Father: {fileID: 1984561778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3141,12 +3210,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 762327731}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1067749131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 101.550026, y: -163.55}
-  m_SizeDelta: {x: -623.50006, y: -398.1}
+  m_AnchoredPosition: {x: -250.34991, y: -200.05}
+  m_SizeDelta: {x: 126.49988, y: 1.8999634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360333714
 MonoBehaviour:
@@ -3194,7 +3263,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3617,12 +3698,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 322083280}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1646720938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 293.80002, y: -93.95}
-  m_SizeDelta: {x: -619.8, y: -398.69998}
+  m_AnchoredPosition: {x: -250.59995, y: -130.44998}
+  m_SizeDelta: {x: 130.19995, y: 1.2999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542782395
 MonoBehaviour:
@@ -3670,7 +3751,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3750,12 +3843,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1177889216}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 891219187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -289.94998, y: -27.180004}
-  m_SizeDelta: {x: -612.69995, y: -398.15997}
+  m_AnchoredPosition: {x: -249.65, y: -63.680004}
+  m_SizeDelta: {x: 137.29999, y: 1.8399963}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1552503938
 MonoBehaviour:
@@ -3803,7 +3896,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3883,12 +3988,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 420368705}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1067749131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 101.55002, y: -27.180004}
-  m_SizeDelta: {x: -623.50006, y: -398.15997}
+  m_AnchoredPosition: {x: -250.34991, y: -63.680004}
+  m_SizeDelta: {x: 126.49988, y: 1.8399963}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1614712956
 MonoBehaviour:
@@ -3936,7 +4041,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4013,7 +4130,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 705374942}
+  - {fileID: 1542782394}
+  - {fileID: 2027451678}
   m_Father: {fileID: 1984561778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4150,12 +4270,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1793366913}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1057144611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -91.69999, y: -163.55}
-  m_SizeDelta: {x: -621.4, y: -398.1}
+  m_AnchoredPosition: {x: -251.12, y: -200.05}
+  m_SizeDelta: {x: 128.59991, y: 1.8999634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1739163238
 MonoBehaviour:
@@ -4203,7 +4323,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4827,21 +4959,9 @@ RectTransform:
   - {fileID: 1889380703}
   - {fileID: 1527766336}
   - {fileID: 891219187}
-  - {fileID: 1552503937}
-  - {fileID: 580578875}
-  - {fileID: 524667633}
   - {fileID: 1057144611}
-  - {fileID: 2108175654}
-  - {fileID: 409969459}
-  - {fileID: 1739163237}
   - {fileID: 1067749131}
-  - {fileID: 1614712955}
-  - {fileID: 902238441}
-  - {fileID: 1360333713}
   - {fileID: 1646720938}
-  - {fileID: 705374942}
-  - {fileID: 1542782394}
-  - {fileID: 2027451678}
   - {fileID: 168490488}
   - {fileID: 1058122569}
   m_Father: {fileID: 0}
@@ -4927,12 +5047,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1137784304}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1646720938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 293.80002, y: -163.55}
-  m_SizeDelta: {x: -619.8, y: -398.1}
+  m_AnchoredPosition: {x: -250.59995, y: -200.05}
+  m_SizeDelta: {x: 130.19995, y: 1.8999634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027451679
 MonoBehaviour:
@@ -4980,7 +5100,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5060,12 +5192,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1444483877}
-  m_Father: {fileID: 1984561778}
+  m_Father: {fileID: 1057144611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -91.69998, y: -27.180004}
-  m_SizeDelta: {x: -621.4, y: -398.15997}
+  m_AnchoredPosition: {x: -251.11998, y: -63.680004}
+  m_SizeDelta: {x: 128.59991, y: 1.8399963}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108175655
 MonoBehaviour:
@@ -5113,7 +5245,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61397767}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: ChangeDiffuclty
+        m_MethodName: ChangeOperand
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 61397767}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

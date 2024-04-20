@@ -16,15 +16,26 @@ public class DifficultyManager : MonoBehaviour
     private String mediumDescription;
     private String hardDescription;
 
+    private String addDescription;
+    private String subractDescription;
+    private String multiplyDescription;
+    private String divideDescription;
+
+    private int operand;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
 
-        easyDescription = "The game is easy.";
-        mediumDescription = "The game is medium.";
-        hardDescription = "The game is hard.";
+        easyDescription = " is easy.";
+        mediumDescription = " is medium.";
+        hardDescription = " is hard.";
+
+        addDescription = "The addition";
+        subractDescription = "The subtraction";
+        multiplyDescription = "The multiplication";
+        divideDescription = "The division";
 
         Difficulty difficulty = gameManager.GetComponent<GameManager>().GetDifficulty();
 
@@ -41,6 +52,8 @@ public class DifficultyManager : MonoBehaviour
             default:
                 break;
         }
+
+        operand = 0;
     }
 
     // Update is called once per frame
@@ -49,22 +62,51 @@ public class DifficultyManager : MonoBehaviour
         
     }
 
+    public void ChangeOperand(int op){
+        operand = op;
+    }
 
     // Changes the difficulty of the game and sets the corresponding description text
-    public void ChangeDiffuclty(int diff) {
+    public void ChangeDifficulty(int diff) {
         Difficulty difficulty = (Difficulty) diff;
 
-        gameManager.GetComponent<GameManager>().ChangeDiffuclty(difficulty);
+        gameManager.GetComponent<GameManager>().ChangeDifficulty(difficulty);
+
+        String operandDescription = "";
+
+        switch(operand){
+            case 0:
+                gameManager.GetComponent<GameManager>().ChangeAddDifficulty(difficulty);
+                operandDescription = addDescription;
+                break;
+            case 1:
+                gameManager.GetComponent<GameManager>().ChangeSubtractDifficulty(difficulty);
+                operandDescription = subractDescription;
+                break;
+            case 2:
+                gameManager.GetComponent<GameManager>().ChangeMultiplyDifficulty(difficulty);
+                operandDescription = multiplyDescription;
+                break;
+            case 3:
+                gameManager.GetComponent<GameManager>().ChangeDivideDifficulty(difficulty);
+                operandDescription = divideDescription;
+                break;
+            default:
+                gameManager.GetComponent<GameManager>().ChangeAddDifficulty(difficulty);
+                operandDescription = addDescription; 
+                break;
+        }
+        
 
         switch (difficulty) {
             case Difficulty.Easy:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = easyDescription;
+                descriptionText.GetComponent<TextMeshProUGUI>().text = operandDescription + easyDescription;
                 break;
             case Difficulty.Medium:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = mediumDescription;
+                descriptionText.GetComponent<TextMeshProUGUI>().text = operandDescription + mediumDescription;
                 break;
             case Difficulty.Hard:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = hardDescription;
+                descriptionText.GetComponent<TextMeshProUGUI>().text = operandDescription + hardDescription;
                 break;
             default:
                 break;

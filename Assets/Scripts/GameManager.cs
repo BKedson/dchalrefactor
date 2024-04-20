@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
     Difficulty globalDifficulty = Difficulty.Easy;
     private int questionComplexity = 0;
 
+    //Not yet fully implemented, but difficulty menu can set different difficulties for different operands
+    Difficulty addDifficulty = Difficulty.Easy;
+    Difficulty subtractDifficulty = Difficulty.Easy;
+    Difficulty multiplyDifficulty = Difficulty.Easy;
+    Difficulty divideDifficulty = Difficulty.Easy;
+
     // The solution and list of enemy strengths for the current question
     private double currQuestionSol;
     public List<int> currEnemyStrengths;
@@ -37,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     // GETTERS AND SETTERS
 
-    public void ChangeDiffuclty(Difficulty difficulty) {
+    public void ChangeDifficulty(Difficulty difficulty) {
         globalDifficulty = difficulty;
         PlayerPrefs.SetInt("difficulty", (int)globalDifficulty);
     }
@@ -45,6 +51,38 @@ public class GameManager : MonoBehaviour
     public Difficulty GetDifficulty(){
         globalDifficulty = (Difficulty) PlayerPrefs.GetInt("difficulty");
         return globalDifficulty;
+    }
+
+    //addition difficulty
+    public void ChangeAddDifficulty(Difficulty difficulty) {
+        addDifficulty = difficulty;
+    }
+    public Difficulty GetAddDifficulty(){
+        return addDifficulty;
+    }
+
+    //subtraction difficulty
+    public void ChangeSubtractDifficulty(Difficulty difficulty) {
+        subtractDifficulty = difficulty;
+    }
+    public Difficulty GetSubtractDifficulty(){
+        return subtractDifficulty;
+    }
+
+    //multiplication difficulty
+    public void ChangeMultiplyDifficulty(Difficulty difficulty) {
+        multiplyDifficulty = difficulty;
+    }
+    public Difficulty GetMultiplyDifficulty(){
+        return multiplyDifficulty;
+    }
+
+    //Division difficulty
+    public void ChangeDivideDifficulty(Difficulty difficulty) {
+        divideDifficulty = difficulty;
+    }
+    public Difficulty GetDivideDifficulty(){
+        return divideDifficulty;
     }
 
     // Changes the controls based on player input. If an illegal or duplicate button is selected, nothing happens
