@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1943817247033650846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8405473323401288680
@@ -48,7 +49,7 @@ MonoBehaviour:
   intakePrefab: {fileID: 9134499003758426375, guid: 976970279a17c5b41a7b13a6df7587ed, type: 3}
   sectorPrefab: {fileID: 9134499003758426375, guid: cb27dc3059e235a4ab8338826732b045, type: 3}
   orePrefab: {fileID: 281996818387040932, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}
-  oreTransformRoot: {fileID: 0}
+  oreTransformRoot: {fileID: 1943817247033650846}
   intakeWidth: 2
   windowQuestion: {fileID: 0}
   OnWeaponForged:
@@ -75,3 +76,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 1}
+--- !u!1 &5833436682653837674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1943817247033650846}
+  m_Layer: 21
+  m_Name: Ore Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1943817247033650846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833436682653837674}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4175502220667200940}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
