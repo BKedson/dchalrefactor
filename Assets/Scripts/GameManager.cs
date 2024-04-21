@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void Restart(){
+        
+    }
+
     // GETTERS AND SETTERS
 
     public void ChangeDifficulty(Difficulty difficulty) {
