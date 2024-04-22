@@ -28,14 +28,14 @@ public class PlayerGameDataController : MonoBehaviour
     }
     public PlayerDataManager dataManager;
     //Stores the ID data associated with this player
-    public string FirstName { get; set; }
-    public string NickName  { get; set; }
-    public int CodeNumber   { get; set; }
-    public int AdditionDifficulty { get; set; }
-    public int SubtractionDifficulty { get; set; }
-    public int MultiplicationDifficulty { get; set; }
-    public int DivisionDifficulty { get; set; }
-    public string CurrentCharacter { get; set;}
+    public string FirstName;
+    public string NickName;
+    public int CodeNumber;
+    public int AdditionDifficulty;
+    public int SubtractionDifficulty;
+    public int MultiplicationDifficulty;
+    public int DivisionDifficulty;
+    public string CurrentCharacter;
 
     private void Awake()
     {

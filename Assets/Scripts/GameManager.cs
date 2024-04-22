@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public List<int> currEnemyStrengths;
 
     //Character Information---------------------------------------------------------------
-    private int currentCharacter; //Stores the global character index for this player - information comes from the Player Data Controller
+    public int currentCharacter; //Stores the global character index for this player - information comes from the Player Data Controller
     private PlayerCharacterData globalCharacterData;
     //-------------------------------------------------------------------------------------
     private void Awake()
@@ -32,17 +32,16 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             manager = this;
         }
+        //Initialize the Character Mapping class----------------------------------------------
+        globalCharacterData = new PlayerCharacterData();
+        //retrieve index 
+        currentCharacter = globalCharacterData.RetrieveCharacterIndex(PlayerGameDataController.Instance.CurrentCharacter);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //Initialize the Character Mapping class----------------------------------------------
-        globalCharacterData = new PlayerCharacterData();
-        //Initialize the game Data------------------------------------------------------------
-        PlayerGameDataController.Instance.InitializeGameData();
-        //retrive index 
-        currentCharacter = globalCharacterData.RetrieveCharacterIndex(PlayerGameDataController.Instance.CurrentCharacter);
+
     }
 
     // Update is called once per frame

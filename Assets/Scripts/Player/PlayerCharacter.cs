@@ -31,10 +31,13 @@ public class PlayerCharacter : MonoBehaviour {
 		//Deactivate all the characters-------------------------------------------------
 		foreach(GameObject character in characters)
 		{
+			Debug.Log("setting false");
 			character.SetActive(false);
 		}
 		//Activate the current character -----------------------------------------------
 		characters[(GameManager.manager.GetCurrentCharacter())].SetActive(true);
+		//setting true
+		Debug.Log($"setting true {GameManager.manager.currentCharacter}");
 		//------------------------------------------------------------------------------
 		//start = true;
 		_health = 3;

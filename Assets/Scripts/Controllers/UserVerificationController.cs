@@ -99,8 +99,6 @@ public class UserVerificationController : BaseController<UserVerificationControl
         {
             //loading game file into manager-loginData
             dataManager.InitializeGameLoginData(firstName, nickName, codeNumber);
-            //cache the data to the controller-from loginData to dataController
-            dataController.UnpackGameDataFile(dataManager.loginGameData);
             //Call the MainMenu sequence after loading the data
             HandleInputAction(UVAction.RegisterUserCreated);
         }
@@ -122,10 +120,6 @@ public class UserVerificationController : BaseController<UserVerificationControl
         {
             //download the file from the cloud to the manager's login file
             dataManager.RetrieveGameDataFromCloud();
-            //load default data into controller
-            dataController.UnpackGameDataFile(dataController.DefaultGameDataFile(firstName, nickName, codeNumber));
-            //cache the data file from the manager to the dataController
-            dataController.UnpackGameDataFile(dataManager.loginGameData);
             //Call the MainMenu sequence after loading the data
             HandleInputAction(UVAction.LoginUserLoaded);
         }

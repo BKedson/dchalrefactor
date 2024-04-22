@@ -53,4 +53,8 @@ public class TransitionManager : MonoBehaviour
     public void Quit() {
         Application.Quit();
     }
+
+    public void CharacterPage() {
+        SceneManager.LoadScene("Character Selection");
+    }
 }

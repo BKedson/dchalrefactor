@@ -22,11 +22,6 @@ public class PlayerDataManager : MonoBehaviour
         await UnityServices.InitializeAsync();   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //INTERMEDIATE HELPER METHODS------------------------------------------
     //Used to check the sign up - registration operation
     public async Task<bool> IsRegisrationSuccessful(string username, string password)
@@ -106,7 +101,10 @@ public class PlayerDataManager : MonoBehaviour
         string jsonFile = dataToLoad[playerUsername].ToString();
         //Serialize from json to object
         loginGameData = JsonUtility.FromJson<PlayerGameData>(jsonFile);
-        
+        //add to session
+        sessionGameData = loginGameData;
+        //unpack to controller
+        dataController.UnpackGameDataFile(loginGameData);
     }
 
     public void InitializeGameLoginData(string firstName, string nickName, int codeNumber)
@@ -116,6 +114,8 @@ public class PlayerDataManager : MonoBehaviour
         //send a version of the file to the cloud
         sessionGameData = loginGameData;
         SaveGameDataToCloud();
+        //unpack to controller
+        dataController.UnpackGameDataFile(loginGameData);
     }
 
     //Signs Up a new user
