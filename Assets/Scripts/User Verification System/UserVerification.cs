@@ -16,7 +16,8 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         public GameObject PromptErrorText;
         //stores the Animations Class for the Start Menu/ User Verification
         public StartMenuAnimations MenuAnim;
-
+        //stores the Transition manager to load Main Menu scene
+        public TransitionManager transitionManager;
         //-----------------------------------------------------------------------------------------
         //methods to handle different Actions during User verification-----------------------------
         public void OnRegisterPressed()
@@ -64,6 +65,8 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         {
             //Load the user's data into the game - go to Main menu
             Debug.Log("Load the Main Menu");
+            transitionManager.Menu();
+            PlayerGameDataController.Instance.SaveGameData();
         }
 
         public void OnRegisterInvalid()
@@ -86,6 +89,7 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         {
             //Load new user's data into the game - go to Main menu
             Debug.Log("Load the Main Menu");
+            transitionManager.Menu();
         }
 
         public void OnGuestPressed()

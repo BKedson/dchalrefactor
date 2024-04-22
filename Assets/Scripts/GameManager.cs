@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using dchalrefactor.Scripts.Player;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class GameManager : MonoBehaviour
     private double currQuestionSol;
     public List<int> currEnemyStrengths;
 
+    //Character Information---------------------------------------------------------------
+    private int currentCharacter; //Stores the global character index for this player - information comes from the Player Data Controller
+    private PlayerCharacterData globalCharacterData;
+    //-------------------------------------------------------------------------------------
     private void Awake()
     {
         if(manager) {
@@ -32,7 +37,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Initialize the Character Mapping class----------------------------------------------
+        globalCharacterData = new PlayerCharacterData();
+        //Initialize the game Data------------------------------------------------------------
+        PlayerGameDataController.Instance.InitializeGameData();
+        //retrive index 
+        currentCharacter = globalCharacterData.RetrieveCharacterIndex(PlayerGameDataController.Instance.CurrentCharacter);
     }
 
     // Update is called once per frame
@@ -141,5 +151,11 @@ public class GameManager : MonoBehaviour
 
     public void SetCurrEnemyStrengths(List<int> enemyStrengths) {
         currEnemyStrengths = enemyStrengths;
+    }
+
+    //-------------------------------------------------------------------
+    public int GetCurrentCharacter()
+    {
+        return currentCharacter;
     }
 }

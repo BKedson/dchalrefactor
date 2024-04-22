@@ -6,11 +6,15 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerGameData
 {
+    //Identity Infrmation-------------------------------------------
     public string FirstName;
     public string NickName;
     public int CodeNumber;
+    //Difficulty information-----------------------------------------
     public int AdditionDifficulty;
     public int SubtractionDifficulty;
     public int MultiplicationDifficulty;
     public int DivisionDifficulty;
+    //Character Information-------------------------------------------
+    public string CurrentCharacter;
 }

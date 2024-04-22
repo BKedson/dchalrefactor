@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement _instance;
     //stores the Animations class for the player
-    public PlayerAnimations animations;
+    private PlayerAnimations animations;
+    //stores all the animations classes for all playerCharacters
+    public PlayerAnimations[] allCharacterAnimations;
 
     [Header("Movement Speed")]
     [SerializeField][Min(0)] private float walkSpeed;
@@ -74,6 +76,12 @@ public class PlayerMovement : MonoBehaviour
         stuff = GetComponent<PlayerInventory>();
     }
 
+    void Start()
+    {
+        //assign the current animations class-------------------------------------------------
+        animations = allCharacterAnimations[GameManager.manager.GetCurrentCharacter()];
+        //------------------------------------------------------------------------------------
+    }
     private void OnEnable()
     {
         playerInputAction.Player.Movement.Enable();

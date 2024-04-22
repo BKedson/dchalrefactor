@@ -22,10 +22,20 @@ public class PlayerCharacter : MonoBehaviour {
 	//stores whether the player has finished the current level
 	//public bool hasFinishedLevel; //use this for flagging tp from mazes
 
+	public GameObject[] characters;
+
 	void Awake(){
 		DontDestroyOnLoad(this.gameObject);
 	}
 	void Start() {
+		//Deactivate all the characters-------------------------------------------------
+		foreach(GameObject character in characters)
+		{
+			character.SetActive(false);
+		}
+		//Activate the current character -----------------------------------------------
+		characters[(GameManager.manager.GetCurrentCharacter())].SetActive(true);
+		//------------------------------------------------------------------------------
 		//start = true;
 		_health = 3;
 		//has not Yet finshed level

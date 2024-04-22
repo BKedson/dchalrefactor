@@ -122,6 +122,8 @@ public class UserVerificationController : BaseController<UserVerificationControl
         {
             //download the file from the cloud to the manager's login file
             dataManager.RetrieveGameDataFromCloud();
+            //load default data into controller
+            dataController.UnpackGameDataFile(dataController.DefaultGameDataFile(firstName, nickName, codeNumber));
             //cache the data file from the manager to the dataController
             dataController.UnpackGameDataFile(dataManager.loginGameData);
             //Call the MainMenu sequence after loading the data
