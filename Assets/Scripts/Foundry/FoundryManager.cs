@@ -65,10 +65,11 @@ public class FoundryManager : BaseInteractable
                 intake.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), 0f, 0f);
                 intakeGroups[i].Add(intake.GetComponent<FoundryIntakeManager>());
 
-                GameObject ore = Instantiate(orePrefab, transform);
+                GameObject ore = Instantiate(orePrefab, oreTransformRoot);
                 Vector3 orePos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized * 3f;
                 orePos.y = 3f;
                 ore.transform.localPosition = orePos;
+                ore.transform.parent = null;
                 ore.GetComponent<OreManager>().SetPower(valDigits[i][j]);
 
                 digitCounter++;

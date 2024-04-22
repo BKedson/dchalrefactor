@@ -36,8 +36,17 @@ public class MouseLook : MonoBehaviour
         yRot = (yRot + Input.GetAxis("Mouse X") * sensitivityX) % 360f;
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
+        if (PlayerMovement._instance.OnWallR())
+        {
+            camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, camFlippedLocalOffset, 0.1f);
+        }
+        else
+        {
+            camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, camDefaultLocalOffset, 0.1f);
+        }
+
         RaycastHit hit;
         // Current camera offset relative to the camera holder
         Vector3 currOffset = camTransform.position - camHolderTransform.position;
@@ -59,18 +68,6 @@ public class MouseLook : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, yRot, 0);
         camHolderTransform.localRotation = Quaternion.Euler(xRot, 0, 0);
-    }
-
-    private void LateUpdate()
-    {
-        if (PlayerMovement._instance.OnWallR())
-        {
-            camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, camFlippedLocalOffset, 0.1f);
-        }
-        else
-        {
-            camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, camDefaultLocalOffset, 0.1f);
-        }
     }
 
     private void OnDrawGizmosSelected()

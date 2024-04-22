@@ -56,6 +56,9 @@ public class PlayerCharacter : MonoBehaviour {
 		else{
 			textComp.text = "Health " + _health + " " + hp;
 			death.SetActive(true);
+			Time.timeScale = 0;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.Confined;
 		}
 		Debug.Log("Health: " + _health);
 	}

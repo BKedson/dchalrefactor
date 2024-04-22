@@ -265,6 +265,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 281996818387040928, guid: d9ea9d4119f1f464f9ebf40bc2454c09, type: 3}
   m_PrefabInstance: {fileID: 245146352}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &343680733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343680735}
+  - component: {fileID: 343680734}
+  m_Layer: 0
+  m_Name: TransitionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &343680734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343680733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0985cc93889be44a8ed98ff486eaeb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &343680735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343680733}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 932.1621, y: 732.6918, z: 7.5982666}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &451053848
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +474,7 @@ MonoBehaviour:
   dungeonRoot: {fileID: 1610822979}
   roomPrefab: {fileID: 3992400806503070519, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
   initialGenOffset: {x: 0, y: 0, z: -2}
-  genOffset: {x: 0, y: 0, z: 90}
+  genOffset: {x: 0, y: 0, z: 100}
 --- !u!1 &531725863
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f7fc47beb71c6469ce9b3ebfbe84a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subject: 0
   testGenerateDifficultyAddition: -1
   testGeneratDifficultyMultiplication: -1
   testGeneratDifficultySubtraction: -1
@@ -1140,6 +1183,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -23.699951
       objectReference: {fileID: 0}
+    - target: {fileID: 3384376567919107697, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_text
+      value: Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 4183274905168109779, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1280,6 +1327,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 8564381806109026475, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 343680734}
+    - target: {fileID: 8564381806109026475, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564381806109026475, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TransitionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564381806109026475, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8914729381224232994, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1320,6 +1383,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 9192955485708749658, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192955485708749658, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8915454
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192955485708749658, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1337,3 +1412,4 @@ SceneRoots:
   - {fileID: 1757635983}
   - {fileID: 1603421255}
   - {fileID: 635919946}
+  - {fileID: 343680735}
