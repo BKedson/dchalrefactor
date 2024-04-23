@@ -1176,6 +1176,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1380384738}
+        m_TargetAssemblyTypeName: CharacterSelection, Assembly-CSharp
+        m_MethodName: UpdateCharacterShowcase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &562186611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2410,7 +2422,7 @@ GameObject:
   - component: {fileID: 1284395828}
   - component: {fileID: 1284395827}
   m_Layer: 5
-  m_Name: DC_Woman_2
+  m_Name: Character Showcase Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2456,7 +2468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: eff6463cff199624a9b1bafe0537ef6e, type: 2}
+  m_Texture: {fileID: 8400000, guid: d0bedc69341cd624bbdba531fb7c2ab3, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2723,6 +2735,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterViewPage: {fileID: 363229301}
   ChangeCharacterButton: {fileID: 148956565}
+  characterClips:
+  - {fileID: 32900000, guid: eec1c3e0c1132274692f11a80711518a, type: 3}
+  - {fileID: 32900000, guid: eb150a49b763e314ab2239bbbad59a49, type: 3}
+  targetTextures:
+  - {fileID: 8400000, guid: eff6463cff199624a9b1bafe0537ef6e, type: 2}
+  - {fileID: 8400000, guid: d0bedc69341cd624bbdba531fb7c2ab3, type: 2}
+  showcaseImage: {fileID: 1284395827}
+  videoPlayer: {fileID: 1904161088}
   selectedCharacter: 
 --- !u!1 &1384730765
 GameObject:
@@ -2823,6 +2843,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CharacterSelection, Assembly-CSharp
         m_MethodName: EnableCharacterPage
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1380384738}
+        m_TargetAssemblyTypeName: CharacterSelection, Assembly-CSharp
+        m_MethodName: UpdateCharacterShowcase
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3283,6 +3315,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 170977929883713616, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: loginGameData.NickName
+      value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 170977929883713616, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: loginGameData.FirstName
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 170977929883713616, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: sessionGameData.NickName
+      value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 170977929883713616, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: sessionGameData.FirstName
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 170977929883713616, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: loginGameData.CurrentCharacter
+      value: DC_Woman_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 170977929883713616, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: sessionGameData.CurrentCharacter
+      value: DC_Woman_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088157571753472682, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: NickName
+      value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088157571753472682, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: FirstName
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088157571753472682, guid: de735951ee0359e45837a1e75f7db154, type: 3}
+      propertyPath: CurrentCharacter
+      value: DC_Woman_2
+      objectReference: {fileID: 0}
     - target: {fileID: 5686137570427345901, guid: de735951ee0359e45837a1e75f7db154, type: 3}
       propertyPath: m_Name
       value: Data Management
@@ -3372,11 +3440,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904161086}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: eec1c3e0c1132274692f11a80711518a, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: eb150a49b763e314ab2239bbbad59a49, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: eff6463cff199624a9b1bafe0537ef6e, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: d0bedc69341cd624bbdba531fb7c2ab3, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -3480,7 +3548,7 @@ GameObject:
   - component: {fileID: 2021176717}
   - component: {fileID: 2021176716}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Character Selection Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
