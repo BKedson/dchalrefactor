@@ -65,6 +65,7 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         {
             //Load the user's data into the game - go to Main menu
             Debug.Log("Load the Main Menu");
+            //load the main menu
             transitionManager.Menu();
         }
 

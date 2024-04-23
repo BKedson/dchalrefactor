@@ -120,6 +120,8 @@ public class UserVerificationController : BaseController<UserVerificationControl
         {
             //download the file from the cloud to the manager's login file
             dataManager.RetrieveGameDataFromCloud();
+            //Indicate old user - IndicateNewUser(false)
+            dataController.IndicateNewUser(false);
             //Call the MainMenu sequence after loading the data
             HandleInputAction(UVAction.LoginUserLoaded);
         }

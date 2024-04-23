@@ -27,6 +27,7 @@ public class PlayerGameDataController : MonoBehaviour
         }
     }
     public PlayerDataManager dataManager;
+    //-------------------------------------------------USER DATA-----------------------------------------------------------------
     //Stores the ID data associated with this player
     public string FirstName;
     public string NickName;
@@ -36,6 +37,9 @@ public class PlayerGameDataController : MonoBehaviour
     public int MultiplicationDifficulty;
     public int DivisionDifficulty;
     public string CurrentCharacter;
+    //---------------------------------------------------IN-GAME LOGIC-----------------------------------------------------------
+    public bool IsNewUser;
+    public bool IsNewGame;
 
     private void Awake()
     {
@@ -48,6 +52,8 @@ public class PlayerGameDataController : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject); // Persist this singleton instance.
         }
+        //Indicate new user
+        IndicateNewUser(true);
     }
     //---------------------------------------------------------------------
     //INITIALIZE DATA FOR THE CONTROLLER - from manager to controller
@@ -63,6 +69,7 @@ public class PlayerGameDataController : MonoBehaviour
         //
         Debug.Log("Data saved");
         dataManager.sessionGameData = PackGameDataFile();
+        dataManager.SaveGameDataToCloud();
     }
     //---------------------------------------------------------------------
     //PACK DATA (PACKAGING) - from controller variables to class file
@@ -108,5 +115,25 @@ public class PlayerGameDataController : MonoBehaviour
         data.DivisionDifficulty = 1;
         data.CurrentCharacter = "DC_Woman_2";
         return data;
+    }
+
+    //--------------------------------------------------------------------------------------------------
+    public void IndicateNewUser(bool type)
+    {
+        IsNewUser = type;
+    }
+    public bool CheckIfNewUser()
+    {
+        return IsNewUser;
+    }
+
+    public void IndicateNewGame(bool type)
+    {
+        IsNewGame = type;
+    }
+
+    public bool CheckIfNewGame()
+    {
+        return IsNewGame;
     }
 }
