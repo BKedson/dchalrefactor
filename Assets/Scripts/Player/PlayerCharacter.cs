@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using dchalrefactor.Scripts.Animations.PlayerMovement;
 public class PlayerCharacter : MonoBehaviour {
 	private int _health;
 	[SerializeField]private GameObject healthUI;
@@ -27,7 +28,8 @@ public class PlayerCharacter : MonoBehaviour {
 	void Awake(){
 		DontDestroyOnLoad(this.gameObject);
 	}
-	void Start() {
+	void Start() 
+	{
 		//Deactivate all the characters-------------------------------------------------
 		foreach(GameObject character in characters)
 		{
@@ -35,7 +37,7 @@ public class PlayerCharacter : MonoBehaviour {
 			character.SetActive(false);
 		}
 		//Activate the current character -----------------------------------------------
-		characters[(GameManager.manager.GetCurrentCharacter())].SetActive(true);
+		GetActiveCharacter().SetActive(true);
 		//setting true
 		Debug.Log($"setting true {GameManager.manager.currentCharacter}");
 		//------------------------------------------------------------------------------
@@ -43,6 +45,12 @@ public class PlayerCharacter : MonoBehaviour {
 		_health = 3;
 		//has not Yet finshed level
 		//hasFinishedLevel = false;
+	}
+
+	//returns the current active player character
+	public GameObject GetActiveCharacter()
+	{
+		return characters[(GameManager.manager.GetCurrentCharacter())] as GameObject;
 	}
 
 	//use this and add an indicator on run

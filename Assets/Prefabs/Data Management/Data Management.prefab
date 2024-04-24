@@ -46,23 +46,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loginGameData:
-    FirstName: 
-    NickName: 
+    FirstName: Player
+    NickName: player
     CodeNumber: 0
     AdditionDifficulty: 0
     SubtractionDifficulty: 0
     MultiplicationDifficulty: 0
     DivisionDifficulty: 0
-    CurrentCharacter: 
+    CurrentCharacter: DC_Woman_2
   sessionGameData:
-    FirstName: 
-    NickName: 
+    FirstName: Player
+    NickName: player
     CodeNumber: 0
     AdditionDifficulty: 0
     SubtractionDifficulty: 0
     MultiplicationDifficulty: 0
     DivisionDifficulty: 0
-    CurrentCharacter: 
+    CurrentCharacter: DC_Woman_2
   dataController: {fileID: 4088157571753472682}
 --- !u!114 &4088157571753472682
 MonoBehaviour:
@@ -77,3 +77,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataManager: {fileID: 170977929883713616}
+  FirstName: Player
+  NickName: player
+  CodeNumber: 0
+  AdditionDifficulty: 0
+  SubtractionDifficulty: 0
+  MultiplicationDifficulty: 0
+  DivisionDifficulty: 0
+  CurrentCharacter: DC_Woman_2
+  IsNewUser: 0
+  IsNewGame: 0

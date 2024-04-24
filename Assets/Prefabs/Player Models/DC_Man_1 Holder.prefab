@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8607501996889893632}
   - component: {fileID: 5920831442610465089}
+  - component: {fileID: 7292546270543344035}
   m_Layer: 0
   m_Name: DC_Man_1 Holder
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayerAnimator: {fileID: 6515748472853428033}
+--- !u!114 &7292546270543344035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353652824801968218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2821735ef0e76b43894c2e74c679113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapons:
+  - {fileID: 3000466546495219281}
 --- !u!1001 &949125390587642156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,6 +121,11 @@ PrefabInstance:
 --- !u!4 &752400615747985004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 529991938820431680, guid: b568cd8b8a1222848a60e75e7f143b9b, type: 3}
+  m_PrefabInstance: {fileID: 949125390587642156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3000466546495219281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2632412182512248701, guid: b568cd8b8a1222848a60e75e7f143b9b, type: 3}
   m_PrefabInstance: {fileID: 949125390587642156}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &6515748472853428033 stripped

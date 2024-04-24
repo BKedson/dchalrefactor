@@ -19,6 +19,18 @@ public class BasicBiped : BaseEnemy
         
     }
 
+    /// <summary>
+    /// TEMPORARY SCRIPT FOR DEATH----------------------------------------------------------------------------------------------------------------
+    /// </summary>
+    void OnTriggerEnter(Collider other)
+    {
+        //if it is a weapon
+        if (other.gameObject.tag == "sword")
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // How does move work for a biped?
     internal override void Move()
     {

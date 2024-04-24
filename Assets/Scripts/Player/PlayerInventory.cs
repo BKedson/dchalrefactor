@@ -30,6 +30,22 @@ public class PlayerInventory : MonoBehaviour
         {
             clueNum++;
 
+            //What possible Collectible options do we have and what do we do with them
+            switch(col.gameObject.tag)
+            {
+                case "Collectible_Weapon":
+                    //get the name of the weapon from the collider
+                    string weaponName = col.gameObject.GetComponent<WeaponCollectible>().GetCollectibleName();
+                    //The player must activate the corresponding weapon using the Player Collectibles class
+                    gameObject.GetComponent<PlayerCollectibles>().CollectWeapon(weaponName); 
+                    break;
+            }
+            Destroy(col.gameObject);
+        /*
+        foreach (Collider col in Physics.OverlapSphere(transform.position + checkCenterOffset, checkRadius, whatIsCollectable))
+        {
+            clueNum++;
+
             if(col.gameObject.tag == "sword" || col.gameObject.tag == "gun" || col.gameObject.tag == "controller" ){
                 AddItem(col.gameObject);
                 col.gameObject.SetActive(false);
@@ -38,7 +54,8 @@ public class PlayerInventory : MonoBehaviour
                 Destroy(col.gameObject);
             }
         }
-
+        */
+        }
         
     }
 

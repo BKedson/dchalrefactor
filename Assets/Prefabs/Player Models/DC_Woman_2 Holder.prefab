@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4031270161156216724}
   - component: {fileID: 8145502793664322312}
+  - component: {fileID: 8732729094842100800}
   m_Layer: 0
   m_Name: DC_Woman_2 Holder
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayerAnimator: {fileID: 804966492360354174}
+--- !u!114 &8732729094842100800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7041845161407185043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2821735ef0e76b43894c2e74c679113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapons:
+  - {fileID: 5385151444674276426}
 --- !u!1001 &2190410175721990877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -902,6 +917,11 @@ PrefabInstance:
 --- !u!95 &804966492360354174 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1535224659458671523, guid: cd6ace1ca1ea18743bf16b65f9d59edc, type: 3}
+  m_PrefabInstance: {fileID: 2190410175721990877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5385151444674276426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6115326194909087383, guid: cd6ace1ca1ea18743bf16b65f9d59edc, type: 3}
   m_PrefabInstance: {fileID: 2190410175721990877}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6413483884610788893 stripped
