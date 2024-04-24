@@ -61,16 +61,16 @@ public class PlayerCharacter : MonoBehaviour {
 		for(int i = 0; i<_health;i++){
 			hp = hp + "*";
 		}
-		if(_health > 0){
-			textComp.text = "Health " + _health + " " + hp;
-		}
-		else{
-			textComp.text = "Health " + _health + " " + hp;
+
+		textComp.text = "Health " + _health + " " + hp;
+
+		if (_health <= 0){
 			death.SetActive(true);
 			Time.timeScale = 0;
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.Confined;
 		}
+		
 		Debug.Log("Health: " + _health);
 	}
 }
