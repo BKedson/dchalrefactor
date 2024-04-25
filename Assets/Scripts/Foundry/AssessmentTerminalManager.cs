@@ -8,6 +8,7 @@ public class AssessmentTerminalManager : BaseInteractable
     [SerializeField] private GameObject surveillanceCam;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private GameObject separatorWall;
+    [SerializeField] private WindowQuestion windowQuestion;
 
     private GameObject playerRef;
 
@@ -70,16 +71,16 @@ public class AssessmentTerminalManager : BaseInteractable
     {
         int ans = Int32.Parse(inputField.text);
 
-        // TODO: Communicate with WindowQuestion
+        Debug.Log(windowQuestion.GetSolution());
         // Correct answer
-        if (true)
+        if (windowQuestion.GetSolution() == ans)
         {
             StartCoroutine("QuitAssessmentChallenge");
         }
         // Incorrect answer
         else
         {
-
+            inputField.text = "";
         }
     }
 }

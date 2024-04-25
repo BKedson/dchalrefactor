@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class DungeonGenerator : MonoBehaviour
@@ -16,6 +18,8 @@ public class DungeonGenerator : MonoBehaviour
     private GameObject currentRoom;
     private GameObject lastRoom;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,6 +31,8 @@ public class DungeonGenerator : MonoBehaviour
         nextGenPos = initialGenOffset;
 
         GenRoom();
+
+        player = GameObject.Find("Player");
     }
 
     public void GenRoom()
@@ -40,6 +46,30 @@ public class DungeonGenerator : MonoBehaviour
     public void DestroyRoom()
     {
         if (lastRoom) { Destroy(lastRoom); }
+    }
+
+    public void ProceedLv()
+    {
+        StartCoroutine("ProceedLvTransition");
+    }
+
+    IEnumerator ProceedLvTransition()
+    {
+        TransitionUIManager._instance.StartTransition();
+
+        TransitionUIManager._instance.StartTransition();
+        yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
+
+        lastRoom = currentRoom;
+
+        currentRoom = Instantiate(roomPrefab, nextGenPos, Quaternion.identity, dungeonRoot);
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = nextGenPos + new Vector3(0f, 0.2f, 2f);
+        player.GetComponent<CharacterController>().enabled = true;
+        nextGenPos += genOffset;
+
+        TransitionUIManager._instance.EndTransition();
+        yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
     }
 
     private void OnDrawGizmosSelected()

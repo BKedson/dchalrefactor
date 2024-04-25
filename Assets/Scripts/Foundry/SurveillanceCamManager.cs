@@ -27,7 +27,7 @@ public class SurveillanceCamManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInputAction.UI.Enable();
+        //playerInputAction.UI.Enable();
         playerInputAction.Player.Movement.Enable();
 
         foreach (ScriptableRendererFeature feature in features) { feature.SetActive(true); }

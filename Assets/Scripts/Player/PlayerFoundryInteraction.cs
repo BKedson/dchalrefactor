@@ -54,6 +54,7 @@ public class PlayerFoundryInteraction : MonoBehaviour
             // Aiming at an ore
             if (hit.collider.tag == "Ore")
             {
+                Debug.Log("Ore detected");
                 if (targetIntake) targetIntake.Unselect();
                 targetIntake = null;
 

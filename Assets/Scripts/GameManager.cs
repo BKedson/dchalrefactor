@@ -148,7 +148,8 @@ public class GameManager : MonoBehaviour
         currQuestionSol = sol;
     }
 
-    public List<int> GetCurrEnemyStrengths() {
+    public List<int> GetCurrEnemyStrengths()
+    {
         return currEnemyStrengths;
     }
 

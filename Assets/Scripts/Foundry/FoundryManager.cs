@@ -5,7 +5,9 @@ using UnityEngine.Events;
 public class FoundryManager : BaseInteractable
 {
     [SerializeField] private GameObject intakePrefab;
-    [SerializeField] private GameObject sectorPrefab;
+    [SerializeField] private GameObject additionSectorPrefab;
+    [SerializeField] private GameObject subtractionSectorPrefab;
+    [SerializeField] private GameObject multiplicationSectorPrefab;
     [SerializeField] private GameObject orePrefab;
     [SerializeField] private Transform oreTransformRoot;
     [SerializeField] private float intakeWidth;
@@ -69,7 +71,7 @@ public class FoundryManager : BaseInteractable
                 Vector3 orePos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized * 3f;
                 orePos.y = 3f;
                 ore.transform.localPosition = orePos;
-                ore.transform.parent = null;
+                ore.transform.parent = transform.parent;
                 ore.GetComponent<OreManager>().SetPower(valDigits[i][j]);
 
                 digitCounter++;
@@ -77,7 +79,22 @@ public class FoundryManager : BaseInteractable
 
             if (i + 1 == targetPowerLvs.Count) break;
 
-            GameObject sector = Instantiate(sectorPrefab, transform);
+            GameObject sector;
+            switch (windowQuestion.subject)
+            {
+                case Subject.Addition:
+                    sector = Instantiate(additionSectorPrefab, transform);
+                    break;
+                case Subject.Subtraction:
+                    sector = Instantiate(subtractionSectorPrefab, transform);
+                    break;
+                case Subject.Multiplication:
+                    sector = Instantiate(multiplicationSectorPrefab, transform);
+                    break;
+                default:
+                    sector = Instantiate(additionSectorPrefab, transform);
+                    break;
+            }
             sector.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), 0f, 0f);
 
             digitCounter++;
@@ -129,12 +146,12 @@ public class FoundryManager : BaseInteractable
         if (windowQuestion.IsCorrect(totalAns))
         {
             Debug.Log("Forge correct weapon");
+
+            OnWeaponForged.Invoke();
         }
         else
         {
             Debug.Log("Forge wrong weapon");
         }
-
-        OnWeaponForged.Invoke();
     }
 }

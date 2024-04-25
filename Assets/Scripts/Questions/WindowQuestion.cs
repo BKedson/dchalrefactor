@@ -323,7 +323,13 @@ public class WindowQuestion : BaseQuestion
         return enemyStrengths;
     }
 
-    public double Solution() {
-        return solution;
+    public double GetSolution() {
+        int ans = 0;
+        foreach (int s in enemyStrengths) Debug.Log(s);
+        foreach (int strength in enemyStrengths)
+        {
+            ans += strength;
+        }
+        return ans;
     }
 }
