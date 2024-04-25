@@ -30,6 +30,14 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene("Room Generation Test Scene");
     }
 
+    public void RestartLevel() {
+        // GameObject player = GameObject.Find("Player");
+        // if (player) {
+        //     GameObject.Destroy(player);
+        // }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void Options() {
         SceneManager.LoadScene("Options");
     }

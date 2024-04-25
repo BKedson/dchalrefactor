@@ -6,6 +6,7 @@ public class FoundryRoom : BaseRoom
     [SerializeField] private Animator door1Animator;
     [SerializeField] private Animator door2Animator;
     [SerializeField] private GameObject surveillanceCam;
+    [SerializeField] private GameObject cameraHelper;
 
     private bool doorOpened = false;
 
@@ -36,5 +37,6 @@ public class FoundryRoom : BaseRoom
     public void OnWeaponForged()
     {
         door1Animator.SetBool("Door Opened", true);
+        cameraHelper.gameObject.SetActive(false);
     }
 }
