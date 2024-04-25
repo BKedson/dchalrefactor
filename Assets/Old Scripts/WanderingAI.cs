@@ -13,7 +13,7 @@ public class WanderingAI : MonoBehaviour {
 	Vector3 playLastPos = Vector3.zero;
 	public float initWaitTime = 4f;
 	public float initRotate = 2f;
-	public float viewAng = 90f;
+	public float viewAng = 110f;
 	public float viewRad = 15f;
 	public LayerMask player;
 	public LayerMask obstacles;
@@ -75,7 +75,7 @@ public class WanderingAI : MonoBehaviour {
 				anim.SetBool("Patrol", true);
 				transform.position += transform.forward * speed * Time.deltaTime;
 			}
-			if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2.5f){
+			if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=3f){
 				anim.SetTrigger("Attack");
 				Stop();
 				waitTime -= Time.deltaTime;
