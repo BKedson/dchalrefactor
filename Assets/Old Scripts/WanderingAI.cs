@@ -75,6 +75,11 @@ public class WanderingAI : MonoBehaviour {
 				anim.SetBool("Patrol", true);
 				transform.position += transform.forward * speed * Time.deltaTime;
 			}
+			if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2.5f){
+				anim.SetTrigger("Attack");
+				Stop();
+				waitTime -= Time.deltaTime;
+			}
 			newDestinationCD -= Time.deltaTime;
 		}
 	}
@@ -96,7 +101,8 @@ public class WanderingAI : MonoBehaviour {
 				waitTime = initWaitTime;
 			}
 			else{
-				if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)>=2.5f){
+				if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2.5f){
+					anim.SetTrigger("Attack");
 					Stop();
 					waitTime -= Time.deltaTime;
 				}
@@ -138,8 +144,9 @@ public class WanderingAI : MonoBehaviour {
 		navMeshAgent.isStopped = true;
 		navMeshAgent.speed = 0;
 		isWandering = false;
+		//anim.ResetTrigger("Attack");
 	}
-
+/*
 	void LookingForP(Vector3 player){
 		navMeshAgent.SetDestination(player);
 		if(Vector3.Distance(transform.position, player) <= 0.3f){
@@ -155,7 +162,7 @@ public class WanderingAI : MonoBehaviour {
 			}
 		}
 	}
-
+*/
 	void View(){ // check if player is in line of sight
 		Collider[] pInRange = Physics.OverlapSphere(transform.position, viewRad, player);
 		for(int i = 0; i < pInRange.Length;i++){
@@ -177,6 +184,14 @@ public class WanderingAI : MonoBehaviour {
 			}
 			if(Vector3.Distance(transform.position, pPos.position)> viewRad){ // if player outside of max view angle
 				inRange = false; // not in range
+			}
+			if(Vector3.Distance(transform.position, pPos.position) <= 10){
+				patrolling = false;
+				isWandering = false;
+				isRotatingLeft = false;
+				isRotatingRight = false;
+				isWalking = false;
+				inRange = true;
 			}
 		
 			if(inRange){ // if player spotted set new player position to player current position
