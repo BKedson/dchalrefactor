@@ -23,6 +23,7 @@ public class CombatRoom : BaseRoom
     [SerializeField] private GameObject uFloorPrefab;
     [SerializeField] private GameObject spikeSafetyNetPrefab;
     [SerializeField] private NavMeshSurface surface;
+    [SerializeField] private GameObject referenceObject;
 
     private GameManager gameManager;
     private GameObject player;
@@ -30,8 +31,6 @@ public class CombatRoom : BaseRoom
     private float wallThickness = 1.2f;
     private int numEnemies = 5;
     private List<int> enemyStrengths = new List<int>();
-    private List<GameObject> enemies;
-    private bool enemyGenerated = false;
 
     // Selects the next spawned room, 1-indexed (for editor testing)
     public int resetRoom = -1;
@@ -71,10 +70,8 @@ public class CombatRoom : BaseRoom
             // Error
         }
 
-        GameObject referenceObject;
-        player = GameObject.Find("Player");
 
-        referenceObject = GameObject.Find("Door 2");
+        player = GameObject.Find("Player");
 
         if (referenceObject == null)
         {
@@ -96,11 +93,6 @@ public class CombatRoom : BaseRoom
             // baseX = player.transform.position.x;
             // baseZ = player.transform.position.z;
             Reset();
-        }
-
-        if (enemyGenerated && enemies.Count == 0)
-        {
-            DungeonGenerator._instance.GenRoom();
         }
     }
 
@@ -509,10 +501,8 @@ public class CombatRoom : BaseRoom
             xPos = baseX + x + UnityEngine.Random.Range(-1, 1);
             zPos = baseZ + z + UnityEngine.Random.Range(-2, 2);
 
-            GameObject enemy = Instantiate(enemyPrefab, new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, 180, 0));
-            enemy.GetComponent<BaseEnemy>().SetStrength(enemyStrengths[numEnemiesToSpawn - 1]);
-            enemies.Add(enemy);
-            enemyGenerated = true;
+            Instantiate(enemyPrefab, new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, 180, 0)).GetComponent<BaseEnemy>().SetStrength(enemyStrengths[numEnemiesToSpawn - 1]);
+
             numEnemiesToSpawn--;
         }
     }

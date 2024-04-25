@@ -66,6 +66,7 @@ public class DungeonGenerator : MonoBehaviour
         player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = nextGenPos + new Vector3(0f, 0.2f, 2f);
         player.GetComponent<CharacterController>().enabled = true;
+        player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
         nextGenPos += genOffset;
 
         TransitionUIManager._instance.EndTransition();

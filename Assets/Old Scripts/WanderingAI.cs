@@ -2,6 +2,7 @@
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class WanderingAI : MonoBehaviour {
 	public float speed = 3.0f;
@@ -218,7 +219,10 @@ public class WanderingAI : MonoBehaviour {
 
 
 	public void OnDestroy(){
-		//for animation (item drops ???)
+		if (GameObject.FindGameObjectsWithTag("enemy").Count() < 1)
+		{
+			DungeonGenerator._instance.ProceedLv();
+		}
 	}
 
 

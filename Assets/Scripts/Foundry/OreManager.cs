@@ -57,6 +57,7 @@ public class OreManager : MonoBehaviour
     public void OnInsert()
     {
         GetComponent<Collider>().enabled = false;
+        GetComponent<Rigidbody>().useGravity = false;
 
         Highlight(false);
     }
@@ -64,5 +65,6 @@ public class OreManager : MonoBehaviour
     public void OnEject()
     {
         GetComponent<Collider>().enabled = true;
+        GetComponent<Rigidbody>().useGravity = true;
     }
 }

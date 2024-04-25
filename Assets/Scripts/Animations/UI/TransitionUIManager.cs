@@ -18,6 +18,7 @@ public class TransitionUIManager : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
+
     }
 
     public void StartTransition()

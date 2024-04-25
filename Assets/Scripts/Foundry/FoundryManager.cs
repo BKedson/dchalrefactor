@@ -22,12 +22,6 @@ public class FoundryManager : BaseInteractable
         windowQuestion.GenerateInitialQuestion();
         targetPowerLvs = windowQuestion.GetEnemyStrengths();
 
-        string s = "";
-        foreach (int i in targetPowerLvs)
-        {
-            s += i + " ";
-        }
-        Debug.Log(s);
         //targetPowerLvTotal = 0;
 
         //switch (mathType)
