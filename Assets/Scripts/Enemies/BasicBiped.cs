@@ -25,7 +25,7 @@ public class BasicBiped : BaseEnemy
     void OnTriggerEnter(Collider other)
     {
         //if it is a weapon
-        if (other.gameObject.tag == "sword")
+        if (other.gameObject.name == "DamageCollider")
         {
             Destroy(gameObject);
         }
