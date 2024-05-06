@@ -48,14 +48,23 @@ public class WanderingAI : MonoBehaviour {
 			anim.SetBool("Patrol", true);
 		}
 	}
-	
-	void Update() {
-		if(_alive){//near check at start
-			//if near then attack
-			View(); // continuously check if player is in line of sight
+	//they sometimes get stuck in idle after attacking
+	//attack to idle transition and idle to run transitions need changes
+
+		void Update() {
+		if(_alive){		//near check
+						//if near then attack
+			View(); 	// continuously check if player is in line of sight
+
+			if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=3f){
+				anim.SetTrigger("Attack");
+				//Stop();
+				waitTime -= Time.deltaTime;
+			}
 			if(!patrolling && newDestinationCD <= 0){
 				newDestinationCD = 0.5f;
 				chase();
+				Debug.Log("After chase Spotted():" + anim.GetBool("spotted"));
 			}
 			else if(!isWandering) {
 				Move(speed);
@@ -76,11 +85,7 @@ public class WanderingAI : MonoBehaviour {
 				anim.SetBool("Patrol", true);
 				transform.position += transform.forward * speed * Time.deltaTime;
 			}
-			if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=3f){
-				anim.SetTrigger("Attack");
-				Stop();
-				waitTime -= Time.deltaTime;
-			}
+			anim.ResetTrigger("Attack");
 			newDestinationCD -= Time.deltaTime;
 		}
 	}
@@ -94,7 +99,7 @@ public class WanderingAI : MonoBehaviour {
 		navMeshAgent.SetDestination(playerPos);
 		
 		if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
-			if(waitTime <= 0 && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f){
+			if(waitTime <= 0 && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 8f){
 				patrolling = true;
 				near = false;
 				Move(speed); //when out of range return to patrol behavior
