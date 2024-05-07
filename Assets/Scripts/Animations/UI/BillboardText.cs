@@ -13,8 +13,8 @@ public class BillboardText : MonoBehaviour
     }
 
     void Update() {
-        if (gameObject.GetComponentInParent<BasicBiped>() != null)
-            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "" + gameObject.GetComponentInParent<BasicBiped>().GetStrength();
+        if (gameObject.GetComponentInParent<BaseEnemy>() != null)
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "" + gameObject.GetComponentInParent<BaseEnemy>().GetStrength();
     }
 
     void LateUpdate()
