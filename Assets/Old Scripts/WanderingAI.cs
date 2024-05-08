@@ -76,7 +76,7 @@ public class WanderingAI : MonoBehaviour {
 				anim.SetBool("Patrol", true);
 				transform.position += transform.forward * speed * Time.deltaTime;
 			}
-			if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=3f){
+			if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2f){
 				anim.SetTrigger("Attack");
 				Stop();
 				waitTime -= Time.deltaTime;
@@ -102,7 +102,7 @@ public class WanderingAI : MonoBehaviour {
 				waitTime = initWaitTime;
 			}
 			else{
-				if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2.5f){
+				if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2.0f){
 					anim.SetTrigger("Attack");
 					Stop();
 					waitTime -= Time.deltaTime;
@@ -145,7 +145,7 @@ public class WanderingAI : MonoBehaviour {
 		navMeshAgent.isStopped = true;
 		navMeshAgent.speed = 0;
 		isWandering = false;
-		//anim.ResetTrigger("Attack");
+		anim.SetBool("Rechase", true);
 	}
 /*
 	void LookingForP(Vector3 player){
