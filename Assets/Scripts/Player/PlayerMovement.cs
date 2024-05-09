@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using dchalrefactor.Scripts.Animations.PlayerMovement;
 
+// This is the player movement script featuring walking, srpinting, jumping, and wall running
+// Note: Wallrunning is a legacy functionality. Comment out relevant code to avoid unitended behaviors if any occurs
+
+// Wall run states
 enum WallState
 {
     NotOnWall = 0, OnWallL, OnWallR
@@ -10,6 +14,7 @@ enum WallState
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    // Singleton
     public static PlayerMovement _instance;
     //stores the Animations class for the player
     private PlayerAnimations animations;
@@ -19,44 +24,71 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Speed")]
     [SerializeField][Min(0)] private float walkSpeed;
     [SerializeField][Min(0)] private float runSpeed;
+    // Player movement vector is based on a physics-based calculation using custom gravity strength
+    // Thus the global gravity factor has no effect on the player. Adjust the value below instead if necessary
     [SerializeField] private float gravity = 9.8f;
 
+    // Collider mask of walls and floors the player can collide with
     [SerializeField] private LayerMask whatIsEnvironment;
+    // The radius of ground-check
+    // Note that the player transform is at the feet of the player
+    // Thus, this value is only for avoiding jitteringand should be small
     [SerializeField][Min(0)] private float groundCheckRadius;
 
     [Header("Jump Settings")]
+    // The interval (cooldown) of jumping
+    // This value is used to avoid unintended double (or multiple) jumps due to inconsistent Unity frame length
+    // This value should be small to allow rapid jumps, but should not be shorter than 0.02 (fixed delta-time)
     [SerializeField][Min(0)] private float jumpInterval;
+    // The force to propel the player upward
     [SerializeField][Min(0)] private float jumpForce;
+    // This force is applied:
+    // 1. When the player is falling, for more natural jump physics
+    // 2. When the space bar (or other jump keybind) is not pressed, to allow variable jump height
     [SerializeField] private float fallingBonus;
 
     [Header("Wall Run Settings")]
+    // Wall checks are performed two times, one on each side of the player
+    // This offset is the center of the two checks positions
     [SerializeField] private Vector3 wallCheckCenterOffset;
+    // How far to the left & right are the checks from the wallCheckCenterOffset
     [SerializeField] private float wallCheckHorizontalOffset;
     [SerializeField] private float wallCheckRadius;
+    // The falling speed of the player on a wall
+    // While wall-running, falling is controlled by this speed instead of gravity for more consistent behavior
     [SerializeField] private float wallRunFallSpeed;
 
     private PlayerInputAction playerInputAction;
+
+    // I strongly recommand moving these combat-relate codes to a separate script
     private WeaponManager weaponManager;
     private int _health;
+
     private CharacterController characterController;
-    private bool grounded = false;
 
-    private bool sprinting = false;
+    private bool grounded = false;  // Stateus variable - Whether the player is grounded
 
-    private float lastJumpTime = 0f;
+    private bool sprinting = false;  // Stateus variable - Whether the player is sprinting
 
-    private WallState wallState = WallState.NotOnWall;
+    private float lastJumpTime = 0f;  // Timer variable - The last time when the player jumps
+
+    private WallState wallState = WallState.NotOnWall;  // Stateus variable - Whether the player is on a wall/wall running
     //private bool wallRunDetached = false;  // Disable wall run after detach and before touching the ground
+    // The normal vector of the wall the player is running on
+    // Used for calculating movement assitance (attachment force)
     private Vector3 wallNormal;
 
+    // the velocity components of the player
     private Vector2 horizontalVelocity;
     private float yVelocity = 0f;
+    // the velocity vector (combination of the two above) of the player
     private Vector3 movement;
-    private PlayerInventory stuff;
-    private bool stop = false;
+    //private PlayerInventory stuff;
+    private bool movementDisabled = false;  // Movement disabling flag
 
     void Awake()
     {
+        // Singleton
         if (_instance == null)
         {
             _instance = this;
@@ -72,8 +104,9 @@ public class PlayerMovement : MonoBehaviour
         playerInputAction.Player.Fire.started += Attack;
 
         characterController = GetComponent<CharacterController>();
+        // Combat related code. Consider moving it to a separate script
         weaponManager = GetComponentInChildren<WeaponManager>();
-        stuff = GetComponent<PlayerInventory>();
+        //stuff = GetComponent<PlayerInventory>();
     }
 
     void Start()
@@ -114,36 +147,43 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(wallState);
         //transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
 
-        if(!stop)
+        if (!movementDisabled)
         {
-            // Behavior while NOT wall running
+            // Y velocity while NOT wall running
             if (wallState == WallState.NotOnWall)
             {
-                // Ensure on ground
                 if (grounded)
                 {
-                    if (characterController.velocity.y <= 0)  // Not jumping
+                    // If the player is grounded and not currently jumping
+                    // Exert an extra downward velocity to avoid bumping/jittering
+                    if (characterController.velocity.y <= 0)
                     {
                         yVelocity = -0.1f;
                     }
                 }
                 else
                 {
+                    // If the player is in the air
+                    // Exert gravity
                     yVelocity -= gravity * Time.fixedDeltaTime;
+                    // Apply falling bonus
                     if (characterController.velocity.y < 0 || playerInputAction.Player.Jump.phase == InputActionPhase.Waiting)
                     {
                         yVelocity -= fallingBonus;
                     }
                 }
             }
-            // Behavior wall running
+            // Y velocity while wall running
             else
             {
                 yVelocity = -wallRunFallSpeed;
             }
 
+            // Horizontal movement input (WASD or other movement keybind)
             horizontalVelocity = playerInputAction.Player.Movement.ReadValue<Vector2>();
 
+
+            // Calculate movement vector while NOT wall running
             if (wallState == WallState.NotOnWall)
             {
                 // Running/walking speed
@@ -152,26 +192,31 @@ public class PlayerMovement : MonoBehaviour
                     (sprinting ? runSpeed : walkSpeed);
                 // Sprinting: if the player is walking/running slowly or running/running fast
             }
+            // Calculate movement vector while wall running
             else
             {
+                // Align movement direction with wall bitangent
+                // This movement assistance is used so that view direction does not have to align with moving direction
                 movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
                 movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
             }
 
             movement.y = yVelocity;
-            //call jump anim here
-            
-            characterController.Move(movement * Time.fixedDeltaTime);
-            //call movement animation here
 
+            characterController.Move(movement * Time.fixedDeltaTime);
+
+            // Ground check
             grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
 
             if (grounded)
             {
                 wallState = WallState.NotOnWall;
             }
+            // Only check for walls when the player is falling
+            // Otherwise wallrun interrupts jumping
             else if (characterController.velocity.y <= 0.05f)
             {
+                // Check for wall - Left
                 if (Physics.CheckSphere(
                     transform.position + wallCheckCenterOffset - transform.right * wallCheckHorizontalOffset,
                     wallCheckRadius,
@@ -189,8 +234,8 @@ public class PlayerMovement : MonoBehaviour
                     wallNormal = hit.normal;
                     wallState = WallState.OnWallL;
                 }
-                else
-                if (Physics.CheckSphere(
+                // Check for wall - Right
+                else if (Physics.CheckSphere(
                     transform.position + wallCheckCenterOffset + transform.right * wallCheckHorizontalOffset,
                     wallCheckRadius,
                     whatIsEnvironment
@@ -207,46 +252,49 @@ public class PlayerMovement : MonoBehaviour
                     wallNormal = hit.normal;
                     wallState = WallState.OnWallR;
                 }
+                // No wall in reach on both sides
                 else
                 {
                     wallState = WallState.NotOnWall;
                 }
             }
-            else  // Jumping (from ground)
+            else  // Jumping (from wall, detach the player from wall)
             {
                 wallState = WallState.NotOnWall;
             }
-            if(playerInputAction.Player.Fire.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
+            // Combat related code. Consider moving it to a separate script
+            if (playerInputAction.Player.Fire.phase == InputActionPhase.Performed) { weaponManager.currentAttack(false); }
         }
         else  // Jumping (from ground)
         {
             wallState = WallState.NotOnWall;
         }
-        if(playerInputAction.Player.Fire.phase == InputActionPhase.Performed){ weaponManager.currentAttack(false);}
+        // Combat related code. Consider moving it to a separate script
+        if (playerInputAction.Player.Fire.phase == InputActionPhase.Performed) { weaponManager.currentAttack(false); }
     }
 
+    // Animation
     private void LateUpdate()
     {
         Vector3 horizontalMovement = new Vector3(movement.x, 0f, movement.z);
         float horizontalMagnitude = horizontalMovement.magnitude;
 
-        // Debug.Log(horizontalMagnitude + "");
-        // -------------------------------------------------------------------------------------------------------- Run Anim
+        // Run Anim
         if (horizontalMagnitude > 3)
         {
             if (sprinting)
             {
-                //Stop Running Slow if the player was running slow
+                //Stop Running slow (animation) if the player was running slow
                 animations.StopRunSlow();
-                // Running fast-------------------------------------------------------------------------------------------
+                // Running fast (animation)
                 animations.RunFast();
-                
+
             }
             else
             {
-                //Stop Running Fast if the player was running Fast--------------------------------------------------------
+                //Stop Running fast (animation) if the player was running Fast
                 animations.StopRunFast();
-                // Running slowly
+                // Running slowly (animation)
                 animations.RunSlow();
             }
         }
@@ -258,48 +306,60 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Space key (or other jump keybind) callback
     private void Jump(InputAction.CallbackContext ctx)
     {
+        // Allow jump only if the player is grounded and jump CD is ready
         if (grounded && Time.time - lastJumpTime > jumpInterval)
         {
-            // ----------------------------------------------------------------------------------------------------------- Jump Anim
             yVelocity = jumpForce;
             lastJumpTime = Time.time;
             grounded = false;
-            //Call the animation-----------------------------------------------------------------------------------------------
+
+            // Jump animation
             animations.Jump();
         }
     }
 
+    // Combat related code. Consider moving it to a separate script
     private void Attack(InputAction.CallbackContext ctx)
     {
         weaponManager.currentAttack(true);
-        //Call the animation---------------------------------------------------------------------------------------------------
+        // Play animation
         animations.Attack();
     }
 
+    // Combat related code. Consider moving it to a separate script
     private void gSwap(InputAction.CallbackContext ctx)
     {
         weaponManager.swap(2);
     }
 
+    // Combat related code. Consider moving it to a separate script
     private void sSwap(InputAction.CallbackContext ctx)
     {
         weaponManager.swap(1);
     }
+
+    // Combat related code. Consider moving it to a separate script
     private void cSwap(InputAction.CallbackContext ctx)
     {
         weaponManager.swap(3);
     }
 
-    public void disable(){
-        stop = true;
+    // Disable and enable movement
+    // These two functions maybe be overlapping with built-in function and are redundant
+    public void disable()
+    {
+        movementDisabled = true;
     }
 
-    public void enable(){
-        stop = false;
+    public void enable()
+    {
+        movementDisabled = false;
     }
 
+    // Gizmos function - For visual assistance only
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = grounded ? Color.green : Color.red;
@@ -315,6 +375,8 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
+    // Enable/diable input
+    // This function maybe overlapping with OnEnable() and OnDisable() and are redundant
     public void EnableInput(bool toEnable)
     {
         if (toEnable)
@@ -339,6 +401,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Getter function for wall running state
+    // Unsed to move camera for better views on wall
     public bool OnWallR()
     {
         return wallState == WallState.OnWallR;

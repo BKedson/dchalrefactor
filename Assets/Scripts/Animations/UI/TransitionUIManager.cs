@@ -1,12 +1,14 @@
 using UnityEditor.Animations;
 using UnityEngine;
 
+// This is a singleton transition UI manager to create and remove blackscreen as needed
 public class TransitionUIManager : MonoBehaviour
 {
+    // Singleton
     public static TransitionUIManager _instance { get; private set; }
 
-    [SerializeField] private float startTransitionSpan;
-    [SerializeField] private float endTransitionSpan;
+    [SerializeField] private float startTransitionSpan;  // The length of animation to create a balckscreen
+    [SerializeField] private float endTransitionSpan;  // The length of animation to remove a balckscreen
 
     private Animator animator;
 
@@ -18,7 +20,6 @@ public class TransitionUIManager : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
-
     }
 
     public void StartTransition()

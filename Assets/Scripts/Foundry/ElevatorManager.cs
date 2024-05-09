@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+// This script is a simple controller that moves a platform to perform as an elevator.
+// It is no longer in use
 public class ElevatorManager : MonoBehaviour
 {
     [SerializeField] private float moveHeight;

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+// Legacy Script: This class is originally designed to be the player inventory and collectible collection manager
+// This script is currently not in use, but has not been removed from the player prefab
 public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory _instance;
