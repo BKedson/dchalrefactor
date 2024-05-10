@@ -7,6 +7,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private int _health;
 	[SerializeField]private GameObject healthUI;
 	[SerializeField]private GameObject death;
+	[SerializeField]private bool isInvincible;
 	//[SerializeField] PlayerInventory backpack = null;
 	//public GameObject gunUI;
 	//public GameObject gunHUD;
@@ -43,6 +44,7 @@ public class PlayerCharacter : MonoBehaviour {
 		//------------------------------------------------------------------------------
 		//start = true;
 		_health = 3;
+		isInvincible = false;
 		//has not Yet finshed level
 		//hasFinishedLevel = false;
 	}
@@ -53,24 +55,31 @@ public class PlayerCharacter : MonoBehaviour {
 		return characters[(GameManager.manager.GetCurrentCharacter())] as GameObject;
 	}
 
+	public void setInvincibility(bool inv){
+		isInvincible = inv;
+	}
+
 	//use this and add an indicator on run
 	public void Hurt(int damage) {
-		_health -= damage;
-		var textComp = healthUI.GetComponentInChildren<TMP_Text>();
-		string hp = "";
-		for(int i = 0; i<_health;i++){
-			hp = hp + "*";
-		}
+		if(!isInvincible){
+			_health -= damage;
+			var textComp = healthUI.GetComponentInChildren<TMP_Text>();
+			string hp = "";
+			for(int i = 0; i<_health;i++){
+				hp = hp + "*";
+			}
 
-		textComp.text = "Health " + _health + " " + hp;
+			textComp.text = "Health " + _health + " " + hp;
 
-		if (_health <= 0){
-			death.SetActive(true);
-			Time.timeScale = 0;
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.Confined;
+			if (_health <= 0){
+				death.SetActive(true);
+				Time.timeScale = 0;
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.Confined;
+			}
+		
+			Debug.Log("Health: " + _health);
 		}
 		
-		Debug.Log("Health: " + _health);
 	}
 }

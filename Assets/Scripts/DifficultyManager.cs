@@ -39,19 +39,7 @@ public class DifficultyManager : MonoBehaviour
 
         Difficulty difficulty = gameManager.GetComponent<GameManager>().GetDifficulty();
 
-        switch (difficulty) {
-            case Difficulty.Easy:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = easyDescription;
-                break;
-            case Difficulty.Medium:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = mediumDescription;
-                break;
-            case Difficulty.Hard:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = hardDescription;
-                break;
-            default:
-                break;
-        }
+        descriptionText.GetComponent<TextMeshProUGUI>().text = "";
 
         operand = 0;
     }

@@ -80,7 +80,7 @@ public class AssessmentTerminalManager : BaseInteractable
         // Incorrect answer
         else
         {
-            inputField.text = "";
+            inputField.text = "TRY AGAIN";
         }
     }
 }

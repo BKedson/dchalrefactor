@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     Difficulty globalDifficulty = Difficulty.Easy;
     private int questionComplexity = 0;
 
-    //Not yet fully implemented, but difficulty menu can set different difficulties for different operands
+    //Difficulty menu can set different difficulties for different operands, unsure if this translates to question generation yet
     Difficulty addDifficulty = Difficulty.Easy;
     Difficulty subtractDifficulty = Difficulty.Easy;
     Difficulty multiplyDifficulty = Difficulty.Easy;

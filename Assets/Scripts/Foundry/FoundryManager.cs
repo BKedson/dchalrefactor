@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,10 +17,26 @@ public class FoundryManager : BaseInteractable
 
     private List<FoundryIntakeManager>[] intakeGroups;
     private List<int> targetPowerLvs;
+    private int targetPower;
 
     private void Awake()
     {
         windowQuestion.GenerateInitialQuestion();
+        List<int> enemyStrengths = windowQuestion.GetEnemyStrengths();
+        Debug.Log("Window enemies: " + enemyStrengths[0] + ", " + enemyStrengths[1]);
+
+        StartCoroutine(SpawnDelay());
+    }
+
+    private IEnumerator SpawnDelay(){
+        yield return new WaitForSeconds(0.1f);
+
+        SpawnIntake();
+    }
+
+    private void SpawnIntake(){
+        targetPower = windowQuestion.GetSolution();
+        windowQuestion.GenerateIntakeQuestion(targetPower);
         targetPowerLvs = windowQuestion.GetEnemyStrengths();
 
         //targetPowerLvTotal = 0;

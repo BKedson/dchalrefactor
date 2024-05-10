@@ -38,6 +38,9 @@ public class WindowQuestion : BaseQuestion
     public int testGeneratDifficultyMultiplication = -1;
     public int testGeneratDifficultySubtraction = -1;
 
+    //for generating intake question
+    private int foundrySolution = -1;
+
     void Start()
     {
         // Find the game manager script
@@ -138,8 +141,17 @@ public class WindowQuestion : BaseQuestion
         GenerateQuestion();
     }
 
+    public void GenerateIntakeQuestion(int sol){
+        foundrySolution = sol;
+        GenerateQuestion();
+    }
+
     public override void GenerateQuestion() {   
-        numEnemies = UnityEngine.Random.Range(minEnemies, maxEnemies + 1);
+        //retain window numEnemies if generating foundry question, otherwise generate new numEnemies
+        if (foundrySolution <= 0){
+            numEnemies = UnityEngine.Random.Range(minEnemies, maxEnemies + 1);
+        }
+        
         
         enemyStrengths.Clear();
 
@@ -173,7 +185,12 @@ public class WindowQuestion : BaseQuestion
 
     // All enemies have different strengths, must be added together
     private void GenerateAdditionQuestion() {
-        solution = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
+        if(foundrySolution > 0){
+            solution = foundrySolution;
+        }else{
+            solution = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
+        }
+        
         
         if (noCarry && solution % 10 < 3) {
             solution += 3;
@@ -200,34 +217,66 @@ public class WindowQuestion : BaseQuestion
 
     // There is one large enemy and the other enemeis subtract from it
     private void GenerateSubtractionQuestion() {
-        // The strength of the large enemy
-        int largeEnemy = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
 
-        if (noCarry && largeEnemy % 10 < 3) {
-            solution += 3;
-        }
+        //if solution is given, generate large enemy then subtract the solution and generate remaining subtracting enemies
+        if(foundrySolution > 0){
+            solution = foundrySolution;
 
-        enemyStrengths.Add(largeEnemy);
+            //generate question based on solution
 
-        int remainingLargeEnemy = largeEnemy;
+            // The strength of the large enemy
+            int largeEnemy = addSolutionFactor * UnityEngine.Random.Range((int)solution, 10*(questionComplexity + 1));
 
-        // Generate individual enemy strengths and store the results
-        for (int i = numEnemies; i > 1; i--) {
-            int enemyStrength;
-            if (noCarry) {
-                int ones = UnityEngine.Random.Range(1, (remainingLargeEnemy % 10) - (i - 1));
-                int tens = 10 * UnityEngine.Random.Range(0, (remainingLargeEnemy / 10));
-                enemyStrength = ones + tens;
-                Debug.Log(tens + " + " + ones);
-            } else {
-                enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
+            enemyStrengths.Add(largeEnemy);
+
+            int remainingLargeEnemy = largeEnemy - (int)solution;
+
+            // Generate all but one enemy strengths and store the results
+            for (int i = numEnemies; i > 2; i--) {
+                int enemyStrength;
+                if (noCarry) {
+                    int ones = UnityEngine.Random.Range(1, (remainingLargeEnemy % 10) - (i - 1));
+                    int tens = 10 * UnityEngine.Random.Range(0, (remainingLargeEnemy / 10));
+                    enemyStrength = ones + tens;
+                    Debug.Log(tens + " + " + ones);
+                } else {
+                    enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
+                }
+                enemyStrengths.Add(enemyStrength);
+                remainingLargeEnemy -= enemyStrength;
             }
-            enemyStrengths.Add(enemyStrength);
-            remainingLargeEnemy -= enemyStrength;
-        }
 
-        // After all of the small enemies have been subtrated, what remains is the solution
-        solution = remainingLargeEnemy;
+            //make last enemy remaining amount to get to the solution
+
+            enemyStrengths.Add(remainingLargeEnemy);
+
+        //otherwise, generate large enemy and subtracting enemies before setting the solution to the remainder
+        }else{
+            // The strength of the large enemy
+            int largeEnemy = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
+
+            enemyStrengths.Add(largeEnemy);
+
+            int remainingLargeEnemy = largeEnemy;
+
+            // Generate individual enemy strengths and store the results
+            for (int i = numEnemies; i > 1; i--) {
+                int enemyStrength;
+                if (noCarry) {
+                    int ones = UnityEngine.Random.Range(1, (remainingLargeEnemy % 10) - (i - 1));
+                    int tens = 10 * UnityEngine.Random.Range(0, (remainingLargeEnemy / 10));
+                    enemyStrength = ones + tens;
+                    Debug.Log(tens + " + " + ones);
+                } else {
+                    enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
+                }
+                enemyStrengths.Add(enemyStrength);
+                remainingLargeEnemy -= enemyStrength;
+            }
+
+            // After all of the small enemies have been subtrated, what remains is the solution
+            solution = remainingLargeEnemy;
+        }
     }
 
     // All enemies have the same strength and can be added or multiplied, multiplication is faster
@@ -235,7 +284,12 @@ public class WindowQuestion : BaseQuestion
         if (noCarry) {
             GenerateNoCarryMultiplicationQuestion();
         } else {
-            solution = multSolutionFactor * numEnemies * UnityEngine.Random.Range(1, 10);
+            //this will simply generate the same multiplication question as in the window, unsure if that is intended
+            if (foundrySolution > 0){
+                solution = foundrySolution;
+            }else{
+                solution = multSolutionFactor * numEnemies * UnityEngine.Random.Range(1, 10);
+            }
 
             int enemyStrength = (int) solution / numEnemies;
 
@@ -250,15 +304,24 @@ public class WindowQuestion : BaseQuestion
         numEnemies = UnityEngine.Random.Range(2, 5);
         int enemyStrength;
 
-        if (numEnemies == 4) {
-            enemyStrength = 2;
-        } else if (numEnemies == 3) {
-            enemyStrength = UnityEngine.Random.Range(2, 4);
-        } else {
-            enemyStrength = UnityEngine.Random.Range(2, 5);
-        }
+        //generate question based on given answer
+        if(foundrySolution > 0){
+            //this will simply generate the same multiplication question as in the window, unsure if that is intended
+            solution = foundrySolution;
+            enemyStrength = (int)(solution/numEnemies);
+            
+        }else{
+            if (numEnemies == 4) {
+                enemyStrength = 2;
+            } else if (numEnemies == 3) {
+                enemyStrength = UnityEngine.Random.Range(2, 4);
+            } else {
+                enemyStrength = UnityEngine.Random.Range(2, 5);
+            }
 
-        solution = enemyStrength * numEnemies;
+            solution = enemyStrength * numEnemies;
+        }
+        
 
         for (int i = 0; i < numEnemies; i++) {
             enemyStrengths.Add(enemyStrength);
@@ -323,13 +386,17 @@ public class WindowQuestion : BaseQuestion
         return enemyStrengths;
     }
 
-    public double GetSolution() {
-        int ans = 0;
-        foreach (int s in enemyStrengths) Debug.Log(s);
-        foreach (int strength in enemyStrengths)
-        {
-            ans += strength;
-        }
-        return ans;
+    // public double GetSolution() {
+    //     int ans = 0;
+    //     foreach (int s in enemyStrengths) Debug.Log(s);
+    //     foreach (int strength in enemyStrengths)
+    //     {
+    //         ans += strength;
+    //     }
+    //     return ans;
+    // }
+
+    public int GetSolution() {
+        return (int)solution;
     }
 }
