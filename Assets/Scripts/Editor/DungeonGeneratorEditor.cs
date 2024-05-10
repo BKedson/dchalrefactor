@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+// Editor class for DungeonGenerator
 [CustomEditor(typeof(DungeonGenerator))]
 public class DungeonGeneratorEditor : Editor
 {
@@ -11,6 +12,7 @@ public class DungeonGeneratorEditor : Editor
         targetGenerator = (DungeonGenerator)target;
     }
 
+    // Inspector UI elements
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
