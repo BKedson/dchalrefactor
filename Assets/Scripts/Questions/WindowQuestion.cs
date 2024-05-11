@@ -17,12 +17,6 @@ public class WindowQuestion : BaseQuestion
     // 0-9 scale that describes how likely a solution is to break down into complex parts that require carrying
     private int questionComplexity = 0;
 
-    // How many right or wrong questions warrant a bump or decrease in diffiuclty?
-    private int wrongAnswerThreshold = 2;
-    private int rightAnswerThreshold = 2;
-    private int correctStreak = 0;
-    private int incorrectStreak = 0;
-
     // Does the question require the player to carry digits?
     private  bool noCarry = true;
 
@@ -91,31 +85,11 @@ public class WindowQuestion : BaseQuestion
     public override bool IsCorrect(double sol)
     {
         if (sol == solution) {
-            correctStreak++;
-            incorrectStreak = 0;
-
-            // Increases complexity for future problems if the player is easily answering questions
-            if (correctStreak >= rightAnswerThreshold) {
-                questionComplexity = Math.Min(9, questionComplexity + 1);
-                gameManager.SetQuestionComplexity(questionComplexity);
-            }
-
-            Debug.Log("Right answer streak: " + correctStreak);
-
+            gameManager.RightAnswer();
             return true;
         }
 
-        correctStreak = 0;
-        incorrectStreak++;
-
-        // Decreases complexity for future problems if the player is struggling
-        if (incorrectStreak >= wrongAnswerThreshold) {
-            questionComplexity = Math.Max(0, questionComplexity - 1);
-            gameManager.SetQuestionComplexity(questionComplexity);
-        }
-
-        Debug.Log("Wrong answer streak: " + incorrectStreak);
-
+        gameManager.WrongAnswer();
         return false;
     }
 

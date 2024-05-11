@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,14 @@ public class GameManager : MonoBehaviour
     bool canChangeControls = true;
     Difficulty globalDifficulty = Difficulty.Easy;
     private int questionComplexity = 0;
+
+    // How many questions has the player gotten right/wrong in a row?
+    private int correctStreak = 0;
+    private int incorrectStreak = 0;
+
+    // How many right or wrong questions warrant a bump or decrease in diffiuclty?
+    private int wrongAnswerThreshold = 2;
+    private int rightAnswerThreshold = 2;
 
     //Difficulty menu can set different difficulties for different operands, unsure if this translates to question generation yet
     Difficulty addDifficulty = Difficulty.Easy;
@@ -136,8 +145,29 @@ public class GameManager : MonoBehaviour
         return questionComplexity;
     }
 
-    public void SetQuestionComplexity(int complexity) {
-        questionComplexity = complexity;
+    public void WrongAnswer() {
+        correctStreak = 0;
+        incorrectStreak++;
+
+        // Decreases complexity for future problems if the player is struggling
+        if (incorrectStreak >= wrongAnswerThreshold) {
+            questionComplexity = Math.Max(0, questionComplexity - 1);
+        }
+
+        Debug.Log("Wrong answer streak: " + incorrectStreak);
+
+    }
+
+    public void RightAnswer() {
+            correctStreak++;
+            incorrectStreak = 0;
+
+            // Increases complexity for future problems if the player is easily answering questions
+            if (correctStreak >= rightAnswerThreshold) {
+                questionComplexity = Math.Min(9, questionComplexity + 1);
+            }
+
+            Debug.Log("Right answer streak: " + correctStreak);
     }
 
     public double GetCurrQuestionSol() {
