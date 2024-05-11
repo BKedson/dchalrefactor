@@ -46,7 +46,6 @@ public class FoundryManager : BaseInteractable
         // Prompt the windowQuestion to generate a question
         windowQuestion.GenerateInitialQuestion();
         List<int> enemyStrengths = windowQuestion.GetEnemyStrengths();
-        Debug.Log("Window enemies: " + enemyStrengths[0] + ", " + enemyStrengths[1]);
 
         StartCoroutine(SpawnDelay());
     }

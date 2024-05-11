@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     private double currQuestionSol;
     public List<int> currEnemyStrengths;
 
+    // Track player invincibility
+    [SerializeField] private bool isInvincible;
+
     //Character Information---------------------------------------------------------------
     public int currentCharacter; //Stores the global character index for this player - information comes from the Player Data Controller
     private PlayerCharacterData globalCharacterData;
@@ -41,7 +44,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        isInvincible = false;
+        PlayerPrefs.SetInt("invincibility", 0);
     }
 
     // Update is called once per frame
@@ -55,6 +59,19 @@ public class GameManager : MonoBehaviour
     }
 
     // GETTERS AND SETTERS
+
+    public void SetInvincibility(bool inv){
+        if(inv){
+            PlayerPrefs.SetInt("invincibility", 1);
+        }else{
+            PlayerPrefs.SetInt("invincibility", 0);
+        }
+        isInvincible = inv;
+    }
+
+    public bool GetInvincibility(){
+        return isInvincible;
+    }
 
     public void ChangeDifficulty(Difficulty difficulty) {
         globalDifficulty = difficulty;

@@ -58,6 +58,10 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene("Difficulty");
     }
 
+    public void Audio() {
+        SceneManager.LoadScene("Audio");
+    }
+
     public void Quit() {
         Application.Quit();
     }
