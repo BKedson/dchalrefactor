@@ -7,7 +7,6 @@ public class PlayerCharacter : MonoBehaviour {
 	private int _health;
 	[SerializeField]private GameObject healthUI;
 	[SerializeField]private GameObject death;
-	[SerializeField]private bool isInvincible;
 	//[SerializeField] PlayerInventory backpack = null;
 	//public GameObject gunUI;
 	//public GameObject gunHUD;
@@ -44,7 +43,6 @@ public class PlayerCharacter : MonoBehaviour {
 		//------------------------------------------------------------------------------
 		//start = true;
 		_health = 3;
-		isInvincible = false;
 		//has not Yet finshed level
 		//hasFinishedLevel = false;
 	}
@@ -55,13 +53,9 @@ public class PlayerCharacter : MonoBehaviour {
 		return characters[(GameManager.manager.GetCurrentCharacter())] as GameObject;
 	}
 
-	public void setInvincibility(bool inv){
-		isInvincible = inv;
-	}
-
 	//use this and add an indicator on run
 	public void Hurt(int damage) {
-		if(!isInvincible){
+		if(PlayerPrefs.GetInt("invincibility") == 0){
 			_health -= damage;
 			var textComp = healthUI.GetComponentInChildren<TMP_Text>();
 			string hp = "";
