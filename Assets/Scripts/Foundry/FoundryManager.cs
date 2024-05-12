@@ -57,11 +57,14 @@ public class FoundryManager : BaseInteractable
     }
 
     private void SpawnIntake(){
+        // Get solution from window question
         targetPower = windowQuestion.GetSolution();
+        List<int> windowPowerLvs = windowQuestion.GetEnemyStrengths();
+        // Generate intake question using the answer to the window question
         windowQuestion.GenerateIntakeQuestion(targetPower);
         // Retreive the numbers that makes up the final answer
         targetPowerLvs = windowQuestion.GetEnemyStrengths();
-
+       
         //int targetPowerLvTotal;
         //switch (windowQuestion.subject)
         //{
@@ -168,6 +171,21 @@ public class FoundryManager : BaseInteractable
                     {
                         ans = ans * 10 + intake.GetPower();
                     }
+                    //if this set of intakes is correct, give feedback
+                    bool match = false;
+                    foreach (int power in targetPowerLvs){
+                        if (ans == power){
+                            foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                                intake.CorrectFeedback();
+                            }
+                            match = true;
+                        }
+                    } 
+                    if(!match){
+                        foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                            intake.IncorrectFeedback();
+                        }
+                    }
                     totalAns += ans;
                 }
                 break;
@@ -206,6 +224,7 @@ public class FoundryManager : BaseInteractable
         else
         {
             Debug.Log("Forge wrong weapon");
+            
         }
     }
 }
