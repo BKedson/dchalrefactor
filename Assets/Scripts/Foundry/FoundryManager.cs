@@ -164,7 +164,7 @@ public class FoundryManager : BaseInteractable
                         ans = ans * 10 + intake.GetPower();
                     }
                     if (i == 0) { totalAns = ans; }
-                    else { totalAns += ans; }
+                    else { totalAns -= ans; }
                 }
                 break;
             case Subject.Multiplication:

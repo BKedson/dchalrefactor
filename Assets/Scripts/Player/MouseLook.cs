@@ -21,7 +21,7 @@ public class MouseLook : MonoBehaviour
     // This is the radius of the sphere and should be no smaller than the near clipping plane distance of the camera
     // Said distance can be found at "Projection - Clipping planes - Near" of the camera component
     // Note: It is not recommanded to change the near clipping plane distance. And 0.1f is a good choice for this value
-    [SerializeField] private float camCollisionRadius;
+    [SerializeField] private float camCollisionRadius;  // Recommanded Range [0.1-0.05]
 
     // Max and min pitch (X rotation)
     [SerializeField] private float camPitchMin;

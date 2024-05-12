@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using dchalrefactor.Scripts.Animations.PlayerMovement;
 
-// This is the player movement script featuring walking, srpinting, jumping, and wall running
+// This is the player movement script featuring walking, sprinting, jumping, and wall running
 // Note: Wallrunning is a legacy functionality. Comment out relevant code to avoid unitended behaviors if any occurs
 
 // Wall run states
@@ -167,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
                     // Exert gravity
                     yVelocity -= gravity * Time.fixedDeltaTime;
                     // Apply falling bonus
-                    if (characterController.velocity.y < 0 || playerInputAction.Player.Jump.phase == InputActionPhase.Waiting)
+                    if (characterController.velocity.y < 0 /*|| playerInputAction.Player.Jump.phase == InputActionPhase.Waiting*/)
                     {
                         yVelocity -= fallingBonus;
                     }
