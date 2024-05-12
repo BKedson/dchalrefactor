@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.AI.Navigation;
+using UnityEngine;
+using UnityEngine.AI;
+using System.Linq;
 
 // using System.Numerics;
 using UnityEngine;
@@ -87,6 +90,13 @@ public class Spawner : BaseEnemy
             Destroy(gameObject);
         }
     }
+
+    public void OnDestroy(){
+		if (GameObject.FindGameObjectsWithTag("enemy").Count() < 1)
+		{
+			DungeonGenerator._instance.ProceedLv();
+		}
+	}
 
     // GETTERS AND SETTERS
     public override void SetStrength(int stren) {

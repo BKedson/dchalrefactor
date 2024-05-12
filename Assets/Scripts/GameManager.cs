@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     // How many right or wrong questions warrant a bump or decrease in diffiuclty?
     private int wrongAnswerThreshold = 2;
     private int rightAnswerThreshold = 2;
+    private bool alreadyWrong = false;
 
     //Difficulty menu can set different difficulties for different operands, unsure if this translates to question generation yet
     Difficulty addDifficulty = Difficulty.Easy;
@@ -164,14 +165,18 @@ public class GameManager : MonoBehaviour
 
     public void WrongAnswer() {
         correctStreak = 0;
-        incorrectStreak++;
+
+        if (!alreadyWrong) {
+            incorrectStreak++;
+            alreadyWrong = true;
+        }
 
         // Decreases complexity for future problems if the player is struggling
-        if (incorrectStreak >= wrongAnswerThreshold) {
+        if (incorrectStreak % wrongAnswerThreshold == 0) {
             questionComplexity = Math.Max(0, questionComplexity - 1);
         }
 
-        Debug.Log("Wrong answer streak: " + incorrectStreak);
+        Debug.Log("Wrong answer streak: " + incorrectStreak + " Complexity: " + questionComplexity);
 
     }
 
@@ -179,12 +184,14 @@ public class GameManager : MonoBehaviour
             correctStreak++;
             incorrectStreak = 0;
 
+            alreadyWrong = false;
+
             // Increases complexity for future problems if the player is easily answering questions
-            if (correctStreak >= rightAnswerThreshold) {
+            if (correctStreak % rightAnswerThreshold == 0) {
                 questionComplexity = Math.Min(9, questionComplexity + 1);
             }
 
-            Debug.Log("Right answer streak: " + correctStreak);
+            Debug.Log("Right answer streak: " + correctStreak + " Complexity: " + questionComplexity);
     }
 
     public double GetCurrQuestionSol() {

@@ -169,9 +169,9 @@ public class WindowQuestion : BaseQuestion
 
     // All enemies have different strengths, must be added together
     private void GenerateAdditionQuestion() {
-        if(foundrySolution > 0){
+        if (foundrySolution > 0) {
             solution = foundrySolution;
-        }else{
+        } else {
             solution = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
         }
         
@@ -338,7 +338,7 @@ public class WindowQuestion : BaseQuestion
         // Easy questions have few (1-3) enemies, small and round solutions (ex. 10), and require no carrying
         if (questionComplexity < 3) {
             minEnemies = 2;
-            maxEnemies = 3;
+            maxEnemies = Math.Max(2, questionComplexity + 1);
             addSolutionFactor = 3;
             multSolutionFactor = 1;
             noCarry = true;
@@ -346,16 +346,16 @@ public class WindowQuestion : BaseQuestion
         // Medium questions (complexity 3-5) have a medium number of enemies (3-5), large or complex solutions (ex. 17 or 100), and may require carrying
         else if (questionComplexity < 7) {
             minEnemies = 3;
-            maxEnemies = (questionComplexity / 2) + 2;
-            addSolutionFactor = 10;
+            maxEnemies = (questionComplexity + 1 ) / 2 + 1;
+            addSolutionFactor = 2;
             multSolutionFactor = 2;
             noCarry = false;
         }
         // Hard questions have a large number of enemies (5+), large and complex solutions (ex. 117), and require carrying 
         else {
             minEnemies = 3;
-            maxEnemies = questionComplexity - 2;
-            addSolutionFactor = UnityEngine.Random.Range(6, 11);
+            maxEnemies = 6;
+            addSolutionFactor = UnityEngine.Random.Range(3, 7);
             multSolutionFactor = 3;
             noCarry = false;
         }
