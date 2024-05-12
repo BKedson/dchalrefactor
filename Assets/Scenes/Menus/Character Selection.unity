@@ -342,8 +342,8 @@ GameObject:
   - component: {fileID: 148956569}
   - component: {fileID: 148956568}
   - component: {fileID: 148956567}
-  - component: {fileID: 148956571}
   - component: {fileID: 148956570}
+  - component: {fileID: 148956571}
   m_Layer: 5
   m_Name: Change Character Button
   m_TagString: Untagged
@@ -573,7 +573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &245403878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,8 +1769,8 @@ GameObject:
   - component: {fileID: 897701204}
   - component: {fileID: 897701203}
   - component: {fileID: 897701202}
-  - component: {fileID: 897701206}
   - component: {fileID: 897701205}
+  - component: {fileID: 897701206}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -1998,7 +2000,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &910764131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,8 +2283,8 @@ GameObject:
   - component: {fileID: 1018456291}
   - component: {fileID: 1018456290}
   - component: {fileID: 1018456289}
-  - component: {fileID: 1018456293}
   - component: {fileID: 1018456292}
+  - component: {fileID: 1018456293}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -2510,7 +2514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1043794261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,8 +2529,8 @@ GameObject:
   - component: {fileID: 1043794265}
   - component: {fileID: 1043794264}
   - component: {fileID: 1043794263}
-  - component: {fileID: 1043794267}
   - component: {fileID: 1043794266}
+  - component: {fileID: 1043794267}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -2778,7 +2784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1213792803
 GameObject:
   m_ObjectHideFlags: 0

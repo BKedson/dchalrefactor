@@ -301,8 +301,8 @@ GameObject:
   - component: {fileID: 168490491}
   - component: {fileID: 168490490}
   - component: {fileID: 168490489}
-  - component: {fileID: 168490493}
   - component: {fileID: 168490492}
+  - component: {fileID: 168490493}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -532,7 +532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &205938560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,8 +1017,8 @@ GameObject:
   - component: {fileID: 409969462}
   - component: {fileID: 409969461}
   - component: {fileID: 409969460}
-  - component: {fileID: 409969464}
   - component: {fileID: 409969463}
+  - component: {fileID: 409969464}
   m_Layer: 5
   m_Name: Medium (1)
   m_TagString: Untagged
@@ -1258,7 +1260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &420368704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,8 +1409,8 @@ GameObject:
   - component: {fileID: 524667636}
   - component: {fileID: 524667635}
   - component: {fileID: 524667634}
-  - component: {fileID: 524667638}
   - component: {fileID: 524667637}
+  - component: {fileID: 524667638}
   m_Layer: 5
   m_Name: Hard
   m_TagString: Untagged
@@ -1648,7 +1652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &580578874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,8 +1667,8 @@ GameObject:
   - component: {fileID: 580578878}
   - component: {fileID: 580578877}
   - component: {fileID: 580578876}
-  - component: {fileID: 580578880}
   - component: {fileID: 580578879}
+  - component: {fileID: 580578880}
   m_Layer: 5
   m_Name: Medium
   m_TagString: Untagged
@@ -1904,7 +1910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &599662311
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,6 +2077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currEnemyStrengths: 
+  isInvincible: 0
   currentCharacter: 0
 --- !u!4 &615713751
 Transform:
@@ -2172,8 +2181,8 @@ GameObject:
   - component: {fileID: 705374945}
   - component: {fileID: 705374944}
   - component: {fileID: 705374943}
-  - component: {fileID: 705374947}
   - component: {fileID: 705374946}
+  - component: {fileID: 705374947}
   m_Layer: 5
   m_Name: Easy (3)
   m_TagString: Untagged
@@ -2415,7 +2424,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &762327730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,8 +2710,8 @@ GameObject:
   - component: {fileID: 902238444}
   - component: {fileID: 902238443}
   - component: {fileID: 902238442}
-  - component: {fileID: 902238446}
   - component: {fileID: 902238445}
+  - component: {fileID: 902238446}
   m_Layer: 5
   m_Name: Medium (2)
   m_TagString: Untagged
@@ -2942,7 +2953,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1057144610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3857,8 +3870,8 @@ GameObject:
   - component: {fileID: 1360333716}
   - component: {fileID: 1360333715}
   - component: {fileID: 1360333714}
-  - component: {fileID: 1360333718}
   - component: {fileID: 1360333717}
+  - component: {fileID: 1360333718}
   m_Layer: 5
   m_Name: Hard (2)
   m_TagString: Untagged
@@ -4100,7 +4113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1434811929
 GameObject:
   m_ObjectHideFlags: 0
@@ -4456,8 +4471,8 @@ GameObject:
   - component: {fileID: 1542782397}
   - component: {fileID: 1542782396}
   - component: {fileID: 1542782395}
-  - component: {fileID: 1542782399}
   - component: {fileID: 1542782398}
+  - component: {fileID: 1542782399}
   m_Layer: 5
   m_Name: Medium (3)
   m_TagString: Untagged
@@ -4699,7 +4714,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1552503936
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,8 +4729,8 @@ GameObject:
   - component: {fileID: 1552503940}
   - component: {fileID: 1552503939}
   - component: {fileID: 1552503938}
-  - component: {fileID: 1552503942}
   - component: {fileID: 1552503941}
+  - component: {fileID: 1552503942}
   m_Layer: 5
   m_Name: Easy
   m_TagString: Untagged
@@ -4955,7 +4972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1614712954
 GameObject:
   m_ObjectHideFlags: 0
@@ -4968,8 +4987,8 @@ GameObject:
   - component: {fileID: 1614712958}
   - component: {fileID: 1614712957}
   - component: {fileID: 1614712956}
-  - component: {fileID: 1614712960}
   - component: {fileID: 1614712959}
+  - component: {fileID: 1614712960}
   m_Layer: 5
   m_Name: Easy (2)
   m_TagString: Untagged
@@ -5211,7 +5230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1646720937
 GameObject:
   m_ObjectHideFlags: 0
@@ -5361,8 +5382,8 @@ GameObject:
   - component: {fileID: 1739163240}
   - component: {fileID: 1739163239}
   - component: {fileID: 1739163238}
-  - component: {fileID: 1739163242}
   - component: {fileID: 1739163241}
+  - component: {fileID: 1739163242}
   m_Layer: 5
   m_Name: Hard (1)
   m_TagString: Untagged
@@ -5604,7 +5625,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1761316644
 GameObject:
   m_ObjectHideFlags: 0
@@ -6249,8 +6272,8 @@ GameObject:
   - component: {fileID: 2027451681}
   - component: {fileID: 2027451680}
   - component: {fileID: 2027451679}
-  - component: {fileID: 2027451683}
   - component: {fileID: 2027451682}
+  - component: {fileID: 2027451683}
   m_Layer: 5
   m_Name: Hard (3)
   m_TagString: Untagged
@@ -6492,7 +6515,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &2108175653
 GameObject:
   m_ObjectHideFlags: 0
@@ -6505,8 +6530,8 @@ GameObject:
   - component: {fileID: 2108175657}
   - component: {fileID: 2108175656}
   - component: {fileID: 2108175655}
-  - component: {fileID: 2108175659}
   - component: {fileID: 2108175658}
+  - component: {fileID: 2108175659}
   m_Layer: 5
   m_Name: Easy (1)
   m_TagString: Untagged
@@ -6748,7 +6773,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

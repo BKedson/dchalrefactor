@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 34992386}
   - component: {fileID: 34992385}
   - component: {fileID: 34992384}
-  - component: {fileID: 34992388}
   - component: {fileID: 34992387}
+  - component: {fileID: 34992388}
   m_Layer: 5
   m_Name: Backward
   m_TagString: Untagged
@@ -367,7 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &37415875
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,8 +457,8 @@ GameObject:
   - component: {fileID: 48310027}
   - component: {fileID: 48310026}
   - component: {fileID: 48310025}
-  - component: {fileID: 48310029}
   - component: {fileID: 48310028}
+  - component: {fileID: 48310029}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
@@ -687,7 +689,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1001 &119205153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1076,8 +1080,8 @@ GameObject:
   - component: {fileID: 165321507}
   - component: {fileID: 165321506}
   - component: {fileID: 165321505}
-  - component: {fileID: 165321509}
   - component: {fileID: 165321508}
+  - component: {fileID: 165321509}
   m_Layer: 5
   m_Name: Save
   m_TagString: Untagged
@@ -1307,7 +1311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &173958672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,8 +1327,8 @@ GameObject:
   - component: {fileID: 173958675}
   - component: {fileID: 173958674}
   - component: {fileID: 173958677}
-  - component: {fileID: 173958679}
   - component: {fileID: 173958678}
+  - component: {fileID: 173958679}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -1582,7 +1588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &205533792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,8 +1946,8 @@ GameObject:
   - component: {fileID: 228619085}
   - component: {fileID: 228619084}
   - component: {fileID: 228619083}
-  - component: {fileID: 228619087}
   - component: {fileID: 228619086}
+  - component: {fileID: 228619087}
   m_Layer: 5
   m_Name: Interact
   m_TagString: Untagged
@@ -2170,7 +2178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &294960635
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,8 +2328,8 @@ GameObject:
   - component: {fileID: 326054518}
   - component: {fileID: 326054517}
   - component: {fileID: 326054520}
-  - component: {fileID: 326054522}
   - component: {fileID: 326054521}
+  - component: {fileID: 326054522}
   m_Layer: 5
   m_Name: Forward
   m_TagString: Untagged
@@ -2578,7 +2588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &377190387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,6 +3670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currEnemyStrengths: 
+  isInvincible: 0
   currentCharacter: 0
 --- !u!4 &973821704
 Transform:
@@ -4314,8 +4327,8 @@ GameObject:
   - component: {fileID: 1145964753}
   - component: {fileID: 1145964752}
   - component: {fileID: 1145964751}
-  - component: {fileID: 1145964755}
   - component: {fileID: 1145964754}
+  - component: {fileID: 1145964755}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -4545,7 +4558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1151070870
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,8 +5174,8 @@ GameObject:
   - component: {fileID: 1440746237}
   - component: {fileID: 1440746236}
   - component: {fileID: 1440746235}
-  - component: {fileID: 1440746239}
   - component: {fileID: 1440746238}
+  - component: {fileID: 1440746239}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -5391,7 +5406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1452145789
 GameObject:
   m_ObjectHideFlags: 0
@@ -5806,8 +5823,8 @@ GameObject:
   - component: {fileID: 1527165913}
   - component: {fileID: 1527165912}
   - component: {fileID: 1527165911}
-  - component: {fileID: 1527165915}
   - component: {fileID: 1527165914}
+  - component: {fileID: 1527165915}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -6038,7 +6055,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &1539316579
 GameObject:
   m_ObjectHideFlags: 0
