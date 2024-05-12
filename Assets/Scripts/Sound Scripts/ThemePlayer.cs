@@ -31,6 +31,11 @@ public class ThemePlayer : MonoBehaviour
             audioSource.clip = audioClips[0];
             ThemePlayer.instance.audioSource.Play();
         }
+        if (scene.name == "Login Menu" && (!ThemePlayer.instance.audioSource.isPlaying || audioSource.clip == audioClips[1]))
+        {
+            audioSource.clip = audioClips[0];
+            ThemePlayer.instance.audioSource.Play();
+        }
         if (scene.name == "Room Generation Test Scene" && audioSource.clip == audioClips[0])
         {
             audioSource.clip = audioClips[1];

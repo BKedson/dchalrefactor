@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 // This script controls player behavior when interacting with foundry items (foundry intakes and ores)
 public class PlayerFoundryInteraction : MonoBehaviour
 {
+
+    public AudioClip interactSound;
+    private AudioSource audioSource;
+
     // Singleton
     public static PlayerFoundryInteraction _instance;
 
@@ -34,6 +38,8 @@ public class PlayerFoundryInteraction : MonoBehaviour
         }
 
         playerInputAction = new PlayerInputAction();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -136,9 +142,12 @@ public class PlayerFoundryInteraction : MonoBehaviour
     // Behavior when mouse button left (or other attack keybind) is pressed
     private void PickupOrInsert(InputAction.CallbackContext ctx)
     {
+
         // If targeting at an ore, then pick it up
         if (targetedOre)
         {
+            audioSource.PlayOneShot(interactSound);
+
             // Drop the currently held ore to pick up the new one
             if (currentOre) currentOre.OnDrop();
 
@@ -150,6 +159,8 @@ public class PlayerFoundryInteraction : MonoBehaviour
         // If targeting at an intake, then insert the currently held ore, if any, or retreive the inserted ore, if any
         else if (targetIntake)
         {
+            audioSource.PlayOneShot(interactSound);
+            
             // If holding an ore, the try to insert
             if (currentOre)
             {
@@ -178,6 +189,7 @@ public class PlayerFoundryInteraction : MonoBehaviour
     {
         if (currentOre)
         {
+            audioSource.PlayOneShot(interactSound);
             currentOre.OnDrop();
             currentOre = null;
         }

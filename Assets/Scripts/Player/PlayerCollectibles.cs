@@ -22,7 +22,7 @@ public class PlayerCollectibles : MonoBehaviour
         playerWeapons = GetActiveCharacterWeapons();
 
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = collectSound;
+        //audioSource.clip = collectSound;
     }
 
     public PlayerWeapons GetActiveCharacterWeapons()
@@ -37,7 +37,8 @@ public class PlayerCollectibles : MonoBehaviour
         //activate using the attached playerWeapons class
         playerWeapons.ActivateWeapon(name);
 
-        audioSource.Play();
+        //audioSource.Play();
+        audioSource.PlayOneShot(collectSound);
     }
 }
     

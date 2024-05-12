@@ -6,6 +6,10 @@ using UnityEngine;
 // This class controls the terminal which the player interacts with to bring up the window question
 public class AssessmentTerminalManager : BaseInteractable
 {
+
+    public AudioClip correctSound;
+    private AudioSource audioSource;
+
     [SerializeField] private GameObject surveillanceCam;  // The camera of the window question
     [SerializeField] private TMP_InputField inputField;  // The input field of the window question
     // The wall between this terminal and the foundry
@@ -21,6 +25,9 @@ public class AssessmentTerminalManager : BaseInteractable
     void Awake()
     {
         playerRef = GameObject.Find("Player");
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = correctSound;
     }
 
     // Update is called once per frame
@@ -61,6 +68,8 @@ public class AssessmentTerminalManager : BaseInteractable
 
     IEnumerator QuitAssessmentChallenge()
     {
+        audioSource.Play();
+
         // Start transition blackscreen
         TransitionUIManager._instance.StartTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());

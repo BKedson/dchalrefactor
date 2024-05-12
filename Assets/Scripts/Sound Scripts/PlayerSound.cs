@@ -16,4 +16,9 @@ public class PlayerSound : MonoBehaviour
     {
         audioSource.PlayOneShot(audioClips[1]);
     }
+
+    public void PlayerAttack()
+    {
+        audioSource.PlayOneShot(audioClips[2]);
+    }
 }
