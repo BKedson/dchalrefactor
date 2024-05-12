@@ -219,6 +219,15 @@ public class FoundryManager : BaseInteractable
         {
             Debug.Log("Forge correct weapon");
 
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
+
+            foreach (GameObject enemy in enemies) {
+                Spawner spawner = enemy.GetComponent<Spawner>();
+                if (spawner) {
+                    spawner.StartSpawns();
+                }
+            }
+
             OnWeaponForged.Invoke();
         }
         else

@@ -35,6 +35,9 @@ public class WindowQuestion : BaseQuestion
     //for generating intake question
     private int foundrySolution = -1;
 
+    // Are we making a tutorial question?
+    [SerializeField] private bool tutorial;
+
     void Start()
     {
         // Find the game manager script
@@ -129,22 +132,29 @@ public class WindowQuestion : BaseQuestion
         
         enemyStrengths.Clear();
 
-        switch(subject) {
-            case Subject.Addition:
-                GenerateAdditionQuestion();
-                break;
-            case Subject.Subtraction:
-                GenerateSubtractionQuestion();
-                break;
-            case Subject.Multiplication:
-                GenerateMultiplicationQuestion();
-                break;
-            case Subject.Division:
-                GenerateDivisionQuestion();
-                break;
-            default:
-                GenerateAdditionQuestion();
-                break;
+        if (tutorial) {
+            GenerateAdditionQuestion();
+            solution = 3;
+            noCarry = true;
+            numEnemies = 2;
+        } else {
+            switch(subject) {
+                case Subject.Addition:
+                    GenerateAdditionQuestion();
+                    break;
+                case Subject.Subtraction:
+                    GenerateSubtractionQuestion();
+                    break;
+                case Subject.Multiplication:
+                    GenerateMultiplicationQuestion();
+                    break;
+                case Subject.Division:
+                    GenerateDivisionQuestion();
+                    break;
+                default:
+                    GenerateAdditionQuestion();
+                    break;
+            }
         }
 
         gameManager.SetCurrQuestionSol(solution);
@@ -372,5 +382,13 @@ public class WindowQuestion : BaseQuestion
 
     public int GetSolution() {
         return (int)solution;
+    }
+
+    public void ToggleTutorial() {
+        tutorial = !tutorial;
+    }
+
+    public bool Tutorial() {
+        return tutorial;
     }
 }
