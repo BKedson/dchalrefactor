@@ -181,6 +181,7 @@ public class FoundryManager : BaseInteractable
                             match = true;
                         }
                     } 
+                    //if not, give incorrect feedback
                     if(!match){
                         foreach (FoundryIntakeManager intake in intakeGroups[i]) {
                             intake.IncorrectFeedback();
@@ -197,6 +198,24 @@ public class FoundryManager : BaseInteractable
                     {
                         ans = ans * 10 + intake.GetPower();
                     }
+
+                    //if this set of intakes is correct, give feedback
+                    bool match = false;
+                    foreach (int power in targetPowerLvs){
+                        if (ans == power){
+                            foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                                intake.CorrectFeedback();
+                            }
+                            match = true;
+                        }
+                    } 
+                    //if not, give incorrect feedback
+                    if(!match){
+                        foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                            intake.IncorrectFeedback();
+                        }
+                    }
+
                     if (i == 0) { totalAns = ans; }
                     else { totalAns += ans; }
                 }
@@ -210,6 +229,24 @@ public class FoundryManager : BaseInteractable
                     {
                         ans = ans * 10 + intake.GetPower();
                     }
+
+                    //if this set of intakes is correct, give feedback
+                    bool match = false;
+                    foreach (int power in targetPowerLvs){
+                        if (ans == power){
+                            foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                                intake.CorrectFeedback();
+                            }
+                            match = true;
+                        }
+                    } 
+                    //if not, give incorrect feedback
+                    if(!match){
+                        foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                            intake.IncorrectFeedback();
+                        }
+                    }
+
                     totalAns *= ans;
                 }
                 break;
@@ -219,6 +256,13 @@ public class FoundryManager : BaseInteractable
         {
             Debug.Log("Forge correct weapon");
 
+            // Give correct feedback if answer was reached through a different method than foundry was looking for
+            for(int i = 0; i < intakeGroups.Length; i++){
+                foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                    intake.CorrectFeedback();
+                }
+            }
+                            
             OnWeaponForged.Invoke();
         }
         else
