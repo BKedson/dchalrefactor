@@ -217,7 +217,7 @@ public class FoundryManager : BaseInteractable
                     }
 
                     if (i == 0) { totalAns = ans; }
-                    else { totalAns += ans; }
+                    else { totalAns -= ans; }
                 }
                 break;
             case Subject.Multiplication:
@@ -263,6 +263,15 @@ public class FoundryManager : BaseInteractable
                 }
             }
                             
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
+
+            foreach (GameObject enemy in enemies) {
+                Spawner spawner = enemy.GetComponent<Spawner>();
+                if (spawner) {
+                    spawner.StartSpawns();
+                }
+            }
+
             OnWeaponForged.Invoke();
         }
         else
