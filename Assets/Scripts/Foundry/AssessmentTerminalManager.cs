@@ -15,6 +15,8 @@ public class AssessmentTerminalManager : BaseInteractable
 
     private GameObject playerRef;  // A reference to the player
 
+    [SerializeField] private GameObject wrongAnswerOverlay; // Give player feedback
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -92,7 +94,10 @@ public class AssessmentTerminalManager : BaseInteractable
         // Incorrect answer
         else
         {
-            inputField.text = "";
+            inputField.text = "TRY AGAIN";
+            wrongAnswerOverlay.GetComponent<WrongAnswerFeedback>().WrongAnswerUI();
+            inputField.Select();
+            inputField.ActivateInputField();
         }
     }
 }

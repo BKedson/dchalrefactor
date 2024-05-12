@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,15 @@ public class GameManager : MonoBehaviour
     Difficulty globalDifficulty = Difficulty.Easy;
     private int questionComplexity = 0;
 
-    //Not yet fully implemented, but difficulty menu can set different difficulties for different operands
+    // How many questions has the player gotten right/wrong in a row?
+    private int correctStreak = 0;
+    private int incorrectStreak = 0;
+
+    // How many right or wrong questions warrant a bump or decrease in diffiuclty?
+    private int wrongAnswerThreshold = 2;
+    private int rightAnswerThreshold = 2;
+
+    //Difficulty menu can set different difficulties for different operands, unsure if this translates to question generation yet
     Difficulty addDifficulty = Difficulty.Easy;
     Difficulty subtractDifficulty = Difficulty.Easy;
     Difficulty multiplyDifficulty = Difficulty.Easy;
@@ -19,6 +28,9 @@ public class GameManager : MonoBehaviour
     // The solution and list of enemy strengths for the current question
     private double currQuestionSol;
     public List<int> currEnemyStrengths;
+
+    // Track player invincibility
+    [SerializeField] private bool isInvincible;
 
     //Character Information---------------------------------------------------------------
     public int currentCharacter; //Stores the global character index for this player - information comes from the Player Data Controller
@@ -41,7 +53,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        isInvincible = false;
+        PlayerPrefs.SetInt("invincibility", 0);
     }
 
     // Update is called once per frame
@@ -55,6 +68,19 @@ public class GameManager : MonoBehaviour
     }
 
     // GETTERS AND SETTERS
+
+    public void SetInvincibility(bool inv){
+        if(inv){
+            PlayerPrefs.SetInt("invincibility", 1);
+        }else{
+            PlayerPrefs.SetInt("invincibility", 0);
+        }
+        isInvincible = inv;
+    }
+
+    public bool GetInvincibility(){
+        return isInvincible;
+    }
 
     public void ChangeDifficulty(Difficulty difficulty) {
         globalDifficulty = difficulty;
@@ -136,8 +162,29 @@ public class GameManager : MonoBehaviour
         return questionComplexity;
     }
 
-    public void SetQuestionComplexity(int complexity) {
-        questionComplexity = complexity;
+    public void WrongAnswer() {
+        correctStreak = 0;
+        incorrectStreak++;
+
+        // Decreases complexity for future problems if the player is struggling
+        if (incorrectStreak >= wrongAnswerThreshold) {
+            questionComplexity = Math.Max(0, questionComplexity - 1);
+        }
+
+        Debug.Log("Wrong answer streak: " + incorrectStreak);
+
+    }
+
+    public void RightAnswer() {
+            correctStreak++;
+            incorrectStreak = 0;
+
+            // Increases complexity for future problems if the player is easily answering questions
+            if (correctStreak >= rightAnswerThreshold) {
+                questionComplexity = Math.Min(9, questionComplexity + 1);
+            }
+
+            Debug.Log("Right answer streak: " + correctStreak);
     }
 
     public double GetCurrQuestionSol() {

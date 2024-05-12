@@ -55,22 +55,25 @@ public class PlayerCharacter : MonoBehaviour {
 
 	//use this and add an indicator on run
 	public void Hurt(int damage) {
-		_health -= damage;
-		var textComp = healthUI.GetComponentInChildren<TMP_Text>();
-		string hp = "";
-		for(int i = 0; i<_health;i++){
-			hp = hp + "*";
-		}
+		if(PlayerPrefs.GetInt("invincibility") == 0){
+			_health -= damage;
+			var textComp = healthUI.GetComponentInChildren<TMP_Text>();
+			string hp = "";
+			for(int i = 0; i<_health;i++){
+				hp = hp + "*";
+			}
 
-		textComp.text = "Health " + _health + " " + hp;
+			textComp.text = "Health " + _health + " " + hp;
 
-		if (_health <= 0){
-			death.SetActive(true);
-			Time.timeScale = 0;
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.Confined;
+			if (_health <= 0){
+				death.SetActive(true);
+				Time.timeScale = 0;
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.Confined;
+			}
+		
+			Debug.Log("Health: " + _health);
 		}
 		
-		Debug.Log("Health: " + _health);
 	}
 }

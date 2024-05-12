@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -38,14 +39,32 @@ public class FoundryManager : BaseInteractable
     private List<FoundryIntakeManager>[] intakeGroups;
     // The list of numbers retreived from windowQuestion that makes up the final answer
     private List<int> targetPowerLvs;
+    private int targetPower;
 
     private void Awake()
     {
         // Prompt the windowQuestion to generate a question
         windowQuestion.GenerateInitialQuestion();
+        List<int> enemyStrengths = windowQuestion.GetEnemyStrengths();
+
+        StartCoroutine(SpawnDelay());
+    }
+
+    private IEnumerator SpawnDelay(){
+        yield return new WaitForSeconds(0.1f);
+
+        SpawnIntake();
+    }
+
+    private void SpawnIntake(){
+        // Get solution from window question
+        targetPower = windowQuestion.GetSolution();
+        List<int> windowPowerLvs = windowQuestion.GetEnemyStrengths();
+        // Generate intake question using the answer to the window question
+        windowQuestion.GenerateIntakeQuestion(targetPower);
         // Retreive the numbers that makes up the final answer
         targetPowerLvs = windowQuestion.GetEnemyStrengths();
-
+       
         //int targetPowerLvTotal;
         //switch (windowQuestion.subject)
         //{
@@ -152,6 +171,21 @@ public class FoundryManager : BaseInteractable
                     {
                         ans = ans * 10 + intake.GetPower();
                     }
+                    //if this set of intakes is correct, give feedback
+                    bool match = false;
+                    foreach (int power in targetPowerLvs){
+                        if (ans == power){
+                            foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                                intake.CorrectFeedback();
+                            }
+                            match = true;
+                        }
+                    } 
+                    if(!match){
+                        foreach (FoundryIntakeManager intake in intakeGroups[i]) {
+                            intake.IncorrectFeedback();
+                        }
+                    }
                     totalAns += ans;
                 }
                 break;
@@ -190,6 +224,7 @@ public class FoundryManager : BaseInteractable
         else
         {
             Debug.Log("Forge wrong weapon");
+            
         }
     }
 }

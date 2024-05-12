@@ -6,6 +6,10 @@ public class FoundryIntakeManager : MonoBehaviour
     // UI object to highlight this intake
     [SerializeField] private GameObject cursor;
 
+    // UI objects to provide player feedback
+    [SerializeField] private GameObject incorrect;
+    [SerializeField] private GameObject correct;
+
     private GameObject insertedOre;  // A reference to the currently inserted ore, if any
     //private int orePower;  // Save once to avoid frequent GetComponent
 
@@ -38,6 +42,19 @@ public class FoundryIntakeManager : MonoBehaviour
     public void Unselect()
     {
         cursor.SetActive(false);
+    }
+
+    public void IncorrectFeedback(){
+        incorrect.SetActive(true);
+    }
+
+    public void CorrectFeedback(){
+        correct.SetActive(true);
+    }
+
+    public void ClearFeedback(){
+        correct.SetActive(false);
+        incorrect.SetActive(false);
     }
 
     public bool Insert(GameObject ore)
