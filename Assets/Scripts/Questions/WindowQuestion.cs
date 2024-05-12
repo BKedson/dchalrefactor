@@ -49,7 +49,25 @@ public class WindowQuestion : BaseQuestion
         }
 
         subject = subject == null ? Subject.Addition : subject;
-        difficulty = gameManager.GetDifficulty();
+
+        switch(subject) {
+                case Subject.Addition:
+                    difficulty = gameManager.GetAddDifficulty();
+                    break;
+                case Subject.Subtraction:
+                    difficulty = gameManager.GetSubtractDifficulty();
+                    break;
+                case Subject.Multiplication:
+                    difficulty = gameManager.GetMultiplyDifficulty();
+                    break;
+                case Subject.Division:
+                    difficulty = gameManager.GetDivideDifficulty();
+                    break;
+                default:
+                    difficulty = gameManager.GetAddDifficulty();
+                    break;
+        }
+
         if (gameManager.GetQuestionComplexity() == null) {
             SetInitialComplexity();
         } else {
@@ -107,7 +125,25 @@ public class WindowQuestion : BaseQuestion
         }
 
         subject = subject == null ? Subject.Addition : subject;
-        difficulty = gameManager.GetDifficulty();
+
+        switch(subject) {
+                case Subject.Addition:
+                    difficulty = gameManager.GetAddDifficulty();
+                    break;
+                case Subject.Subtraction:
+                    difficulty = gameManager.GetSubtractDifficulty();
+                    break;
+                case Subject.Multiplication:
+                    difficulty = gameManager.GetMultiplyDifficulty();
+                    break;
+                case Subject.Division:
+                    difficulty = gameManager.GetDivideDifficulty();
+                    break;
+                default:
+                    difficulty = gameManager.GetAddDifficulty();
+                    break;
+        }
+        
         if (gameManager.GetQuestionComplexity() == null) {
             SetInitialComplexity();
         } else {

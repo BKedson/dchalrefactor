@@ -85,11 +85,9 @@ public class GameManager : MonoBehaviour
 
     public void ChangeDifficulty(Difficulty difficulty) {
         globalDifficulty = difficulty;
-        PlayerPrefs.SetInt("difficulty", (int)globalDifficulty);
     }
 
     public Difficulty GetDifficulty(){
-        globalDifficulty = (Difficulty) PlayerPrefs.GetInt("difficulty");
         return globalDifficulty;
     }
 
