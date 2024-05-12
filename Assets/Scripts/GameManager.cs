@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager manager;
     bool canChangeControls = true;
-    Difficulty globalDifficulty = Difficulty.Easy;
     private int questionComplexity = 0;
 
     // How many questions has the player gotten right/wrong in a row?
@@ -81,14 +80,6 @@ public class GameManager : MonoBehaviour
 
     public bool GetInvincibility(){
         return isInvincible;
-    }
-
-    public void ChangeDifficulty(Difficulty difficulty) {
-        globalDifficulty = difficulty;
-    }
-
-    public Difficulty GetDifficulty(){
-        return globalDifficulty;
     }
 
     //addition difficulty

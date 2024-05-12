@@ -12,6 +12,7 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private GameObject hardButton;
     private GameObject gameManager;
 
+    //For constructing UI feedback on change
     private String easyDescription;
     private String mediumDescription;
     private String hardDescription;
@@ -21,6 +22,8 @@ public class DifficultyManager : MonoBehaviour
     private String multiplyDescription;
     private String divideDescription;
 
+    // 0 is addition, 1 is subtraction, 2 is multiplication, 3 is division
+    // Changed on button press of difficulty menu screen
     private int operand;
 
     // Start is called before the first frame update
@@ -36,8 +39,6 @@ public class DifficultyManager : MonoBehaviour
         subractDescription = "The subtraction";
         multiplyDescription = "The multiplication";
         divideDescription = "The division";
-
-        Difficulty difficulty = gameManager.GetComponent<GameManager>().GetDifficulty();
 
         descriptionText.GetComponent<TextMeshProUGUI>().text = "";
 
@@ -58,9 +59,8 @@ public class DifficultyManager : MonoBehaviour
     public void ChangeDifficulty(int diff) {
         Difficulty difficulty = (Difficulty) diff;
 
-        gameManager.GetComponent<GameManager>().ChangeDifficulty(difficulty);
-
         String operandDescription = "";
+
 
         switch(operand){
             case 0:
@@ -85,7 +85,7 @@ public class DifficultyManager : MonoBehaviour
                 break;
         }
         
-
+        // Set UI text to describe change made
         switch (difficulty) {
             case Difficulty.Easy:
                 descriptionText.GetComponent<TextMeshProUGUI>().text = operandDescription + easyDescription;
