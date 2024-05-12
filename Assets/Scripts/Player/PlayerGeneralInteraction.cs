@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 // This script controls player interaction with objects with BaseInteractable.cs component
 public class PlayerGeneralInteraction : MonoBehaviour
 {
+
+    public AudioClip interactSound;
+    private AudioSource audioSource;
+
     // Singleton
     public static PlayerGeneralInteraction _instance;
 
@@ -27,6 +31,9 @@ public class PlayerGeneralInteraction : MonoBehaviour
         playerInputAction = new PlayerInputAction();
 
         playerInputAction.Player.Interact.performed += Interact;
+
+        audioSource = GetComponent<AudioSource>();
+        //audioSource.clip = interactSound;
     }
 
     private void Update()
@@ -57,7 +64,11 @@ public class PlayerGeneralInteraction : MonoBehaviour
     // This is triggeredhen the E key (or other ineraction keybind) is pressed
     private void Interact(InputAction.CallbackContext ctx)
     {
-        if (targetInteractable) targetInteractable.OnInteract();
+        if (targetInteractable) {
+            //audioSource.Play();
+            audioSource.PlayOneShot(interactSound);
+            targetInteractable.OnInteract();
+        }
     }
 
     // Gizmos function - for visual assistance only
