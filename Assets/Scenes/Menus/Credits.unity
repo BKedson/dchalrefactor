@@ -387,8 +387,8 @@ GameObject:
   - component: {fileID: 660292173}
   - component: {fileID: 660292172}
   - component: {fileID: 660292171}
-  - component: {fileID: 660292175}
   - component: {fileID: 660292174}
+  - component: {fileID: 660292175}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -618,7 +618,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768b7c4e76eb4c6cbb289285a1977f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 0aa6621f0556d49259df71898bf1fad7, type: 3}
+  - {fileID: 8300000, guid: 9dbafdd5c862644e1babe142b2398d16, type: 3}
 --- !u!1 &671799018
 GameObject:
   m_ObjectHideFlags: 0

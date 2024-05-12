@@ -3,12 +3,17 @@ using UnityEngine;
 public class PlayerSound : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip walkSound;
+    public AudioClip[] audioClips;
 
 
 
-    public void PlaySound()
+    public void PlayerWalk()
     {
-        audioSource.PlayOneShot(walkSound);
+        audioSource.PlayOneShot(audioClips[0]);
+    }
+
+    public void PlayerJump()
+    {
+        audioSource.PlayOneShot(audioClips[1]);
     }
 }

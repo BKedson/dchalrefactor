@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2218,6 +2218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1610822979}
+  - component: {fileID: 1610822980}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -2247,6 +2248,14 @@ Transform:
   - {fileID: 1202957177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1610822980
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610822978}
+  m_Enabled: 1
 --- !u!1 &1687267162
 GameObject:
   m_ObjectHideFlags: 0
