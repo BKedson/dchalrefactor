@@ -21,13 +21,16 @@ public class AssessmentTerminalManager : BaseInteractable
 
     [SerializeField] private GameObject wrongAnswerOverlay; // Give player feedback
 
-    // Start is called before the first frame update
+    private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
+
     void Awake()
     {
         playerRef = GameObject.Find("Player");
 
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = correctSound;
+
+        open = false;
     }
 
     // Update is called once per frame
@@ -48,6 +51,8 @@ public class AssessmentTerminalManager : BaseInteractable
 
     IEnumerator StartAssessmentChallenge()
     {
+        open = true;
+
         // Start transition blackscreen
         TransitionUIManager._instance.StartTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
@@ -68,6 +73,7 @@ public class AssessmentTerminalManager : BaseInteractable
 
     IEnumerator QuitAssessmentChallenge()
     {
+        open = false;
         audioSource.Play();
 
         // Start transition blackscreen
@@ -93,20 +99,26 @@ public class AssessmentTerminalManager : BaseInteractable
     // Check question
     public void OnSubmit()
     {
-        int ans = Int32.Parse(inputField.text);
+        // Check if assessment terminal is open.
+        // This prevents accidental submission after the assessment is completed,
+        // like if the input field is still selected and then is deselected by clicking on something else
+        if(open){
+            int ans = Int32.Parse(inputField.text);
 
-        // Correct answer
-        if (windowQuestion.IsCorrect(ans))
-        {
-            StartCoroutine("QuitAssessmentChallenge");
+            // Correct answer
+            if (windowQuestion.IsCorrect(ans))
+            {
+                StartCoroutine("QuitAssessmentChallenge");
+            }
+            // Incorrect answer
+            else
+            {
+                inputField.text = "TRY AGAIN";
+                wrongAnswerOverlay.GetComponent<WrongAnswerFeedback>().WrongAnswerUI();
+                inputField.Select();
+                inputField.ActivateInputField();
+            }
         }
-        // Incorrect answer
-        else
-        {
-            inputField.text = "TRY AGAIN";
-            wrongAnswerOverlay.GetComponent<WrongAnswerFeedback>().WrongAnswerUI();
-            inputField.Select();
-            inputField.ActivateInputField();
-        }
+        
     }
 }
