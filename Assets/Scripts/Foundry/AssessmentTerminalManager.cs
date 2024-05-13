@@ -103,7 +103,7 @@ public class AssessmentTerminalManager : BaseInteractable
         // This prevents accidental submission after the assessment is completed,
         // like if the input field is still selected and then is deselected by clicking on something else
         if(open){
-            // Prevents accidental submittal like clicking off of the input field
+            // Prevents accidental submission like clicking off of the input field before typing an answer
             if(inputField.text != ""){
                 int ans = Int32.Parse(inputField.text);
 
