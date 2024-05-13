@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TransitionManager : MonoBehaviour
 {
-    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,15 +27,17 @@ public class TransitionManager : MonoBehaviour
     }
 
     public void NewGame() {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        gameManager.Restart();
+        if (GameManager.manager) {
+			GameManager.manager.Restart();
+		}
         SceneManager.LoadScene("Room Generation Test Scene");
     }
 
     public void RestartLevel() {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        Debug.Log(gameManager.GetAddDifficulty());
-        gameManager.Restart();
+        if (GameManager.manager) {
+            Debug.Log(GameManager.manager.GetAddDifficulty());
+            GameManager.manager.Restart();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

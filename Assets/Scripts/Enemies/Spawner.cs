@@ -94,7 +94,9 @@ public class Spawner : BaseEnemy
     public void OnDestroy(){
 		if (GameObject.FindGameObjectsWithTag("enemy").Count() < 1)
 		{
-			DungeonGenerator._instance.ProceedLv();
+			if (DungeonGenerator._instance) {
+                DungeonGenerator._instance.ProceedLv();
+            }
 		}
 	}
 
