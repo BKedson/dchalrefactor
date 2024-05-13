@@ -33,7 +33,6 @@ public class DungeonGenerator : MonoBehaviour
 
     // A reference to the current player object
     private GameObject player;
-    private GameObject gameManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -69,8 +68,10 @@ public class DungeonGenerator : MonoBehaviour
         player = GameObject.Find("Player");
         CharacterController charController = player.GetComponent<CharacterController>();
         charController.enabled = false; 
-        gameManager = GameObject.Find("Game Manager");
-        gameManager.GetComponent<GameManager>().SetSpawnPoint(dungeonRoot.position);
+        
+        if (GameManager.manager) {
+			GameManager.manager.SetSpawnPoint(dungeonRoot.position);
+		}
         charController.enabled = true; 
 
         // Update offset

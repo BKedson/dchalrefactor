@@ -41,9 +41,8 @@ public class WindowQuestion : BaseQuestion
     void Start()
     {
         // Find the game manager script
-        GameObject gameManagerObject = GameObject.Find("Game Manager"); 
-        if (gameManagerObject) {
-            gameManager = gameManagerObject.GetComponent<GameManager>();
+        if (GameManager.manager) {
+            gameManager = GameManager.manager;
         } else {
             // Error
         }

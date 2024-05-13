@@ -60,11 +60,9 @@ public class CombatRoom : BaseRoom
     void Start()
     {
 
-        // Find the game manager script
-        GameObject gameManagerObject = GameObject.Find("Game Manager");
-        if (gameManagerObject)
+        if (GameManager.manager)
         {
-            gameManager = gameManagerObject.GetComponent<GameManager>();
+            gameManager = GameManager.manager;
         }
         else
         {
