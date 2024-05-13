@@ -13,6 +13,7 @@ public class WrongAnswerFeedback : MonoBehaviour
     }
 
     public IEnumerator ErrorFlashingSequence(){
+
         for(int i=0; i<layerOne.Length; i++){
             layerOne[i].SetActive(true);
         }
@@ -22,7 +23,7 @@ public class WrongAnswerFeedback : MonoBehaviour
         for(int i=0; i<layerTwo.Length; i++){
             layerTwo[i].SetActive(true);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.0f);
 
         for(int i=0; i<layerOne.Length; i++){
             layerOne[i].SetActive(false);
@@ -31,22 +32,5 @@ public class WrongAnswerFeedback : MonoBehaviour
             layerTwo[i].SetActive(false);
         }
 
-        yield return new WaitForSeconds(0.5f);
-
-        for(int i=0; i<layerOne.Length; i++){
-            layerOne[i].SetActive(true);
-        }
-        for(int i=0; i<layerTwo.Length; i++){
-            layerTwo[i].SetActive(true);
-        }
-
-        yield return new WaitForSeconds(0.5f);
-
-        for(int i=0; i<layerOne.Length; i++){
-            layerOne[i].SetActive(false);
-        }
-        for(int i=0; i<layerTwo.Length; i++){
-            layerTwo[i].SetActive(false);
-        }
     }
 }

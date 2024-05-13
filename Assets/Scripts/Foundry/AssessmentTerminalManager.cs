@@ -103,21 +103,25 @@ public class AssessmentTerminalManager : BaseInteractable
         // This prevents accidental submission after the assessment is completed,
         // like if the input field is still selected and then is deselected by clicking on something else
         if(open){
-            int ans = Int32.Parse(inputField.text);
+            // Prevents accidental submittal like clicking off of the input field
+            if(inputField.text != ""){
+                int ans = Int32.Parse(inputField.text);
 
-            // Correct answer
-            if (windowQuestion.IsCorrect(ans))
-            {
-                StartCoroutine("QuitAssessmentChallenge");
+                // Correct answer
+                if (windowQuestion.IsCorrect(ans))
+                {
+                    StartCoroutine("QuitAssessmentChallenge");
+                }
+                // Incorrect answer
+                else
+                {
+                    inputField.text = "";
+                    wrongAnswerOverlay.GetComponent<WrongAnswerFeedback>().WrongAnswerUI();
+                    inputField.Select();
+                    inputField.ActivateInputField();
+                }
             }
-            // Incorrect answer
-            else
-            {
-                inputField.text = "TRY AGAIN";
-                wrongAnswerOverlay.GetComponent<WrongAnswerFeedback>().WrongAnswerUI();
-                inputField.Select();
-                inputField.ActivateInputField();
-            }
+            
         }
         
     }
