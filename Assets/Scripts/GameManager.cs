@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         // isInvincible = false;
         // PlayerPrefs.SetInt("invincibility", 0);
         isInvincible = PlayerGameDataController.Instance.IsInvincible;
+        questionComplexity = PlayerGameDataController.Instance.QuestionComplexity;
     }
 
     // Update is called once per frame
@@ -77,6 +78,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Save() {
+        Debug.Log("Game saved");
+        PlayerGameDataController.Instance.SaveGameData();
+    }
+
     // GETTERS AND SETTERS
 
     public void SetInvincibility(bool inv){
@@ -89,7 +95,7 @@ public class GameManager : MonoBehaviour
         PlayerGameDataController.Instance.IsInvincible = isInvincible;
     }
 
-    public bool GetInvincibility(){
+    public bool IsInvincible(){
         return isInvincible;
     }
 
@@ -174,6 +180,7 @@ public class GameManager : MonoBehaviour
         // Decreases complexity for future problems if the player is struggling
         if (incorrectStreak % wrongAnswerThreshold == 0) {
             questionComplexity = Math.Max(0, questionComplexity - 1);
+            PlayerGameDataController.Instance.QuestionComplexity = questionComplexity;
         }
 
         Debug.Log("Wrong answer streak: " + incorrectStreak + " Complexity: " + questionComplexity);
@@ -189,6 +196,7 @@ public class GameManager : MonoBehaviour
             // Increases complexity for future problems if the player is easily answering questions
             if (correctStreak % rightAnswerThreshold == 0) {
                 questionComplexity = Math.Min(9, questionComplexity + 1);
+                PlayerGameDataController.Instance.QuestionComplexity = questionComplexity;
             }
 
             Debug.Log("Right answer streak: " + correctStreak + " Complexity: " + questionComplexity);

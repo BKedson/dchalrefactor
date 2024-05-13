@@ -64,7 +64,7 @@ public class PlayerCharacter : MonoBehaviour {
 
 	//use this and add an indicator on run
 	public void Hurt(int damage) {
-		if(PlayerPrefs.GetInt("invincibility") == 0){
+		if(GameManager.manager && !GameManager.manager.IsInvincible()){
 			_health -= damage;
 
 			DisplayHealth();

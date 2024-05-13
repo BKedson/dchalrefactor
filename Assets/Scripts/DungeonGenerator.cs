@@ -68,7 +68,7 @@ public class DungeonGenerator : MonoBehaviour
         player = GameObject.Find("Player");
         CharacterController charController = player.GetComponent<CharacterController>();
         charController.enabled = false; 
-        
+
         if (GameManager.manager) {
 			GameManager.manager.SetSpawnPoint(dungeonRoot.position);
 		}
@@ -96,8 +96,10 @@ public class DungeonGenerator : MonoBehaviour
     IEnumerator ProceedLvTransition()
     {
         // Play transition UI anim to bring up the balckscreen
-        TransitionUIManager._instance.StartTransition();
-        yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
+        if (TransitionUIManager._instance) {
+            TransitionUIManager._instance.StartTransition();
+            yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
+        }
 
         // Unpdate the buffer
         lastRoom = currentRoom;

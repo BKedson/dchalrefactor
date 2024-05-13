@@ -24,13 +24,20 @@ public class TransitionManager : MonoBehaviour
             PlayerPrefs.SetString("CurrentLevel", "Room Generation Test Scene");
             SceneManager.LoadScene("Room Generation Test Scene");
         }
+
+        if (GameManager.manager) {
+            GameManager.manager.Save();
+        }
     }
 
     public void NewGame() {
         if (GameManager.manager) {
 			GameManager.manager.Restart();
-		}
-        SceneManager.LoadScene("Room Generation Test Scene");
+            SceneManager.LoadScene("Room Generation Test Scene");
+            GameManager.manager.Save();
+		} else {
+            SceneManager.LoadScene("Room Generation Test Scene");
+        }
     }
 
     public void RestartLevel() {
