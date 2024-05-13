@@ -76,7 +76,7 @@ public class WanderingAI : MonoBehaviour {
 				anim.SetBool("Patrol", true);
 				transform.position += transform.forward * speed * Time.deltaTime;
 			}
-			if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2f){
+			if(GameObject.FindGameObjectWithTag("Player") && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2f){
 				anim.SetTrigger("Attack");
 				Stop();
 				waitTime -= Time.deltaTime;
@@ -221,7 +221,9 @@ public class WanderingAI : MonoBehaviour {
 	public void OnDestroy(){
 		if (GameObject.FindGameObjectsWithTag("enemy").Count() < 1)
 		{
-			DungeonGenerator._instance.ProceedLv();
+			if (DungeonGenerator._instance) {
+				DungeonGenerator._instance.ProceedLv();
+			}
 		}
 	}
 

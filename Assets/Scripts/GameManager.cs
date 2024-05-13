@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager manager;
     bool canChangeControls = true;
     private int questionComplexity = 0;
+    private GameObject player;
+    private Vector3 playerSpawnPoint;
 
     // How many questions has the player gotten right/wrong in a row?
     private int correctStreak = 0;
@@ -64,7 +66,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void Restart(){
-        
+        player = GameObject.Find("Player");
+
+        if (player) {
+            player.transform.position = playerSpawnPoint;
+            player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
+            // player.transform.position = new Vector3(0,0,0);
+            player.GetComponentInChildren<PlayerCharacter>().Reset();
+        }
     }
 
     // GETTERS AND SETTERS
@@ -189,6 +198,10 @@ public class GameManager : MonoBehaviour
 
     public void SetCurrQuestionSol(double sol) {
         currQuestionSol = sol;
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawn) {
+        playerSpawnPoint = newSpawn;
     }
 
     public List<int> GetCurrEnemyStrengths()

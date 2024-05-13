@@ -1,4 +1,4 @@
-using UnityEditor.Animations;
+using UnityEditor;
 using UnityEngine;
 
 // This is a singleton transition UI manager to create and remove blackscreen as needed

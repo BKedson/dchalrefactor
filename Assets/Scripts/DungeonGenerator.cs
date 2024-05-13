@@ -33,6 +33,7 @@ public class DungeonGenerator : MonoBehaviour
 
     // A reference to the current player object
     private GameObject player;
+    private GameObject gameManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -62,6 +63,16 @@ public class DungeonGenerator : MonoBehaviour
 
         // Generate new room
         currentRoom = Instantiate(roomPrefab, nextGenPos, Quaternion.identity, dungeonRoot);
+        
+        // TODO: Find a better way to reset than this, this is horrible
+        // Reset the player's location
+        player = GameObject.Find("Player");
+        CharacterController charController = player.GetComponent<CharacterController>();
+        charController.enabled = false; 
+        gameManager = GameObject.Find("Game Manager");
+        gameManager.GetComponent<GameManager>().SetSpawnPoint(dungeonRoot.position);
+        charController.enabled = true; 
+
         // Update offset
         nextGenPos += genOffset;
     }
@@ -101,6 +112,8 @@ public class DungeonGenerator : MonoBehaviour
         player.GetComponent<CharacterController>().enabled = true;
         // Deactivate weapons obtained in the previous room
         player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
+        // Reset player health
+        player.GetComponent<PlayerCharacter>().FullHealth();
         // Update offset
         nextGenPos += genOffset;
 

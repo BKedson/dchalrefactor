@@ -7,6 +7,10 @@ public class PlayerCharacter : MonoBehaviour {
 	private int _health;
 	[SerializeField]private GameObject healthUI;
 	[SerializeField]private GameObject death;
+
+	private int startingHealth = 3;
+
+	private static PlayerCharacter player;
 	//[SerializeField] PlayerInventory backpack = null;
 	//public GameObject gunUI;
 	//public GameObject gunHUD;
@@ -26,7 +30,12 @@ public class PlayerCharacter : MonoBehaviour {
 	public GameObject[] characters;
 
 	void Awake(){
-		DontDestroyOnLoad(this.gameObject);
+        if(player) {
+            DestroyImmediate(gameObject);
+        } else {
+            DontDestroyOnLoad(gameObject);
+            player = this;
+        }
 	}
 	void Start() 
 	{
@@ -42,7 +51,7 @@ public class PlayerCharacter : MonoBehaviour {
 		Debug.Log($"setting true {GameManager.manager.currentCharacter}");
 		//------------------------------------------------------------------------------
 		//start = true;
-		_health = 3;
+		_health = startingHealth;
 		//has not Yet finshed level
 		//hasFinishedLevel = false;
 	}
@@ -57,13 +66,8 @@ public class PlayerCharacter : MonoBehaviour {
 	public void Hurt(int damage) {
 		if(PlayerPrefs.GetInt("invincibility") == 0){
 			_health -= damage;
-			var textComp = healthUI.GetComponentInChildren<TMP_Text>();
-			string hp = "";
-			for(int i = 0; i<_health;i++){
-				hp = hp + "*";
-			}
 
-			textComp.text = "Health " + _health + " " + hp;
+			DisplayHealth();
 
 			if (_health <= 0){
 				death.SetActive(true);
@@ -74,6 +78,28 @@ public class PlayerCharacter : MonoBehaviour {
 		
 			Debug.Log("Health: " + _health);
 		}
-		
+	}
+
+	public void Reset() {
+		Time.timeScale = 1;
+		death.SetActive(false);
+		FullHealth();
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	public void FullHealth() {
+		_health = startingHealth;
+		DisplayHealth();
+	}
+
+	public void DisplayHealth() {
+			var textComp = healthUI.GetComponentInChildren<TMP_Text>();
+			string hp = "";
+			for(int i = 0; i<_health;i++){
+				hp = hp + "*";
+			}
+
+			textComp.text = "Health " + _health + " " + hp;
 	}
 }
