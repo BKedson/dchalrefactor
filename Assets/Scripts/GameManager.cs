@@ -55,8 +55,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isInvincible = false;
-        PlayerPrefs.SetInt("invincibility", 0);
+        // isInvincible = false;
+        // PlayerPrefs.SetInt("invincibility", 0);
+        isInvincible = PlayerGameDataController.Instance.IsInvincible;
     }
 
     // Update is called once per frame
@@ -79,12 +80,13 @@ public class GameManager : MonoBehaviour
     // GETTERS AND SETTERS
 
     public void SetInvincibility(bool inv){
-        if(inv){
-            PlayerPrefs.SetInt("invincibility", 1);
-        }else{
-            PlayerPrefs.SetInt("invincibility", 0);
-        }
+        // if(inv){
+        //     PlayerPrefs.SetInt("invincibility", 1);
+        // }else{
+        //     PlayerPrefs.SetInt("invincibility", 0);
+        // }
         isInvincible = inv;
+        PlayerGameDataController.Instance.IsInvincible = isInvincible;
     }
 
     public bool GetInvincibility(){

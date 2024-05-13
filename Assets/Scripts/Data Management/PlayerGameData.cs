@@ -17,4 +17,6 @@ public class PlayerGameData
     public int DivisionDifficulty;
     //Character Information-------------------------------------------
     public string CurrentCharacter;
+    //Misc Information------------------------------------------------
+    public bool IsInvincible;
 }
