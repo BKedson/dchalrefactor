@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 // This script controls the overall behavior of a level - a pair of foundry room and combat area, and the connecting pathway
 // It mainly focus on the foundry room. Logics related to the cambat area can be integrated into this script if necessary
@@ -7,7 +9,7 @@ using UnityEngine;
 public class FoundryRoom : BaseRoom
 {
 
-    public AudioClip unlockSound;
+    public AudioClip[] audioClips;
     private AudioSource audioSource;
 
     [SerializeField] private FoundryManager foundryManager;  // The foundry in the foundry room
@@ -23,7 +25,6 @@ public class FoundryRoom : BaseRoom
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = unlockSound;
     }
 
     // When player moves past the first door, the first one is closed and the second one is opened
@@ -33,6 +34,7 @@ public class FoundryRoom : BaseRoom
         {
             door1Animator.SetBool("Door Opened", false);
             door2Animator.SetBool("Door Opened", true);
+            audioSource.PlayOneShot(audioClips[1]);
         }
     }
 
@@ -43,14 +45,22 @@ public class FoundryRoom : BaseRoom
         {
             door1Animator.SetBool("Door Opened", false);
             door2Animator.SetBool("Door Opened", false);
+            audioSource.PlayOneShot(audioClips[1]);
         }
     }
 
     // Unlock the pathway when a weapon is successfully unlocked
     public void OnWeaponForged()
     {
-        audioSource.Play();
+        audioSource.PlayOneShot(audioClips[0]);
+        StartCoroutine(SoundDelay());
         door1Animator.SetBool("Door Opened", true);
         cameraHelper.gameObject.SetActive(false);
+    }
+
+    private IEnumerator SoundDelay() 
+    {
+        yield return new WaitForSeconds(0.5f);
+        audioSource.PlayOneShot(audioClips[1]);
     }
 }
