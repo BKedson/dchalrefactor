@@ -28,6 +28,8 @@ namespace dchalrefactor.Scripts.Player
             Weapons[index].SetActive(true);
             //Set the Player Animations class to Equipped
             gameObject.GetComponent<PlayerAnimations>().EquipWeapon(true);
+            // Unset attack trigger so player doesn't attack as weapon is equipped
+            gameObject.GetComponent<PlayerAnimations>().CancelAttack();
         }
 
         public void DeactivateWeapon(string name)

@@ -17,6 +17,7 @@ public class PauseManager : MonoBehaviour
     public void OnPause(){
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         PauseCanvas.SetActive(true);
     }
 
