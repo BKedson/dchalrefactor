@@ -20,6 +20,7 @@ public class AssessmentTerminalManager : BaseInteractable
     private GameObject playerRef;  // A reference to the player
 
     [SerializeField] private GameObject wrongAnswerOverlay; // Give player feedback
+    [SerializeField] private GameObject rightAnswerOverlay; // Give player feedback
 
     private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
 
@@ -76,6 +77,9 @@ public class AssessmentTerminalManager : BaseInteractable
         open = false;
         audioSource.Play();
 
+        // Wait for visual feedback to play
+        yield return new WaitForSeconds(2.1f);
+
         // Start transition blackscreen
         TransitionUIManager._instance.StartTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
@@ -110,13 +114,14 @@ public class AssessmentTerminalManager : BaseInteractable
                 // Correct answer
                 if (windowQuestion.IsCorrect(ans))
                 {
+                    rightAnswerOverlay.GetComponent<WindowAnswerFeedback>().RightAnswerUI();
                     StartCoroutine("QuitAssessmentChallenge");
                 }
                 // Incorrect answer
                 else
                 {
                     inputField.text = "";
-                    wrongAnswerOverlay.GetComponent<WrongAnswerFeedback>().WrongAnswerUI();
+                    wrongAnswerOverlay.GetComponent<WindowAnswerFeedback>().WrongAnswerUI();
                     inputField.Select();
                     inputField.ActivateInputField();
                 }

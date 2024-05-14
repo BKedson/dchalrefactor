@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WrongAnswerFeedback : MonoBehaviour
+public class WindowAnswerFeedback : MonoBehaviour
 {
     [SerializeField] private GameObject[] layerOne;
     [SerializeField] private GameObject[] layerTwo;
 
     public void WrongAnswerUI(){
 
-        StartCoroutine(ErrorFlashingSequence());
+        StartCoroutine(FlashingSequence());
     }
 
-    public IEnumerator ErrorFlashingSequence(){
+    public void RightAnswerUI(){
+        StartCoroutine(FlashingSequence());
+    }
+
+    public IEnumerator FlashingSequence(){
 
         for(int i=0; i<layerOne.Length; i++){
             layerOne[i].SetActive(true);
