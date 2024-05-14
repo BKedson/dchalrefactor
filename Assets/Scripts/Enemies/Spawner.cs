@@ -21,6 +21,9 @@ public class Spawner : BaseEnemy
     private int maxSpawns = 5;
     private float spawnFrequency = 10f;
 
+    private AudioSource audioSource;
+    public AudioClip spawnSound;
+
     // private FoundryManager foundryManager = new FoundryManager();
 
     // Start is called before the first frame update
@@ -28,6 +31,9 @@ public class Spawner : BaseEnemy
     {
         remainingSpawns = Math.Min(strength, UnityEngine.Random.Range(2, maxSpawns));
         // foundryManager.OnWeaponForged.AddListener(StartSpawns);
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = spawnSound;
     }
 
     // Update is called once per frame
@@ -74,6 +80,9 @@ public class Spawner : BaseEnemy
 
     // Damages the player
     void SpawnEnemy() {
+
+        audioSource.Play();
+        
         int enemyStrength = strength / remainingSpawns;
         Instantiate(enemyPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.Euler(0, 180, 0)).GetComponent<BaseEnemy>().SetStrength(enemyStrength);
         strength -= enemyStrength;
