@@ -15,9 +15,13 @@ public class PlayerGameData
     public int SubtractionDifficulty;
     public int MultiplicationDifficulty;
     public int DivisionDifficulty;
+    public int AdditionQuestionComplexity;
+    public int SubtractionQuestionComplexity;
+    public int MultiplicationQuestionComplexity;
+    public int DivisionQuestionComplexity;
+
     //Character Information-------------------------------------------
     public string CurrentCharacter;
     //Misc Information------------------------------------------------
     public bool IsInvincible;
-    public int QuestionComplexity;
 }

@@ -50,6 +50,8 @@ public class WindowQuestion : BaseQuestion
 
         subject = subject == null ? Subject.Addition : subject;
 
+        gameManager.SetCurrSubject(subject);
+
         switch(subject) {
                 case Subject.Addition:
                     difficulty = gameManager.GetAddDifficulty();
@@ -74,32 +76,31 @@ public class WindowQuestion : BaseQuestion
             questionComplexity = gameManager.GetQuestionComplexity();
             SetParameters();
         }
-
         //GenerateQuestion();
     }
 
     void Update()
     {
         // Console testing
-        if (testGenerateDifficultyAddition >= 0) {
-            subject = Subject.Addition;
-            difficulty = (Difficulty) testGenerateDifficultyAddition;
-            SetInitialComplexity();
-            GenerateQuestion();
-            testGenerateDifficultyAddition = -1;
-        } else if (testGeneratDifficultyMultiplication >= 0) {
-            subject = Subject.Multiplication;
-            difficulty = (Difficulty) testGeneratDifficultyMultiplication;
-            SetInitialComplexity();
-            GenerateQuestion();
-            testGeneratDifficultyMultiplication = -1;
-        }   else if (testGeneratDifficultySubtraction >= 0) {
-            subject = Subject.Subtraction;
-            difficulty = (Difficulty) testGeneratDifficultySubtraction;
-            SetInitialComplexity();
-            GenerateQuestion();
-            testGeneratDifficultySubtraction = -1;
-        }
+        // if (testGenerateDifficultyAddition >= 0) {
+        //     subject = Subject.Addition;
+        //     difficulty = (Difficulty) testGenerateDifficultyAddition;
+        //     SetInitialComplexity();
+        //     GenerateQuestion();
+        //     testGenerateDifficultyAddition = -1;
+        // } else if (testGeneratDifficultyMultiplication >= 0) {
+        //     subject = Subject.Multiplication;
+        //     difficulty = (Difficulty) testGeneratDifficultyMultiplication;
+        //     SetInitialComplexity();
+        //     GenerateQuestion();
+        //     testGeneratDifficultyMultiplication = -1;
+        // }   else if (testGeneratDifficultySubtraction >= 0) {
+        //     subject = Subject.Subtraction;
+        //     difficulty = (Difficulty) testGeneratDifficultySubtraction;
+        //     SetInitialComplexity();
+        //     GenerateQuestion();
+        //     testGeneratDifficultySubtraction = -1;
+        // }
     }
 
     // Did the player correctly calculate the solution? 
@@ -350,7 +351,7 @@ public class WindowQuestion : BaseQuestion
 
     // PARTIALLY IMPLEMENTED Generate an addition question that is definitely divisible by a divisor
     private void GenerateDivisionQuestion() {
-        int divisor = Random.Range(2, divSolutionFactorMax);
+        int divisor = UnityEngine.Random.Range(2, divSolutionFactorMax);
         solution = divisor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
 
         int remainingSolution = (int) solution;

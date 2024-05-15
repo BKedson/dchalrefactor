@@ -45,6 +45,13 @@ public class FoundryManager : BaseInteractable
 
     private void Awake()
     {
+        
+        if (UnityEngine.Random.Range(0f, 1f) < 0.5f) {
+            windowQuestion.SetSubject(Subject.Multiplication);
+        } else {
+            windowQuestion.SetSubject(Subject.Addition);
+        }
+
         // Prompt the windowQuestion to generate a question
         windowQuestion.GenerateInitialQuestion();
         List<int> enemyStrengths = windowQuestion.GetEnemyStrengths();

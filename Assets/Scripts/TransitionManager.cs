@@ -60,6 +60,10 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        
+        if (GameManager.manager) {
+            GameManager.manager.Save();
+        }
     }
 
     public void Controls() {

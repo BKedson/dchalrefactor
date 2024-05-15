@@ -45,7 +45,9 @@ public class TextboxBehavior : MonoBehaviour
 
         // text = GameObject.Find("TutorialText");
         // textBoxContainer = GameObject.Find("TutorialTextBox");
-        text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+        if (text) {
+            text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+        }
     }
 
     void Update()

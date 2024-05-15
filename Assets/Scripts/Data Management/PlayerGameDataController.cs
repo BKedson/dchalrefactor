@@ -38,7 +38,10 @@ public class PlayerGameDataController : MonoBehaviour
     public int DivisionDifficulty;
     public string CurrentCharacter;
     public bool IsInvincible;
-    public int QuestionComplexity;
+    public int AdditionQuestionComplexity;
+    public int SubtractionQuestionComplexity;
+    public int MultiplicationQuestionComplexity;
+    public int DivisionQuestionComplexity;    
     //---------------------------------------------------IN-GAME LOGIC-----------------------------------------------------------
     public bool IsNewUser;
     public bool IsNewGame;
@@ -86,9 +89,12 @@ public class PlayerGameDataController : MonoBehaviour
         data.SubtractionDifficulty = SubtractionDifficulty;
         data.MultiplicationDifficulty = MultiplicationDifficulty;
         data.DivisionDifficulty = DivisionDifficulty;
+        data.AdditionQuestionComplexity = AdditionQuestionComplexity;
+        data.SubtractionQuestionComplexity = SubtractionQuestionComplexity;
+        data.MultiplicationQuestionComplexity = MultiplicationQuestionComplexity;
+        data.DivisionQuestionComplexity = DivisionQuestionComplexity;
         data.CurrentCharacter = CurrentCharacter;
         data.IsInvincible = IsInvincible;
-        data.QuestionComplexity = QuestionComplexity;
         return data;
     }
 
@@ -104,9 +110,12 @@ public class PlayerGameDataController : MonoBehaviour
         SubtractionDifficulty = data.SubtractionDifficulty;
         MultiplicationDifficulty = data.MultiplicationDifficulty;
         DivisionDifficulty = data.DivisionDifficulty;
+        AdditionQuestionComplexity = data.AdditionQuestionComplexity;
+        SubtractionQuestionComplexity = data.SubtractionQuestionComplexity;
+        MultiplicationQuestionComplexity = data.MultiplicationQuestionComplexity;
+        DivisionQuestionComplexity = data.DivisionQuestionComplexity;
         CurrentCharacter = data.CurrentCharacter;
         IsInvincible = data.IsInvincible;
-        QuestionComplexity = data.QuestionComplexity;
     }
 
     public PlayerGameData DefaultGameDataFile(string firstName, string nickName, int codeNumber)
@@ -119,9 +128,12 @@ public class PlayerGameDataController : MonoBehaviour
         data.SubtractionDifficulty = 1;
         data.MultiplicationDifficulty = 1;
         data.DivisionDifficulty = 1;
+        data.AdditionQuestionComplexity = 0;
+        data.SubtractionQuestionComplexity = 0;
+        data.MultiplicationQuestionComplexity = 0;
+        data.DivisionQuestionComplexity = 0;
         data.CurrentCharacter = "DC_Woman_2";
         data.IsInvincible = false;
-        data.QuestionComplexity = 0;
         return data;
     }
 
