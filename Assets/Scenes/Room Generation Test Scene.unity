@@ -3481,6 +3481,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6788075440086870313, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: playerCollisionRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788075440086870313, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: camPlayerCollisionMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 6856487388873167246, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3528,6 +3536,10 @@ PrefabInstance:
     - target: {fileID: 7496498345527036909, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: jumpForce
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8529027887652050917, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_AnchorMax.x
