@@ -35,6 +35,10 @@ public class CombatRoom : BaseRoom
     [SerializeField] private NavMeshSurface surface;
     [SerializeField] private GameObject referenceObject;
 
+    // The minimum and maximum difficulty room that can spawn with the current settings 
+    private int easiestRoom = 1;
+    private int hardestRoom = 7;
+
     private GameManager gameManager;
     private GameObject player;
     private float wallHeight = 2.5f;
@@ -50,9 +54,6 @@ public class CombatRoom : BaseRoom
     private float baseZ = 0;
     private int yAngle = 90;
     private int referenceThickness = 4;
-    // The minimum and maximum difficulty room that can spawn with the current settings 
-    private int easiestRoom = 1;
-    private int hardestRoom = 7;
 
     // The number of enemies that still need to be spawned in the level
     int numEnemiesToSpawn;
@@ -215,11 +216,13 @@ public class CombatRoom : BaseRoom
         
         numEnemiesToSpawn = numEnemies;
 
-        surface.BuildNavMesh();
+        // surface.BuildNavMesh();
 
         SpawnEnemies(0f, 1f, 17f, numEnemies, enemyPrefab, combatArea1);
 
-        StartCoroutine(Rebuild());
+        surface.BuildNavMesh();
+
+        // StartCoroutine(Rebuild());
     }
 
     // Creates Room 2, a simple room with walls and enemies on the left and right and enemies in the center
@@ -230,11 +233,13 @@ public class CombatRoom : BaseRoom
 
         GameObject combatArea2 = Instantiate(combatArea2Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
 
-        surface.BuildNavMesh();
+        // surface.BuildNavMesh();
 
         InstantiateRoom2Enemies(combatArea2);
 
-        StartCoroutine(Rebuild());
+        surface.BuildNavMesh();
+
+        // StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom2Enemies(GameObject combatArea2)
@@ -268,11 +273,13 @@ public class CombatRoom : BaseRoom
         // Instantiate(spikePrefab, new Vector3(0, 0, 15 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(18, 0.5f, 1f);
         GameObject combatArea3 = Instantiate(combatArea3Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
 
-        surface.BuildNavMesh();
+        // surface.BuildNavMesh();
 
         InstantiateRoom3Enemies(combatArea3);
 
-        StartCoroutine(Rebuild());
+        surface.BuildNavMesh();
+
+        // StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom3Enemies(GameObject combatArea3)
@@ -307,11 +314,13 @@ public class CombatRoom : BaseRoom
         // Instantiate(wallPrefab, new Vector3(-5, wallHeight / 2, 30 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
         GameObject combatArea4 = Instantiate(combatArea4Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
 
-        surface.BuildNavMesh();
+        // surface.BuildNavMesh();
 
         InstantiateRoom4Enemies(combatArea4);
 
-        StartCoroutine(Rebuild());
+        surface.BuildNavMesh();
+
+        // StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom4Enemies(GameObject combatArea4)
@@ -350,11 +359,13 @@ public class CombatRoom : BaseRoom
 
         GameObject combatArea5 = Instantiate(combatArea5Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
 
-        surface.BuildNavMesh();
+        // surface.BuildNavMesh();
 
         InstantiateRoom5Enemies(combatArea5);
 
-        StartCoroutine(Rebuild());
+        surface.BuildNavMesh();
+
+        // StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom5Enemies(GameObject combatArea5)
@@ -388,11 +399,13 @@ public class CombatRoom : BaseRoom
 
         GameObject combatArea6 = Instantiate(combatArea6Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
 
-        surface.BuildNavMesh();
+        // surface.BuildNavMesh();
 
         InstantiateRoom6Enemies(combatArea6);
 
-        StartCoroutine(Rebuild());
+        surface.BuildNavMesh();
+
+        // StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom6Enemies(GameObject combatArea6)
@@ -433,11 +446,13 @@ public class CombatRoom : BaseRoom
 
         GameObject combatArea7 = Instantiate(combatArea7Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
 
-        surface.BuildNavMesh();
+        // surface.BuildNavMesh();
 
         InstantiateRoom7Enemies(combatArea7);
 
-        StartCoroutine(Rebuild());
+        surface.BuildNavMesh();
+
+        // StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom7Enemies(GameObject combatArea7)
@@ -490,11 +505,13 @@ public class CombatRoom : BaseRoom
 
         GameObject combatArea8 = Instantiate(combatArea8Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
 
-        surface.BuildNavMesh();
+        // surface.BuildNavMesh();
 
         InstantiateRoom8Enemies(combatArea8);
 
-        StartCoroutine(Rebuild());
+        surface.BuildNavMesh();
+
+        // StartCoroutine(Rebuild());
     }
 
     private void InstantiateRoom8Enemies(GameObject combatArea8)
@@ -536,7 +553,7 @@ public class CombatRoom : BaseRoom
         for (int i = 0; i < timesToSpawn; i++)
         {
             xPos = x + UnityEngine.Random.Range(-1.0f, 1.0f);
-            yPos = y - 0.5f;
+            yPos = y;
             zPos = z + UnityEngine.Random.Range(-2.0f, 2.0f);
 
             GameObject currEnemy = Instantiate(prefabToSpawn, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0), parentTransform);
