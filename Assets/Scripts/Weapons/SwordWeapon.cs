@@ -8,19 +8,26 @@ public class SwordWeapon :  BaseWeapon
 {
 
     private Animator anim;
+    private AnimatorClipInfo[] currrentClip;
     private BoxCollider swordHitBox;
 
     void Start(){
         Damage = 100;
-        anim = GetComponent<Animator>();
+        anim = GetComponentInParent<Animator>();
         swordHitBox = GetComponentInChildren<BoxCollider>();
         swordHitBox.enabled = false;
     }
 
     void Update(){
-        if(anim.GetBool("Attack")){
+        currrentClip = anim.GetCurrentAnimatorClipInfo(0);
+        if(currrentClip[0].clip.name == "Idle_Normal|Idle_Action" ||
+        currrentClip[0].clip.name == "Idle_Normal|Idle_Sword" ||
+        currrentClip[0].clip.name == "Idle_Normal|Sword_Attack_Special" ||
+        currrentClip[0].clip.name == "Idle_Normal|Sword_Attack_Slash" ||
+        currrentClip[0].clip.name == "Idle_Normal|Sword_Attack_Upclose"){
             enableCollider();
         }
+        else{disableCollider();}
     }
 
     public override void Attack()
