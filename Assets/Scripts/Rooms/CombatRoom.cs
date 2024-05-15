@@ -35,6 +35,8 @@ public class CombatRoom : BaseRoom
     [SerializeField] private NavMeshSurface surface;
     [SerializeField] private GameObject referenceObject;
 
+    private Transform foundryParent;
+
     // The minimum and maximum difficulty room that can spawn with the current settings 
     private int easiestRoom = 1;
     private int hardestRoom = 7;
@@ -88,6 +90,9 @@ public class CombatRoom : BaseRoom
         if (referenceObject == null)
         {
             referenceObject = player;
+            foundryParent = player.transform;
+        } else {
+            foundryParent = referenceObject.GetComponentInParent<FoundryRoom>().gameObject.transform;
         }
 
         baseX = referenceObject.transform.position.x;
@@ -212,7 +217,7 @@ public class CombatRoom : BaseRoom
 
     private void InstantiateRoom1Enemies()
     {
-        GameObject combatArea1 = Instantiate(combatArea1Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
+        GameObject combatArea1 = Instantiate(combatArea1Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0), foundryParent);
         
         numEnemiesToSpawn = numEnemies;
 
@@ -231,7 +236,7 @@ public class CombatRoom : BaseRoom
         // Instantiate(wallPrefab, new Vector3(7, wallHeight / 2, 7 + baseZ), Quaternion.Euler(0, 180 + yAngle, 0)).transform.localScale = new Vector3(8, wallHeight, wallThickness);
         // Instantiate(wallPrefab, new Vector3(-7, wallHeight / 2, 7 + baseZ), Quaternion.Euler(0, 180  + yAngle, 0)).transform.localScale = new Vector3(8, wallHeight, wallThickness);
 
-        GameObject combatArea2 = Instantiate(combatArea2Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
+        GameObject combatArea2 = Instantiate(combatArea2Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0), foundryParent);
 
         // surface.BuildNavMesh();
 
@@ -271,7 +276,7 @@ public class CombatRoom : BaseRoom
     private void InstantiateRoom3()
     {
         // Instantiate(spikePrefab, new Vector3(0, 0, 15 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(18, 0.5f, 1f);
-        GameObject combatArea3 = Instantiate(combatArea3Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
+        GameObject combatArea3 = Instantiate(combatArea3Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0), foundryParent);
 
         // surface.BuildNavMesh();
 
@@ -312,7 +317,7 @@ public class CombatRoom : BaseRoom
         // Instantiate(wallPrefab, new Vector3(-5, wallHeight / 2, 10 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
         // Instantiate(wallPrefab, new Vector3(5, wallHeight / 2, 20 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
         // Instantiate(wallPrefab, new Vector3(-5, wallHeight / 2, 30 + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(20, wallHeight, wallThickness);
-        GameObject combatArea4 = Instantiate(combatArea4Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
+        GameObject combatArea4 = Instantiate(combatArea4Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0), foundryParent);
 
         // surface.BuildNavMesh();
 
@@ -357,7 +362,7 @@ public class CombatRoom : BaseRoom
         // Instantiate(spikePrefab, new Vector3(10, 0, 17 + baseZ), Quaternion.Euler(0, 90, 0)).transform.localScale = new Vector3(5f, 0.5f, 1f);
         // Instantiate(spikePrefab, new Vector3(0, 0, 25 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 1f);
 
-        GameObject combatArea5 = Instantiate(combatArea5Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
+        GameObject combatArea5 = Instantiate(combatArea5Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0), foundryParent);
 
         // surface.BuildNavMesh();
 
@@ -397,7 +402,7 @@ public class CombatRoom : BaseRoom
     {
         // Instantiate(fourPointRampMapPrefab, new Vector3(-10.2f, 1.5f, 1.9f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
-        GameObject combatArea6 = Instantiate(combatArea6Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
+        GameObject combatArea6 = Instantiate(combatArea6Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0), foundryParent);
 
         // surface.BuildNavMesh();
 
@@ -444,7 +449,7 @@ public class CombatRoom : BaseRoom
         // Instantiate(cPlatformRightPrefab, new Vector3(4.4f, -1f, 28f + baseZ), Quaternion.Euler(0, 180, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
         // Instantiate(cPlatformLeftPrefab, new Vector3(-3f, -1f, 8.1f + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(1f, 1f, 1f);
 
-        GameObject combatArea7 = Instantiate(combatArea7Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
+        GameObject combatArea7 = Instantiate(combatArea7Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0), foundryParent);
 
         // surface.BuildNavMesh();
 
@@ -503,7 +508,7 @@ public class CombatRoom : BaseRoom
         // Instantiate(spikePrefab, new Vector3(-0.1f, 0, 19 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
         // Instantiate(spikeSafetyNetPrefab, new Vector3(-0.1f, 0, 19 + baseZ), Quaternion.Euler(0, 0, 0)).transform.localScale = new Vector3(10f, 0.5f, 35f);
 
-        GameObject combatArea8 = Instantiate(combatArea8Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0));
+        GameObject combatArea8 = Instantiate(combatArea8Prefab, new Vector3(baseX, baseY, baseZ), Quaternion.Euler(0, yAngle, 0), foundryParent);
 
         // surface.BuildNavMesh();
 
