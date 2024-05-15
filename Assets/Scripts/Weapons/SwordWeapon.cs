@@ -20,9 +20,7 @@ public class SwordWeapon :  BaseWeapon
 
     void Update(){
         currrentClip = anim.GetCurrentAnimatorClipInfo(0);
-        if(currrentClip[0].clip.name == "Idle_Normal|Idle_Action" ||
-        currrentClip[0].clip.name == "Idle_Normal|Idle_Sword" ||
-        currrentClip[0].clip.name == "Idle_Normal|Sword_Attack_Special" ||
+        if(currrentClip[0].clip.name == "Idle_Normal|Sword_Attack_Special" ||
         currrentClip[0].clip.name == "Idle_Normal|Sword_Attack_Slash" ||
         currrentClip[0].clip.name == "Idle_Normal|Sword_Attack_Upclose"){
             enableCollider();
@@ -44,7 +42,6 @@ public class SwordWeapon :  BaseWeapon
     {
         //if sword is active
         if(gameObject.activeSelf & can){
-            enableCollider();
             //play animation
             swordHitBox.enabled = true;
             anim.SetBool("Attack", true);
