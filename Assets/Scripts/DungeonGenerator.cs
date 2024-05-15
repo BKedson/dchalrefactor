@@ -95,7 +95,7 @@ public class DungeonGenerator : MonoBehaviour
 
     IEnumerator ProceedLvTransition()
     {
-        // Play transition UI anim to bring up the balckscreen
+        // Play transition UI anim to bring up the blackscreen
         if (TransitionUIManager._instance) {
             TransitionUIManager._instance.StartTransition();
             yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());

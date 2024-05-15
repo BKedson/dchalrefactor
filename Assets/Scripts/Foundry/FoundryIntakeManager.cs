@@ -13,6 +13,8 @@ public class FoundryIntakeManager : MonoBehaviour
     private GameObject insertedOre;  // A reference to the currently inserted ore, if any
     //private int orePower;  // Save once to avoid frequent GetComponent
 
+    private TextboxBehavior tutorial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +70,8 @@ public class FoundryIntakeManager : MonoBehaviour
 
         cursor.SetActive(false);
 
+        tutorial.OrePlaced();
+
         return true;
     }
 
@@ -81,5 +85,9 @@ public class FoundryIntakeManager : MonoBehaviour
     public int GetPower()
     {
         return (insertedOre ? insertedOre.GetComponent<OreManager>().orePower : 0);
+    }
+
+    public void SetTutorial(TextboxBehavior tut){
+        tutorial = tut;
     }
 }
