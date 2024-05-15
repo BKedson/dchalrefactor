@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private int rightAnswerThreshold = 2;
     private bool alreadyWrong = false;
 
-    //Difficulty menu can set different difficulties for different operands, unsure if this translates to question generation yet
+    //Difficulty menu can set different difficulties for different operands
     Difficulty addDifficulty = Difficulty.Easy;
     Difficulty subtractDifficulty = Difficulty.Easy;
     Difficulty multiplyDifficulty = Difficulty.Easy;
@@ -221,6 +221,10 @@ public class GameManager : MonoBehaviour
 
     public void SetCurrEnemyStrengths(List<int> enemyStrengths) {
         currEnemyStrengths = enemyStrengths;
+    }
+
+    public int GetCorrectStreak(){
+        return correctStreak;
     }
 
     //-------------------------------------------------------------------
