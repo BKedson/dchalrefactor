@@ -13,6 +13,7 @@ public class WindowQuestion : BaseQuestion
     // Ensures the solution is divisible by solutionFactor to help scale question complexity
     private int addSolutionFactor = 1;
     private int multSolutionFactor = 1;
+    private int divSolutionFactorMax = 1;
 
     // 0-9 scale that describes how likely a solution is to break down into complex parts that require carrying
     private int questionComplexity = 0;
@@ -270,7 +271,7 @@ public class WindowQuestion : BaseQuestion
             enemyStrengths.Add(remainingLargeEnemy);
 
         //otherwise, generate large enemy and subtracting enemies before setting the solution to the remainder
-        }else{
+        } else {
             // The strength of the large enemy
             int largeEnemy = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
 
@@ -306,7 +307,7 @@ public class WindowQuestion : BaseQuestion
             //this will simply generate the same multiplication question as in the window, unsure if that is intended
             if (foundrySolution > 0){
                 solution = foundrySolution;
-            }else{
+            } else {
                 solution = multSolutionFactor * numEnemies * UnityEngine.Random.Range(1, 10);
             }
 
@@ -324,12 +325,12 @@ public class WindowQuestion : BaseQuestion
         int enemyStrength;
 
         //generate question based on given answer
-        if(foundrySolution > 0){
+        if(foundrySolution > 0) {
             //this will simply generate the same multiplication question as in the window, unsure if that is intended
             solution = foundrySolution;
             enemyStrength = (int)(solution/numEnemies);
             
-        }else{
+        } else {
             if (numEnemies == 4) {
                 enemyStrength = 2;
             } else if (numEnemies == 3) {
@@ -347,9 +348,28 @@ public class WindowQuestion : BaseQuestion
         }
     }
 
-    // How does this work?
+    // PARTIALLY IMPLEMENTED Generate an addition question that is definitely divisible by a divisor
     private void GenerateDivisionQuestion() {
+        int divisor = Random.Range(2, divSolutionFactorMax);
+        solution = divisor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
 
+        int remainingSolution = (int) solution;
+
+        // Generate individual enemy strengths and store the results
+        for (int i = numEnemies; i > 1; i--) {
+            int enemyStrength;
+            if (noCarry) {
+                int ones = UnityEngine.Random.Range(1, (remainingSolution % 10) - (i - 1));
+                int tens = 10 * UnityEngine.Random.Range(0, (remainingSolution / 10));
+                enemyStrength = ones + tens;
+                //Debug.Log(tens + " + " + ones);
+            } else {
+                enemyStrength = UnityEngine.Random.Range(1, remainingSolution - (i - 1));
+            }
+            enemyStrengths.Add(enemyStrength);
+            remainingSolution -= enemyStrength;
+        }
+        enemyStrengths.Add(remainingSolution);
     }
 
     // Set initial question complexity and based on difficulty and adjust variables based on that complexity
@@ -376,6 +396,7 @@ public class WindowQuestion : BaseQuestion
             maxEnemies = Math.Max(2, questionComplexity + 1);
             addSolutionFactor = 3;
             multSolutionFactor = 1;
+            divSolutionFactorMax = Math.Max(2, questionComplexity + 1);
             noCarry = true;
         } 
         // Medium questions (complexity 3-5) have a medium number of enemies (3-5), large or complex solutions (ex. 17 or 100), and may require carrying
@@ -384,6 +405,7 @@ public class WindowQuestion : BaseQuestion
             maxEnemies = (questionComplexity + 1 ) / 2 + 1;
             addSolutionFactor = 2;
             multSolutionFactor = 2;
+            divSolutionFactorMax = questionComplexity;
             noCarry = false;
         }
         // Hard questions have a large number of enemies (5+), large and complex solutions (ex. 117), and require carrying 
@@ -391,6 +413,7 @@ public class WindowQuestion : BaseQuestion
             minEnemies = 3;
             maxEnemies = 6;
             addSolutionFactor = UnityEngine.Random.Range(3, 7);
+            divSolutionFactorMax = questionComplexity + 2;
             multSolutionFactor = 3;
             noCarry = false;
         }
