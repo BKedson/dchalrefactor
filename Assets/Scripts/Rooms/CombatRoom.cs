@@ -46,13 +46,13 @@ public class CombatRoom : BaseRoom
     public int resetRoom = -1;
     // The coordinate reference for spawning objects and enemies in the level
     private float baseX = 0;
-    private float baseY = -1f;
+    private float baseY = -0.6f;
     private float baseZ = 0;
     private int yAngle = 90;
     private int referenceThickness = 4;
     // The minimum and maximum difficulty room that can spawn with the current settings 
-    private int easiestRoom = 2;
-    private int hardestRoom = 2;
+    private int easiestRoom = 1;
+    private int hardestRoom = 7;
 
     // The number of enemies that still need to be spawned in the level
     int numEnemiesToSpawn;
@@ -247,18 +247,18 @@ public class CombatRoom : BaseRoom
         // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
         if (remainder != 0)
         {
-            SpawnEnemies(0f, 1f, 17f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
+            SpawnEnemies(0f, 1f, 20f, Math.Min(remainder, 1), spawnerPrefab, combatArea2);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(-11f, 1f, 2f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
+            SpawnEnemies(-11f, 1f, 5f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(11f, 1f, 2f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
+            SpawnEnemies(11f, 1f, 5f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
         }
 
-        SpawnEnemies(0f, 1f, 17f, spawnsPerLoc, enemyPrefab, combatArea2);
-        SpawnEnemies(-13f, 1f, 1f, spawnsPerLoc, enemyPrefab, combatArea2);
-        SpawnEnemies(13f, 1f, 1f, spawnsPerLoc, enemyPrefab, combatArea2);
+        SpawnEnemies(0f, 1f, 20f, spawnsPerLoc, enemyPrefab, combatArea2);
+        SpawnEnemies(-11f, 1f, 5f, spawnsPerLoc, enemyPrefab, combatArea2);
+        SpawnEnemies(11f, 1f, 5f, spawnsPerLoc, enemyPrefab, combatArea2);
     }
 
 

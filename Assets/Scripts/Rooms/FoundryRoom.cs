@@ -15,6 +15,8 @@ public class FoundryRoom : BaseRoom
     [SerializeField] private FoundryManager foundryManager;  // The foundry in the foundry room
     [SerializeField] private Animator door1Animator;  // The animator of the first (closer to spawn) door of the pathway
     [SerializeField] private Animator door2Animator;  // The animator of the first (closer to combat area) door of the pathway
+    [SerializeField] private GameObject door1; // The first (closer to spawn) door of the pathway
+    [SerializeField] private GameObject door2; // The first (closer to combat area) door of the pathway
     [SerializeField] private GameObject surveillanceCam;  // The surveillance camera in the combat area
     // Someone added this here and I do not know what it is for  -- Nofer
     [SerializeField] private GameObject cameraHelper;
@@ -32,8 +34,10 @@ public class FoundryRoom : BaseRoom
     {
         if (other.tag == "Player")
         {
-            door1Animator.SetBool("Door Opened", false);
-            door2Animator.SetBool("Door Opened", true);
+            // door1Animator.SetBool("Door Opened", false);
+            // door2Animator.SetBool("Door Opened", true);
+            door1.SetActive(true);
+            door2.SetActive(false);
             audioSource.PlayOneShot(audioClips[1]);
         }
     }
@@ -43,8 +47,10 @@ public class FoundryRoom : BaseRoom
     {
         if (other.tag == "Player")
         {
-            door1Animator.SetBool("Door Opened", false);
-            door2Animator.SetBool("Door Opened", false);
+            // door1Animator.SetBool("Door Opened", false);
+            // door2Animator.SetBool("Door Opened", false);
+            door1.SetActive(true);
+            door2.SetActive(true);
             audioSource.PlayOneShot(audioClips[1]);
         }
     }
@@ -54,7 +60,8 @@ public class FoundryRoom : BaseRoom
     {
         audioSource.PlayOneShot(audioClips[0]);
         StartCoroutine(SoundDelay());
-        door1Animator.SetBool("Door Opened", true);
+        // door1Animator.SetBool("Door Opened", true);
+        door1.SetActive(false);
         cameraHelper.gameObject.SetActive(false);
     }
 
