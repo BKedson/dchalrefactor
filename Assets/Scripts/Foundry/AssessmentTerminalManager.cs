@@ -24,6 +24,8 @@ public class AssessmentTerminalManager : BaseInteractable
 
     private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
 
+    [SerializeField] private TextboxBehavior tutorial;
+
     void Awake()
     {
         playerRef = GameObject.Find("Player");
@@ -53,6 +55,7 @@ public class AssessmentTerminalManager : BaseInteractable
     IEnumerator StartAssessmentChallenge()
     {
         open = true;
+        tutorial.TerminalOpened();
 
         // Start transition blackscreen
         TransitionUIManager._instance.StartTransition();
@@ -115,6 +118,7 @@ public class AssessmentTerminalManager : BaseInteractable
                 if (windowQuestion.IsCorrect(ans))
                 {
                     rightAnswerOverlay.GetComponent<WindowAnswerFeedback>().RightAnswerUI();
+                    tutorial.TerminalCorrectlySubmitted();
                     StartCoroutine("QuitAssessmentChallenge");
                 }
                 // Incorrect answer

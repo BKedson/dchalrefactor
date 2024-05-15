@@ -41,6 +41,8 @@ public class FoundryManager : BaseInteractable
     private List<int> targetPowerLvs;
     private int targetPower;
 
+    [SerializeField] private TextboxBehavior tutorial;
+
     private void Awake()
     {
         // Prompt the windowQuestion to generate a question
@@ -118,6 +120,9 @@ public class FoundryManager : BaseInteractable
                 GameObject intake = Instantiate(intakePrefab, transform);
                 intake.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), 0f, 0f);
                 intakeGroups[i].Add(intake.GetComponent<FoundryIntakeManager>());
+
+                // Allows intakes to tell the tutorial when an ore is inserted
+                intake.GetComponent<FoundryIntakeManager>().SetTutorial(tutorial);
 
                 // Generate an ore
                 // The ore is originally generated with root/parent transform oreTransformRoot
@@ -255,6 +260,8 @@ public class FoundryManager : BaseInteractable
         if (totalAns == windowQuestion.GetSolution())
         {
             Debug.Log("Forge correct weapon");
+
+            tutorial.IntakeCorrectlySubmitted();
 
             // Give correct feedback if answer was reached through a different method than foundry was looking for
             for(int i = 0; i < intakeGroups.Length; i++){
