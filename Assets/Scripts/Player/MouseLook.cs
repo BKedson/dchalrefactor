@@ -15,6 +15,11 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private Transform camHolderTransform;
     // The transform of Main Camera, as mentioned above
     [SerializeField] private Transform camTransform;
+    [SerializeField] private GameObject activePlayer;
+
+    [SerializeField] private SkinnedMeshRenderer playerMeshRenderer;
+    [SerializeField] private LayerMask camPlayerCollisionMask;
+
     // The collision mask to avoid the camera clipping into walls
     [SerializeField] private LayerMask camCollisionMask;
     // Camera collision check uses Physics.SphereCast
@@ -22,6 +27,8 @@ public class MouseLook : MonoBehaviour
     // Said distance can be found at "Projection - Clipping planes - Near" of the camera component
     // Note: It is not recommanded to change the near clipping plane distance. And 0.1f is a good choice for this value
     [SerializeField] private float camCollisionRadius;  // Recommanded Range [0.1-0.05]
+
+    [SerializeField] private float playerCollisionRadius;
 
     // Max and min pitch (X rotation)
     [SerializeField] private float camPitchMin;
@@ -43,6 +50,8 @@ public class MouseLook : MonoBehaviour
     // Whether the camera is moved closer to the player to avoid clipping into walls
     private bool camLimited = false;
 
+    private bool camLimitedPlayer = false;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -50,6 +59,8 @@ public class MouseLook : MonoBehaviour
         camDefaultLocalOffset = camTransform.localPosition;
         camFlippedLocalOffset = camDefaultLocalOffset;
         camFlippedLocalOffset.x *= -1f;
+        activePlayer = GetComponent<PlayerCharacter>().GetActiveCharacter();
+        playerMeshRenderer = activePlayer.GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void Update()
@@ -88,7 +99,10 @@ public class MouseLook : MonoBehaviour
                 camHolderTransform.position +
                 currOffset.normalized *
                 Mathf.Max(hit.distance - camCollisionRadius, 0.1f);
+            playerMeshRenderer.enabled = false;
         }
+        else {playerMeshRenderer.enabled = true;}
+
 
         // Rotate the player and the camera holder
         transform.rotation = Quaternion.Euler(0, yRot, 0);

@@ -13,12 +13,18 @@ public class SwordWeapon :  BaseWeapon
     void Start(){
         Damage = 100;
         anim = GetComponent<Animator>();
-        swordHitBox = GetComponent<BoxCollider>();
+        swordHitBox = GetComponentInChildren<BoxCollider>();
+        swordHitBox.enabled = false;
+    }
+
+    void Update(){
+        if(anim.GetBool("Attack")){
+            enableCollider();
+        }
     }
 
     public override void Attack()
     {
-        Debug.Log("swing1");
         //if sword is active
         if(gameObject.activeSelf){
             //play animation
@@ -31,6 +37,7 @@ public class SwordWeapon :  BaseWeapon
     {
         //if sword is active
         if(gameObject.activeSelf & can){
+            enableCollider();
             //play animation
             swordHitBox.enabled = true;
             anim.SetBool("Attack", true);
@@ -51,6 +58,10 @@ public class SwordWeapon :  BaseWeapon
 		}
 	}
     public void disableCollider(){
-		GetComponent<BoxCollider>().enabled = false;
+		swordHitBox.enabled = false;
+	}
+
+    public void enableCollider(){
+		swordHitBox.enabled = true;
 	}
 }
