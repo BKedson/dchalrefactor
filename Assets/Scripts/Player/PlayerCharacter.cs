@@ -102,4 +102,9 @@ public class PlayerCharacter : MonoBehaviour {
 
 			textComp.text = "Health " + _health + " " + hp;
 	}
+
+	public void ChangeActiveSkin() {
+		GetActiveCharacter().SetActive(true);
+		Debug.Log("CHARACTER CHANGED SKINS");
+	}
 }

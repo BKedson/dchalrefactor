@@ -401,6 +401,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Reset() {
+        animations = allCharacterAnimations[GameManager.manager.GetCurrentCharacter()];
+    }
+
     // Getter function for wall running state
     // Unsed to move camera for better views on wall
     public bool OnWallR()
