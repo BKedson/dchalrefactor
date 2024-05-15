@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager manager;
     bool canChangeControls = true;
-    Difficulty globalDifficulty = Difficulty.Easy;
     private int questionComplexity = 0;
+    private GameObject player;
+    private Vector3 playerSpawnPoint;
 
-    //Not yet fully implemented, but difficulty menu can set different difficulties for different operands
+    // How many questions has the player gotten right/wrong in a row?
+    private int correctStreak = 0;
+    private int incorrectStreak = 0;
+
+    // How many right or wrong questions warrant a bump or decrease in diffiuclty?
+    private int wrongAnswerThreshold = 2;
+    private int rightAnswerThreshold = 2;
+    private bool alreadyWrong = false;
+
+    //Difficulty menu can set different difficulties for different operands, unsure if this translates to question generation yet
     Difficulty addDifficulty = Difficulty.Easy;
     Difficulty subtractDifficulty = Difficulty.Easy;
     Difficulty multiplyDifficulty = Difficulty.Easy;
@@ -19,6 +30,9 @@ public class GameManager : MonoBehaviour
     // The solution and list of enemy strengths for the current question
     private double currQuestionSol;
     public List<int> currEnemyStrengths;
+
+    // Track player invincibility
+    [SerializeField] private bool isInvincible;
 
     //Character Information---------------------------------------------------------------
     public int currentCharacter; //Stores the global character index for this player - information comes from the Player Data Controller
@@ -41,7 +55,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        // isInvincible = false;
+        // PlayerPrefs.SetInt("invincibility", 0);
+        isInvincible = PlayerGameDataController.Instance.IsInvincible;
+        questionComplexity = PlayerGameDataController.Instance.QuestionComplexity;
     }
 
     // Update is called once per frame
@@ -51,19 +68,35 @@ public class GameManager : MonoBehaviour
     }
 
     public void Restart(){
-        
+        player = GameObject.Find("Player");
+
+        if (player) {
+            player.transform.position = playerSpawnPoint;
+            player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
+            // player.transform.position = new Vector3(0,0,0);
+            player.GetComponentInChildren<PlayerCharacter>().Reset();
+        }
+    }
+
+    public void Save() {
+        Debug.Log("Game saved");
+        PlayerGameDataController.Instance.SaveGameData();
     }
 
     // GETTERS AND SETTERS
 
-    public void ChangeDifficulty(Difficulty difficulty) {
-        globalDifficulty = difficulty;
-        PlayerPrefs.SetInt("difficulty", (int)globalDifficulty);
+    public void SetInvincibility(bool inv){
+        // if(inv){
+        //     PlayerPrefs.SetInt("invincibility", 1);
+        // }else{
+        //     PlayerPrefs.SetInt("invincibility", 0);
+        // }
+        isInvincible = inv;
+        PlayerGameDataController.Instance.IsInvincible = isInvincible;
     }
 
-    public Difficulty GetDifficulty(){
-        globalDifficulty = (Difficulty) PlayerPrefs.GetInt("difficulty");
-        return globalDifficulty;
+    public bool IsInvincible(){
+        return isInvincible;
     }
 
     //addition difficulty
@@ -136,8 +169,37 @@ public class GameManager : MonoBehaviour
         return questionComplexity;
     }
 
-    public void SetQuestionComplexity(int complexity) {
-        questionComplexity = complexity;
+    public void WrongAnswer() {
+        correctStreak = 0;
+
+        if (!alreadyWrong) {
+            incorrectStreak++;
+            alreadyWrong = true;
+        }
+
+        // Decreases complexity for future problems if the player is struggling
+        if (incorrectStreak % wrongAnswerThreshold == 0) {
+            questionComplexity = Math.Max(0, questionComplexity - 1);
+            PlayerGameDataController.Instance.QuestionComplexity = questionComplexity;
+        }
+
+        Debug.Log("Wrong answer streak: " + incorrectStreak + " Complexity: " + questionComplexity);
+
+    }
+
+    public void RightAnswer() {
+            correctStreak++;
+            incorrectStreak = 0;
+
+            alreadyWrong = false;
+
+            // Increases complexity for future problems if the player is easily answering questions
+            if (correctStreak % rightAnswerThreshold == 0) {
+                questionComplexity = Math.Min(9, questionComplexity + 1);
+                PlayerGameDataController.Instance.QuestionComplexity = questionComplexity;
+            }
+
+            Debug.Log("Right answer streak: " + correctStreak + " Complexity: " + questionComplexity);
     }
 
     public double GetCurrQuestionSol() {
@@ -146,6 +208,10 @@ public class GameManager : MonoBehaviour
 
     public void SetCurrQuestionSol(double sol) {
         currQuestionSol = sol;
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawn) {
+        playerSpawnPoint = newSpawn;
     }
 
     public List<int> GetCurrEnemyStrengths()

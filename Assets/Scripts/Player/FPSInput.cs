@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-// basic WASD-style movement control
-// commented out line demonstrates that transform.Translate instead of charController.Move doesn't have collision detection
+// Legacy movement script that is no longer in use
+// Commented out line demonstrates that transform.Translate instead of charController.Move doesn't have collision detection
 
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/FPS Input")]

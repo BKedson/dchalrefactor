@@ -61,6 +61,10 @@ namespace dchalrefactor.Scripts.Animations.PlayerMovement
             currentPlayerAnimator.SetTrigger("SwordSlash");
         }
 
+        public void CancelAttack(){
+            currentPlayerAnimator.ResetTrigger("SwordSlash");
+        }
+
         public void AttackSpecial()
         {
             currentPlayerAnimator.SetTrigger("SwordSlash_Special");

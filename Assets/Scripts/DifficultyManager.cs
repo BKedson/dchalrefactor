@@ -12,6 +12,7 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private GameObject hardButton;
     private GameObject gameManager;
 
+    //For constructing UI feedback on change
     private String easyDescription;
     private String mediumDescription;
     private String hardDescription;
@@ -21,6 +22,8 @@ public class DifficultyManager : MonoBehaviour
     private String multiplyDescription;
     private String divideDescription;
 
+    // 0 is addition, 1 is subtraction, 2 is multiplication, 3 is division
+    // Changed on button press of difficulty menu screen
     private int operand;
 
     // Start is called before the first frame update
@@ -37,21 +40,7 @@ public class DifficultyManager : MonoBehaviour
         multiplyDescription = "The multiplication";
         divideDescription = "The division";
 
-        Difficulty difficulty = gameManager.GetComponent<GameManager>().GetDifficulty();
-
-        switch (difficulty) {
-            case Difficulty.Easy:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = easyDescription;
-                break;
-            case Difficulty.Medium:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = mediumDescription;
-                break;
-            case Difficulty.Hard:
-                descriptionText.GetComponent<TextMeshProUGUI>().text = hardDescription;
-                break;
-            default:
-                break;
-        }
+        descriptionText.GetComponent<TextMeshProUGUI>().text = "";
 
         operand = 0;
     }
@@ -70,9 +59,8 @@ public class DifficultyManager : MonoBehaviour
     public void ChangeDifficulty(int diff) {
         Difficulty difficulty = (Difficulty) diff;
 
-        gameManager.GetComponent<GameManager>().ChangeDifficulty(difficulty);
-
         String operandDescription = "";
+
 
         switch(operand){
             case 0:
@@ -97,7 +85,7 @@ public class DifficultyManager : MonoBehaviour
                 break;
         }
         
-
+        // Set UI text to describe change made
         switch (difficulty) {
             case Difficulty.Easy:
                 descriptionText.GetComponent<TextMeshProUGUI>().text = operandDescription + easyDescription;

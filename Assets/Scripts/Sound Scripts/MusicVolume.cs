@@ -22,8 +22,13 @@ public class MusicVolume : MonoBehaviour
 
     public void SetMusicMixerVolume(float volume)
     {
-        mixer.SetFloat(mixerVolume, Mathf.Log10(volume)*20);
-        PlayerPrefs.SetFloat("SavedMusicVolume", volume);
+        mixer.SetFloat(mixerVolume, Mathf.Log10(slider.value)*20);
+        PlayerPrefs.SetFloat("SavedMusicVolume", slider.value);
+    }
+
+    public void OnSliderValueChanged()
+    {
+        SetMusicMixerVolume(slider.value);
     }
 
 }

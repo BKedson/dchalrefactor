@@ -24,17 +24,27 @@ public class TransitionManager : MonoBehaviour
             PlayerPrefs.SetString("CurrentLevel", "Room Generation Test Scene");
             SceneManager.LoadScene("Room Generation Test Scene");
         }
+
+        if (GameManager.manager) {
+            GameManager.manager.Save();
+        }
     }
 
     public void NewGame() {
-        SceneManager.LoadScene("Room Generation Test Scene");
+        if (GameManager.manager) {
+			GameManager.manager.Restart();
+            SceneManager.LoadScene("Room Generation Test Scene");
+            GameManager.manager.Save();
+		} else {
+            SceneManager.LoadScene("Room Generation Test Scene");
+        }
     }
 
     public void RestartLevel() {
-        // GameObject player = GameObject.Find("Player");
-        // if (player) {
-        //     GameObject.Destroy(player);
-        // }
+        if (GameManager.manager) {
+            Debug.Log(GameManager.manager.GetAddDifficulty());
+            GameManager.manager.Restart();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -48,6 +58,8 @@ public class TransitionManager : MonoBehaviour
 
     public void Menu() {
         SceneManager.LoadScene("Main Menu");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Controls() {
@@ -56,6 +68,10 @@ public class TransitionManager : MonoBehaviour
 
     public void Difficulty() {
         SceneManager.LoadScene("Difficulty");
+    }
+
+    public void Audio() {
+        SceneManager.LoadScene("Audio");
     }
 
     public void Quit() {

@@ -17,12 +17,6 @@ public class WindowQuestion : BaseQuestion
     // 0-9 scale that describes how likely a solution is to break down into complex parts that require carrying
     private int questionComplexity = 0;
 
-    // How many right or wrong questions warrant a bump or decrease in diffiuclty?
-    private int wrongAnswerThreshold = 2;
-    private int rightAnswerThreshold = 2;
-    private int correctStreak = 0;
-    private int incorrectStreak = 0;
-
     // Does the question require the player to carry digits?
     private  bool noCarry = true;
 
@@ -38,18 +32,41 @@ public class WindowQuestion : BaseQuestion
     public int testGeneratDifficultyMultiplication = -1;
     public int testGeneratDifficultySubtraction = -1;
 
+    //for generating intake question
+    private int foundrySolution = -1;
+
+    // Are we making a tutorial question?
+    [SerializeField] private bool tutorial;
+
     void Start()
     {
         // Find the game manager script
-        GameObject gameManagerObject = GameObject.Find("Game Manager"); 
-        if (gameManagerObject) {
-            gameManager = gameManagerObject.GetComponent<GameManager>();
+        if (GameManager.manager) {
+            gameManager = GameManager.manager;
         } else {
             // Error
         }
 
         subject = subject == null ? Subject.Addition : subject;
-        difficulty = gameManager.GetDifficulty();
+
+        switch(subject) {
+                case Subject.Addition:
+                    difficulty = gameManager.GetAddDifficulty();
+                    break;
+                case Subject.Subtraction:
+                    difficulty = gameManager.GetSubtractDifficulty();
+                    break;
+                case Subject.Multiplication:
+                    difficulty = gameManager.GetMultiplyDifficulty();
+                    break;
+                case Subject.Division:
+                    difficulty = gameManager.GetDivideDifficulty();
+                    break;
+                default:
+                    difficulty = gameManager.GetAddDifficulty();
+                    break;
+        }
+
         if (gameManager.GetQuestionComplexity() == null) {
             SetInitialComplexity();
         } else {
@@ -88,31 +105,11 @@ public class WindowQuestion : BaseQuestion
     public override bool IsCorrect(double sol)
     {
         if (sol == solution) {
-            correctStreak++;
-            incorrectStreak = 0;
-
-            // Increases complexity for future problems if the player is easily answering questions
-            if (correctStreak >= rightAnswerThreshold) {
-                questionComplexity = Math.Min(9, questionComplexity + 1);
-                gameManager.SetQuestionComplexity(questionComplexity);
-            }
-
-            Debug.Log("Right answer streak: " + correctStreak);
-
+            gameManager.RightAnswer();
             return true;
         }
 
-        correctStreak = 0;
-        incorrectStreak++;
-
-        // Decreases complexity for future problems if the player is struggling
-        if (incorrectStreak >= wrongAnswerThreshold) {
-            questionComplexity = Math.Max(0, questionComplexity - 1);
-            gameManager.SetQuestionComplexity(questionComplexity);
-        }
-
-        Debug.Log("Wrong answer streak: " + incorrectStreak);
-
+        gameManager.WrongAnswer();
         return false;
     }
 
@@ -127,7 +124,25 @@ public class WindowQuestion : BaseQuestion
         }
 
         subject = subject == null ? Subject.Addition : subject;
-        difficulty = gameManager.GetDifficulty();
+
+        switch(subject) {
+                case Subject.Addition:
+                    difficulty = gameManager.GetAddDifficulty();
+                    break;
+                case Subject.Subtraction:
+                    difficulty = gameManager.GetSubtractDifficulty();
+                    break;
+                case Subject.Multiplication:
+                    difficulty = gameManager.GetMultiplyDifficulty();
+                    break;
+                case Subject.Division:
+                    difficulty = gameManager.GetDivideDifficulty();
+                    break;
+                default:
+                    difficulty = gameManager.GetAddDifficulty();
+                    break;
+        }
+        
         if (gameManager.GetQuestionComplexity() == null) {
             SetInitialComplexity();
         } else {
@@ -138,27 +153,43 @@ public class WindowQuestion : BaseQuestion
         GenerateQuestion();
     }
 
+    public void GenerateIntakeQuestion(int sol){
+        foundrySolution = sol;
+        GenerateQuestion();
+    }
+
     public override void GenerateQuestion() {   
-        numEnemies = UnityEngine.Random.Range(minEnemies, maxEnemies + 1);
+        //retain window numEnemies if generating foundry question, otherwise generate new numEnemies
+        if (foundrySolution <= 0){
+            numEnemies = UnityEngine.Random.Range(minEnemies, maxEnemies + 1);
+        }
+        
         
         enemyStrengths.Clear();
 
-        switch(subject) {
-            case Subject.Addition:
-                GenerateAdditionQuestion();
-                break;
-            case Subject.Subtraction:
-                GenerateSubtractionQuestion();
-                break;
-            case Subject.Multiplication:
-                GenerateMultiplicationQuestion();
-                break;
-            case Subject.Division:
-                GenerateDivisionQuestion();
-                break;
-            default:
-                GenerateAdditionQuestion();
-                break;
+        if (tutorial) {
+            GenerateAdditionQuestion();
+            solution = 3;
+            noCarry = true;
+            numEnemies = 2;
+        } else {
+            switch(subject) {
+                case Subject.Addition:
+                    GenerateAdditionQuestion();
+                    break;
+                case Subject.Subtraction:
+                    GenerateSubtractionQuestion();
+                    break;
+                case Subject.Multiplication:
+                    GenerateMultiplicationQuestion();
+                    break;
+                case Subject.Division:
+                    GenerateDivisionQuestion();
+                    break;
+                default:
+                    GenerateAdditionQuestion();
+                    break;
+            }
         }
 
         gameManager.SetCurrQuestionSol(solution);
@@ -173,7 +204,12 @@ public class WindowQuestion : BaseQuestion
 
     // All enemies have different strengths, must be added together
     private void GenerateAdditionQuestion() {
-        solution = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
+        if (foundrySolution > 0) {
+            solution = foundrySolution;
+        } else {
+            solution = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
+        }
+        
         
         if (noCarry && solution % 10 < 3) {
             solution += 3;
@@ -200,34 +236,66 @@ public class WindowQuestion : BaseQuestion
 
     // There is one large enemy and the other enemeis subtract from it
     private void GenerateSubtractionQuestion() {
-        // The strength of the large enemy
-        int largeEnemy = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
 
-        if (noCarry && largeEnemy % 10 < 3) {
-            solution += 3;
-        }
+        //if solution is given, generate large enemy then subtract the solution and generate remaining subtracting enemies
+        if(foundrySolution > 0){
+            solution = foundrySolution;
 
-        enemyStrengths.Add(largeEnemy);
+            //generate question based on solution
 
-        int remainingLargeEnemy = largeEnemy;
+            // The strength of the large enemy
+            int largeEnemy = addSolutionFactor * UnityEngine.Random.Range((int)solution, 10*(questionComplexity + 1));
 
-        // Generate individual enemy strengths and store the results
-        for (int i = numEnemies; i > 1; i--) {
-            int enemyStrength;
-            if (noCarry) {
-                int ones = UnityEngine.Random.Range(1, (remainingLargeEnemy % 10) - (i - 1));
-                int tens = 10 * UnityEngine.Random.Range(0, (remainingLargeEnemy / 10));
-                enemyStrength = ones + tens;
-                Debug.Log(tens + " + " + ones);
-            } else {
-                enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
+            enemyStrengths.Add(largeEnemy);
+
+            int remainingLargeEnemy = largeEnemy - (int)solution;
+
+            // Generate all but one enemy strengths and store the results
+            for (int i = numEnemies; i > 2; i--) {
+                int enemyStrength;
+                if (noCarry) {
+                    int ones = UnityEngine.Random.Range(1, (remainingLargeEnemy % 10) - (i - 1));
+                    int tens = 10 * UnityEngine.Random.Range(0, (remainingLargeEnemy / 10));
+                    enemyStrength = ones + tens;
+                    Debug.Log(tens + " + " + ones);
+                } else {
+                    enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
+                }
+                enemyStrengths.Add(enemyStrength);
+                remainingLargeEnemy -= enemyStrength;
             }
-            enemyStrengths.Add(enemyStrength);
-            remainingLargeEnemy -= enemyStrength;
-        }
 
-        // After all of the small enemies have been subtrated, what remains is the solution
-        solution = remainingLargeEnemy;
+            //make last enemy remaining amount to get to the solution
+
+            enemyStrengths.Add(remainingLargeEnemy);
+
+        //otherwise, generate large enemy and subtracting enemies before setting the solution to the remainder
+        }else{
+            // The strength of the large enemy
+            int largeEnemy = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
+
+            enemyStrengths.Add(largeEnemy);
+
+            int remainingLargeEnemy = largeEnemy;
+
+            // Generate individual enemy strengths and store the results
+            for (int i = numEnemies; i > 1; i--) {
+                int enemyStrength;
+                if (noCarry) {
+                    int ones = UnityEngine.Random.Range(1, (remainingLargeEnemy % 10) - (i - 1));
+                    int tens = 10 * UnityEngine.Random.Range(0, (remainingLargeEnemy / 10));
+                    enemyStrength = ones + tens;
+                    Debug.Log(tens + " + " + ones);
+                } else {
+                    enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
+                }
+                enemyStrengths.Add(enemyStrength);
+                remainingLargeEnemy -= enemyStrength;
+            }
+
+            // After all of the small enemies have been subtrated, what remains is the solution
+            solution = remainingLargeEnemy;
+        }
     }
 
     // All enemies have the same strength and can be added or multiplied, multiplication is faster
@@ -235,7 +303,12 @@ public class WindowQuestion : BaseQuestion
         if (noCarry) {
             GenerateNoCarryMultiplicationQuestion();
         } else {
-            solution = multSolutionFactor * numEnemies * UnityEngine.Random.Range(1, 10);
+            //this will simply generate the same multiplication question as in the window, unsure if that is intended
+            if (foundrySolution > 0){
+                solution = foundrySolution;
+            }else{
+                solution = multSolutionFactor * numEnemies * UnityEngine.Random.Range(1, 10);
+            }
 
             int enemyStrength = (int) solution / numEnemies;
 
@@ -250,15 +323,24 @@ public class WindowQuestion : BaseQuestion
         numEnemies = UnityEngine.Random.Range(2, 5);
         int enemyStrength;
 
-        if (numEnemies == 4) {
-            enemyStrength = 2;
-        } else if (numEnemies == 3) {
-            enemyStrength = UnityEngine.Random.Range(2, 4);
-        } else {
-            enemyStrength = UnityEngine.Random.Range(2, 5);
-        }
+        //generate question based on given answer
+        if(foundrySolution > 0){
+            //this will simply generate the same multiplication question as in the window, unsure if that is intended
+            solution = foundrySolution;
+            enemyStrength = (int)(solution/numEnemies);
+            
+        }else{
+            if (numEnemies == 4) {
+                enemyStrength = 2;
+            } else if (numEnemies == 3) {
+                enemyStrength = UnityEngine.Random.Range(2, 4);
+            } else {
+                enemyStrength = UnityEngine.Random.Range(2, 5);
+            }
 
-        solution = enemyStrength * numEnemies;
+            solution = enemyStrength * numEnemies;
+        }
+        
 
         for (int i = 0; i < numEnemies; i++) {
             enemyStrengths.Add(enemyStrength);
@@ -291,7 +373,7 @@ public class WindowQuestion : BaseQuestion
         // Easy questions have few (1-3) enemies, small and round solutions (ex. 10), and require no carrying
         if (questionComplexity < 3) {
             minEnemies = 2;
-            maxEnemies = 3;
+            maxEnemies = Math.Max(2, questionComplexity + 1);
             addSolutionFactor = 3;
             multSolutionFactor = 1;
             noCarry = true;
@@ -299,16 +381,16 @@ public class WindowQuestion : BaseQuestion
         // Medium questions (complexity 3-5) have a medium number of enemies (3-5), large or complex solutions (ex. 17 or 100), and may require carrying
         else if (questionComplexity < 7) {
             minEnemies = 3;
-            maxEnemies = (questionComplexity / 2) + 2;
-            addSolutionFactor = 10;
+            maxEnemies = (questionComplexity + 1 ) / 2 + 1;
+            addSolutionFactor = 2;
             multSolutionFactor = 2;
             noCarry = false;
         }
         // Hard questions have a large number of enemies (5+), large and complex solutions (ex. 117), and require carrying 
         else {
             minEnemies = 3;
-            maxEnemies = questionComplexity - 2;
-            addSolutionFactor = UnityEngine.Random.Range(6, 11);
+            maxEnemies = 6;
+            addSolutionFactor = UnityEngine.Random.Range(3, 7);
             multSolutionFactor = 3;
             noCarry = false;
         }
@@ -323,13 +405,25 @@ public class WindowQuestion : BaseQuestion
         return enemyStrengths;
     }
 
-    public double GetSolution() {
-        int ans = 0;
-        foreach (int s in enemyStrengths) Debug.Log(s);
-        foreach (int strength in enemyStrengths)
-        {
-            ans += strength;
-        }
-        return ans;
+    // public double GetSolution() {
+    //     int ans = 0;
+    //     foreach (int s in enemyStrengths) Debug.Log(s);
+    //     foreach (int strength in enemyStrengths)
+    //     {
+    //         ans += strength;
+    //     }
+    //     return ans;
+    // }
+
+    public int GetSolution() {
+        return (int)solution;
+    }
+
+    public void ToggleTutorial() {
+        tutorial = !tutorial;
+    }
+
+    public bool Tutorial() {
+        return tutorial;
     }
 }

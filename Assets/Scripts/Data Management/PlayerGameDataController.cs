@@ -37,6 +37,8 @@ public class PlayerGameDataController : MonoBehaviour
     public int MultiplicationDifficulty;
     public int DivisionDifficulty;
     public string CurrentCharacter;
+    public bool IsInvincible;
+    public int QuestionComplexity;
     //---------------------------------------------------IN-GAME LOGIC-----------------------------------------------------------
     public bool IsNewUser;
     public bool IsNewGame;
@@ -85,6 +87,8 @@ public class PlayerGameDataController : MonoBehaviour
         data.MultiplicationDifficulty = MultiplicationDifficulty;
         data.DivisionDifficulty = DivisionDifficulty;
         data.CurrentCharacter = CurrentCharacter;
+        data.IsInvincible = IsInvincible;
+        data.QuestionComplexity = QuestionComplexity;
         return data;
     }
 
@@ -101,6 +105,8 @@ public class PlayerGameDataController : MonoBehaviour
         MultiplicationDifficulty = data.MultiplicationDifficulty;
         DivisionDifficulty = data.DivisionDifficulty;
         CurrentCharacter = data.CurrentCharacter;
+        IsInvincible = data.IsInvincible;
+        QuestionComplexity = data.QuestionComplexity;
     }
 
     public PlayerGameData DefaultGameDataFile(string firstName, string nickName, int codeNumber)
@@ -114,6 +120,8 @@ public class PlayerGameDataController : MonoBehaviour
         data.MultiplicationDifficulty = 1;
         data.DivisionDifficulty = 1;
         data.CurrentCharacter = "DC_Woman_2";
+        data.IsInvincible = false;
+        data.QuestionComplexity = 0;
         return data;
     }
 
