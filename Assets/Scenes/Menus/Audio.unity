@@ -2352,17 +2352,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 1395682144}
   m_HandleRect: {fileID: 2016854505}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1913530919}
         m_TargetAssemblyTypeName: SetSFXVolume, Assembly-CSharp
-        m_MethodName: SetSFXMixerVolume
-        m_Mode: 4
+        m_MethodName: OnSliderValueChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2709,17 +2709,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 1707951365}
   m_HandleRect: {fileID: 16601106}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2087461408}
         m_TargetAssemblyTypeName: MusicVolume, Assembly-CSharp
-        m_MethodName: SetMusicMixerVolume
-        m_Mode: 4
+        m_MethodName: OnSliderValueChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
