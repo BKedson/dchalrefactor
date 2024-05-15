@@ -32,19 +32,19 @@ public class TextboxBehavior : MonoBehaviour
     private int section;
     private int clickCount;
 
-    private GameObject text;
-    private GameObject textBoxContainer;
+    [SerializeField] private GameObject text;
+    [SerializeField] private GameObject textBoxContainer;
     
 
-    void Start()
+    void Awake()
     {
         numMessages = messages.Length;
         currMessage = 0;
         section = 0;
         clickCount = 0;
 
-        text = GameObject.Find("TutorialText");
-        textBoxContainer = GameObject.Find("TutorialTextBox");
+        // text = GameObject.Find("TutorialText");
+        // textBoxContainer = GameObject.Find("TutorialTextBox");
         text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
     }
 
@@ -102,7 +102,7 @@ public class TextboxBehavior : MonoBehaviour
     }
 
     public void TerminalOpened(){
-        if(textBoxContainer.activeSelf){
+        if(textBoxContainer && textBoxContainer.activeSelf){
             if(section < 3){
                 section = 3;
                 currMessage = 4;
@@ -170,6 +170,9 @@ public class TextboxBehavior : MonoBehaviour
     private IEnumerator WaitToDeactivate(){
         yield return new WaitForSeconds(5.0f);
         
-        textBoxContainer.SetActive(false);
+        //check that the tutorial hasn't already restarted 
+        if(section == 9){
+            textBoxContainer.SetActive(false);
+        }
     }
 }

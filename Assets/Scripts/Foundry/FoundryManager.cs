@@ -41,13 +41,15 @@ public class FoundryManager : BaseInteractable
     private List<int> targetPowerLvs;
     private int targetPower;
 
-    [SerializeField] private TextboxBehavior tutorial;
+    private TextboxBehavior tutorial;
 
     private void Awake()
     {
         // Prompt the windowQuestion to generate a question
         windowQuestion.GenerateInitialQuestion();
         List<int> enemyStrengths = windowQuestion.GetEnemyStrengths();
+
+        tutorial = GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>();
 
         StartCoroutine(SpawnDelay());
     }

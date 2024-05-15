@@ -24,7 +24,7 @@ public class AssessmentTerminalManager : BaseInteractable
 
     private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
 
-    [SerializeField] private TextboxBehavior tutorial;
+    private TextboxBehavior tutorial;
 
     void Awake()
     {
@@ -34,6 +34,8 @@ public class AssessmentTerminalManager : BaseInteractable
         audioSource.clip = correctSound;
 
         open = false;
+
+        tutorial = GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>();
     }
 
     // Update is called once per frame
