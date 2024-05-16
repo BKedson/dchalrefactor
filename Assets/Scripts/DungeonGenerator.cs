@@ -75,6 +75,8 @@ public class DungeonGenerator : MonoBehaviour
 
         charController.enabled = true; 
 
+        GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>().CombatOver();
+
         // Update offset
         nextGenPos += genOffset;
     }
@@ -120,6 +122,8 @@ public class DungeonGenerator : MonoBehaviour
         player.GetComponent<PlayerCharacter>().FullHealth();
         // Update offset
         nextGenPos += genOffset;
+
+        GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>().CombatOver();
 
         // Remove the transition screen
         TransitionUIManager._instance.EndTransition();
