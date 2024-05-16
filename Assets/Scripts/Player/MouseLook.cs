@@ -99,7 +99,7 @@ public class MouseLook : MonoBehaviour
                 camHolderTransform.position +
                 currOffset.normalized *
                 Mathf.Max(hit.distance - camCollisionRadius, 0.1f);
-            playerMeshRenderer.enabled = false;
+            //playerMeshRenderer.enabled = false;
         }
         else {playerMeshRenderer.enabled = true;}
 
