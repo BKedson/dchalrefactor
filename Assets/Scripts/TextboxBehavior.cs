@@ -84,8 +84,6 @@ public class TextboxBehavior : MonoBehaviour
                 if(section >= 7){
                     clickCount++;
                     if(clickCount > 1){
-                        CombatOver();
-                    }else{
                         OnAttack();
                     }
                 }
@@ -163,10 +161,12 @@ public class TextboxBehavior : MonoBehaviour
     }
 
     public void CombatOver(){
-        section = 9;
-        currMessage = 13;
-        text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-        StartCoroutine(WaitToDeactivate());
+        if(textBoxContainer.activeSelf && section > 6){
+            section = 9;
+            currMessage = 13;
+            text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+            StartCoroutine(WaitToDeactivate());
+        }
     }
 
     private IEnumerator WaitToDeactivate(){

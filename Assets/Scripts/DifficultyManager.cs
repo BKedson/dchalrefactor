@@ -17,7 +17,7 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private GameObject[] multiplyButtons;
     [SerializeField] private GameObject[] divideButtons;
 
-    private GameObject gameManager;
+    private GameManager gameManager;
 
     //For constructing UI feedback on change
     private String easyDescription;
@@ -39,7 +39,7 @@ public class DifficultyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
+        gameManager = GameManager.manager;
 
         easyDescription = " is easy.";
         mediumDescription = " is medium.";
@@ -52,8 +52,22 @@ public class DifficultyManager : MonoBehaviour
 
         descriptionText.GetComponent<TextMeshProUGUI>().text = "";
 
+        // Highlight current difficulty settings
         operand = 0;
-        localDifficulty = Difficulty.Easy;
+        localDifficulty = GameManager.manager.GetAddDifficulty();
+        HighlightButton();
+
+        operand = 1;
+        localDifficulty = GameManager.manager.GetSubtractDifficulty();
+        HighlightButton();
+
+        operand = 2;
+        localDifficulty = GameManager.manager.GetMultiplyDifficulty();
+        HighlightButton();
+
+        operand = 3;
+        localDifficulty = GameManager.manager.GetDivideDifficulty();
+        HighlightButton();
     }
 
     // Update is called once per frame
@@ -76,23 +90,23 @@ public class DifficultyManager : MonoBehaviour
 
         switch(operand){
             case 0:
-                gameManager.GetComponent<GameManager>().ChangeAddDifficulty(difficulty);
+                gameManager.ChangeAddDifficulty(difficulty);
                 operandDescription = addDescription;
                 break;
             case 1:
-                gameManager.GetComponent<GameManager>().ChangeSubtractDifficulty(difficulty);
+                gameManager.ChangeSubtractDifficulty(difficulty);
                 operandDescription = subractDescription;
                 break;
             case 2:
-                gameManager.GetComponent<GameManager>().ChangeMultiplyDifficulty(difficulty);
+                gameManager.ChangeMultiplyDifficulty(difficulty);
                 operandDescription = multiplyDescription;
                 break;
             case 3:
-                gameManager.GetComponent<GameManager>().ChangeDivideDifficulty(difficulty);
+                gameManager.ChangeDivideDifficulty(difficulty);
                 operandDescription = divideDescription;
                 break;
             default:
-                gameManager.GetComponent<GameManager>().ChangeAddDifficulty(difficulty);
+                gameManager.ChangeAddDifficulty(difficulty);
                 operandDescription = addDescription; 
                 break;
         }
