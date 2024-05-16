@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3440075002263670375
 Transform:
   m_ObjectHideFlags: 0
@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 5325517364518706177}
   - component: {fileID: 2628643519863700667}
   - component: {fileID: 2536826943502872857}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2512,7 +2512,7 @@ GameObject:
   - component: {fileID: 3368463698480177970}
   - component: {fileID: 7071466160181373317}
   - component: {fileID: 8167711717381508002}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3473,13 +3473,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165866005298135767}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1165866005298135767
 Transform:
   m_ObjectHideFlags: 0
@@ -4126,6 +4126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6860344548199256826}
+  - component: {fileID: 164406362954771454}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -4156,6 +4157,2247 @@ Transform:
   - {fileID: 1165866005298135767}
   m_Father: {fileID: 8136411962109511245}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &164406362954771454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3872113245111983800}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2cecfa673a35f4c99934d9376a7531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  releaseShaders: 1
+  m_RendererInfo:
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.7266783, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.90538925, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.4974248}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.667108, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.6761356}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.73570585}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.85484636}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.7266783, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.6075377, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.7862486, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.6800499}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.42883462, w: 0.61754984}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.6800499}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.619503}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.9222374}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.42883462, w: 0.9202842}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.9066578}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.54337656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.619503}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.4828297}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.42883462, w: 0.79919046}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.54337656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.42883462, w: 0.85973734}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.30118906}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.36173594}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.43786243}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.089492105, y: 0.089492105, z: 0.82023245, w: -0.001506839}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.096039616, y: 0.096039616, z: 0.3554034, w: 0.094084635}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.08161021, y: 0.08161021, z: -0.0015803749, w: 0.36165568}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.089492105, y: 0.089492105, z: 0.6424981, w: 0.08696161}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.096039616, y: 0.096039616, z: 0.5468097, w: -0.0014921691}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.08161021, y: 0.08161021, z: 0.893117, w: 0.086888075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.59224963}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.65084326}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.7094369}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.7680305}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.76016736, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.5843861, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.65084326}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.025704527, w: 0.97245294}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: -0.0065568932, w: 0.3187027}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.201447, w: 0.96711075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.8474438, w: 0.16788392}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.7952761}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.84581894, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.85484636}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.85484636}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.43785456}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.5479674, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.61656535}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.42882675, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.73570585}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.85484636}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.7952761}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.61656535}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.4974248}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.5569951}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.6761356}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.61656535}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.43785456}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.7862486, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.3499396, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.6800499}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.78556406}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.6800499}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.619503}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.4984093}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.24064219}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.84611094}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.3499396, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.4828297}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.5842629, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.42228281}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.36173594}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6428437, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.5842629, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.8616905}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.40852043, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6428437, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.23277797, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.2913588, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.6800499}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.7405968}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.4984093}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.46710125, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.42228281}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.6644703}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.36173594}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.84611094}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.80114365}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.089492105, y: 0.089492105, z: 0.6424981, w: -0.001506839}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.096039616, y: 0.096039616, z: 0.45110652, w: 0.094084635}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.08161021, y: 0.08161021, z: 0.82015896, w: 0.086888075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.7014702, w: 0.18014096}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.8852178}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.7094369}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.5843861, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.76016736, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.87735486, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.8852178}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.9359486, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.7015736, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.64297986, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.64297986, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.8187611, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.8852178}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.8187611, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.46067625}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.8264333}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.66374516}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: -0.0065568932, w: 0.62330604}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.91475433, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.66475433, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.7624106, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.68094313, w: 0.25760734}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.43786243}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.8616905}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.43786243}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.7250172}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.4984093}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6428437, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.88165075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: -0.0016392233, w: 0.96711075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: -0.0065568932, w: 0.72484046}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.877203}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.9144166}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.667108, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.5569951}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.6075377, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.48839706, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: -0.0015531661, w: 0.8533985}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.61656535}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.7862486, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.7266783, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.90538925, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: -0.0015531661, w: 0.91296875}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.42882675, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.667108, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.7952761}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.6761356}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.6761356}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.5569951}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.43785456}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.9144166}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.48839706, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.85484636}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.42882675, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.7862486, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.5479674, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.4974248}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.84581894, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.7952761}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.9144166}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.84581894, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.6075377, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.7266783, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.5479674, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.6075377, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.9144166}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.7952761}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.73570585}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.7679816, w: 0.5918217}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.7025519, w: 0.6349484}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.8334113, w: 0.5918217}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.7679816, w: 0.6349484}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.6371222, w: 0.6349484}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.89884096, w: 0.5918217}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.88712645, w: 0.8000517}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.63712645, w: 0.6780793}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.88712645, w: 0.6780793}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.69962645, w: 0.7593942}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.69962645, w: 0.8813666}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.63712645, w: 0.7593942}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.25660312, y: 0.25660312, z: -0.007693554, w: -0.007693554}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.82462645, w: 0.8000517}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.63712645, w: 0.84070915}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.63712645, w: 0.8813666}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.82462645, w: 0.71873677}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.25660312, y: 0.25660312, z: 0.49230644, w: -0.007693554}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.69962645, w: 0.6780793}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.88712645, w: 0.84070915}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.76212645, w: 0.7593942}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.88712645, w: 0.9220241}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.25660312, y: 0.25660312, z: 0.24230644, w: -0.007693554}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.69962645, w: 0.9220241}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.82462645, w: 0.9220241}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.63712645, w: 0.8000517}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.76212645, w: 0.84070915}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.88712645, w: 0.71873677}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.82462645, w: 0.6780793}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.25660312, y: 0.25660312, z: 0.7423065, w: -0.007693554}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.36173594}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.619503}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.55895615}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.60392344}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.8616905}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.80114365}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.23277797, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.5842629, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.60392344}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.30118906}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.9222374}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.7250172}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.9066578}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.23277797, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.619503}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.7250172}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.24064219}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.877167, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.8616905}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8185862, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.84611094}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.42883462, w: 0.55700296}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.76000535, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.5842629, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.55895615}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6428437, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.5256821, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.8616905}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.7405968}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.43786243}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.4984093}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.4828297}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.54337656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.43786243}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.877167, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.55895615}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.9357478, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.619503}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.4984093}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.2913588, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.4828297}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.43786243}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.5256821, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.60392344}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.23277797, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.76000535, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.60392344}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.78556406}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.54337656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.5256821, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.3499396, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.6644703}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.9222374}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.619503}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.70142454, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.80114365}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.55895615}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.7405968}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.9222374}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.7250172}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8185862, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.40854743, w: 0.943754}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.91960216, w: 0.5335986}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.76010996, w: 0.5335986}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.34995368, w: 0.943754}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.29135993, w: 0.943754}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.52573496, w: 0.943754}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.82662416}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.65084326}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.5843861, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.82662416}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.7680305}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.7015736, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.87735486, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.76016736, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.59224963}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.7680305}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.82662416}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.64297986, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.9359486, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.65084326}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.59224963}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.64297986, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.82662416}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.64297986, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.8852178}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.7015736, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.59224963}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.5843861, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.59224963}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.7015736, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.7094369}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.8187611, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.8852178}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.5843861, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.9359486, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.9359486, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: -0.0065568932, w: 0.8263749}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.85225433, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.75967836}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.1560729}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.15823291, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.19045947, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.72490144}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.33694384, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.14286616, w: 0.96711075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.8249106, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.46315214}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9660162, w: 0.08682922}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.7190209}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.750285}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.9476918}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.10281811, w: 0.3187027}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.4621931, w: 0.3591418}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.78975433, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9204019, w: 0.16788392}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.10281811, w: 0.72484046}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9660162, w: 0.13759646}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.67836344}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.67413425}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.10281811, w: 0.62330604}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.9223082}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.57156813, w: 0.1560729}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.64875066}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.4621931, w: 0.25760734}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.8264358}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.3691704, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.7652796}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: -0.0016392233, w: 0.97245294}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.68094313, w: 0.3591418}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.10281811, w: 0.42023715}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.92214346}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.3591418}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.8874106, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.25002977, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.57156813, w: 0.3591418}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.30960009, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.10281811, w: 0.5217716}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.8518194}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.3528181, w: 0.3591418}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.82010007, w: 0.16788392}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.3528181, w: 0.1560729}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9660162, w: 0.11221284}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.94752705}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9660162, w: 0.16298006}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.025704527, w: 0.96711075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.95335376}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.6999106, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.39651415, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.13088916, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.9279702}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: -0.0065568932, w: 0.5217716}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.27737352, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.6374106, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.8869802}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.5842458}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.08428534, w: 0.96711075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.089492105, y: 0.089492105, z: 0.73136526, w: -0.001506839}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.096039616, y: 0.096039616, z: 0.45110652, w: -0.0014921691}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.08161021, y: 0.08161021, z: -0.0015803749, w: 0.19954634}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.24064219}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.55895615}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: -0.0015531661, w: 0.79382825}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.48839706, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.4974248}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.42882675, w: 0.4974248}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.85484636}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.6761356}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.9144166}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.42882675, w: 0.43785456}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.61656535}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.43785456}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.78556406}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.7405968}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.9066578}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.9222374}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.6644703}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.80114365}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.40852043, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.9222374}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.6800499}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.70142454, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.46710125, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.2913588, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.2913588, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.8616905}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.6644703}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.089492105, y: 0.089492105, z: 0.73136526, w: 0.08696161}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.096039616, y: 0.096039616, z: 0.3554034, w: -0.0014921691}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.08161021, y: 0.08161021, z: -0.0015803749, w: 0.44271037}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.65084326}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.9358452, w: 0.18014096}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.7094369}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.8187611, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.87735486, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.82662416}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.8852178}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.76016736, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.7094369}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.7015736, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.972684, w: 0.5335164}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.07131884, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.68094313, w: 0.1560729}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.056941595, w: 0.96711075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.4621931, w: 0.1560729}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.7756686}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.8930581, w: 0.16788392}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.3528181, w: 0.25760734}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.46710125, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.3499396, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.4984093}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.80114365}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.7405968}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.40852043, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.877167, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.76000535, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.90538925, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.73570585}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.5479674, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.84581894, w: 0.2591438}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.73570585}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.73570585}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.61656535}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.5569951}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.43785456}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.9144166}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.90538925, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.4974248}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.667108, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.5569951}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.48839706, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.30968612, w: 0.31871405}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.13097522, w: 0.5569951}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.42882675, w: 0.19957355}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.36925644, w: 0.43785456}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.2501158, w: 0.3782843}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.071404904, w: 0.6761356}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.7952761}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.06143249, y: 0.06143249, z: 0.19054553, w: 0.4974248}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.42228281}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.40852043, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.4984093}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.059001565}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.80114365}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.30118906}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.9222374}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: 0.9066578}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.9357478, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.4984093}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.42883462, w: 0.6780967}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.42883462, w: 0.7386436}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.42228281}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.24064219}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.9222374}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.17419715, w: 0.30118906}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.46710125, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.70142454, w: 0.11954844}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.9357478, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8398898, w: 0.80114365}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.619503}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.54698575, w: 0.7405968}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.78556406}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.7405968}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.11561633, w: 0.84611094}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.6641474, w: 0.6800499}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.8185862, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: -0.0015453119, w: 0.18009531}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.80114365}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.89847064, w: 0.43786243}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.8616905}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.057035506, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.48840493, w: 0.7405968}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.55895615}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.8616905}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.60556656, w: 0.6800499}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.43786243}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.781309, w: 0.55895615}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.5256821, w: -0.0015453119}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061121814, y: 0.061121814, z: 0.7227282, w: 0.55895615}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.089492105, y: 0.089492105, z: 0.90909964, w: -0.001506839}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.096039616, y: 0.096039616, z: 0.5468097, w: 0.094084635}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.08161021, y: 0.08161021, z: -0.0015803749, w: 0.280601}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.7015736, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.7094369}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.76016736, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.87725145, w: 0.18014096}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.87735486, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.87735486, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.40860483, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.7680305}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.8187611, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.8186577, w: 0.18014096}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.7680305}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.64297986, w: 0.29928145}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.35001108, w: 0.4164687}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.9359486, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.5843861, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.35787508}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.533656}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.76006395, w: 0.18014096}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.82662416}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.47506234}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.23282361, w: 0.7680305}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.52579236, w: 0.24068783}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.46719858, w: 0.59224963}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.058937874, y: 0.058937874, z: 0.29141733, w: 0.65084326}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.79031813, w: 0.1560729}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.79031813, w: 0.3591418}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.8409933}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.523699}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.7025519, w: 0.5918217}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.89884096, w: 0.6349484}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.8334113, w: 0.6349484}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06750839, y: 0.06750839, z: 0.6371222, w: 0.5918217}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.76212645, w: 0.71873677}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.82462645, w: 0.8813666}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.88712645, w: 0.7593942}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.63712645, w: 0.71873677}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.76212645, w: 0.8000517}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.82462645, w: 0.84070915}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.69962645, w: 0.84070915}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.88712645, w: 0.8813666}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.76212645, w: 0.8813666}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.76212645, w: 0.6780793}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.63712645, w: 0.9220241}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.69962645, w: 0.8000517}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.76212645, w: 0.9220241}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.82462645, w: 0.7593942}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.25660312, y: 0.25660312, z: -0.007693554, w: 0.15493624}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.06415078, y: 0.06415078, z: 0.69962645, w: 0.71873677}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.46714118, w: 0.943754}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.813274, w: 0.5335986}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.8664381, w: 0.5335986}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057142083, y: 0.057142083, z: 0.5843287, w: 0.59219223}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.25760734}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.21780322, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.70533955}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.8003358}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.17410325, w: 0.96711075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.74050283}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.97291064}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.4983154}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9499106, w: 0.9730754}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.43776852}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.57156813, w: 0.25760734}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.5588622}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.7658864}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.964559, w: 0.63523674}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.09866259, w: 0.9739008}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.10281811, w: 0.8263749}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.115522414, w: 0.96711075}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.964559, w: 0.59211004}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.8010522}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.79031813, w: 0.25760734}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.56221074}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.67995596}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.972684, w: 0.5589}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.6447927}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.6194091}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.8615966}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.72725433, w: 0.96296567}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.9025866}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.5842465, w: 0.69951785}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.866814}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: 0.2434431, w: 0.866814}
+  - renderer: {fileID: 0}
+    lightmapIndex: 2
+    lightmapOffsetScale: {x: 0.113316074, y: 0.113316074, z: -0.0065568932, w: 0.42023715}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.028329019, y: 0.028329019, z: 0.9569575, w: 0.8010497}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.0706194, y: 0.0706194, z: -0.001499615, w: 0.59367555}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.0706194, y: 0.0706194, z: -0.001499615, w: 0.52384585}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.035545982, y: 0.035545982, z: 0.96497077, w: 0.3782955}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.035545982, y: 0.035545982, z: 0.96497077, w: 0.259155}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.035545982, y: 0.035545982, z: 0.96497077, w: 0.19958472}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.062094443, y: 0.062094443, z: 0.27751014, w: 0.13324204}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.20258406, y: 0.20258406, z: -0.00222889, w: -0.00222889}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.061784882, y: 0.061784882, z: -0.0015416599, w: 0.7332929}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.0642288, y: 0.0642288, z: 0.1996366, w: 0.13323034}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.13906202, y: 0.13906202, z: 0.27701598, w: -0.0020177418}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.13906202, y: 0.13906202, z: 0.19915414, w: -0.0020177418}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.019189028, y: 0.019189028, z: 0.6423866, w: 0.1753186}
+  - renderer: {fileID: 0}
+    lightmapIndex: 1
+    lightmapOffsetScale: {x: 0.057206646, y: 0.057206646, z: 0.23279096, w: 0.94377875}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.0706194, y: 0.0706194, z: -0.001499615, w: 0.66350526}
+  - renderer: {fileID: 0}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.035545982, y: 0.035545982, z: 0.96497077, w: 0.31872526}
+  m_Lightmaps:
+  - {fileID: 2800000, guid: 3fd223c7e6996bf47a9fe0747c70f83a, type: 3}
+  - {fileID: 2800000, guid: 0ddbc6b7517de954587872307ffd85c1, type: 3}
+  - {fileID: 2800000, guid: cf041548029a76e4fb3a2cdbff3fdddc, type: 3}
+  m_LightmapsDir:
+  - {fileID: 2800000, guid: c6c1a09782642ad4ba7b875cfbe1b6c0, type: 3}
+  - {fileID: 2800000, guid: efcdc9641f02c2a4b95d2693e5ef8111, type: 3}
+  - {fileID: 2800000, guid: 1a02257aec379284d9fb98c9f0f9616c, type: 3}
+  m_ShadowMasks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_LightInfo:
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 4
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 1
+    mixedLightingMode: 0
+  - light: {fileID: 0}
+    lightmapBaketype: 2
+    mixedLightingMode: 0
 --- !u!1 &3992400806503070519
 GameObject:
   m_ObjectHideFlags: 0
@@ -7065,7 +9307,7 @@ GameObject:
   - component: {fileID: 1940233525242010209}
   - component: {fileID: 9194241299741437821}
   - component: {fileID: 5228588814575320881}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8823,7 +11065,7 @@ GameObject:
   - component: {fileID: 5857649209560307055}
   - component: {fileID: 14588755526957056}
   - component: {fileID: 6038988326530397976}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11606,9 +13848,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11649,6 +13903,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14072,9 +16330,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14115,6 +16385,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14430,9 +16704,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14473,6 +16759,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15158,9 +17448,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalScale.x
@@ -15209,6 +17511,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15524,9 +17830,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15568,6 +17886,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15589,6 +17911,10 @@ PrefabInstance:
     - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15629,6 +17955,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16392,9 +18726,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16435,6 +18781,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16898,9 +19248,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16941,6 +19303,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17852,6 +20218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5350714
@@ -17891,6 +20261,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18432,6 +20810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.529071
@@ -18471,6 +20853,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18638,9 +21028,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18681,6 +21083,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19078,9 +21484,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19121,6 +21539,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19288,9 +21710,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19331,6 +21765,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21948,9 +24386,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21991,6 +24445,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24452,9 +26910,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24496,6 +26966,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24517,6 +26991,10 @@ PrefabInstance:
     - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24557,6 +27035,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25168,9 +27654,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25211,6 +27709,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27645,6 +30147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5350714
@@ -27684,6 +30190,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28369,9 +30883,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28413,6 +30939,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28434,6 +30964,10 @@ PrefabInstance:
     - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28474,6 +31008,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29833,6 +32375,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5290713
@@ -29872,6 +32418,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30483,9 +33037,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30526,6 +33092,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31437,6 +34007,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.529072
@@ -31477,6 +34051,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31495,9 +34077,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31538,6 +34132,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35012,9 +37610,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35055,6 +37665,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36040,6 +38654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5350714
@@ -36079,6 +38697,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37064,6 +39690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5350713
@@ -37103,6 +39733,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37862,9 +40500,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37906,6 +40560,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37924,9 +40582,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37967,6 +40637,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39502,9 +42176,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39545,6 +42231,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40008,9 +42698,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalScale.x
@@ -40059,6 +42761,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40370,6 +43076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5350714
@@ -40409,6 +43119,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41468,6 +44186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.529072
@@ -41507,6 +44229,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41974,6 +44704,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5350714
@@ -42013,6 +44747,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42254,9 +44996,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42297,6 +45051,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42394,6 +45152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5350714
@@ -42434,6 +45196,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42452,9 +45222,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42495,6 +45277,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42740,6 +45526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5350714
@@ -42779,6 +45569,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45614,6 +48412,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5537472
@@ -45653,6 +48455,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47078,9 +49888,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -47121,6 +49943,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48686,6 +51512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.529071
@@ -48725,6 +51555,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49262,9 +52100,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -49305,6 +52155,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49529,9 +52383,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165866005298135767}
     m_Modifications:
+    - target: {fileID: 3701003536144994157, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703510565578437807, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_Name
       value: SM_Wall_Light_A (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925155223508977677, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -49572,6 +52438,10 @@ PrefabInstance:
     - target: {fileID: 5697750860895474359, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235623297080560239, guid: eb0d7160c78c9c5438d5072b72e92715, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54671,6 +57541,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5350714
@@ -54710,6 +57584,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56295,6 +59177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5350713
@@ -56334,6 +59220,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -57027,6 +59921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.553747
@@ -57066,6 +59964,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -57948,6 +60854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5350713
@@ -57987,6 +60897,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59712,6 +62630,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ceiling_Light_A (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3888968058519895227, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5350713
@@ -59751,6 +62673,14 @@ PrefabInstance:
     - target: {fileID: 4518152164871988737, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731881473930124640, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870839169726157847, guid: 0db05044f43b6ab4d9905d026d8b114a, type: 3}
+      propertyPath: m_Layer
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
