@@ -26,20 +26,22 @@ public class ThemePlayer : MonoBehaviour
 
      private void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Main Menu" && (!ThemePlayer.instance.audioSource.isPlaying || audioSource.clip == audioClips[1]))
-        {
-            audioSource.clip = audioClips[0];
-            ThemePlayer.instance.audioSource.Play();
-        }
-        if (scene.name == "Login Menu" && (!ThemePlayer.instance.audioSource.isPlaying || audioSource.clip == audioClips[1]))
-        {
-            audioSource.clip = audioClips[0];
-            ThemePlayer.instance.audioSource.Play();
-        }
-        if (scene.name == "Room Generation Test Scene" && audioSource.clip == audioClips[0])
-        {
-            audioSource.clip = audioClips[1];
-            ThemePlayer.instance.audioSource.Play();
+        if (audioSource) {
+            if (scene.name == "Main Menu" && (!ThemePlayer.instance.audioSource.isPlaying || audioSource.clip == audioClips[1]))
+            {
+                audioSource.clip = audioClips[0];
+                ThemePlayer.instance.audioSource.Play();
+            }
+            if (scene.name == "Login Menu" && (!ThemePlayer.instance.audioSource.isPlaying || audioSource.clip == audioClips[1]))
+            {
+                audioSource.clip = audioClips[0];
+                ThemePlayer.instance.audioSource.Play();
+            }
+            if (scene.name == "Room Generation Test Scene" && audioSource.clip == audioClips[0])
+            {
+                audioSource.clip = audioClips[1];
+                ThemePlayer.instance.audioSource.Play();
+            }
         }
     }
 }

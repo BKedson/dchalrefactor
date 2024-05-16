@@ -564,7 +564,7 @@ public class CombatRoom : BaseRoom
 
             GameObject currEnemy = Instantiate(prefabToSpawn, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0), parentTransform);
             currEnemy.transform.localPosition = new Vector3(xPos, yPos, zPos);
-            // currEnemy.transform.localScale = new Vector3(0.71428571428f, 0.71428571428f, 0.71428571428f);
+            currEnemy.transform.localScale = new Vector3(1f, 1f, 1f);
             currEnemy.GetComponent<BaseEnemy>().SetStrength(enemyStrengths[numEnemiesToSpawn - 1]);
 
             numEnemiesToSpawn--;
