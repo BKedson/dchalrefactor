@@ -114,6 +114,7 @@ public class DungeonGenerator : MonoBehaviour
         // CharacterController does NOT allow such adjustment
         player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = nextGenPos + new Vector3(0f, 0.2f, 2f);
+        player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
         // Re-enable CharacterController
         player.GetComponent<CharacterController>().enabled = true;
         // Deactivate weapons obtained in the previous room

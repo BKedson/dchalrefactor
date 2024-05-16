@@ -39,7 +39,11 @@ public class PlayerCharacter : MonoBehaviour {
 	}
 	void Start() 
 	{
-		//Deactivate all the characters-------------------------------------------------
+		InitializePlayer();
+	}
+
+	public void InitializePlayer() {
+				//Deactivate all the characters-------------------------------------------------
 		foreach(GameObject character in characters)
 		{
 			Debug.Log("setting false");
@@ -81,7 +85,7 @@ public class PlayerCharacter : MonoBehaviour {
 	}
 
 	public void Reset() {
-		Time.timeScale = 1;
+		// Time.timeScale = 1;
 		death.SetActive(false);
 		FullHealth();
 		Cursor.visible = false;

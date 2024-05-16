@@ -80,11 +80,21 @@ public class GameManager : MonoBehaviour
         player = GameObject.Find("Player");
 
         if (player) {
-            player.transform.position = playerSpawnPoint;
-            player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
+            // player.transform.position = playerSpawnPoint;
+            // player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
             player.GetComponent<PlayerCharacter>().Reset();
-            player.GetComponent<PlayerMovement>().Reset();
+            currentCharacter = globalCharacterData.RetrieveCharacterIndex(PlayerGameDataController.Instance.CurrentCharacter);
+            player.GetComponent<PlayerCharacter>().InitializePlayer();
+            // player.GetComponent<PlayerMovement>().Reset();
         }
+
+        Time.timeScale = 1;
+
+        if (DungeonGenerator._instance) {
+            DungeonGenerator._instance.ProceedLv();
+        }
+
+        correctStreak = 0;
     }
 
     public void ChangeSkin() {

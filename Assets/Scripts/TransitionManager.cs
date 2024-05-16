@@ -18,15 +18,23 @@ public class TransitionManager : MonoBehaviour
     }
 
     public void ContinueGame() {
-        if (PlayerPrefs.HasKey("CurrentLevel")) {
-            SceneManager.LoadScene(PlayerPrefs.GetString("CurrentLevel"));
-        } else {
-            PlayerPrefs.SetString("CurrentLevel", "Room Generation Test Scene");
-            SceneManager.LoadScene("Room Generation Test Scene");
-        }
+        // if (PlayerPrefs.HasKey("CurrentLevel")) {
+        //     SceneManager.LoadScene(PlayerPrefs.GetString("CurrentLevel"));
+        // } else {
+        //     PlayerPrefs.SetString("CurrentLevel", "Room Generation Test Scene");
+        //     SceneManager.LoadScene("Room Generation Test Scene");
+        // }
+
+        // if (GameManager.manager) {
+        //     GameManager.manager.Save();
+        // }
 
         if (GameManager.manager) {
+			GameManager.manager.Restart();
+            SceneManager.LoadScene("Room Generation Test Scene");
             GameManager.manager.Save();
+		} else {
+            SceneManager.LoadScene("Room Generation Test Scene");
         }
     }
 
