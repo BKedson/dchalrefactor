@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager manager;
     bool canChangeControls = true;
-    private int questionComplexity = 0;
+    private int addQuestionComplexity = 0;
+    private int subQuestionComplexity = 0;
+    private int multQuestionComplexity = 0;
+    private int divQuestionComplexity = 0;
     private GameObject player;
     private Vector3 playerSpawnPoint;
 
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour
     Difficulty subtractDifficulty = Difficulty.Easy;
     Difficulty multiplyDifficulty = Difficulty.Easy;
     Difficulty divideDifficulty = Difficulty.Easy;
+
+    private Subject currSubject;
 
     // The solution and list of enemy strengths for the current question
     private double currQuestionSol;
@@ -58,7 +63,11 @@ public class GameManager : MonoBehaviour
         // isInvincible = false;
         // PlayerPrefs.SetInt("invincibility", 0);
         isInvincible = PlayerGameDataController.Instance.IsInvincible;
-        questionComplexity = PlayerGameDataController.Instance.QuestionComplexity;
+        addQuestionComplexity = PlayerGameDataController.Instance.AdditionQuestionComplexity;
+        subQuestionComplexity = PlayerGameDataController.Instance.SubtractionQuestionComplexity;
+        multQuestionComplexity = PlayerGameDataController.Instance.MultiplicationQuestionComplexity;
+        divQuestionComplexity = PlayerGameDataController.Instance.DivisionQuestionComplexity;
+
     }
 
     // Update is called once per frame
@@ -73,8 +82,17 @@ public class GameManager : MonoBehaviour
         if (player) {
             player.transform.position = playerSpawnPoint;
             player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
-            // player.transform.position = new Vector3(0,0,0);
-            player.GetComponentInChildren<PlayerCharacter>().Reset();
+            player.GetComponent<PlayerCharacter>().Reset();
+            player.GetComponent<PlayerMovement>().Reset();
+        }
+    }
+
+    public void ChangeSkin() {
+        player = GameObject.Find("Player");
+        
+        if (player) {
+            player.GetComponent<PlayerCharacter>().ChangeActiveSkin();
+            player.GetComponent<PlayerMovement>().Reset();
         }
     }
 
@@ -166,7 +184,23 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetQuestionComplexity() {
-        return questionComplexity;
+        switch (currSubject) {
+            case Subject.Addition:
+                return addQuestionComplexity;
+            break;
+            case Subject.Subtraction:
+                return subQuestionComplexity;
+            break;
+            case Subject.Multiplication:
+                return multQuestionComplexity;
+            break;                
+            case Subject.Division:
+                return divQuestionComplexity;
+            break;
+            default:
+                return addQuestionComplexity;
+            break;
+        }
     }
 
     public void WrongAnswer() {
@@ -179,12 +213,8 @@ public class GameManager : MonoBehaviour
 
         // Decreases complexity for future problems if the player is struggling
         if (incorrectStreak % wrongAnswerThreshold == 0) {
-            questionComplexity = Math.Max(0, questionComplexity - 1);
-            PlayerGameDataController.Instance.QuestionComplexity = questionComplexity;
+            UpdateComplexity(false);
         }
-
-        Debug.Log("Wrong answer streak: " + incorrectStreak + " Complexity: " + questionComplexity);
-
     }
 
     public void RightAnswer() {
@@ -195,11 +225,49 @@ public class GameManager : MonoBehaviour
 
             // Increases complexity for future problems if the player is easily answering questions
             if (correctStreak % rightAnswerThreshold == 0) {
-                questionComplexity = Math.Min(9, questionComplexity + 1);
-                PlayerGameDataController.Instance.QuestionComplexity = questionComplexity;
+                UpdateComplexity(true);
             }
+    }
 
-            Debug.Log("Right answer streak: " + correctStreak + " Complexity: " + questionComplexity);
+    private void UpdateComplexity(bool correct) {
+        switch (currSubject) {
+            case Subject.Addition:
+                if (correct) {
+                    addQuestionComplexity = Math.Min(9, addQuestionComplexity + 1);
+                    PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
+                } else {
+                    addQuestionComplexity = Math.Max(0, addQuestionComplexity - 1);
+                    PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
+                }
+            break;
+            case Subject.Subtraction:
+                if (correct) {
+                    subQuestionComplexity = Math.Min(9, subQuestionComplexity + 1);
+                    PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
+                } else {
+                    subQuestionComplexity = Math.Max(0, subQuestionComplexity - 1);
+                    PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
+                }
+            break;
+            case Subject.Multiplication:
+                if (correct) {
+                    multQuestionComplexity = Math.Min(9, multQuestionComplexity + 1);
+                    PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
+                } else {
+                    multQuestionComplexity = Math.Max(0, multQuestionComplexity - 1);
+                    PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
+                }
+            break;                
+            case Subject.Division:
+                if (correct) {
+                    divQuestionComplexity = Math.Min(9, divQuestionComplexity + 1);
+                    PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;
+                } else {
+                    divQuestionComplexity = Math.Max(0, divQuestionComplexity - 1);
+                    PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;
+                }
+            break;
+        }
     }
 
     public double GetCurrQuestionSol() {
@@ -221,6 +289,10 @@ public class GameManager : MonoBehaviour
 
     public void SetCurrEnemyStrengths(List<int> enemyStrengths) {
         currEnemyStrengths = enemyStrengths;
+    }
+
+    public void SetCurrSubject(Subject subject) {
+        currSubject = subject;
     }
 
     public int GetCorrectStreak(){

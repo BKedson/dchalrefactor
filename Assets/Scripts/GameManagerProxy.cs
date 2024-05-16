@@ -30,5 +30,11 @@ public class GameManagerProxy : MonoBehaviour
         }
         return false;
     }
+    
+    public void ChangeSkin() {
+        if (GameManager.manager) {
+            GameManager.manager.ChangeSkin();
+        }
+    }
 
 }

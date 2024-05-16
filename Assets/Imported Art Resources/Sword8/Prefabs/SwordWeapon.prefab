@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5238040644318655240}
   - component: {fileID: 2292979351992108735}
-  - component: {fileID: 3074227236769254540}
+  - component: {fileID: 2358411024615794115}
   m_Layer: 10
   m_Name: DamageCollider
   m_TagString: sword
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537445765427050464}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.939, z: 0.004}
+  m_LocalRotation: {x: -0.026703294, y: 0.012045709, z: -0.000059664242, w: 0.9995709}
+  m_LocalPosition: {x: -0.00383017, y: 0.9448864, z: 0.032084048}
   m_LocalScale: {x: 0.39542, y: 1.1158997, z: 0.13548276}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7114184937017899673}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.06, y: 1.382, z: -0.044}
 --- !u!33 &2292979351992108735
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41,8 +41,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537445765427050464}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!136 &3074227236769254540
-CapsuleCollider:
+--- !u!65 &2358411024615794115
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -59,11 +59,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.16043107
-  m_Height: 2.0000002
-  m_Direction: 1
-  m_Center: {x: -0.00000008863858, y: 6.9074104e-12, z: -0.011676012}
+  serializedVersion: 3
+  m_Size: {x: 0.9773136, y: 1.5677665, z: 1.3762245}
+  m_Center: {x: 0.004616153, y: 0.28350243, z: -0.0739802}
 --- !u!1001 &7291346473577323890
 PrefabInstance:
   m_ObjectHideFlags: 0

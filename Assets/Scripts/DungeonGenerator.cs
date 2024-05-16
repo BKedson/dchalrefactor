@@ -72,6 +72,7 @@ public class DungeonGenerator : MonoBehaviour
         if (GameManager.manager) {
 			GameManager.manager.SetSpawnPoint(dungeonRoot.position);
 		}
+
         charController.enabled = true; 
 
         // Update offset
@@ -123,6 +124,8 @@ public class DungeonGenerator : MonoBehaviour
         // Remove the transition screen
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
+
+        DestroyRoom();
     }
 
     // Gizmos function - For visual assistance in the editor only
