@@ -46,11 +46,11 @@ public class FoundryManager : BaseInteractable
     private void Awake()
     {
         
-        if (UnityEngine.Random.Range(0f, 1f) < 0.3f) {
-            windowQuestion.SetSubject(Subject.Multiplication);
-        } else {
+        //if (UnityEngine.Random.Range(0f, 1f) < 0.3f) {
+           // windowQuestion.SetSubject(Subject.Multiplication);
+       //} else {
             windowQuestion.SetSubject(Subject.Addition);
-        }
+        //}
 
         // Prompt the windowQuestion to generate a question
         windowQuestion.GenerateInitialQuestion();
@@ -75,7 +75,7 @@ public class FoundryManager : BaseInteractable
         windowQuestion.GenerateIntakeQuestion(targetPower);
         // Retreive the numbers that makes up the final answer
         targetPowerLvs = windowQuestion.GetEnemyStrengths();
-       
+        //Debug.Log(windowPowerLvs);
         //int targetPowerLvTotal;
         //switch (windowQuestion.subject)
         //{
@@ -93,7 +93,7 @@ public class FoundryManager : BaseInteractable
         //        break;
         //}
 
-        // The list of digits of each of the number in targetPowerLvs
+        // The list of digits of each of the numbers in targetPowerLvs
         // That is, valDigits[i] is list holding the digits of targetPowerLvs[i]
         // If targetPowerLvs[i] = 1325, valDigits[i] = {1, 3, 2, 5}
         List<int>[] valDigits = new List<int>[targetPowerLvs.Count];
@@ -123,28 +123,36 @@ public class FoundryManager : BaseInteractable
         {
             intakeGroups[i] = new List<FoundryIntakeManager>();
             // Generate an intake and an ore for each digit in valDigits
-            for (int j = 0; j < valDigits[i].Count; j++)
-            {
-                // Generate an intake
+            if(windowQuestion.subject == Subject.Addition){
+                for (int j = 0; j < valDigits[i].Count; j++)
+                {
+                    // Generate an intake
+                    GameObject intake = Instantiate(intakePrefab, transform);
+                    intake.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), 0f, 0f);
+                    intakeGroups[i].Add(intake.GetComponent<FoundryIntakeManager>());
+
+                    // Allows intakes to tell the tutorial when an ore is inserted
+                    intake.GetComponent<FoundryIntakeManager>().SetTutorial(tutorial);
+
+                    // Generate an ore
+                    // The ore is originally generated with root/parent transform oreTransformRoot
+                    // This is so that all the ores are centered arround a point
+                    // The ore is later set to have parent transform of this.transform.parent (the room)
+                    GameObject ore = Instantiate(orePrefab, oreTransformRoot);
+                    Vector3 orePos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized * 3f;
+                    orePos.y = 3f;
+                    ore.transform.localPosition = orePos;
+                    ore.transform.parent = transform.parent;
+                    ore.GetComponent<OreManager>().SetPower(valDigits[i][j]);
+
+                    digitCounter++;
+                }
+            }
+            else{
+                if(IsPrime(targetPower)){
+                    totalDigits = 2;
+                }
                 GameObject intake = Instantiate(intakePrefab, transform);
-                intake.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), 0f, 0f);
-                intakeGroups[i].Add(intake.GetComponent<FoundryIntakeManager>());
-
-                // Allows intakes to tell the tutorial when an ore is inserted
-                intake.GetComponent<FoundryIntakeManager>().SetTutorial(tutorial);
-
-                // Generate an ore
-                // The ore is originally generated with root/parent transform oreTransformRoot
-                // This is so that all the ores are centered arround a point
-                // The ore is later set to have parent transform of this.transform.parent (the room)
-                GameObject ore = Instantiate(orePrefab, oreTransformRoot);
-                Vector3 orePos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized * 3f;
-                orePos.y = 3f;
-                ore.transform.localPosition = orePos;
-                ore.transform.parent = transform.parent;
-                ore.GetComponent<OreManager>().SetPower(valDigits[i][j]);
-
-                digitCounter++;
             }
 
             // Generate sign blocks between intake groups
@@ -169,6 +177,24 @@ public class FoundryManager : BaseInteractable
 
             digitCounter++;
         }
+    }
+    static bool IsPrime(int number)
+    {
+        if (number <= 1)
+            return false;
+        if (number <= 3)
+            return true;
+
+        if (number % 2 == 0 || number % 3 == 0)
+            return false;
+
+        for (int i = 5; i * i <= number; i += 6)
+        {
+            if (number % i == 0 || number % (i + 2) == 0)
+                return false;
+        }
+
+        return true;
     }
 
     // Check answer
