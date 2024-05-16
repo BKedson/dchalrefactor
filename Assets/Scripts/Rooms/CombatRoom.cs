@@ -52,7 +52,7 @@ public class CombatRoom : BaseRoom
     public int resetRoom = -1;
     // The coordinate reference for spawning objects and enemies in the level
     private float baseX = 0;
-    private float baseY = -0.6f;
+    private float baseY = -0.6f + (1.1f + (-0.083f - 0.5f));
     private float baseZ = 0;
     private int yAngle = 90;
     private int referenceThickness = 4;
@@ -96,7 +96,8 @@ public class CombatRoom : BaseRoom
         }
 
         baseX = referenceObject.transform.position.x;
-        baseZ = referenceObject.transform.position.z - referenceThickness / 2;
+        //(33.878 - 30.278f)
+        baseZ = referenceObject.transform.position.z - referenceThickness / 2 + (30.278f - 33.878f);
 
         int additionalShift = referenceThickness / 2;
 
