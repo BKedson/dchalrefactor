@@ -62,6 +62,12 @@ public class WanderingAI : MonoBehaviour {
 				Move(speed);
 				StartCoroutine(patrol());
 			}
+			if(GameObject.FindGameObjectWithTag("Player") && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2.0f){
+				anim.SetTrigger("Attack");
+				isWandering = false;
+				anim.SetBool("Rechase", true);
+				waitTime -= Time.deltaTime;
+			}
 			if (isRotatingRight == true){
 				anim.SetBool("Spotted", false);
 				anim.SetBool("Patrol", false);
@@ -76,12 +82,6 @@ public class WanderingAI : MonoBehaviour {
 				anim.SetBool("Spotted", false);
 				anim.SetBool("Patrol", true);
 				transform.position += transform.forward * speed * Time.deltaTime;
-			}
-			if(GameObject.FindGameObjectWithTag("Player") && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)<=2.0f){
-				anim.SetTrigger("Attack");
-				isWandering = false;
-				anim.SetBool("Rechase", true);
-				waitTime -= Time.deltaTime;
 			}
 			newDestinationCD -= Time.deltaTime;
 		}
