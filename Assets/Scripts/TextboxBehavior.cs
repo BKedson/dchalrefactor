@@ -81,7 +81,7 @@ public class TextboxBehavior : MonoBehaviour
             if(Input.GetKeyDown("mouse 0")){
                 if(section >= 7){
                     clickCount++;
-                    if(clickCount > 2){
+                    if(clickCount > 1){
                         CombatOver();
                     }else{
                         OnAttack();

@@ -24,4 +24,11 @@ public class GameManagerProxy : MonoBehaviour
         }
     }
 
+    public bool IsInvincible(){
+        if(GameManager.manager){
+            return GameManager.manager.IsInvincible();
+        }
+        return false;
+    }
+
 }

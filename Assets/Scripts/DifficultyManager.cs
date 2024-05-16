@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DifficultyManager : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private GameObject easyButton;
     [SerializeField] private GameObject mediumButton;
     [SerializeField] private GameObject hardButton;
+
+    [SerializeField] private GameObject[] addButtons;
+    [SerializeField] private GameObject[] subtractButtons;
+    [SerializeField] private GameObject[] multiplyButtons;
+    [SerializeField] private GameObject[] divideButtons;
+
     private GameObject gameManager;
 
     //For constructing UI feedback on change
@@ -25,6 +32,9 @@ public class DifficultyManager : MonoBehaviour
     // 0 is addition, 1 is subtraction, 2 is multiplication, 3 is division
     // Changed on button press of difficulty menu screen
     private int operand;
+
+    //locally keep track of last set difficulty
+    private Difficulty localDifficulty;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +53,7 @@ public class DifficultyManager : MonoBehaviour
         descriptionText.GetComponent<TextMeshProUGUI>().text = "";
 
         operand = 0;
+        localDifficulty = Difficulty.Easy;
     }
 
     // Update is called once per frame
@@ -95,6 +106,67 @@ public class DifficultyManager : MonoBehaviour
                 break;
             case Difficulty.Hard:
                 descriptionText.GetComponent<TextMeshProUGUI>().text = operandDescription + hardDescription;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void HighlightButton(){
+
+        switch(operand){
+            case 0:
+                for(int i=0; i<addButtons.Length; i++){
+                    if((int)localDifficulty == i){
+                        addButtons[i].GetComponent<Image>().color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                    }else{
+                        addButtons[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    }
+                    
+                }
+
+                break;
+            case 1:
+                for(int i=0; i<subtractButtons.Length; i++){
+                    if((int)localDifficulty == i){
+                        subtractButtons[i].GetComponent<Image>().color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                    }else{
+                        subtractButtons[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    }
+                }
+                break;
+            case 2:
+                for(int i=0; i<multiplyButtons.Length; i++){
+                    if((int)localDifficulty == i){
+                        multiplyButtons[i].GetComponent<Image>().color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                    }else{
+                        multiplyButtons[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    }
+                }
+                break;
+            case 3:
+                for(int i=0; i<divideButtons.Length; i++){
+                    if((int)localDifficulty == i){
+                        divideButtons[i].GetComponent<Image>().color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                    }else{
+                        divideButtons[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    }
+                }
+                break;
+            default:
+
+                break;
+        }
+
+        switch (localDifficulty) {
+            case Difficulty.Easy:
+                
+                break;
+            case Difficulty.Medium:
+                
+                break;
+            case Difficulty.Hard:
+                
                 break;
             default:
                 break;
