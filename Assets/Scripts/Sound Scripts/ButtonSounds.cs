@@ -15,14 +15,14 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         audioSource.clip = audioClips[0];
-        audioSource.time = 0.10f;
+        audioSource.time = 0.20f;
         audioSource.Play();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         audioSource.clip = audioClips[1];
-        audioSource.time = 0.2f;
+        audioSource.time = 0.25f;
         audioSource.Play();
     }
 }
