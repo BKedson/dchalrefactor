@@ -170,10 +170,10 @@ public class WindowQuestion : BaseQuestion
         enemyStrengths.Clear();
 
         if (tutorial) {
-            GenerateAdditionQuestion();
-            solution = 3;
+            foundrySolution = 3;
             noCarry = true;
             numEnemies = 2;
+            GenerateAdditionQuestion();
         } else {
             switch(subject) {
                 case Subject.Addition:
@@ -308,21 +308,28 @@ public class WindowQuestion : BaseQuestion
             //this will simply generate the same multiplication question as in the window, unsure if that is intended
             if (foundrySolution > 0){
                 solution = foundrySolution;
+
+                int enemyStrength = (int) solution / numEnemies;
+
+                enemyStrengths.Add(enemyStrength);
+                enemyStrengths.Add(numEnemies);
             } else {
                 solution = multSolutionFactor * numEnemies * UnityEngine.Random.Range(1, 10);
+
+                int enemyStrength = (int) solution / numEnemies;
+                
+                for (int i = 0; i < numEnemies; i++) {
+                    enemyStrengths.Add(enemyStrength);
+                }
             }
 
-            int enemyStrength = (int) solution / numEnemies;
-
-            for (int i = 0; i < numEnemies; i++) {
-                enemyStrengths.Add(enemyStrength);
-            }
+            
         }
     }
 
     // Multiplication without carrying must follow one of a few possible layouts
     private void GenerateNoCarryMultiplicationQuestion() {
-        numEnemies = UnityEngine.Random.Range(2, 5);
+        
         int enemyStrength;
 
         //generate question based on given answer
@@ -330,8 +337,13 @@ public class WindowQuestion : BaseQuestion
             //this will simply generate the same multiplication question as in the window, unsure if that is intended
             solution = foundrySolution;
             enemyStrength = (int)(solution/numEnemies);
+
+            enemyStrengths.Add(enemyStrength);
+            enemyStrengths.Add(numEnemies);
             
         } else {
+            numEnemies = UnityEngine.Random.Range(2, 5);
+
             if (numEnemies == 4) {
                 enemyStrength = 2;
             } else if (numEnemies == 3) {
@@ -341,12 +353,14 @@ public class WindowQuestion : BaseQuestion
             }
 
             solution = enemyStrength * numEnemies;
+
+            for (int i = 0; i < numEnemies; i++) {
+                enemyStrengths.Add(enemyStrength);
+            }
         }
         
 
-        for (int i = 0; i < numEnemies; i++) {
-            enemyStrengths.Add(enemyStrength);
-        }
+        
     }
 
     // PARTIALLY IMPLEMENTED Generate an addition question that is definitely divisible by a divisor

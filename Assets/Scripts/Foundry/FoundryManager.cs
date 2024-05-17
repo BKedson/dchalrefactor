@@ -49,7 +49,7 @@ public class FoundryManager : BaseInteractable
         //if (UnityEngine.Random.Range(0f, 1f) < 0.3f) {
            // windowQuestion.SetSubject(Subject.Multiplication);
        //} else {
-            windowQuestion.SetSubject(Subject.Addition);
+            windowQuestion.SetSubject(Subject.Multiplication);
         //}
 
         // Prompt the windowQuestion to generate a question
@@ -123,7 +123,7 @@ public class FoundryManager : BaseInteractable
         {
             intakeGroups[i] = new List<FoundryIntakeManager>();
             // Generate an intake and an ore for each digit in valDigits
-            if(windowQuestion.subject == Subject.Addition){
+            if(windowQuestion.subject == Subject.Addition || windowQuestion.subject == Subject.Multiplication){
                 for (int j = 0; j < valDigits[i].Count; j++)
                 {
                     // Generate an intake
