@@ -86,7 +86,7 @@ public class AssessmentTerminalManager : BaseInteractable
         audioSource.Play();
 
         // Wait for visual feedback to play
-        yield return new WaitForSeconds(2.1f);
+        yield return new WaitForSeconds(1.8f);
 
         // Start transition blackscreen
         TransitionUIManager._instance.StartTransition();

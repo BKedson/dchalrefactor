@@ -7,7 +7,7 @@ public class WindowAnswerFeedback : MonoBehaviour
 {
     [SerializeField] private GameObject[] layerOne;
     [SerializeField] private GameObject[] layerTwo;
-    // Use layer three to temp deactivate other UI elements
+    // Use layer three to temp deactivate other UI elements, including other feedback
     [SerializeField] private GameObject[] layerThree;
     //this is just to change the text, put the rest of the answer streak UI in layer one
     [SerializeField] private GameObject answerStreakText;
@@ -49,9 +49,12 @@ public class WindowAnswerFeedback : MonoBehaviour
         for(int i=0; i<layerTwo.Length; i++){
             layerTwo[i].SetActive(false);
         }
-        for(int i=0; i<layerThree.Length; i++){
+        //only reactivate input elements
+        if(layerThree.Length >= 2){
+            for(int i=0; i<2; i++){
             layerThree[i].SetActive(true);
         }
-
+        }
+        
     }
 }
