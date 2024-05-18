@@ -29,7 +29,8 @@ public class FoundryIntakeManager : MonoBehaviour
         // Keep the inserted ore in its position
         if (insertedOre)
         {
-            insertedOre.transform.position = Vector3.Lerp(insertedOre.transform.position, transform.position, 0.05f);
+            insertedOre.transform.position = Vector3.Lerp(insertedOre.transform.position, transform.position, 0.1f);
+            // insertedOre.transform.position = Vector3.Lerp(pos, transform.position, 0.05f);
             insertedOre.transform.rotation = Quaternion.Lerp(insertedOre.transform.rotation, Quaternion.identity, 0.05f);
         }
     }
@@ -68,6 +69,8 @@ public class FoundryIntakeManager : MonoBehaviour
 
         insertedOre = ore;
 
+        Debug.Log("Inserted ore: " + insertedOre.name);
+
         cursor.SetActive(false);
 
         tutorial.OrePlaced();
@@ -77,6 +80,7 @@ public class FoundryIntakeManager : MonoBehaviour
 
     public GameObject Eject()
     {
+        Debug.Log("Ejected ore: " + insertedOre.name);
         GameObject obj = insertedOre;
         insertedOre = null;
         return obj;

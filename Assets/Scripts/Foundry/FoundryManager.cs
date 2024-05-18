@@ -19,6 +19,7 @@ public class FoundryManager : BaseInteractable
     [SerializeField] private GameObject subtractionSignPrefab;
     [SerializeField] private GameObject multiplicationSignPrefab;
 
+    // The ore prefab must be tagged as Ore and must be in the Interactable environment layer
     [SerializeField] private GameObject orePrefab;
     // The temperary root transform of genereated ores. See Awake() below for its usage
     [SerializeField] private Transform oreTransformRoot;

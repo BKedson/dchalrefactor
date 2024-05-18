@@ -74,7 +74,8 @@ public class PlayerFoundryInteraction : MonoBehaviour
                 // If the targeted ore is not the one previously targeted, then cancel highlight
                 if (targetedOre && hit.collider.gameObject != targetedOre.gameObject) targetedOre.Highlight(false);
                 // Highlight current ore
-                targetedOre = hit.collider.GetComponent<OreManager>();
+                targetedOre = hit.collider.GetComponentInParent<OreManager>();
+                // targetedOre = hit.collider.GetComponent<OreManager>();
                 targetedOre.Highlight(true);
 
                 //// If the targeted ore is not the currently held one
@@ -174,6 +175,7 @@ public class PlayerFoundryInteraction : MonoBehaviour
             else
             {
                 GameObject obj = targetIntake.Eject();
+                Debug.Log("Successfully ejected ore: " + obj.name);
                 if (obj)
                 {
                     currentOre = obj.GetComponent<OreManager>();

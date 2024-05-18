@@ -7,13 +7,16 @@ using UnityEngine;
 
 public class BillboardText : MonoBehaviour
 {
+    private BaseEnemy enemyScript;
+
     private void Start()
     {
         GetComponent<Canvas>().worldCamera = Camera.main;
-    }
+        enemyScript = gameObject.GetComponentInParent<BaseEnemy>();
+    }   
 
     void Update() {
-        if (gameObject.GetComponentInParent<BaseEnemy>() != null)
+        if (enemyScript != null)
             gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "" + gameObject.GetComponentInParent<BaseEnemy>().GetStrength();
     }
 

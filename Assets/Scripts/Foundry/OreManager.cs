@@ -55,6 +55,7 @@ public class OreManager : MonoBehaviour
     // Behavior when picked up by the player.
     public void OnPickUp()
     {
+        Debug.Log("I have been picked up");
         rgbd.drag = 10f;
         rgbd.useGravity = true;
     }
@@ -71,7 +72,11 @@ public class OreManager : MonoBehaviour
     // Behavior when inserted into a foundry.
     public void OnInsert()
     {
-        GetComponent<Collider>().enabled = false;
+        foreach (Collider col in GetComponentsInChildren<Collider>()) {
+            col.enabled = false;
+        }
+
+        // GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
 
         Highlight(false);
@@ -81,7 +86,14 @@ public class OreManager : MonoBehaviour
     // This happens when the player wants to retreive the oreor when the foundry rejects it on answer check
     public void OnEject()
     {
-        GetComponent<Collider>().enabled = true;
+        Debug.Log("I have been ejected");
+
+        foreach (Collider col in GetComponentsInChildren<Collider>()) {
+            col.enabled = true;
+        }
+
+        // GetComponent<Collider>().enabled = true;
+
         GetComponent<Rigidbody>().useGravity = true;
     }
 }
