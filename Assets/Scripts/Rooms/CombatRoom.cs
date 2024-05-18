@@ -38,7 +38,7 @@ public class CombatRoom : BaseRoom
     private Transform foundryParent;
 
     // The minimum and maximum difficulty room that can spawn with the current settings 
-    private int easiestRoom = 1;
+    private int easiestRoom = 2;
     private int hardestRoom = 7;
 
     private GameManager gameManager;
@@ -52,7 +52,7 @@ public class CombatRoom : BaseRoom
     public int resetRoom = -1;
     // The coordinate reference for spawning objects and enemies in the level
     private float baseX = 0;
-    private float baseY = -0.6f + (1.1f + (-0.083f - 0.5f));
+    private float baseY = -0.083f;
     private float baseZ = 0;
     private int yAngle = 90;
     private int referenceThickness = 4;
@@ -97,7 +97,7 @@ public class CombatRoom : BaseRoom
 
         baseX = referenceObject.transform.position.x;
         //(33.878 - 30.278f)
-        baseZ = referenceObject.transform.position.z - referenceThickness / 2 + (30.278f - 33.878f);
+        baseZ = referenceObject.transform.position.z - referenceThickness / 2 - 3.6f;
 
         int additionalShift = referenceThickness / 2;
 
@@ -224,7 +224,7 @@ public class CombatRoom : BaseRoom
 
         // surface.BuildNavMesh();
 
-        SpawnEnemies(0f, 1f, 17f, numEnemies, enemyPrefab, combatArea1);
+        SpawnEnemies(5f, 1f, 13f, numEnemies, enemyPrefab, combatArea1);
 
         surface.BuildNavMesh();
 
@@ -258,13 +258,13 @@ public class CombatRoom : BaseRoom
         // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
         if (remainder != 0)
         {
-            SpawnEnemies(0f, 1f, 20f, Math.Min(remainder, 1), spawnerPrefab, combatArea2);
+            SpawnEnemies(5f, 1f, 14f, Math.Min(remainder, 1), spawnerPrefab, combatArea2);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(-11f, 1f, 5f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
+            SpawnEnemies(1f, 1f, 7f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(11f, 1f, 5f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
+            SpawnEnemies(11f, 1f, 7f, Math.Min(remainder, 1), enemyPrefab, combatArea2);
         }
 
         SpawnEnemies(0f, 1f, 20f, spawnsPerLoc, enemyPrefab, combatArea2);
@@ -290,26 +290,30 @@ public class CombatRoom : BaseRoom
 
     private void InstantiateRoom3Enemies(GameObject combatArea3)
     {
-        numEnemiesToSpawn = numEnemies;
-        numSpawns = 3;
-        spawnsPerLoc = numEnemies / numSpawns;
-        remainder = numEnemies % numSpawns;
+
+        SpawnEnemies(5f, 1f, 13f, numEnemies, enemyPrefab, combatArea3);
+
+
+        // numEnemiesToSpawn = numEnemies;
+        // numSpawns = 3;
+        // spawnsPerLoc = numEnemies / numSpawns;
+        // remainder = numEnemies % numSpawns;
 
         // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
-        if (remainder != 0)
-        {
-            SpawnEnemies(0f, 1f, 10f, Math.Min(remainder, 1), enemyPrefab, combatArea3);
-            remainder--;
-            remainder = Math.Max(0, remainder);
-            SpawnEnemies(-4.3f, 1f, 23f, Math.Min(remainder, 1), enemyPrefab, combatArea3);
-            remainder--;
-            remainder = Math.Max(0, remainder);
-            SpawnEnemies(4.3f, 1f, 23f, Math.Min(remainder, 1), enemyPrefab, combatArea3);
-        }
+        // if (remainder != 0)
+        // {
+        //     SpawnEnemies(0f, 1f, 10f, Math.Min(remainder, 1), enemyPrefab, combatArea3);
+        //     remainder--;
+        //     remainder = Math.Max(0, remainder);
+        //     SpawnEnemies(-4.3f, 1f, 23f, Math.Min(remainder, 1), enemyPrefab, combatArea3);
+        //     remainder--;
+        //     remainder = Math.Max(0, remainder);
+        //     SpawnEnemies(4.3f, 1f, 23f, Math.Min(remainder, 1), enemyPrefab, combatArea3);
+        // }
 
-        SpawnEnemies(0f, 1f, 10f, spawnsPerLoc, enemyPrefab, combatArea3);
-        SpawnEnemies(-4.3f, 1f, 23f, spawnsPerLoc, enemyPrefab, combatArea3);
-        SpawnEnemies(4.3f, 1f, 23f, spawnsPerLoc, enemyPrefab, combatArea3);
+        // SpawnEnemies(0f, 1f, 10f, spawnsPerLoc, enemyPrefab, combatArea3);
+        // SpawnEnemies(-4.3f, 1f, 23f, spawnsPerLoc, enemyPrefab, combatArea3);
+        // SpawnEnemies(4.3f, 1f, 23f, spawnsPerLoc, enemyPrefab, combatArea3);
     }
 
     // Creates Room 4, a maze-like room with long walls and traps
@@ -339,18 +343,18 @@ public class CombatRoom : BaseRoom
         // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
         if (remainder != 0)
         {
-            SpawnEnemies(-10f, 1f, 20f, Math.Min(remainder, 1), enemyPrefab, combatArea4);
+            SpawnEnemies(-4f, 1f, 14f, Math.Min(remainder, 1), enemyPrefab, combatArea4);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(10f, 1f, 10f, Math.Min(remainder, 1), enemyPrefab, combatArea4);
+            SpawnEnemies(13f, 1f, 9.5f, Math.Min(remainder, 1), enemyPrefab, combatArea4);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(10f, 1f, 30f, Math.Min(remainder, 1), enemyPrefab, combatArea4);
+            SpawnEnemies(14f, 1f, 20f, Math.Min(remainder, 1), enemyPrefab, combatArea4);
         }
 
-        SpawnEnemies(-10f, 1f, 20f, spawnsPerLoc, enemyPrefab, combatArea4);
-        SpawnEnemies(10f, 1f, 10f, spawnsPerLoc, enemyPrefab, combatArea4);
-        SpawnEnemies(4.3f, 1f, 30f, spawnsPerLoc, enemyPrefab, combatArea4);
+        SpawnEnemies(-4f, 1f, 14f, spawnsPerLoc, enemyPrefab, combatArea4);
+        SpawnEnemies(13f, 1f, 9.5f, spawnsPerLoc, enemyPrefab, combatArea4);
+        SpawnEnemies(14f, 1f, 20f, spawnsPerLoc, enemyPrefab, combatArea4);
     }
 
     // Creates Room 5, a room with spikes and a raised platform in the center
@@ -384,18 +388,18 @@ public class CombatRoom : BaseRoom
         // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
         if (remainder != 0)
         {
-            SpawnEnemies(-0.35f, 2.3f, 16.74f, Math.Min(remainder, 1), spawnerPrefab, combatArea5);
+            SpawnEnemies(5.5f, 2.5f, 12.5f, Math.Min(remainder, 1), spawnerPrefab, combatArea5);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(-10f, 1f, 5f, Math.Min(remainder, 1), enemyPrefab, combatArea5);
+            SpawnEnemies(-1f, 1f, 7f, Math.Min(remainder, 1), enemyPrefab, combatArea5);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(10f, 1f, 5f, Math.Min(remainder, 1), enemyPrefab, combatArea5);
+            SpawnEnemies(5f, 1f, 7f, Math.Min(remainder, 1), enemyPrefab, combatArea5);
         }
 
-        SpawnEnemies(-0.35f, 2.3f, 16.74f, spawnsPerLoc, spawnerPrefab, combatArea5);
-        SpawnEnemies(-10f, 1f, 5f, spawnsPerLoc, enemyPrefab, combatArea5);
-        SpawnEnemies(10f, 1f, 5f, spawnsPerLoc, enemyPrefab, combatArea5);
+        SpawnEnemies(5.5f, 2.5f, 12.5f, spawnsPerLoc, spawnerPrefab, combatArea5);
+        SpawnEnemies(-1f, 1f, 7f, spawnsPerLoc, enemyPrefab, combatArea5);
+        SpawnEnemies(5f, 1f, 7f, spawnsPerLoc, enemyPrefab, combatArea5);
     }
 
     // Creates room 6, a room with a large raised platform in the center and enemies in the corners of the platform
@@ -417,7 +421,7 @@ public class CombatRoom : BaseRoom
     private void InstantiateRoom6Enemies(GameObject combatArea6)
     {
         numEnemiesToSpawn = numEnemies;
-        numSpawns = 4;
+        numSpawns = 6;
         spawnsPerLoc = numEnemies / numSpawns;
         remainder = numEnemies % numSpawns;
 
@@ -426,22 +430,30 @@ public class CombatRoom : BaseRoom
         // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
         if (remainder != 0)
         {
-            SpawnEnemies(-7.4f, y, 5.5f, Math.Min(remainder, 1), enemyPrefab, combatArea6);
+            SpawnEnemies(7f, y, 14f, Math.Min(remainder, 1), enemyPrefab, combatArea6);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(8.6f, y, 5.5f, Math.Min(remainder, 1), enemyPrefab, combatArea6);
+            SpawnEnemies(-3.5f, y, 11f, Math.Min(remainder, 1), spawnerPrefab, combatArea6);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(-7.4f, y, 26.9f, Math.Min(remainder, 1), enemyPrefab, combatArea6);
+            SpawnEnemies(15f, y, 7f, Math.Min(remainder, 1), enemyPrefab, combatArea6);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(8.6f, y, 26.9f, Math.Min(remainder, 1), enemyPrefab, combatArea6);
+            SpawnEnemies(15.5f, y, 16f, Math.Min(remainder, 1), enemyPrefab, combatArea6);
+            remainder--;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(16.5f, y, 26f, Math.Min(remainder, 1), spawnerPrefab, combatArea6);
+            remainder--;
+            remainder = Math.Max(0, remainder);
+            SpawnEnemies(7f, y, 22f, Math.Min(remainder, 1), enemyPrefab, combatArea6);
         }
 
-        SpawnEnemies(-7.4f, y, 5.5f, spawnsPerLoc, enemyPrefab, combatArea6);
-        SpawnEnemies(8.6f, y, 5.5f, spawnsPerLoc, enemyPrefab, combatArea6);
-        SpawnEnemies(-7.4f, y, 26.9f, spawnsPerLoc, enemyPrefab, combatArea6);
-        SpawnEnemies(8.6f, y, 26.9f, spawnsPerLoc, enemyPrefab, combatArea6);
+        SpawnEnemies(7f, y, 14f, spawnsPerLoc, enemyPrefab, combatArea6);
+        SpawnEnemies(-3.5f, y, 11f, spawnsPerLoc, enemyPrefab, combatArea6);
+        SpawnEnemies(15f, y, 7f, spawnsPerLoc, spawnerPrefab, combatArea6);
+        SpawnEnemies(15.5f, y, 16f, spawnsPerLoc, enemyPrefab, combatArea6);
+        SpawnEnemies(16.5f, y, 26f, spawnsPerLoc, enemyPrefab, combatArea6);
+        SpawnEnemies(7f, y, 22f, spawnsPerLoc, enemyPrefab, combatArea6);
     }
 
     // Creates room 7, a room with enemies on raised platforms on both the left and right
@@ -464,7 +476,7 @@ public class CombatRoom : BaseRoom
     private void InstantiateRoom7Enemies(GameObject combatArea7)
     {
         numEnemiesToSpawn = numEnemies;
-        numSpawns = 6;
+        numSpawns = 4;
         spawnsPerLoc = numEnemies / numSpawns;
         remainder = numEnemies % numSpawns;
 
@@ -473,30 +485,22 @@ public class CombatRoom : BaseRoom
         // Assigns extra enemies to some spawns if there cannot be an even number of enemies per spawn
         if (remainder != 0)
         {
-            SpawnEnemies(-10.5f, y, 14.3f, Math.Min(remainder, 1), enemyPrefab, combatArea7);
+            SpawnEnemies(11f, y, 7f, Math.Min(remainder, 1), enemyPrefab, combatArea7);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(-10.5f, y, 20f, Math.Min(remainder, 1), enemyPrefab, combatArea7);
+            SpawnEnemies(11f, y, 17.5f, Math.Min(remainder, 1), spawnerPrefab, combatArea7);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(-5.14f, y, 25.5f, Math.Min(remainder, 1), spawnerPrefab, combatArea7);
+            SpawnEnemies(-2.5f, y, 11.5f, Math.Min(remainder, 1), enemyPrefab, combatArea7);
             remainder--;
             remainder = Math.Max(0, remainder);
-            SpawnEnemies(11.7f, y, 14.3f, Math.Min(remainder, 1), enemyPrefab, combatArea7);
-            remainder--;
-            remainder = Math.Max(0, remainder);
-            SpawnEnemies(11.7f, y, 20f, Math.Min(remainder, 1), enemyPrefab, combatArea7);
-            remainder--;
-            remainder = Math.Max(0, remainder);
-            SpawnEnemies(7.14f, y, 25.5f, Math.Min(remainder, 1), spawnerPrefab, combatArea7);
+            SpawnEnemies(0.5f, y, 21.5f, Math.Min(remainder, 1), spawnerPrefab, combatArea7);
         }
 
-        SpawnEnemies(-10.5f, y, 14.3f, spawnsPerLoc, enemyPrefab, combatArea7);
-        SpawnEnemies(-10.5f, y, 20f, spawnsPerLoc, enemyPrefab, combatArea7);
-        SpawnEnemies(-5.14f, y, 25.5f, spawnsPerLoc, spawnerPrefab, combatArea7);
-        SpawnEnemies(11.7f, y, 14.3f, spawnsPerLoc, enemyPrefab, combatArea7);
-        SpawnEnemies(11.7f, y, 20f, spawnsPerLoc, enemyPrefab, combatArea7);
-        SpawnEnemies(7.14f, y, 25.5f, spawnsPerLoc, spawnerPrefab, combatArea7);
+        SpawnEnemies(11f, y, 7f, spawnsPerLoc, enemyPrefab, combatArea7);
+        SpawnEnemies(11f, y, 17.5f, spawnsPerLoc, spawnerPrefab, combatArea7);
+        SpawnEnemies(-2.5f, y, 11.5f, spawnsPerLoc, enemyPrefab, combatArea7);
+        SpawnEnemies(0.5f, y, 21.5f, spawnsPerLoc, spawnerPrefab, combatArea7);
     }
 
     // Creates room 8, a complex room with a pit of spikes in the center, traps and enemies along the sides, and enemies on a platform across the room
