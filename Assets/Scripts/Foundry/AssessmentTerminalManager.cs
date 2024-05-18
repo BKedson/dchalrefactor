@@ -23,6 +23,7 @@ public class AssessmentTerminalManager : BaseInteractable
     [SerializeField] private GameObject rightAnswerOverlay; // Give player feedback
 
     private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
+    private bool submitted; // Verify if player has already gotten the correct answer to prevent repeat submissions
 
     private TextboxBehavior tutorial;
 
@@ -34,6 +35,7 @@ public class AssessmentTerminalManager : BaseInteractable
         audioSource.clip = correctSound;
 
         open = false;
+        submitted = false;
 
         tutorial = GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>();
     }
@@ -80,6 +82,7 @@ public class AssessmentTerminalManager : BaseInteractable
     IEnumerator QuitAssessmentChallenge()
     {
         open = false;
+        submitted = true;
         audioSource.Play();
 
         // Wait for visual feedback to play
@@ -116,21 +119,35 @@ public class AssessmentTerminalManager : BaseInteractable
             if(inputField.text != ""){
                 int ans = Int32.Parse(inputField.text);
 
-                // Correct answer
-                if (windowQuestion.IsCorrect(ans))
-                {
-                    rightAnswerOverlay.GetComponent<WindowAnswerFeedback>().RightAnswerUI();
-                    tutorial.TerminalCorrectlySubmitted();
-                    StartCoroutine("QuitAssessmentChallenge");
+                // Prevent player from getting credit for resubmission
+                if(!submitted){
+                    // Correct answer
+                    if (windowQuestion.IsCorrect(ans))
+                    {
+                        rightAnswerOverlay.GetComponent<WindowAnswerFeedback>().RightAnswerUI();
+                        tutorial.TerminalCorrectlySubmitted();
+                        StartCoroutine("QuitAssessmentChallenge");
+                    }
+                    // Incorrect answer
+                    else
+                    {
+                        inputField.text = "";
+                        wrongAnswerOverlay.GetComponent<WindowAnswerFeedback>().WrongAnswerUI();
+                        inputField.Select();
+                        inputField.ActivateInputField();
+                    }
+                }else{
+                    if(windowQuestion.GetSolution() == ans){
+                        rightAnswerOverlay.GetComponent<WindowAnswerFeedback>().RightAnswerUI();
+                        StartCoroutine("QuitAssessmentChallenge");
+                    }else{
+                        inputField.text = "";
+                        wrongAnswerOverlay.GetComponent<WindowAnswerFeedback>().WrongAnswerUI();
+                        inputField.Select();
+                        inputField.ActivateInputField();
+                    }
                 }
-                // Incorrect answer
-                else
-                {
-                    inputField.text = "";
-                    wrongAnswerOverlay.GetComponent<WindowAnswerFeedback>().WrongAnswerUI();
-                    inputField.Select();
-                    inputField.ActivateInputField();
-                }
+                
             }
             
         }
