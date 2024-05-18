@@ -291,7 +291,7 @@ public class WindowQuestion : BaseQuestion
                 } else {
                     enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
                 }
-                enemyStrengths.Add(enemyStrength);
+                enemyStrengths.Add(-1*enemyStrength);
                 remainingLargeEnemy -= enemyStrength;
             }
 

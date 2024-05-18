@@ -29,7 +29,7 @@ public class Spawner : BaseEnemy
     // Start is called before the first frame update
     void Start()
     {
-        remainingSpawns = Math.Min(strength, UnityEngine.Random.Range(2, maxSpawns));
+        remainingSpawns = Math.Min(Math.Abs(strength), UnityEngine.Random.Range(2, maxSpawns));
         // foundryManager.OnWeaponForged.AddListener(StartSpawns);
 
         audioSource = GetComponent<AudioSource>();
@@ -83,9 +83,14 @@ public class Spawner : BaseEnemy
 
         audioSource.Play();
         
-        int enemyStrength = strength / remainingSpawns;
+        int enemyStrength = Math.Abs(strength) / remainingSpawns;
+        if(strength < 0){
+            enemyStrength*=(-1);
+        }
         Instantiate(enemyPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.Euler(0, 180, 0)).GetComponent<BaseEnemy>().SetStrength(enemyStrength);
+
         strength -= enemyStrength;
+        
     }
 
     /// <summary>
