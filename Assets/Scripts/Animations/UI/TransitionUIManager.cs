@@ -12,6 +12,9 @@ public class TransitionUIManager : MonoBehaviour
 
     private Animator animator;
 
+    // public AudioClip transitionSound;
+    // private AudioSource audioSource;
+
     private void Awake()
     {
         if (_instance == null)
@@ -20,11 +23,15 @@ public class TransitionUIManager : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
+
+        // audioSource = GetComponent<AudioSource>();
+        // audioSource.clip = transitionSound;
     }
 
     public void StartTransition()
     {
         animator.SetTrigger("Transition Start");
+        // audioSource.Play();
     }
 
     public void EndTransition()

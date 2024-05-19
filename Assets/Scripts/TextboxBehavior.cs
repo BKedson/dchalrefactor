@@ -34,6 +34,9 @@ public class TextboxBehavior : MonoBehaviour
 
     [SerializeField] private GameObject text;
     [SerializeField] private GameObject textBoxContainer;
+
+    // public AudioClip continueSound;
+    // private AudioSource audioSource;
     
 
     void Awake()
@@ -48,6 +51,9 @@ public class TextboxBehavior : MonoBehaviour
         if (text) {
             text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
         }
+
+        // audioSource = GetComponent<AudioSource>();
+        // audioSource.clip = continueSound;
     }
 
     void Update()
@@ -56,12 +62,16 @@ public class TextboxBehavior : MonoBehaviour
             //if a section has several messages, allow looping text through that section
             if(currMessage == 0 || currMessage == 2 || currMessage == 4 || currMessage == 7 || currMessage == 8){
                 currMessage++;
+                // audioSource.Play();
             }else if(currMessage == 3){
                 currMessage = 2;
+                // audioSource.Play();
             }else if(currMessage == 5){
                 currMessage = 4;
+                // audioSource.Play();
             }else if(currMessage == 9){
                 currMessage = 7;
+                // audioSource.Play();
             }
             
             //if tutorial has ended, reactivate it
