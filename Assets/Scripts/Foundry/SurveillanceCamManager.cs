@@ -21,8 +21,8 @@ public class SurveillanceCamManager : MonoBehaviour
     // Unity event to trigger when quiting the window question
     [SerializeField] private UnityEvent OnQuit;
 
-    public AudioClip cameraSound;
-    private AudioSource audioSource;
+    // public AudioClip cameraSound;
+    // private AudioSource audioSource;
 
     private float yRot = 0;
 
@@ -36,8 +36,8 @@ public class SurveillanceCamManager : MonoBehaviour
         // Disable PP effects on awake since the game always begins in the player camera view
         foreach (ScriptableRendererFeature feature in features) { feature.SetActive(false); }
 
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = cameraSound;
+        // audioSource = GetComponent<AudioSource>();
+        // audioSource.clip = cameraSound;
     }
 
     private void OnEnable()
@@ -47,7 +47,7 @@ public class SurveillanceCamManager : MonoBehaviour
 
         foreach (ScriptableRendererFeature feature in features) { feature.SetActive(true); }
 
-        audioSource.Play();
+        // audioSource.Play();
     }
 
     private void OnDisable()

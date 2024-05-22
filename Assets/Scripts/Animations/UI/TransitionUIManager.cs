@@ -12,8 +12,8 @@ public class TransitionUIManager : MonoBehaviour
 
     private Animator animator;
 
-    // public AudioClip transitionSound;
-    // private AudioSource audioSource;
+    public AudioClip transitionSound;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -24,14 +24,14 @@ public class TransitionUIManager : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        // audioSource = GetComponent<AudioSource>();
-        // audioSource.clip = transitionSound;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = transitionSound;
     }
 
     public void StartTransition()
     {
         animator.SetTrigger("Transition Start");
-        // audioSource.Play();
+        audioSource.Play();
     }
 
     public void EndTransition()

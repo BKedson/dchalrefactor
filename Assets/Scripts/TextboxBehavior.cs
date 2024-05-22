@@ -35,8 +35,8 @@ public class TextboxBehavior : MonoBehaviour
     [SerializeField] private GameObject text;
     [SerializeField] private GameObject textBoxContainer;
 
-    // public AudioClip continueSound;
-    // private AudioSource audioSource;
+    public AudioClip continueSound;
+    private AudioSource audioSource;
     
 
     void Awake()
@@ -52,26 +52,24 @@ public class TextboxBehavior : MonoBehaviour
             text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
         }
 
-        // audioSource = GetComponent<AudioSource>();
-        // audioSource.clip = continueSound;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = continueSound;
     }
 
     void Update()
     {
         if (Input.GetKeyDown("t")){
+            audioSource.time = 0.20f;
+            audioSource.Play();
             //if a section has several messages, allow looping text through that section
             if(currMessage == 0 || currMessage == 2 || currMessage == 4 || currMessage == 7 || currMessage == 8){
                 currMessage++;
-                // audioSource.Play();
             }else if(currMessage == 3){
                 currMessage = 2;
-                // audioSource.Play();
             }else if(currMessage == 5){
                 currMessage = 4;
-                // audioSource.Play();
             }else if(currMessage == 9){
                 currMessage = 7;
-                // audioSource.Play();
             }
             
             //if tutorial has ended, reactivate it
@@ -108,6 +106,7 @@ public class TextboxBehavior : MonoBehaviour
             section = 2;
             currMessage = 2;
             text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+            audioSource.Play();
         }
     }
 
@@ -117,6 +116,7 @@ public class TextboxBehavior : MonoBehaviour
                 section = 3;
                 currMessage = 4;
                 text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+                audioSource.Play();
             }
         }
         
@@ -128,6 +128,7 @@ public class TextboxBehavior : MonoBehaviour
                 section = 4;
                 currMessage = 6;
                 text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+                audioSource.Play();
             }
         }
         
@@ -139,6 +140,7 @@ public class TextboxBehavior : MonoBehaviour
                 section = 5;
                 currMessage = 7;
                 text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+                audioSource.Play();
             }
         }
         
@@ -150,6 +152,7 @@ public class TextboxBehavior : MonoBehaviour
                 section = 6;
                 currMessage = 10;
                 text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+                audioSource.Play();
             }
         }
     }
@@ -160,6 +163,7 @@ public class TextboxBehavior : MonoBehaviour
                 section = 7;
                 currMessage = 11;
                 text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+                audioSource.Play();
             }
         }
     }
@@ -168,6 +172,7 @@ public class TextboxBehavior : MonoBehaviour
         section = 8;
         currMessage = 12;
         text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+        audioSource.Play();
     }
 
     public void CombatOver(){
@@ -176,6 +181,7 @@ public class TextboxBehavior : MonoBehaviour
             currMessage = 13;
             text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
             StartCoroutine(WaitToDeactivate());
+            audioSource.Play();
         }
     }
 
