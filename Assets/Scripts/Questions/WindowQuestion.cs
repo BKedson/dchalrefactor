@@ -39,6 +39,9 @@ public class WindowQuestion : BaseQuestion
     // Are we making a tutorial question?
     [SerializeField] private bool tutorial;
 
+    // Track last generated divisor for division questions
+    private int lastDivisor = 1;
+
     void Start()
     {
         // Find the game manager script
@@ -363,28 +366,37 @@ public class WindowQuestion : BaseQuestion
         
     }
 
-    // PARTIALLY IMPLEMENTED Generate an addition question that is definitely divisible by a divisor
     private void GenerateDivisionQuestion() {
-        int divisor = UnityEngine.Random.Range(2, divSolutionFactorMax);
-        solution = divisor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
+        //for intake question, find valid divisor based on solution to window question
+        if(foundrySolution > 0){
+            solution = foundrySolution;
+            enemyStrengths.Add((int)solution*lastDivisor);
+            enemyStrengths.Add(lastDivisor);
 
-        int remainingSolution = (int) solution;
+        //for window question, generate addition question that is definitely divisible by a divisior
+        }else{
+            lastDivisor = UnityEngine.Random.Range(2, divSolutionFactorMax);
+            solution = lastDivisor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
 
-        // Generate individual enemy strengths and store the results
-        for (int i = numEnemies; i > 1; i--) {
-            int enemyStrength;
-            if (noCarry) {
-                int ones = UnityEngine.Random.Range(1, (remainingSolution % 10) - (i - 1));
-                int tens = 10 * UnityEngine.Random.Range(0, (remainingSolution / 10));
-                enemyStrength = ones + tens;
-                //Debug.Log(tens + " + " + ones);
-            } else {
-                enemyStrength = UnityEngine.Random.Range(1, remainingSolution - (i - 1));
+            int remainingSolution = (int) solution;
+
+            // Generate individual enemy strengths and store the results
+            for (int i = numEnemies; i > 1; i--) {
+                int enemyStrength;
+                if (noCarry) {
+                    int ones = UnityEngine.Random.Range(1, (remainingSolution % 10) - (i - 1));
+                    int tens = 10 * UnityEngine.Random.Range(0, (remainingSolution / 10));
+                    enemyStrength = ones + tens;
+                    //Debug.Log(tens + " + " + ones);
+                } else {
+                    enemyStrength = UnityEngine.Random.Range(1, remainingSolution - (i - 1));
+                }
+                enemyStrengths.Add(enemyStrength);
+                remainingSolution -= enemyStrength;
             }
-            enemyStrengths.Add(enemyStrength);
-            remainingSolution -= enemyStrength;
+            enemyStrengths.Add(remainingSolution);
         }
-        enemyStrengths.Add(remainingSolution);
+        
     }
 
     // Set initial question complexity and based on difficulty and adjust variables based on that complexity
