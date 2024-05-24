@@ -88,6 +88,44 @@ public class DungeonGenerator : MonoBehaviour
     }
 
 
+    public void ResetLv() {
+        StartCoroutine("ResetLvTransition");
+    }
+
+    IEnumerator ResetLvTransition()
+    {
+        Debug.Log("Made it to reset");
+
+        // Move the player
+        // Note: It is necessary to disable CharacterController before manually setting its position
+        // CharacterController does NOT allow such adjustment
+        player.GetComponent<CharacterController>().enabled = false;
+        Debug.Log("Room loc: " + currentRoom.transform.position);
+        player.transform.position = currentRoom.transform.position + new Vector3(0f, 0.2f, 2f);
+        Debug.Log("Player loc: " + player.transform.position);
+        player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+        // Re-enable CharacterController
+        player.GetComponent<CharacterController>().enabled = true;
+        // Deactivate weapons obtained in the previous room
+        player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
+        // Reset player health
+        player.GetComponent<PlayerCharacter>().FullHealth();
+
+        GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>().CombatOver();
+
+        // Play transition UI anim to bring up the blackscreen
+        if (TransitionUIManager._instance) {
+            TransitionUIManager._instance.StartTransition();
+            yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
+        }
+        Debug.Log("Made it past waitforseconds");
+
+
+        // Remove the transition screen
+        TransitionUIManager._instance.EndTransition();
+        yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
+    }
+
     // Note: This function serves similar functionality to GenRoom()
     // This function generates a new room, and move the player to the new room
     // Use this function if the room layout does NOT include bridging pathway bewteen rooms

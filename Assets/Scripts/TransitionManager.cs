@@ -48,10 +48,12 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
+    // Tells the GameManager to reset everything marked as DoNotDestroy, then resets the scene
     public void RestartLevel() {
         if (GameManager.manager) {
             Debug.Log(GameManager.manager.GetAddDifficulty());
             GameManager.manager.Restart();
+            GameManager.manager.Save();
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

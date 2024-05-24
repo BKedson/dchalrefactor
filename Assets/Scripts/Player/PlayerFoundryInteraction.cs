@@ -175,7 +175,6 @@ public class PlayerFoundryInteraction : MonoBehaviour
             else
             {
                 GameObject obj = targetIntake.Eject();
-                Debug.Log("Successfully ejected ore: " + obj.name);
                 if (obj)
                 {
                     currentOre = obj.GetComponent<OreManager>();

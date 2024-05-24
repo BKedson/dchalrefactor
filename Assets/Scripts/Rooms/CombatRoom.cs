@@ -290,7 +290,8 @@ public class CombatRoom : BaseRoom
 
     private void InstantiateRoom3Enemies(GameObject combatArea3)
     {
-
+        numEnemiesToSpawn = numEnemies;
+        
         SpawnEnemies(5f, 1f, 13f, numEnemies, enemyPrefab, combatArea3);
 
 
@@ -564,7 +565,7 @@ public class CombatRoom : BaseRoom
         {
             xPos = x + UnityEngine.Random.Range(-1.0f, 1.0f);
             yPos = y;
-            zPos = z + UnityEngine.Random.Range(-2.0f, 2.0f);
+            zPos = z + UnityEngine.Random.Range(-1.0f, 1.0f);
 
             GameObject currEnemy = Instantiate(prefabToSpawn, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0), parentTransform);
             currEnemy.transform.localPosition = new Vector3(xPos, yPos, zPos);

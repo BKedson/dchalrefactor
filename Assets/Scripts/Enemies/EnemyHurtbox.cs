@@ -48,6 +48,6 @@ public class EnemyHurtbox : MonoBehaviour
     void Hit(Collider col) {
         col.gameObject.GetComponent<PlayerCharacter>().Hurt(damage);
         lastDamage = Time.time;
-        Debug.Log("I have hit the player");
+        // Debug.Log("I have hit the player");
     }
 }
