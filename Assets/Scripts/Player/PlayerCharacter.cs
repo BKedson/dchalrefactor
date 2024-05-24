@@ -46,13 +46,13 @@ public class PlayerCharacter : MonoBehaviour {
 				//Deactivate all the characters-------------------------------------------------
 		foreach(GameObject character in characters)
 		{
-			Debug.Log("setting false");
+			// Debug.Log("setting false");
 			character.SetActive(false);
 		}
 		//Activate the current character -----------------------------------------------
 		GetActiveCharacter().SetActive(true);
 		//setting true
-		Debug.Log($"setting true {GameManager.manager.currentCharacter}");
+		// Debug.Log($"setting true {GameManager.manager.currentCharacter}");
 		//------------------------------------------------------------------------------
 		//start = true;
 		_health = startingHealth;
@@ -80,16 +80,27 @@ public class PlayerCharacter : MonoBehaviour {
 				Cursor.lockState = CursorLockMode.Confined;
 			}
 		
-			Debug.Log("Health: " + _health);
+			// Debug.Log("Health: " + _health);
 		}
 	}
 
+	// Resets player data
 	public void Reset() {
-		// Time.timeScale = 1;
-		death.SetActive(false);
 		FullHealth();
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	// Tells the transition manager to restart the scene
+	public void Restart() {
+		Time.timeScale = 1;
+		
+		GameObject transitionManager = GameObject.Find("Transition Manager");
+		if (transitionManager) {
+			transitionManager.GetComponent<TransitionManager>().RestartLevel();
+		}
+		
+		death.SetActive(false);
 	}
 
 	public void FullHealth() {

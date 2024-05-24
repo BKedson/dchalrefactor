@@ -306,7 +306,7 @@ public class FoundryManager : BaseInteractable
 
         if (totalAns == windowQuestion.GetSolution())
         {
-            Debug.Log("Forge correct weapon");
+            // Debug.Log("Forge correct weapon");
 
             tutorial.IntakeCorrectlySubmitted();
 
@@ -330,7 +330,7 @@ public class FoundryManager : BaseInteractable
         }
         else
         {
-            Debug.Log("Forge wrong weapon");
+            // Debug.Log("Forge wrong weapon");
             
         }
     }

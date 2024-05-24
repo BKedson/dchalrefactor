@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    // Resets everything marked as DoNotDestroy
     public void Restart(){
         player = GameObject.Find("Player");
 
@@ -85,13 +86,11 @@ public class GameManager : MonoBehaviour
             player.GetComponent<PlayerCharacter>().Reset();
             UpdateCurrentCharacter();
             player.GetComponent<PlayerCharacter>().InitializePlayer();
-            // player.GetComponent<PlayerMovement>().Reset();
+            player.GetComponent<PlayerMovement>().Reset();
         }
 
-        Time.timeScale = 1;
-
         if (DungeonGenerator._instance) {
-            DungeonGenerator._instance.ProceedLv();
+            DungeonGenerator._instance.ResetLv();
         }
 
         correctStreak = 0;

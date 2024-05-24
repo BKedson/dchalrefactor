@@ -69,8 +69,6 @@ public class FoundryIntakeManager : MonoBehaviour
 
         insertedOre = ore;
 
-        Debug.Log("Inserted ore: " + insertedOre.name);
-
         cursor.SetActive(false);
 
         tutorial.OrePlaced();
@@ -80,7 +78,6 @@ public class FoundryIntakeManager : MonoBehaviour
 
     public GameObject Eject()
     {
-        Debug.Log("Ejected ore: " + insertedOre.name);
         GameObject obj = insertedOre;
         insertedOre = null;
         return obj;

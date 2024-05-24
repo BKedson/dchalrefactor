@@ -20,6 +20,7 @@ public class Spawner : BaseEnemy
     private int remainingSpawns;
     private int maxSpawns = 5;
     private float spawnFrequency = 10f;
+    private bool destroyedByPlayer = false;
 
     private AudioSource audioSource;
     public AudioClip spawnSound;
@@ -101,12 +102,13 @@ public class Spawner : BaseEnemy
         //if it is a weapon
         if (other.gameObject.name == "DamageCollider")
         {
+            destroyedByPlayer = true;
             Destroy(gameObject);
         }
     }
 
     public void OnDestroy(){
-		if (GameObject.FindGameObjectsWithTag("enemy").Count() < 1)
+		if (destroyedByPlayer && GameObject.FindGameObjectsWithTag("enemy").Count() < 1)
 		{
 			if (DungeonGenerator._instance) {
                 DungeonGenerator._instance.ProceedLv();

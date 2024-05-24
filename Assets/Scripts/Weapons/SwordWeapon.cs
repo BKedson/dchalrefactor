@@ -54,7 +54,7 @@ public class SwordWeapon :  BaseWeapon
     public void stopSwing(){anim.SetBool("Attack", false);}
 
     public void OnTriggerEnter(Collider other){
-        Debug.Log("I am a sword and I have hit: " + other.name);
+        // Debug.Log("I am a sword and I have hit: " + other.name);
 		//call the death function
 		if(other.CompareTag("enemy")){
 			//calling the death function on this actor

@@ -22,7 +22,7 @@ public class PlayerGameDataController : MonoBehaviour
                     DontDestroyOnLoad(singletonObject);
                 }
             }
-            Debug.Log("Instance returned of controller");
+            // Debug.Log("Instance returned of controller");
             return _instance;
         }
     }

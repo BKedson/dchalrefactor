@@ -3028,7 +3028,7 @@ GameObject:
   - component: {fileID: 1911820692}
   - component: {fileID: 1911820691}
   m_Layer: 0
-  m_Name: TransitionManager
+  m_Name: Transition Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4045,14 +4045,14 @@ PrefabInstance:
     - target: {fileID: 8564381806109026475, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1911820692}
+      objectReference: {fileID: 8579289496863477012}
     - target: {fileID: 8564381806109026475, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NewGame
+      value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 8564381806109026475, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TransitionManager, Assembly-CSharp
+      value: PlayerCharacter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8564381806109026475, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -4153,6 +4153,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+--- !u!114 &8579289496863477012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8424787816130432395, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+  m_PrefabInstance: {fileID: 8579289496863477011}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4586ff2d704fd474d85d14c96914123e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
