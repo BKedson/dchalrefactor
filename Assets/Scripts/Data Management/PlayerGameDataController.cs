@@ -156,4 +156,9 @@ public class PlayerGameDataController : MonoBehaviour
     {
         return IsNewGame;
     }
+
+    public void UpdateCharacter(string s)
+    {
+        CurrentCharacter = s;
+    }
 }

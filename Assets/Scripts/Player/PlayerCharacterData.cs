@@ -22,6 +22,7 @@ namespace dchalrefactor.Scripts.Player
             //add the default character mappings
             characterMappings.Add("DC_Woman_2",0);
             characterMappings.Add("DC_Man_1",1);
+            characterMappings.Add("DC_Man_2",2);
         }
 
         //Retrieves the index related to this character

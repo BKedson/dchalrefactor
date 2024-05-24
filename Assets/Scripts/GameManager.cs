@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
         }
         //Initialize the Character Mapping class----------------------------------------------
         globalCharacterData = new PlayerCharacterData();
-        //retrieve index 
-        currentCharacter = globalCharacterData.RetrieveCharacterIndex(PlayerGameDataController.Instance.CurrentCharacter);
+        //update character index in the manager
+        UpdateCurrentCharacter();
     }
 
     // Start is called before the first frame update
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
             // player.transform.position = playerSpawnPoint;
             // player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
             player.GetComponent<PlayerCharacter>().Reset();
-            currentCharacter = globalCharacterData.RetrieveCharacterIndex(PlayerGameDataController.Instance.CurrentCharacter);
+            UpdateCurrentCharacter();
             player.GetComponent<PlayerCharacter>().InitializePlayer();
             // player.GetComponent<PlayerMovement>().Reset();
         }
@@ -313,5 +313,10 @@ public class GameManager : MonoBehaviour
     public int GetCurrentCharacter()
     {
         return currentCharacter;
+    }
+
+    public void UpdateCurrentCharacter()
+    {
+        currentCharacter = globalCharacterData.RetrieveCharacterIndex(PlayerGameDataController.Instance.CurrentCharacter);
     }
 }
