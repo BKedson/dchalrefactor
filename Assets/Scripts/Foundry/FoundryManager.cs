@@ -327,7 +327,7 @@ public class FoundryManager : BaseInteractable
 
                     if (i == 0) { totalAns = ans; }
                     //prevent divide by 0 err
-                    else if (ans == 0) {totalAns == -1; }
+                    else if (ans == 0) {totalAns = -1; }
                     else { totalAns /= ans; }
                 }
                 break;
