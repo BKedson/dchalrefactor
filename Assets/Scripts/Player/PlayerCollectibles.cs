@@ -32,6 +32,7 @@ public class PlayerCollectibles : MonoBehaviour
 
     public void CollectWeapon(string name) //collects a weapon and activates it
     {
+        playerWeapons = GetActiveCharacterWeapons();
         //Deactivate all weapons and then activate the pickup
         playerWeapons.DeactivateAllWeapons();
         //activate using the attached playerWeapons class

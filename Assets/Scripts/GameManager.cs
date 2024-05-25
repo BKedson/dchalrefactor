@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private int subQuestionComplexity = 0;
     private int multQuestionComplexity = 0;
     private int divQuestionComplexity = 0;
+    private int maxComplexity = 6;
     private GameObject player;
     private Vector3 playerSpawnPoint;
 
@@ -85,15 +86,17 @@ public class GameManager : MonoBehaviour
         if (player) {
             UpdateCurrentCharacter();
             EnablePlayerSound();
-            // player.transform.position = playerSpawnPoint;
             // player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
             player.GetComponent<PlayerCharacter>().Reset();
             player.GetComponent<PlayerCharacter>().InitializePlayer();
             player.GetComponent<PlayerMovement>().Reset();
+            player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
         }
 
         if (DungeonGenerator._instance) {
             DungeonGenerator._instance.ResetLv();
+        } else {
+            ResetPlayerPos();
         }
 
         correctStreak = 0;
@@ -105,7 +108,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-        public void WrongAnswer() {
+    public void ResetPlayerPos() {
+        player = GameObject.Find("Player");
+
+        if (player) {
+            player.GetComponent<CharacterController>().enabled = false;
+            player.transform.position =  new Vector3(0f, 0.2f, 2f);
+            player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            // Re-enable CharacterController
+            player.GetComponent<CharacterController>().enabled = true;
+        }
+    }
+
+    public void WrongAnswer() {
         correctStreak = 0;
 
         if (!alreadyWrong) {
@@ -135,7 +150,7 @@ public class GameManager : MonoBehaviour
         switch (currSubject) {
             case Subject.Addition:
                 if (correct) {
-                    addQuestionComplexity = Math.Min(9, addQuestionComplexity + 1);
+                    addQuestionComplexity = Math.Min(maxComplexity, addQuestionComplexity + 1);
                     PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
                 } else {
                     addQuestionComplexity = Math.Max(0, addQuestionComplexity - 1);
@@ -144,7 +159,7 @@ public class GameManager : MonoBehaviour
             break;
             case Subject.Subtraction:
                 if (correct) {
-                    subQuestionComplexity = Math.Min(9, subQuestionComplexity + 1);
+                    subQuestionComplexity = Math.Min(maxComplexity, subQuestionComplexity + 1);
                     PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
                 } else {
                     subQuestionComplexity = Math.Max(0, subQuestionComplexity - 1);
@@ -153,7 +168,7 @@ public class GameManager : MonoBehaviour
             break;
             case Subject.Multiplication:
                 if (correct) {
-                    multQuestionComplexity = Math.Min(9, multQuestionComplexity + 1);
+                    multQuestionComplexity = Math.Min(maxComplexity, multQuestionComplexity + 1);
                     PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
                 } else {
                     multQuestionComplexity = Math.Max(0, multQuestionComplexity - 1);
@@ -162,7 +177,7 @@ public class GameManager : MonoBehaviour
             break;                
             case Subject.Division:
                 if (correct) {
-                    divQuestionComplexity = Math.Min(9, divQuestionComplexity + 1);
+                    divQuestionComplexity = Math.Min(maxComplexity, divQuestionComplexity + 1);
                     PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;
                 } else {
                     divQuestionComplexity = Math.Max(0, divQuestionComplexity - 1);
@@ -189,7 +204,7 @@ public class GameManager : MonoBehaviour
                 addQuestionComplexity = 3;
                 break;
             case Difficulty.Hard:
-                addQuestionComplexity = 7;
+                addQuestionComplexity = maxComplexity - 2;
                 break;
         }
         PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
@@ -203,7 +218,7 @@ public class GameManager : MonoBehaviour
                 subQuestionComplexity = 3;
                 break;
             case Difficulty.Hard:
-                subQuestionComplexity = 7;
+                subQuestionComplexity = maxComplexity - 2;
                 break;
         }
         PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
@@ -217,7 +232,7 @@ public class GameManager : MonoBehaviour
                 multQuestionComplexity = 3;
                 break;
             case Difficulty.Hard:
-                multQuestionComplexity = 7;
+                multQuestionComplexity = maxComplexity - 2;
                 break;
         }
         PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
@@ -231,7 +246,7 @@ public class GameManager : MonoBehaviour
                 divQuestionComplexity = 3;
                 break;
             case Difficulty.Hard:
-                divQuestionComplexity = 7;
+                divQuestionComplexity = maxComplexity - 2;
                 break;
         }
         PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;

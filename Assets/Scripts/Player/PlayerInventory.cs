@@ -39,7 +39,7 @@ public class PlayerInventory : MonoBehaviour
                     //get the name of the weapon from the collider
                     string weaponName = col.gameObject.GetComponent<WeaponCollectible>().GetCollectibleName();
                     //The player must activate the corresponding weapon using the Player Collectibles class
-                    gameObject.GetComponent<PlayerCollectibles>().CollectWeapon(weaponName); 
+                    gameObject.GetComponent<PlayerCollectibles>().CollectWeapon(weaponName);
                     break;
             }
             Destroy(col.gameObject);

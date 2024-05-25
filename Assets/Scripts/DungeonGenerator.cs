@@ -100,7 +100,8 @@ public class DungeonGenerator : MonoBehaviour
         TransitionUIManager._instance.StartTransition();
 
         // Move the player
-        ResetPlayerPos(currentRoom.transform.position);
+        // ResetPlayerPos(currentRoom.transform.position);
+        ResetPlayerPos(Vector3.zero);
         // Deactivate weapons obtained in the previous room
         player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
         // Reset player health
@@ -158,11 +159,13 @@ public class DungeonGenerator : MonoBehaviour
     // Note: It is necessary to disable CharacterController before manually setting its position
     // CharacterController does NOT allow such adjustment
     public void ResetPlayerPos(Vector3 originLoc) {
-        player.GetComponent<CharacterController>().enabled = false;
-        player.transform.position = originLoc + new Vector3(0f, 0.2f, 2f);
-        player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-        // Re-enable CharacterController
-        player.GetComponent<CharacterController>().enabled = true;
+        if (player) {
+            player.GetComponent<CharacterController>().enabled = false;
+            player.transform.position = originLoc + new Vector3(0f, 0.2f, 2f);
+            player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            // Re-enable CharacterController
+            player.GetComponent<CharacterController>().enabled = true;
+        }
     }
 
     // Gizmos function - For visual assistance in the editor only

@@ -21,7 +21,6 @@ public class Spawner : BaseEnemy
     private int maxSpawns = 5;
     private float spawnFrequency = 10f;
     private bool destroyedByPlayer = false;
-
     private AudioSource audioSource;
     public AudioClip spawnSound;
 

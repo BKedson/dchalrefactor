@@ -30,7 +30,7 @@ public class TransitionManager : MonoBehaviour
         // }
 
         if (GameManager.manager) {
-            GameManager.manager.ResetComplexity();
+            // GameManager.manager.ResetComplexity();
 			GameManager.manager.Restart();
             SceneManager.LoadScene("Room Generation Test Scene");
             GameManager.manager.Save();
