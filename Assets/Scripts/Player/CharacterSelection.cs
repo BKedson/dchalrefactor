@@ -86,7 +86,11 @@ public class CharacterSelection : MonoBehaviour
     public void SaveGlobalCharacterSelection()
     {
         PlayerGameDataController.Instance.CurrentCharacter = selectedCharacter;
-        PlayerGameDataController.Instance.SaveGameData();
+        
+        if (GameManager.manager) {
+            GameManager.manager.UpdateCurrentCharacter();
+            GameManager.manager.Save();
+        }
     }
 
     //---------------------------------------------------------IN-GAME LOGIC------------------------------------------------------------------------

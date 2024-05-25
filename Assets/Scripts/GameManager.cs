@@ -83,11 +83,11 @@ public class GameManager : MonoBehaviour
         player = GameObject.Find("Player");
 
         if (player) {
+            UpdateCurrentCharacter();
             EnablePlayerSound();
             // player.transform.position = playerSpawnPoint;
             // player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
             player.GetComponent<PlayerCharacter>().Reset();
-            UpdateCurrentCharacter();
             player.GetComponent<PlayerCharacter>().InitializePlayer();
             player.GetComponent<PlayerMovement>().Reset();
         }
@@ -407,5 +407,10 @@ public class GameManager : MonoBehaviour
     public void UpdateCurrentCharacter()
     {
         currentCharacter = globalCharacterData.RetrieveCharacterIndex(PlayerGameDataController.Instance.CurrentCharacter);
+        player = GameObject.Find("Player");
+
+        if (player) {
+            player.GetComponent<PlayerMovement>().Reset();
+        }
     }
 }
