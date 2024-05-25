@@ -136,6 +136,10 @@ public class DungeonGenerator : MonoBehaviour
         lastRoom = currentRoom;
         // Move player
         ResetPlayerPos(nextGenPos);
+        // Disable health UI
+        if (player) {
+            player.GetComponent<PlayerCharacter>().DisableHealthUI();
+        }
         // Generate new room
         currentRoom = Instantiate(roomPrefab, nextGenPos, Quaternion.identity, dungeonRoot);
         // Deactivate weapons obtained in the previous room

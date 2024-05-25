@@ -87,6 +87,7 @@ public class PlayerCharacter : MonoBehaviour {
 	// Resets player data
 	public void Reset() {
 		FullHealth();
+		DisableHealthUI();
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 	}
@@ -116,6 +117,14 @@ public class PlayerCharacter : MonoBehaviour {
 			}
 
 			textComp.text = "Health " + _health + " " + hp;
+	}
+
+	public void DisableHealthUI() {
+		healthUI.SetActive(false);
+	}
+
+	public void EnableHealthUI() {
+		healthUI.SetActive(true);
 	}
 
 	public void ChangeActiveSkin() {

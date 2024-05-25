@@ -350,6 +350,12 @@ public class FoundryManager : BaseInteractable
                             
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
 
+            GameObject player = GameObject.Find("Player");
+
+            if (player) {
+                player.GetComponent<PlayerCharacter>().EnableHealthUI();
+            }
+
             foreach (GameObject enemy in enemies) {
                 Spawner spawner = enemy.GetComponent<Spawner>();
                 if (spawner) {

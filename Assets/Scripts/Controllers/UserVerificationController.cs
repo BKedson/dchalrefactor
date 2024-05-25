@@ -102,7 +102,7 @@ public class UserVerificationController : BaseController<UserVerificationControl
             //Call the MainMenu sequence after loading the data
             HandleInputAction(UVAction.RegisterUserCreated);
         }
-        else{
+        else {
             HandleInputAction(UVAction.RegisterErrorUserExists);
         }
     }

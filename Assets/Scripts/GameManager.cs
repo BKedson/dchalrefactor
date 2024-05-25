@@ -98,8 +98,6 @@ public class GameManager : MonoBehaviour
         } else {
             ResetPlayerPos();
         }
-
-        correctStreak = 0;
     }
 
     public void NewGame() {
