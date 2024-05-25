@@ -78,9 +78,12 @@ public class GameManager : MonoBehaviour
 
     // Resets everything marked as DoNotDestroy
     public void Restart(){
+        Time.timeScale = 1;
+
         player = GameObject.Find("Player");
 
         if (player) {
+            EnablePlayerSound();
             // player.transform.position = playerSpawnPoint;
             // player.GetComponentInChildren<PlayerWeapons>().DeactivateAllWeapons();
             player.GetComponent<PlayerCharacter>().Reset();
@@ -94,6 +97,160 @@ public class GameManager : MonoBehaviour
         }
 
         correctStreak = 0;
+    }
+
+    public void NewGame() {
+        correctStreak = 0;
+        incorrectStreak = 0;
+
+    }
+
+        public void WrongAnswer() {
+        correctStreak = 0;
+
+        if (!alreadyWrong) {
+            incorrectStreak++;
+            alreadyWrong = true;
+        }
+
+        // Decreases complexity for future problems if the player is struggling
+        if (incorrectStreak % wrongAnswerThreshold == 0) {
+            UpdateComplexity(false);
+        }
+    }
+
+    public void RightAnswer() {
+            correctStreak++;
+            incorrectStreak = 0;
+
+            alreadyWrong = false;
+
+            // Increases complexity for future problems if the player is easily answering questions
+            if (correctStreak % rightAnswerThreshold == 0) {
+                UpdateComplexity(true);
+            }
+    }
+
+    private void UpdateComplexity(bool correct) {
+        switch (currSubject) {
+            case Subject.Addition:
+                if (correct) {
+                    addQuestionComplexity = Math.Min(9, addQuestionComplexity + 1);
+                    PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
+                } else {
+                    addQuestionComplexity = Math.Max(0, addQuestionComplexity - 1);
+                    PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
+                }
+            break;
+            case Subject.Subtraction:
+                if (correct) {
+                    subQuestionComplexity = Math.Min(9, subQuestionComplexity + 1);
+                    PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
+                } else {
+                    subQuestionComplexity = Math.Max(0, subQuestionComplexity - 1);
+                    PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
+                }
+            break;
+            case Subject.Multiplication:
+                if (correct) {
+                    multQuestionComplexity = Math.Min(9, multQuestionComplexity + 1);
+                    PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
+                } else {
+                    multQuestionComplexity = Math.Max(0, multQuestionComplexity - 1);
+                    PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
+                }
+            break;                
+            case Subject.Division:
+                if (correct) {
+                    divQuestionComplexity = Math.Min(9, divQuestionComplexity + 1);
+                    PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;
+                } else {
+                    divQuestionComplexity = Math.Max(0, divQuestionComplexity - 1);
+                    PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;
+                }
+            break;
+        }
+    }
+
+        // Resets complexities to match current difficulty settings
+    public void ResetComplexity() {
+        ResetAddComplexity();
+        ResetSubComplexity();
+        ResetMultComplexity();
+        ResetDivComplexity();
+    }
+
+    private void ResetAddComplexity() {
+        switch (addDifficulty) {
+            case Difficulty.Easy:
+                addQuestionComplexity = 0;
+                break;
+            case Difficulty.Medium:
+                addQuestionComplexity = 3;
+                break;
+            case Difficulty.Hard:
+                addQuestionComplexity = 7;
+                break;
+        }
+        PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
+    }
+    private void ResetSubComplexity() {
+        switch (subtractDifficulty) {
+            case Difficulty.Easy:
+                subQuestionComplexity = 0;
+                break;
+            case Difficulty.Medium:
+                subQuestionComplexity = 3;
+                break;
+            case Difficulty.Hard:
+                subQuestionComplexity = 7;
+                break;
+        }
+        PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
+    }
+    private void ResetMultComplexity() {
+        switch (multiplyDifficulty) {
+            case Difficulty.Easy:
+                multQuestionComplexity = 0;
+                break;
+            case Difficulty.Medium:
+                multQuestionComplexity = 3;
+                break;
+            case Difficulty.Hard:
+                multQuestionComplexity = 7;
+                break;
+        }
+        PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
+    }
+    private void ResetDivComplexity() {
+        switch (divideDifficulty) {
+            case Difficulty.Easy:
+                divQuestionComplexity = 0;
+                break;
+            case Difficulty.Medium:
+                divQuestionComplexity = 3;
+                break;
+            case Difficulty.Hard:
+                divQuestionComplexity = 7;
+                break;
+        }
+        PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;
+    }
+
+    public void DisablePlayerSound() {
+        player = GameObject.Find("Player");
+
+        if (player) {
+            player.GetComponentInChildren<AudioListener>().enabled = false;
+        }
+    }
+
+    public void EnablePlayerSound() {
+        player = GameObject.Find("Player");
+
+        if (player) {
+            player.GetComponentInChildren<AudioListener>().enabled = true;
+        }
     }
 
     public void ChangeSkin() {
@@ -208,73 +365,6 @@ public class GameManager : MonoBehaviour
             break;
             default:
                 return addQuestionComplexity;
-            break;
-        }
-    }
-
-    public void WrongAnswer() {
-        correctStreak = 0;
-
-        if (!alreadyWrong) {
-            incorrectStreak++;
-            alreadyWrong = true;
-        }
-
-        // Decreases complexity for future problems if the player is struggling
-        if (incorrectStreak % wrongAnswerThreshold == 0) {
-            UpdateComplexity(false);
-        }
-    }
-
-    public void RightAnswer() {
-            correctStreak++;
-            incorrectStreak = 0;
-
-            alreadyWrong = false;
-
-            // Increases complexity for future problems if the player is easily answering questions
-            if (correctStreak % rightAnswerThreshold == 0) {
-                UpdateComplexity(true);
-            }
-    }
-
-    private void UpdateComplexity(bool correct) {
-        switch (currSubject) {
-            case Subject.Addition:
-                if (correct) {
-                    addQuestionComplexity = Math.Min(9, addQuestionComplexity + 1);
-                    PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
-                } else {
-                    addQuestionComplexity = Math.Max(0, addQuestionComplexity - 1);
-                    PlayerGameDataController.Instance.AdditionQuestionComplexity = addQuestionComplexity;
-                }
-            break;
-            case Subject.Subtraction:
-                if (correct) {
-                    subQuestionComplexity = Math.Min(9, subQuestionComplexity + 1);
-                    PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
-                } else {
-                    subQuestionComplexity = Math.Max(0, subQuestionComplexity - 1);
-                    PlayerGameDataController.Instance.SubtractionQuestionComplexity = subQuestionComplexity;
-                }
-            break;
-            case Subject.Multiplication:
-                if (correct) {
-                    multQuestionComplexity = Math.Min(9, multQuestionComplexity + 1);
-                    PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
-                } else {
-                    multQuestionComplexity = Math.Max(0, multQuestionComplexity - 1);
-                    PlayerGameDataController.Instance.MultiplicationQuestionComplexity = multQuestionComplexity;
-                }
-            break;                
-            case Subject.Division:
-                if (correct) {
-                    divQuestionComplexity = Math.Min(9, divQuestionComplexity + 1);
-                    PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;
-                } else {
-                    divQuestionComplexity = Math.Max(0, divQuestionComplexity - 1);
-                    PlayerGameDataController.Instance.DivisionQuestionComplexity = divQuestionComplexity;
-                }
             break;
         }
     }

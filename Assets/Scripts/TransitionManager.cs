@@ -30,6 +30,7 @@ public class TransitionManager : MonoBehaviour
         // }
 
         if (GameManager.manager) {
+            GameManager.manager.ResetComplexity();
 			GameManager.manager.Restart();
             SceneManager.LoadScene("Room Generation Test Scene");
             GameManager.manager.Save();
@@ -40,6 +41,7 @@ public class TransitionManager : MonoBehaviour
 
     public void NewGame() {
         if (GameManager.manager) {
+            GameManager.manager.ResetComplexity();
 			GameManager.manager.Restart();
             SceneManager.LoadScene("Room Generation Test Scene");
             GameManager.manager.Save();
@@ -72,6 +74,7 @@ public class TransitionManager : MonoBehaviour
         Cursor.visible = true;
         
         if (GameManager.manager) {
+            GameManager.manager.DisablePlayerSound();
             GameManager.manager.Save();
         }
     }

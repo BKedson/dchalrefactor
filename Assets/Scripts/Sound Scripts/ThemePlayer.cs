@@ -19,7 +19,8 @@ public class ThemePlayer : MonoBehaviour
         }
         else
         {
-            gameObject.GetComponent<AudioSource>().enabled = false;
+            // gameObject.GetComponent<AudioSource>().enabled = false;
+            DestroyImmediate(gameObject);
         }
         SceneManager.sceneLoaded += SceneLoaded;
     }

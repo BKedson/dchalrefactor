@@ -94,32 +94,20 @@ public class DungeonGenerator : MonoBehaviour
 
     IEnumerator ResetLvTransition()
     {
-        Debug.Log("Made it to reset");
+        // Play transition UI anim to bring up the blackscreen
+        if (TransitionUIManager._instance) {
+            TransitionUIManager._instance.StartTransition();
+            yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
+        }
 
         // Move the player
-        // Note: It is necessary to disable CharacterController before manually setting its position
-        // CharacterController does NOT allow such adjustment
-        player.GetComponent<CharacterController>().enabled = false;
-        Debug.Log("Room loc: " + currentRoom.transform.position);
-        player.transform.position = currentRoom.transform.position + new Vector3(0f, 0.2f, 2f);
-        Debug.Log("Player loc: " + player.transform.position);
-        player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-        // Re-enable CharacterController
-        player.GetComponent<CharacterController>().enabled = true;
+        ResetPlayerPos(currentRoom.transform.position);
         // Deactivate weapons obtained in the previous room
         player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
         // Reset player health
         player.GetComponent<PlayerCharacter>().FullHealth();
 
         GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>().CombatOver();
-
-        // Play transition UI anim to bring up the blackscreen
-        if (TransitionUIManager._instance) {
-            TransitionUIManager._instance.StartTransition();
-            yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
-        }
-        Debug.Log("Made it past waitforseconds");
-
 
         // Remove the transition screen
         TransitionUIManager._instance.EndTransition();
@@ -142,19 +130,12 @@ public class DungeonGenerator : MonoBehaviour
             yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
         }
 
-        // Unpdate the buffer
+        // Update the buffer
         lastRoom = currentRoom;
-
+        // Move player
+        ResetPlayerPos(nextGenPos);
         // Generate new room
         currentRoom = Instantiate(roomPrefab, nextGenPos, Quaternion.identity, dungeonRoot);
-        // Move the player
-        // Note: It is necessary to disable CharacterController before manually setting its position
-        // CharacterController does NOT allow such adjustment
-        player.GetComponent<CharacterController>().enabled = false;
-        player.transform.position = nextGenPos + new Vector3(0f, 0.2f, 2f);
-        player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-        // Re-enable CharacterController
-        player.GetComponent<CharacterController>().enabled = true;
         // Deactivate weapons obtained in the previous room
         player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
         // Reset player health
@@ -169,6 +150,18 @@ public class DungeonGenerator : MonoBehaviour
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
 
         DestroyRoom();
+    }
+
+
+    // Move the player
+    // Note: It is necessary to disable CharacterController before manually setting its position
+    // CharacterController does NOT allow such adjustment
+    public void ResetPlayerPos(Vector3 originLoc) {
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = originLoc + new Vector3(0f, 0.2f, 2f);
+        player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+        // Re-enable CharacterController
+        player.GetComponent<CharacterController>().enabled = true;
     }
 
     // Gizmos function - For visual assistance in the editor only

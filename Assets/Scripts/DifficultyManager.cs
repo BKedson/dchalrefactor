@@ -45,10 +45,10 @@ public class DifficultyManager : MonoBehaviour
         mediumDescription = " is medium.";
         hardDescription = " is hard.";
 
-        addDescription = "The addition";
-        subractDescription = "The subtraction";
-        multiplyDescription = "The multiplication";
-        divideDescription = "The division";
+        addDescription = "The addition difficulty";
+        subractDescription = "The subtraction difficulty";
+        multiplyDescription = "The multiplication difficulty";
+        divideDescription = "The division difficulty";
 
         descriptionText.GetComponent<TextMeshProUGUI>().text = "";
 
