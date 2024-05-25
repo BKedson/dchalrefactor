@@ -130,7 +130,7 @@ public class FoundryManager : BaseInteractable
             {
                 // Generate an intake
                 GameObject intake = Instantiate(intakePrefab, transform);
-                intake.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), 0f, 0f);
+                intake.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), -0.7f, 0f);
                 intakeGroups[i].Add(intake.GetComponent<FoundryIntakeManager>());
 
                 // Allows intakes to tell the tutorial when an ore is inserted
@@ -171,7 +171,7 @@ public class FoundryManager : BaseInteractable
                     signBlock = Instantiate(additionSignPrefab, transform);
                     break;
             }
-            signBlock.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), 0f, 0f);
+            signBlock.transform.localPosition = new Vector3(intakeWidth * (digitCounter - totalDigits / 2f + 0.5f), -0.7f, 0f);
 
             digitCounter++;
         }
