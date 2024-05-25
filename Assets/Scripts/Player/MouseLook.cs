@@ -109,6 +109,11 @@ public class MouseLook : MonoBehaviour
         camHolderTransform.localRotation = Quaternion.Euler(xRot, 0, 0);
     }
 
+    public void FaceForward() {
+        yRot = 0;
+        transform.rotation = Quaternion.Euler(0, yRot, 0);
+    }
+
     // Gizmos function - for visual assistance only
     private void OnDrawGizmosSelected()
     {

@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         if (player) {
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position =  new Vector3(0f, 0.2f, 2f);
-            player.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            player.GetComponent<MouseLook>().FaceForward();
             // Re-enable CharacterController
             player.GetComponent<CharacterController>().enabled = true;
         }
