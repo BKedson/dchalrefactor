@@ -50,7 +50,7 @@ public class FoundryManager : BaseInteractable
         float rand = UnityEngine.Random.Range(0f, 1f);
         if (rand <= 0.2f) {
            windowQuestion.SetSubject(Subject.Multiplication);
-        } else if (rand > 0.2f || rand <= 0.4f) {
+        } else if (rand > 0.2f || rand <= 0.3f) {
             windowQuestion.SetSubject(Subject.Division);
         } else {
             windowQuestion.SetSubject(Subject.Addition);

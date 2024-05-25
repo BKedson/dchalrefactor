@@ -94,11 +94,10 @@ public class DungeonGenerator : MonoBehaviour
 
     IEnumerator ResetLvTransition()
     {
+        Time.timeScale = 1;
+        Debug.Log("started transition");
         // Play transition UI anim to bring up the blackscreen
-        if (TransitionUIManager._instance) {
-            TransitionUIManager._instance.StartTransition();
-            yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
-        }
+        TransitionUIManager._instance.StartTransition();
 
         // Move the player
         ResetPlayerPos(currentRoom.transform.position);
@@ -109,6 +108,8 @@ public class DungeonGenerator : MonoBehaviour
 
         GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>().CombatOver();
 
+        // yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
+    
         // Remove the transition screen
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());

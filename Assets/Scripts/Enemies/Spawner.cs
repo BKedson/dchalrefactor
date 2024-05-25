@@ -65,7 +65,9 @@ public class Spawner : BaseEnemy
     }
 
     public void StartSpawns() {
-        StartCoroutine(SpawnLoop());
+        if (remainingSpawns > 0) {
+            StartCoroutine(SpawnLoop());
+        }
     }
 
     IEnumerator SpawnLoop() {

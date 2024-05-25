@@ -20,8 +20,8 @@ namespace dchalrefactor.Scripts.Player
         private void InitializeWeaponMappings()
         {
             //add the default character mappings
-            weaponMappings.Add("Sword",0);
-            weaponMappings.Add("LaserGun",1);
+            weaponMappings.Add("Sword", 0);
+            weaponMappings.Add("LaserGun", 1);
         }
 
         //Retrieves the index related to this character
