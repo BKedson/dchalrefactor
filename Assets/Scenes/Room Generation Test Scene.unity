@@ -2615,6 +2615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1603421255}
   - component: {fileID: 1603421254}
+  - component: {fileID: 1603421256}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2636,6 +2637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currEnemyStrengths: 
   isInvincible: 0
+  cursorSize: 0
   currentCharacter: 0
 --- !u!4 &1603421255
 Transform:
@@ -2652,6 +2654,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1603421256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603421253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9b79c9721084b49878f009cb653e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1610822978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4034,6 +4048,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7766422304734531714, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1603421256}
     - target: {fileID: 8529027887652050917, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

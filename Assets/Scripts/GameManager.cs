@@ -40,6 +40,10 @@ public class GameManager : MonoBehaviour
     // Track player invincibility
     [SerializeField] private bool isInvincible;
 
+    // Track player cursor size
+    private int cursorSize;
+    private CursorBehavior playerCursor = null;
+
     //Character Information---------------------------------------------------------------
     public int currentCharacter; //Stores the global character index for this player - information comes from the Player Data Controller
     private PlayerCharacterData globalCharacterData;
@@ -61,9 +65,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // isInvincible = false;
-        // PlayerPrefs.SetInt("invincibility", 0);
         isInvincible = PlayerGameDataController.Instance.IsInvincible;
+        cursorSize = PlayerGameDataController.Instance.CursorSize;
         addQuestionComplexity = PlayerGameDataController.Instance.AdditionQuestionComplexity;
         subQuestionComplexity = PlayerGameDataController.Instance.SubtractionQuestionComplexity;
         multQuestionComplexity = PlayerGameDataController.Instance.MultiplicationQuestionComplexity;
@@ -283,17 +286,28 @@ public class GameManager : MonoBehaviour
     // GETTERS AND SETTERS
 
     public void SetInvincibility(bool inv){
-        // if(inv){
-        //     PlayerPrefs.SetInt("invincibility", 1);
-        // }else{
-        //     PlayerPrefs.SetInt("invincibility", 0);
-        // }
         isInvincible = inv;
         PlayerGameDataController.Instance.IsInvincible = isInvincible;
     }
 
     public bool IsInvincible(){
         return isInvincible;
+    }
+
+    public void SetCursorSize(int size){
+        cursorSize = size;
+        PlayerGameDataController.Instance.CursorSize = cursorSize;
+        if(playerCursor != null){
+            playerCursor.UpdateCursor(cursorSize);
+        }
+    }
+
+    public int GetCursorSize(){
+        return cursorSize;
+    }
+
+    public void SetPlayerCursor(CursorBehavior cursor){
+        playerCursor = cursor;
     }
 
     //addition difficulty

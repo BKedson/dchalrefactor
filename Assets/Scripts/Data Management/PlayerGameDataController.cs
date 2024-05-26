@@ -38,6 +38,7 @@ public class PlayerGameDataController : MonoBehaviour
     public int DivisionDifficulty;
     public string CurrentCharacter;
     public bool IsInvincible;
+    public int CursorSize;
     public int AdditionQuestionComplexity;
     public int SubtractionQuestionComplexity;
     public int MultiplicationQuestionComplexity;
@@ -95,6 +96,7 @@ public class PlayerGameDataController : MonoBehaviour
         data.DivisionQuestionComplexity = DivisionQuestionComplexity;
         data.CurrentCharacter = CurrentCharacter;
         data.IsInvincible = IsInvincible;
+        data.CursorSize = CursorSize;
         return data;
     }
 
@@ -116,6 +118,7 @@ public class PlayerGameDataController : MonoBehaviour
         DivisionQuestionComplexity = data.DivisionQuestionComplexity;
         CurrentCharacter = data.CurrentCharacter;
         IsInvincible = data.IsInvincible;
+        CursorSize = data.CursorSize;
     }
 
     public PlayerGameData DefaultGameDataFile(string firstName, string nickName, int codeNumber)
@@ -134,6 +137,7 @@ public class PlayerGameDataController : MonoBehaviour
         data.DivisionQuestionComplexity = 0;
         data.CurrentCharacter = "DC_Woman_2";
         data.IsInvincible = false;
+        data.CursorSize = 10;
         return data;
     }
 

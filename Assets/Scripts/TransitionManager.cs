@@ -90,6 +90,10 @@ public class TransitionManager : MonoBehaviour
     public void Audio() {
         SceneManager.LoadScene("Audio");
     }
+    
+    public void Miscellaneous(){
+        SceneManager.LoadScene("Miscellaneous");
+    }
 
     public void Quit() {
         Application.Quit();

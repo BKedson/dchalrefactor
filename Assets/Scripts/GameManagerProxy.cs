@@ -30,7 +30,26 @@ public class GameManagerProxy : MonoBehaviour
         }
         return false;
     }
-    
+
+    public void SetCursorSize(int size){
+        if (GameManager.manager) {
+            GameManager.manager.SetCursorSize(size);
+        }
+    }
+
+    public int GetCursorSize(){
+        if(GameManager.manager){
+            return GameManager.manager.GetCursorSize();
+        }
+        return 10;
+    }
+
+    public void SetPlayerCursor(CursorBehavior cursor){
+        if (GameManager.manager) {
+            GameManager.manager.SetPlayerCursor(cursor);
+        }
+    }
+
     public void ChangeSkin() {
         if (GameManager.manager) {
             GameManager.manager.ChangeSkin();
