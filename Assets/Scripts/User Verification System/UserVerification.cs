@@ -18,6 +18,9 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         public StartMenuAnimations MenuAnim;
         //stores the Transition manager to load Main Menu scene
         public TransitionManager transitionManager;
+
+        // Allow for specific error messages
+        private string errorMessage = "";
         //-----------------------------------------------------------------------------------------
         //methods to handle different Actions during User verification-----------------------------
         public void OnRegisterPressed()
@@ -46,19 +49,19 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
 
         public void OnLoginInvalid()
         {
+            //Result from Query - false, activate false indicator UI element on Login Page
+            PromptErrorText.GetComponent<TMP_Text>().text = errorMessage;
             //Indicate error
             IndicateError();
             Debug.Log("Login Invalid!");
-            //Result from Query - false, activate false indicator UI element on Login Page
-            PromptErrorText.GetComponent<TMP_Text>().text = "Login Failed!";
         }
 
         public void OnLoginInputError()
         {
+            //Invalid input
+            PromptErrorText.GetComponent<TMP_Text>().text = errorMessage;
             //Indicate error
             IndicateError();
-            //Invalid input
-            PromptErrorText.GetComponent<TMP_Text>().text = "Check your names and number!";
         }
 
         public void OnLoginValid()
@@ -71,18 +74,18 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
 
         public void OnRegisterInvalid()
         {
+            //Result from Query - false, activate false indicator UI element on Login Page
+            PromptErrorText.GetComponent<TMP_Text>().text = errorMessage;
             //Indicate error
             IndicateError();
-            //Result from Query - false, activate false indicator UI element on Login Page
-            PromptErrorText.GetComponent<TMP_Text>().text = "Registration Failed!";
         }
 
         public void OnRegisterInputError()
         {
+            //Invalid input
+            PromptErrorText.GetComponent<TMP_Text>().text = errorMessage;
             //Indicate error
             IndicateError();
-            //Invalid input
-            PromptErrorText.GetComponent<TMP_Text>().text = "Check your names and number!";
         }
 
         public void OnRegisterValid()
@@ -116,6 +119,10 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         {
             //simply sets it active
             MenuAnim.PromptError();
+        }
+
+        public void SetErrorMessage(string message){
+            errorMessage = message;
         }
     }
 }
