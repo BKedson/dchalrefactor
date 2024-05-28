@@ -70,6 +70,16 @@ namespace dchalrefactor.Scripts.Animations.PlayerMovement
             currentPlayerAnimator.SetTrigger("SwordSlash_Special");
         }
 
+        public void StartBackingUp()
+        {
+            currentPlayerAnimator.SetBool("IsBackingUp", true);
+        }
+
+        public void StopBackingUp()
+        {
+            currentPlayerAnimator.SetBool("IsBackingUp", false);
+        }
+
         //LOGIC methods to control boolean logic of actions
         public void EquipWeapon(bool state)
         {
