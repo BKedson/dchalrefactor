@@ -133,7 +133,7 @@ public class DifficultyManager : MonoBehaviour
             case 0:
                 for(int i=0; i<addButtons.Length; i++){
                     if((int)localDifficulty == i){
-                        addButtons[i].GetComponent<Image>().color = new Color(0.208f, 0.337f, 0.569f, 1.0f);
+                        addButtons[i].GetComponent<Image>().color = new Color(0.55f, 0.65f, 0.85f, 1.0f);
                     }else{
                         addButtons[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                     }
@@ -144,7 +144,7 @@ public class DifficultyManager : MonoBehaviour
             case 1:
                 for(int i=0; i<subtractButtons.Length; i++){
                     if((int)localDifficulty == i){
-                        subtractButtons[i].GetComponent<Image>().color = new Color(0.208f, 0.337f, 0.569f, 1.0f);
+                        subtractButtons[i].GetComponent<Image>().color = new Color(0.55f, 0.65f, 0.85f, 1.0f);
                     }else{
                         subtractButtons[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                     }
@@ -153,7 +153,7 @@ public class DifficultyManager : MonoBehaviour
             case 2:
                 for(int i=0; i<multiplyButtons.Length; i++){
                     if((int)localDifficulty == i){
-                        multiplyButtons[i].GetComponent<Image>().color = new Color(0.208f, 0.337f, 0.569f, 1.0f);
+                        multiplyButtons[i].GetComponent<Image>().color = new Color(0.55f, 0.65f, 0.85f, 1.0f);
                     }else{
                         multiplyButtons[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                     }
@@ -162,7 +162,7 @@ public class DifficultyManager : MonoBehaviour
             case 3:
                 for(int i=0; i<divideButtons.Length; i++){
                     if((int)localDifficulty == i){
-                        divideButtons[i].GetComponent<Image>().color = new Color(0.208f, 0.337f, 0.569f, 1.0f);
+                        divideButtons[i].GetComponent<Image>().color = new Color(0.55f, 0.65f, 0.85f, 1.0f);
                     }else{
                         divideButtons[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                     }

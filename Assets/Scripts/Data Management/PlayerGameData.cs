@@ -24,4 +24,5 @@ public class PlayerGameData
     public string CurrentCharacter;
     //Misc Information------------------------------------------------
     public bool IsInvincible;
+    public int CursorSize;
 }

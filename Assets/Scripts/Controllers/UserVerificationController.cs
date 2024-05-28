@@ -103,6 +103,7 @@ public class UserVerificationController : BaseController<UserVerificationControl
             HandleInputAction(UVAction.RegisterUserCreated);
         }
         else {
+            uvManager.SetErrorMessage("Cannot register, user already exists.");
             HandleInputAction(UVAction.RegisterErrorUserExists);
         }
     }
@@ -127,6 +128,7 @@ public class UserVerificationController : BaseController<UserVerificationControl
         }
         else
         {
+            uvManager.SetErrorMessage("Names or number are incorrect.");
             HandleInputAction(UVAction.LoginErrorNoSuchUser);
         }    
     }
@@ -178,8 +180,9 @@ public class UserVerificationController : BaseController<UserVerificationControl
     protected bool IsUserNameValid(string s)
     {
         //if longer than 10 characters, reject
-        if(s.Length > 8 || s.Length < 3)
+        if(s.Length > 10 || s.Length < 3)
         {
+            uvManager.SetErrorMessage("Names must contain between 3 and 10 characters.");
             return false;
         }
         //looping to make sure the string only has valid chars
@@ -187,6 +190,7 @@ public class UserVerificationController : BaseController<UserVerificationControl
         {
             if (!char.IsLetter(c))
             {
+                uvManager.SetErrorMessage("Names must contain only letters.");
                 return false;
             }
         }
@@ -196,8 +200,9 @@ public class UserVerificationController : BaseController<UserVerificationControl
     protected bool IsCodeNumberValid(int n)
     {
         //if bigger than 9, reject
-        if(n < 1 || n > 9)
+        if(n < 0 || n > 9)
         {
+            uvManager.SetErrorMessage("Number must be between 0 and 9");
             return false;
         }
         return true;
@@ -212,6 +217,10 @@ public class UserVerificationController : BaseController<UserVerificationControl
     protected int NumberToInteger(GameObject obj)
     {
         //obtain the UI elements and return the Integer
+        //If nothing has been entered, return an invalid number to prevent number format exception
+        if (obj.GetComponent<TMP_InputField>().text == ""){
+            return 10;
+        }
         return int.Parse(obj.GetComponent<TMP_InputField>().text);
     }
     //Used to generate Usernames and passwords

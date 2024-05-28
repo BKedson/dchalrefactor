@@ -6,13 +6,14 @@ public class CreditsBehavior : MonoBehaviour
 {
     private bool scroll;
     private float defaultSpeed = 50.0f;
-    private float scrollSpeed = 50.0f;
+    private float scrollSpeed;
     private float creditsLength;
     private float startHeight;
     // Start is called before the first frame update
     void Start()
     {
         scroll = true;
+        scrollSpeed = defaultSpeed;
         creditsLength = gameObject.GetComponent<RectTransform>().rect.height;
         startHeight = gameObject.transform.position.y;
     }
@@ -38,10 +39,12 @@ public class CreditsBehavior : MonoBehaviour
             Vector3 currPosition = gameObject.transform.position;
 
             //reset height of credits when scroll is complete
-            if (currPosition.y - creditsLength >= creditsLength*2){ 
+            if (currPosition.y > creditsLength + Screen.height){ 
                 gameObject.transform.position = new Vector3(currPosition.x, startHeight, currPosition.z);
 
             //reset height of credits when reverse scroll is complete
+            }else if(currPosition.y < startHeight){
+                gameObject.transform.position = new Vector3(currPosition.x, creditsLength + Screen.height - 1, currPosition.z);
             }else{ 
                 gameObject.transform.position = new Vector3(currPosition.x, currPosition.y + scrollSpeed*Time.deltaTime, currPosition.z);
             }
