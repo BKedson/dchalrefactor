@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using dchalrefactor.Scripts.Animations.PlayerMovement;
+using UnityEditor.Callbacks;
 
 // This is the player movement script featuring walking, sprinting, jumping, and wall running
 // Note: Wallrunning is a legacy functionality. Comment out relevant code to avoid unitended behaviors if any occurs
@@ -42,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField][Min(0)] private float jumpInterval;
     // The force to propel the player upward
     [SerializeField][Min(0)] private float jumpForce;
+
+    // Determine the force vector for the wall jump
+    [SerializeField][Min(0)] private float wallJumpVertForce;
+    [SerializeField][Min(0)] private float wallJumpHorizForce;
+
     // This force is applied:
     // 1. When the player is falling, for more natural jump physics
     // 2. When the space bar (or other jump keybind) is not pressed, to allow variable jump height
@@ -57,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
     // The falling speed of the player on a wall
     // While wall-running, falling is controlled by this speed instead of gravity for more consistent behavior
     [SerializeField] private float wallRunFallSpeed;
+    private bool exitingWall;
+    public float exitWallTime;
+    private float exitWallTimer;
 
     private PlayerInputAction playerInputAction;
 
@@ -73,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     private float lastJumpTime = 0f;  // Timer variable - The last time when the player jumps
 
     private WallState wallState = WallState.NotOnWall;  // Stateus variable - Whether the player is on a wall/wall running
-    //private bool wallRunDetached = false;  // Disable wall run after detach and before touching the ground
+    private bool wallRunDetached = false;  // Disable wall run after detach and before touching the ground
     // The normal vector of the wall the player is running on
     // Used for calculating movement assitance (attachment force)
     private Vector3 wallNormal;
@@ -85,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movement;
     //private PlayerInventory stuff;
     private bool movementDisabled = false;  // Movement disabling flag
+    private Rigidbody rb;
 
     void Awake()
     {
@@ -106,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         // Combat related code. Consider moving it to a separate script
         weaponManager = GetComponentInChildren<WeaponManager>();
+        rb = GetComponent<Rigidbody>();
         //stuff = GetComponent<PlayerInventory>();
     }
 
@@ -191,6 +202,15 @@ public class PlayerMovement : MonoBehaviour
                     (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized *
                     (sprinting ? runSpeed : walkSpeed);
                 // Sprinting: if the player is walking/running slowly or running/running fast
+            }
+            else if(exitingWall){
+                wallState = WallState.NotOnWall;
+                if (exitWallTimer > 0){
+                    exitWallTimer -= Time.deltaTime;
+                }
+                if (exitWallTimer <= 0){
+                    exitingWall = false;
+                }
             }
             // Calculate movement vector while wall running
             else
@@ -313,6 +333,25 @@ public class PlayerMovement : MonoBehaviour
         if (grounded && Time.time - lastJumpTime > jumpInterval)
         {
             yVelocity = jumpForce;
+            lastJumpTime = Time.time;
+            grounded = false;
+
+            // Jump animation
+            animations.Jump();
+        }
+        //Allow walljump
+        else if(wallState == WallState.OnWallL || wallState == WallState.OnWallR){
+
+            Debug.Log("walljump");
+
+            exitingWall = true;
+            exitWallTimer = exitWallTime;
+
+            Vector3 forceToApply = transform.up * wallJumpVertForce + wallNormal * wallJumpHorizForce;
+
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.y);
+            rb.AddForce(forceToApply, ForceMode.Impulse);
+
             lastJumpTime = Time.time;
             grounded = false;
 
