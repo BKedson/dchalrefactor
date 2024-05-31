@@ -10,7 +10,7 @@ using TMPro;
 //different gameobject instead
 
 // Message array section markers:        section#: Condtion for moving on
-//  --> 0 is welcome                            0: ++ on player press t key or after a short time?
+//  --> 0 is welcome                            0: ++ on player press t key 
 //  --> 1 is movement                           1: ++ when player moves
 //  --> 2-3 describe terminal                   2: ++ when terminal opens
 //  --> 4-5 describe typing answer              3: ++ on terminal submit
@@ -176,7 +176,7 @@ public class TextboxBehavior : MonoBehaviour
     }
 
     public void CombatOver(){
-        if(textBoxContainer.activeSelf && section > 6){
+        if(textBoxContainer.activeSelf){
             section = 9;
             currMessage = 13;
             text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
