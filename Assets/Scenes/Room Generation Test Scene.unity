@@ -3956,8 +3956,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 25380bb15afe0ca4f8d9df2402c54a36, type: 2}
     - target: {fileID: 6417613995460033765, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2864222465684698852, guid: 25380bb15afe0ca4f8d9df2402c54a36, type: 2}
+    - target: {fileID: 6417613995460033765, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6788075440086870313, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: playerCollisionRadius
@@ -4022,26 +4026,6 @@ PrefabInstance:
     - target: {fileID: 7507276138364402640, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_Type
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7507276138364402640, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7507276138364402640, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
-      propertyPath: m_Color.a
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 7507276138364402640, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
-      propertyPath: m_Color.b
-      value: 0.079601355
-      objectReference: {fileID: 0}
-    - target: {fileID: 7507276138364402640, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
-      propertyPath: m_Color.g
-      value: 0.5129803
-      objectReference: {fileID: 0}
-    - target: {fileID: 7507276138364402640, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
-      propertyPath: m_Color.r
-      value: 0.8113208
       objectReference: {fileID: 0}
     - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: jumpForce
@@ -4172,7 +4156,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6385087157525348026, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
     - {fileID: 7998689033227445536, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1117081000492188306, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
