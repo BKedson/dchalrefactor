@@ -72,14 +72,14 @@ public class MouseLook : MonoBehaviour
     private void LateUpdate()
     {
         // The camera may be moved to the other side of the player while wall running (which is currently not in use)
-        if (PlayerMovement._instance.OnWallR())
-        {
-            camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, camFlippedLocalOffset, 0.1f);
-        }
-        else
-        {
-            camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, camDefaultLocalOffset, 0.1f);
-        }
+       // if (PlayerMovement._instance.OnWallR())
+        //{
+       //     camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, camFlippedLocalOffset, 0.1f);
+       // }
+       // else
+      //  {
+      //      camTransform.localPosition = Vector3.Lerp(camTransform.localPosition, camDefaultLocalOffset, 0.1f);
+      //  }
 
         RaycastHit hit;
         // Current camera offset relative to the camera holder (maybe closer than camDefaultLocalOffset when limited)

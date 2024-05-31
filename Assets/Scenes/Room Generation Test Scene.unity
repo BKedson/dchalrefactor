@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 451053849}
-  m_IndirectSpecularColor: {r: 0.18028653, g: 0.22571698, b: 0.30692574, a: 1}
+  m_IndirectSpecularColor: {r: 0.018886106, g: 0.017652195, b: 0.014331964, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2637,7 +2637,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currEnemyStrengths: 
   isInvincible: 0
-  cursorSize: 0
   currentCharacter: 0
 --- !u!4 &1603421255
 Transform:
@@ -4174,6 +4173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6385087157525348026, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+    - {fileID: 7998689033227445536, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1117081000492188306, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
     m_AddedGameObjects: []

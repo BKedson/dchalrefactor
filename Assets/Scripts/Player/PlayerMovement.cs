@@ -7,10 +7,9 @@ using UnityEditor.Callbacks;
 // Note: Wallrunning is a legacy functionality. Comment out relevant code to avoid unitended behaviors if any occurs
 
 // Wall run states
-enum WallState
-{
-    NotOnWall = 0, OnWallL, OnWallR
-}
+//enum WallState
+//{// NotOnWall = 0, OnWallL, OnWallR
+//}
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -45,8 +44,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField][Min(0)] private float jumpForce;
 
     // Determine the force vector for the wall jump
-    [SerializeField][Min(0)] private float wallJumpVertForce;
-    [SerializeField][Min(0)] private float wallJumpHorizForce;
+   // [SerializeField][Min(0)] private float wallJumpVertForce;
+   // [SerializeField][Min(0)] private float wallJumpHorizForce;
 
     // This force is applied:
     // 1. When the player is falling, for more natural jump physics
@@ -56,16 +55,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("Wall Run Settings")]
     // Wall checks are performed two times, one on each side of the player
     // This offset is the center of the two checks positions
-    [SerializeField] private Vector3 wallCheckCenterOffset;
+   // [SerializeField] private Vector3 wallCheckCenterOffset;
     // How far to the left & right are the checks from the wallCheckCenterOffset
-    [SerializeField] private float wallCheckHorizontalOffset;
-    [SerializeField] private float wallCheckRadius;
+   // [SerializeField] private float wallCheckHorizontalOffset;
+   // [SerializeField] private float wallCheckRadius;
     // The falling speed of the player on a wall
     // While wall-running, falling is controlled by this speed instead of gravity for more consistent behavior
-    [SerializeField] private float wallRunFallSpeed;
-    private bool exitingWall;
-    public float exitWallTime;
-    private float exitWallTimer;
+   // [SerializeField] private float wallRunFallSpeed;
+   // private bool exitingWall;
+   // public float exitWallTime;
+   // private float exitWallTimer;
 
     private PlayerInputAction playerInputAction;
 
@@ -81,11 +80,11 @@ public class PlayerMovement : MonoBehaviour
 
     private float lastJumpTime = 0f;  // Timer variable - The last time when the player jumps
 
-    private WallState wallState = WallState.NotOnWall;  // Stateus variable - Whether the player is on a wall/wall running
-    private bool wallRunDetached = false;  // Disable wall run after detach and before touching the ground
+    //private WallState wallState = WallState.NotOnWall;  // Stateus variable - Whether the player is on a wall/wall running
+    //private bool wallRunDetached = false;  // Disable wall run after detach and before touching the ground
     // The normal vector of the wall the player is running on
     // Used for calculating movement assitance (attachment force)
-    private Vector3 wallNormal;
+   // private Vector3 wallNormal;
 
     // the velocity components of the player
     private Vector2 horizontalVelocity;
@@ -161,8 +160,8 @@ public class PlayerMovement : MonoBehaviour
         if (!movementDisabled)
         {
             // Y velocity while NOT wall running
-            if (wallState == WallState.NotOnWall)
-            {
+           // if (wallState == WallState.NotOnWall)
+           // {
                 if (grounded)
                 {
                     // If the player is grounded and not currently jumping
@@ -183,43 +182,43 @@ public class PlayerMovement : MonoBehaviour
                         yVelocity -= fallingBonus;
                     }
                 }
-            }
+           // }
             // Y velocity while wall running
-            else
-            {
-                yVelocity = -wallRunFallSpeed;
-            }
+            //else
+           // {
+             //   yVelocity = -wallRunFallSpeed;
+           // }
 
             // Horizontal movement input (WASD or other movement keybind)
             horizontalVelocity = playerInputAction.Player.Movement.ReadValue<Vector2>();
 
 
             // Calculate movement vector while NOT wall running
-            if (wallState == WallState.NotOnWall)
-            {
+           // if (wallState == WallState.NotOnWall)
+          //  {
                 // Running/walking speed
                 movement =
                     (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized *
                     (sprinting ? runSpeed : walkSpeed);
                 // Sprinting: if the player is walking/running slowly or running/running fast
-            }
-            else if(exitingWall){
-                wallState = WallState.NotOnWall;
-                if (exitWallTimer > 0){
-                    exitWallTimer -= Time.deltaTime;
-                }
-                if (exitWallTimer <= 0){
-                    exitingWall = false;
-                }
-            }
+           // }
+          //  else if(exitingWall){
+          //      wallState = WallState.NotOnWall;
+           //     if (exitWallTimer > 0){
+           //         exitWallTimer -= Time.deltaTime;
+           //     }
+           //     if (exitWallTimer <= 0){
+          //          exitingWall = false;
+          //      }
+          //  }
             // Calculate movement vector while wall running
-            else
-            {
+           // else
+          //  {
                 // Align movement direction with wall bitangent
                 // This movement assistance is used so that view direction does not have to align with moving direction
-                movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
-                movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
-            }
+            //    movement = Vector3.ProjectOnPlane(transform.forward * horizontalVelocity.y, wallNormal);
+          //      movement = (movement + transform.right * horizontalVelocity.x).normalized * (sprinting ? runSpeed : walkSpeed);
+          //  }
 
             movement.y = yVelocity;
 
@@ -228,12 +227,13 @@ public class PlayerMovement : MonoBehaviour
             // Ground check
             grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
 
-            if (grounded)
-            {
-                wallState = WallState.NotOnWall;
-            }
+            //if (grounded)
+           // {
+           //     wallState = WallState.NotOnWall;
+           // }
             // Only check for walls when the player is falling
             // Otherwise wallrun interrupts jumping
+            /*
             else if (characterController.velocity.y <= 0.05f)
             {
                 // Check for wall - Left
@@ -277,18 +277,18 @@ public class PlayerMovement : MonoBehaviour
                 {
                     wallState = WallState.NotOnWall;
                 }
-            }
-            else  // Jumping (from wall, detach the player from wall)
-            {
-                wallState = WallState.NotOnWall;
-            }
+            }*/
+           // else  // Jumping (from wall, detach the player from wall)
+           // {
+            //    wallState = WallState.NotOnWall;
+            //}
             // Combat related code. Consider moving it to a separate script
             if (playerInputAction.Player.Fire.phase == InputActionPhase.Performed) { weaponManager.currentAttack(false); }
         }
-        else  // Jumping (from ground)
-        {
-            wallState = WallState.NotOnWall;
-        }
+        //else  // Jumping (from ground)
+        //{
+           // wallState = WallState.NotOnWall;
+        //}
         // Combat related code. Consider moving it to a separate script
         if (playerInputAction.Player.Fire.phase == InputActionPhase.Performed) { weaponManager.currentAttack(false); }
     }
@@ -340,6 +340,7 @@ public class PlayerMovement : MonoBehaviour
             animations.Jump();
         }
         //Allow walljump
+        /*
         else if(wallState == WallState.OnWallL || wallState == WallState.OnWallR){
 
             Debug.Log("walljump");
@@ -357,7 +358,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Jump animation
             animations.Jump();
-        }
+        } */
     }
 
     // Combat related code. Consider moving it to a separate script
@@ -404,14 +405,14 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = grounded ? Color.green : Color.red;
         Gizmos.DrawWireSphere(transform.position, groundCheckRadius);
 
-        Gizmos.color = wallState == WallState.OnWallL ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(
-            transform.position + wallCheckCenterOffset - transform.right * wallCheckHorizontalOffset, wallCheckRadius
-        );
-        Gizmos.color = wallState == WallState.OnWallR ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(
-            transform.position + wallCheckCenterOffset + transform.right * wallCheckHorizontalOffset, wallCheckRadius
-        );
+       // Gizmos.color = wallState == WallState.OnWallL ? Color.green : Color.red;
+      //  Gizmos.DrawWireSphere(
+      //      transform.position + wallCheckCenterOffset - transform.right * wallCheckHorizontalOffset, wallCheckRadius
+      //  );
+     //   Gizmos.color = wallState == WallState.OnWallR ? Color.green : Color.red;
+     //   Gizmos.DrawWireSphere(
+      //      transform.position + wallCheckCenterOffset + transform.right * wallCheckHorizontalOffset, wallCheckRadius
+      //  );
     }
 
     // Enable/diable input
@@ -446,8 +447,8 @@ public class PlayerMovement : MonoBehaviour
 
     // Getter function for wall running state
     // Unsed to move camera for better views on wall
-    public bool OnWallR()
-    {
-        return wallState == WallState.OnWallR;
-    }
+   // public bool OnWallR()
+  //  {
+   //     return wallState == WallState.OnWallR;
+   // }
 }
