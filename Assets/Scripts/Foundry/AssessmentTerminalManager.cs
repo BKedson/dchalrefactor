@@ -22,6 +22,8 @@ public class AssessmentTerminalManager : BaseInteractable
     [SerializeField] private GameObject wrongAnswerOverlay; // Give player feedback
     [SerializeField] private GameObject rightAnswerOverlay; // Give player feedback
 
+    [SerializeField] private GameObject answerDisplay;
+
     private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
     private bool submitted; // Verify if player has already gotten the correct answer to prevent repeat submissions
 
@@ -126,6 +128,7 @@ public class AssessmentTerminalManager : BaseInteractable
                     {
                         rightAnswerOverlay.GetComponent<WindowAnswerFeedback>().RightAnswerUI();
                         tutorial.TerminalCorrectlySubmitted();
+                        DisplayAnswer(ans);
                         StartCoroutine("QuitAssessmentChallenge");
                     }
                     // Incorrect answer
@@ -152,5 +155,11 @@ public class AssessmentTerminalManager : BaseInteractable
             
         }
         
+    }
+
+    // Display answer on terminal
+
+    private void DisplayAnswer(int ans){
+        answerDisplay.GetComponent<TextMeshProUGUI>().text = "" + ans;
     }
 }
