@@ -178,15 +178,18 @@ public class FoundryManager : BaseInteractable
             digitCounter++;
         }
 
+        // Spawn red herring ore
+        GameObject ore = Instantiate(orePrefab, oreTransformRoot);
+        Vector3 orePos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized * 3f;
+        orePos.y = 3f;
+        ore.transform.localPosition = orePos;
+        ore.transform.parent = transform.parent;
         if(windowQuestion.subject == Subject.Multiplication){
-            // Spawn red herring ore
-            GameObject ore = Instantiate(orePrefab, oreTransformRoot);
-            Vector3 orePos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized * 3f;
-            orePos.y = 3f;
-            ore.transform.localPosition = orePos;
-            ore.transform.parent = transform.parent;
             ore.GetComponent<OreManager>().SetPower(UnityEngine.Random.Range(2, 5));
+        }else{
+            ore.GetComponent<OreManager>().SetPower(UnityEngine.Random.Range(1, 9));
         }
+        
     }
 
     static bool IsPrime(int number)
