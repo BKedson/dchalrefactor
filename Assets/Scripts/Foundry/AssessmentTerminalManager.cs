@@ -22,7 +22,7 @@ public class AssessmentTerminalManager : BaseInteractable
     [SerializeField] private GameObject wrongAnswerOverlay; // Give player feedback
     [SerializeField] private GameObject rightAnswerOverlay; // Give player feedback
 
-    [SerializeField] private GameObject answerDisplay;
+    [SerializeField] private GameObject[] answerDisplays;
 
     private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
     private bool submitted; // Verify if player has already gotten the correct answer to prevent repeat submissions
@@ -160,6 +160,9 @@ public class AssessmentTerminalManager : BaseInteractable
     // Display answer on terminal
 
     private void DisplayAnswer(int ans){
-        answerDisplay.GetComponent<TextMeshProUGUI>().text = "" + ans;
+        for(int i=0; i<answerDisplays.Length; i++){
+            answerDisplays[i].GetComponent<TextMeshProUGUI>().text = "" + ans;
+        }
+        
     }
 }
