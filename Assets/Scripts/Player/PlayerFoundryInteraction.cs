@@ -165,11 +165,23 @@ public class PlayerFoundryInteraction : MonoBehaviour
             // If holding an ore, the try to insert
             if (currentOre)
             {
+                
+                GameObject obj = targetIntake.Eject();
+
                 if (targetIntake.Insert(currentOre.gameObject))
                 {
                     currentOre.OnInsert();
                     currentOre = null;
                 }
+                // If there is an ore already in the intake, swap ores
+                if (obj)
+                {
+                    currentOre = obj.GetComponent<OreManager>();
+                    currentOre.OnEject();
+                    currentOre.OnPickUp();
+                }
+
+                
             }
             // If not holding an ore, then try to get one by ejecting inserted ore
             else
