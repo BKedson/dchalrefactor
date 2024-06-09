@@ -10,6 +10,9 @@ public class CursorBehavior : MonoBehaviour
     void Start()
     {
         int initialSize = gameManager.GetCursorSize();
+        if(initialSize < 2){
+            initialSize = 10;
+        }
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(initialSize, initialSize);
         gameManager.SetPlayerCursor(this);
 
