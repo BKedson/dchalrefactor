@@ -24,12 +24,16 @@ public class SurveillanceCamManager : MonoBehaviour
     public AudioClip cameraSound;
     private AudioSource audioSource;
 
+    public bool cameraOn;
+
     private float yRot = 0;
 
     // Start is called before the first frame update
     void Awake()
     {
         playerInputAction = new PlayerInputAction();
+
+        cameraOn = false;
 
         //playerInputAction.UI.Escape.performed += (InputAction.CallbackContext ctx) => { OnQuit.Invoke(); };
 
@@ -45,6 +49,8 @@ public class SurveillanceCamManager : MonoBehaviour
         //playerInputAction.UI.Enable();
         playerInputAction.Player.Movement.Enable();
 
+        cameraOn = true;
+
         foreach (ScriptableRendererFeature feature in features) { feature.SetActive(true); }
     }
 
@@ -52,6 +58,8 @@ public class SurveillanceCamManager : MonoBehaviour
     {
         //playerInputAction.UI.Disable();
         //playerInputAction.Player.Movement.Disable();
+
+        cameraOn = false;
 
         foreach (ScriptableRendererFeature feature in features) { feature.SetActive(false); }
     }

@@ -60,6 +60,12 @@ public class TutorialText : MonoBehaviour
         if (currMessage == 1) {
             PlayerMoved();
         }
+        if (currMessage == 2) {
+            TerminalOpened();
+        }
+        if (currMessage == 3) {
+            TerminalMoved();
+        }
 
         /*
         if(textBoxContainer.activeSelf){
@@ -85,12 +91,9 @@ public class TutorialText : MonoBehaviour
 
     public void PlayerMoved(){
         if (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d")) {
-            
-            if (currMessage == 1) {
             currMessage = 2;
             text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
             audioSource.Play();
-            }
 
             if (!textBoxContainer.activeSelf) {
                 Collapse();
@@ -99,7 +102,7 @@ public class TutorialText : MonoBehaviour
     }
 
     public void TextCheck() {
-        if (currMessage == 1 || currMessage == 2) {
+        if (currMessage == 1 || currMessage == 2 || currMessage == 3 || currMessage == 4) {
             last = true;
         }
         else {
@@ -109,18 +112,33 @@ public class TutorialText : MonoBehaviour
 
     // TODO: create a key press generic method!
 
-    /*
     public void TerminalOpened(){
-        if(textBoxContainer && textBoxContainer.activeSelf){
-            if(section < 3){
-                section = 3;
-                currMessage = 4;
+        if(Input.GetKeyDown("e")) {
+                currMessage = 3;
                 text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
                 audioSource.Play();
+
+            if (!textBoxContainer.activeSelf) {
+                Collapse();
             }
         }
         
     }
+
+    public void TerminalMoved(){
+        if(Input.GetKeyDown("a") || Input.GetKeyDown("d")) {
+                currMessage = 4;
+                text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+                audioSource.Play();
+
+            if (!textBoxContainer.activeSelf) {
+                Collapse();
+            }
+        }
+        
+    }
+
+    /*
 
     public void TerminalCorrectlySubmitted(){
         if(textBoxContainer.activeSelf){
