@@ -182,12 +182,18 @@ public class TutorialText : MonoBehaviour
         collectScript.OnCollection -= OnCollection;
         completeScript.OnCompletion -= OnCompletion;
         deathScript.OnDeath -= OnDeath;
+
+        /*
         moveScript = null;
+        collectScript = null;
+        completeScript = null;
+        deathScript = null;
+        */
     }
 
     //helper to deactivate the tutorial
     private IEnumerator WaitToDeactivate(){
-        yield return new WaitForSeconds(6.0f);
+        yield return new WaitForSeconds(8.0f);
         textBoxContainer.SetActive(false);
         collapsedContainer.SetActive(false);
     }
