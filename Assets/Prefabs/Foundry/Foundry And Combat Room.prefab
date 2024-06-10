@@ -3507,6 +3507,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   cameraSound: {fileID: 8300000, guid: fd9354de826b44d45b6489b905c6e6f6, type: 3}
+  cameraOn: 0
 --- !u!82 &4035429066733443216
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3761,6 +3762,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   cameraSound: {fileID: 0}
+  cameraOn: 0
 --- !u!1 &3284800323601990089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5934,7 +5936,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 2}
+  m_SizeDelta: {x: 1.8, y: 1.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3776875037325436992
 CanvasRenderer:
@@ -5991,7 +5993,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.75
+  m_fontSize: 1.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
