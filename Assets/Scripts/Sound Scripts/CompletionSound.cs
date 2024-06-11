@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CompletionSound : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class CompletionSound : MonoBehaviour
     private AudioSource audioSource;
     private bool enemiesGenerated;
     private bool updated;
+
+    public delegate void CompletionInput();
+    public event CompletionInput OnCompletion;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +34,7 @@ public class CompletionSound : MonoBehaviour
 		{
             if (!audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(completeSound);
-                enemiesGenerated = false;
-                updated = false;
+                Sounder();
             }
             else
             {
@@ -47,8 +49,13 @@ public class CompletionSound : MonoBehaviour
         {
             yield return null;
         }
+        Sounder();
+    }
+
+    public void Sounder() {
         audioSource.PlayOneShot(completeSound);
         enemiesGenerated = false;
         updated = false;
+        OnCompletion?.Invoke();
     }
 }

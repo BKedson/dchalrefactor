@@ -1667,6 +1667,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 43056539992570879, guid: 2d54a4263c490734186b31b0a0ffa720, type: 3}
   m_PrefabInstance: {fileID: 1229133502}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1070374741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5097884858467276068, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+  m_PrefabInstance: {fileID: 8579289496863477011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1129737304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,14 +1877,18 @@ MonoBehaviour:
   - It seems like something is moving. Use A and D to look around.
   - Robots are on board! Type in their total power and press enter.
   - Fantastic job! Move forward craft your weapon.
-  - Click to pick up ore, then click a chamber to insert it. To complete your weapon,
-    approach the chambers and press E.
-  - Enter the next room and approach your sword to take it.
+  - We need to make an equation that equals enemy power so our weapon is strong enough.
+  - When you're done, enter the next room and walk to your weapon to take it.
+  - Click to pick up an ore, then click a chamber to insert it. When you're done,
+    walk to the chambers to craft it.
   - The robots will try to attack you! Click to swing your sword and defeat them.
+  - You've got this down, keep up the good work!
+  - So close, you got this! Let's try again.
   text: {fileID: 964385431}
   textBoxContainer: {fileID: 1388584454}
   collapsedContainer: {fileID: 563118843}
   continueSound: {fileID: 8300000, guid: 927f51b9355a0419e9d1b0cac781281c, type: 3}
+  player: {fileID: 1070374741}
 --- !u!1 &1154923959
 GameObject:
   m_ObjectHideFlags: 0
@@ -4159,6 +4168,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -100.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3931254962823300299, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931254962823300299, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931254962823300299, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931254962823300299, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4183274905168109779, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4471,7 +4496,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8424787816130432395, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
   m_PrefabInstance: {fileID: 8579289496863477011}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1070374741}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4586ff2d704fd474d85d14c96914123e, type: 3}
