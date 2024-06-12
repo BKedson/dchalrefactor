@@ -3,30 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Jobs;
 using TMPro;
+using System.Linq;
 
 public class TutorialText : MonoBehaviour
 {
+
+    /*
+    This script is an overhaul of the original TextboxBehavior script.
+    This overhaul is designed to decrease code complexity and make the tutorial more intuitive.
+    Eventually after switching to a scene-based foundry, there will be invisible boundaries
+        along with the tutorial messages to avoid the player from skipping sections and prevent
+        the need for the moevement script to be disabled.
+    */
+
+    //variables for keeping track of messages and which message is the last in each cycle
     [SerializeField] private string[] messages;
     private int numMessages;
     private int currMessage;
-    private int section;
     private bool last;
+    private int[] lastMessages = {1, 2, 3, 4, 5, 8, 9, 10, 11};
 
+    //variables for the tutorial text and its open/collapsed container
     [SerializeField] private GameObject text;
     [SerializeField] private GameObject textBoxContainer;
     [SerializeField] private GameObject collapsedContainer;
 
+    //variables for text change audio cues
     public AudioClip continueSound;
     private AudioSource audioSource;
+
+    //script variables for referencing certain player events under the Player
+    public GameObject player;
+    private PlayerMovement moveScript;
+    private PlayerCollectibles collectScript;
+    private CompletionSound completeScript;
+    private PlayerCharacter deathScript;
     
 
     void Awake()
     {
+        //setting up tutorial start
         numMessages = messages.Length;
         currMessage = 0;
-        section = 0;
         last = false;
 
+        //automatically display tutorial text container
         textBoxContainer.SetActive(true);
         collapsedContainer.SetActive(false);
 
@@ -34,18 +55,39 @@ public class TutorialText : MonoBehaviour
             text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
         }
 
+        //sound source assignment
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = continueSound;
+
+        //all external script references and their assignment to variables
+        moveScript = player.GetComponent<PlayerMovement>();
+        moveScript.enabled = false;
+
+        collectScript = player.GetComponent<PlayerCollectibles>();
+        collectScript.OnCollection += OnCollection;
+
+        completeScript = player.GetComponent<CompletionSound>();
+        completeScript.OnCompletion += OnCompletion;
+
+        deathScript = player.GetComponent<PlayerCharacter>();
+        deathScript.OnDeath += OnDeath;
     }
 
     void Update()
     {
+        //calls helper to check if a message is the last in its cycle
         TextCheck();
 
+        if (currMessage == 10 || currMessage == 11) {
+            StartCoroutine(WaitToDeactivate());
+        }
+
+        //handles t press interactions
         if (Input.GetKeyDown("t")){
             audioSource.time = 0.20f;
             audioSource.Play();
 
+            // if the current message is the last in its cycle then don't load another message
             if (currMessage == numMessages - 1 || last == true) {
                 Collapse();
             }
@@ -57,160 +99,103 @@ public class TutorialText : MonoBehaviour
 
         text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
 
-        if (currMessage == 1) {
-            PlayerMoved();
-        }
-        if (currMessage == 2) {
-            TerminalOpened();
-        }
-        if (currMessage == 3) {
-            TerminalMoved();
-        }
-
-        /*
-        if(textBoxContainer.activeSelf){
-
-            if(Input.GetKeyDown("mouse 0")){
-                if(section >= 7){
-                    clickCount++;
-                    if(clickCount > 1){
-                        OnAttack();
-                    }
-                }
-            }
-        }
-        */
-        
+        //calls helper to check if a message should be activated based on in-game actions
+        MessageCheck();
         
     }
 
+    //helper to expand and collapse tutorial
     public void Collapse() {
         textBoxContainer.SetActive(!textBoxContainer.activeSelf);
         collapsedContainer.SetActive(!collapsedContainer.activeSelf);
     }
 
-    public void PlayerMoved(){
-        if (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d")) {
-            currMessage = 2;
-            text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-            audioSource.Play();
-
-            if (!textBoxContainer.activeSelf) {
-                Collapse();
+    //helper to read in if players have pressed certain key(s) and to update the tutorial
+    //takes in key(s) and desired next message
+    public void KeyInput(string[] keys, int nextMessage) {
+        foreach (string key in keys) {
+            if (Input.GetKeyDown(key) && moveScript.enabled == true) {
+                NoInput(nextMessage);
+                break;
             }
         }
     }
 
+    //helper to update displayed message
+    public void NoInput(int nextMessage) {
+        currMessage = nextMessage;
+        text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
+        audioSource.Play();
+
+        if (!textBoxContainer.activeSelf) {
+            Collapse();
+        }
+    }
+
+    //helper to check if a certain message is activated for the purpose of key presses or actions
+    public void MessageCheck() {
+        if (currMessage == 1) {
+            KeyInput(new string[]{"w", "a", "s", "d"}, 2);
+        }
+        if (currMessage == 2) {
+            KeyInput(new string[]{"e"}, 3);
+        }
+        if (currMessage == 3) {
+            KeyInput(new string[]{"a", "d"}, 4);
+        }
+        if (currMessage == 4 && player.activeSelf) {
+            NoInput(5);
+        }
+        if (currMessage == 5) {
+            KeyInput(new string[]{"w"}, 6);
+        }
+    }
+
+    //helper to check if the current message is the last in its cycle
+    //player movement is disabled when it is not the last message to esnure players read
     public void TextCheck() {
-        if (currMessage == 1 || currMessage == 2 || currMessage == 3 || currMessage == 4) {
+        if (lastMessages.Contains(currMessage)) {
             last = true;
+            moveScript.enabled = true;
         }
         else {
             last = false;
+            moveScript.enabled = false;
         }
     }
 
-    // TODO: create a key press generic method!
-
-    public void TerminalOpened(){
-        if(Input.GetKeyDown("e")) {
-                currMessage = 3;
-                text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-                audioSource.Play();
-
-            if (!textBoxContainer.activeSelf) {
-                Collapse();
-            }
-        }
-        
+    //series of event subscriptions to trigger certain tutorial messages
+    private void OnCollection(string name) {
+        NoInput(9);
     }
 
-    public void TerminalMoved(){
-        if(Input.GetKeyDown("a") || Input.GetKeyDown("d")) {
-                currMessage = 4;
-                text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-                audioSource.Play();
-
-            if (!textBoxContainer.activeSelf) {
-                Collapse();
-            }
-        }
-        
+    private void OnCompletion() {
+        NoInput(10);
     }
 
-    /*
-
-    public void TerminalCorrectlySubmitted(){
-        if(textBoxContainer.activeSelf){
-            if(section < 4){
-                section = 4;
-                currMessage = 6;
-                text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-                audioSource.Play();
-            }
-        }
-        
+    private void OnDeath() {
+        NoInput(11);
     }
 
-    public void OrePlaced(){
-        if(textBoxContainer.activeSelf){
-            if(section < 5){
-                section = 5;
-                currMessage = 7;
-                text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-                audioSource.Play();
-            }
-        }
-        
+    //helper to reset event subscriptions
+    void OnDestroy() {
+        collectScript.OnCollection -= OnCollection;
+        completeScript.OnCompletion -= OnCompletion;
+        deathScript.OnDeath -= OnDeath;
+
+        /*
+        moveScript = null;
+        collectScript = null;
+        completeScript = null;
+        deathScript = null;
+        */
     }
 
-    public void IntakeCorrectlySubmitted(){
-        if(textBoxContainer.activeSelf){
-            if(section < 6){
-                section = 6;
-                currMessage = 10;
-                text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-                audioSource.Play();
-            }
-        }
-    }
-
-    public void SwordEquipped(){
-        if(textBoxContainer.activeSelf){
-            if(section < 7){
-                section = 7;
-                currMessage = 11;
-                text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-                audioSource.Play();
-            }
-        }
-    }
-
-    public void OnAttack(){
-        section = 8;
-        currMessage = 12;
-        text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-        audioSource.Play();
-    }
-
-    public void CombatOver(){
-        if(textBoxContainer.activeSelf){
-            section = 9;
-            currMessage = 13;
-            text.GetComponent<TextMeshProUGUI>().text = messages[currMessage];
-            StartCoroutine(WaitToDeactivate());
-            audioSource.Play();
-        }
-    }
-
+    //helper to deactivate the tutorial
     private IEnumerator WaitToDeactivate(){
-        yield return new WaitForSeconds(5.0f);
-        
-        //check that the tutorial hasn't already restarted 
-        if(section == 9){
-            textBoxContainer.SetActive(false);
-        }
+        yield return new WaitForSeconds(8.0f);
+        textBoxContainer.SetActive(false);
+        collapsedContainer.SetActive(false);
     }
-    */
 
 }

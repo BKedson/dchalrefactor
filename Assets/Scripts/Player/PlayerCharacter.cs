@@ -3,10 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using dchalrefactor.Scripts.Animations.PlayerMovement;
+using System;
 public class PlayerCharacter : MonoBehaviour {
 	private int _health;
 	[SerializeField]private GameObject healthUI;
 	[SerializeField]private GameObject death;
+
+	public delegate void DeathInput();
+    public event DeathInput OnDeath;
 
 	private int startingHealth = 3;
 
@@ -74,6 +78,8 @@ public class PlayerCharacter : MonoBehaviour {
 			DisplayHealth();
 
 			if (_health <= 0){
+				OnDeath?.Invoke();
+
 				death.SetActive(true);
 				Time.timeScale = 0;
 				Cursor.visible = true;
