@@ -30,7 +30,7 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (Collider col in Physics.OverlapSphere(transform.position + checkCenterOffset, checkRadius, whatIsCollectable))
         {
-            clueNum++;
+            //clueNum++;
 
             //What possible Collectible options do we have and what do we do with them
             switch(col.gameObject.tag)

@@ -1211,7 +1211,6 @@ GameObject:
   - component: {fileID: 1048413626452282752}
   - component: {fileID: 1971207114159024485}
   - component: {fileID: 4443188061009410460}
-  - component: {fileID: 7998689033227445536}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1240,6 +1239,7 @@ Transform:
   - {fileID: 3872039511913466696}
   - {fileID: 4731915679597203959}
   - {fileID: 7060568384200010216}
+  - {fileID: 3184721127542142899}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &147869780218794584
@@ -1585,33 +1585,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completeSound: {fileID: 8300000, guid: 1de4bb7c8240c400fa6209751d533a2a, type: 3}
---- !u!54 &7998689033227445536
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5097884858467276068}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &5509386823364536416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,14 +1697,14 @@ Transform:
   m_GameObject: {fileID: 5823447094717580276}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.85, y: -1.1, z: 3.893}
+  m_LocalPosition: {x: -0.100000024, y: 1.4, z: 0.082999945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 345506053206349864}
   - {fileID: 4507514792170477624}
   - {fileID: 3119127070322083057}
-  m_Father: {fileID: 9058395759042382267}
+  m_Father: {fileID: 6331121888044255021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2562295008699108762
 MonoBehaviour:
@@ -1893,8 +1866,7 @@ Transform:
   m_LocalPosition: {x: 0.75, y: 1.25, z: -3.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3184721127542142899}
+  m_Children: []
   m_Father: {fileID: 9042462791547560110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &3931254962823300299

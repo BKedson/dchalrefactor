@@ -17,7 +17,7 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         inResearch = true;
-        inp = gameObject.GetComponentInParent(typeof(RayShooter)) as RayShooter;
+        inp = gameObject.transform.parent.GetComponentInChildren(typeof(RayShooter)) as RayShooter;
         stuff = gameObject.GetComponentInParent<PlayerInventory>();
         //anim = sword.GetComponent<Animator>();
         //swordHitBox = sword.GetComponent<BoxCollider>();
