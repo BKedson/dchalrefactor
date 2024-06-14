@@ -9,21 +9,19 @@ public class MusicVolume : MonoBehaviour
     public AudioMixer mixer;
     public string mixerVolume = "MusicVol";
     public Slider slider;
+    [SerializeField] private GameManagerProxy gameManager;
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("SavedMusicVolume"))
-        {
-            float savedVolume = PlayerPrefs.GetFloat("SavedMusicVolume");
-            SetMusicMixerVolume(savedVolume);
-            slider.value = savedVolume;
-        }
+        float savedVolume = gameManager.GetMusicVolume();
+        SetMusicMixerVolume(savedVolume);
+        slider.value = savedVolume;
     }
 
     public void SetMusicMixerVolume(float volume)
     {
         mixer.SetFloat(mixerVolume, Mathf.Log10(slider.value)*20);
-        PlayerPrefs.SetFloat("SavedMusicVolume", slider.value);
+        gameManager.SetMusicVolume(slider.value);
     }
 
     public void OnSliderValueChanged()

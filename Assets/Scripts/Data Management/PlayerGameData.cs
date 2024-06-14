@@ -25,4 +25,6 @@ public class PlayerGameData
     //Misc Information------------------------------------------------
     public bool IsInvincible;
     public int CursorSize;
+    public float MusicVolume;
+    public float SFXVolume;
 }

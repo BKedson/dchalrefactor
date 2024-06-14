@@ -310,6 +310,22 @@ public class GameManager : MonoBehaviour
         playerCursor = cursor;
     }
 
+    public void SetMusicVolume(float vol){
+        PlayerGameDataController.Instance.MusicVolume = vol;
+    }
+
+    public void SetSFXVolume(float vol){
+        PlayerGameDataController.Instance.SFXVolume = vol;
+    }
+
+    public float GetMusicVolume(){
+        return PlayerGameDataController.Instance.MusicVolume;
+    }
+
+    public float GetSFXVolume(){
+        return PlayerGameDataController.Instance.SFXVolume;
+    }
+
     //addition difficulty
     public void ChangeAddDifficulty(Difficulty difficulty) {
         addDifficulty = difficulty;

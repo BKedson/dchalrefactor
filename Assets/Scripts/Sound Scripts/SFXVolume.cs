@@ -9,21 +9,19 @@ public class SetSFXVolume : MonoBehaviour
     public AudioMixer mixer;
     public string mixerVolume = "SFXVol";
     public Slider slider;
+    [SerializeField] private GameManagerProxy gameManager;
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("SavedSFXVol"))
-        {
-            float savedVolume = PlayerPrefs.GetFloat("SavedSFXVol");
-            SetSFXMixerVolume(savedVolume);
-            slider.value = savedVolume;
-        }
+        float savedVolume = gameManager.GetSFXVolume();
+        SetSFXMixerVolume(savedVolume);
+        slider.value = savedVolume;
     }
 
     public void SetSFXMixerVolume(float volume)
     {
         mixer.SetFloat(mixerVolume, Mathf.Log10(volume)*20);
-        PlayerPrefs.SetFloat("SavedSFXVol", volume);
+        gameManager.SetSFXVolume(slider.value);
     }
 
     public void OnSliderValueChanged()

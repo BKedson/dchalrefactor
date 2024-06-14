@@ -36,13 +36,16 @@ public class PlayerGameDataController : MonoBehaviour
     public int SubtractionDifficulty;
     public int MultiplicationDifficulty;
     public int DivisionDifficulty;
-    public string CurrentCharacter;
-    public bool IsInvincible;
-    public int CursorSize;
     public int AdditionQuestionComplexity;
     public int SubtractionQuestionComplexity;
     public int MultiplicationQuestionComplexity;
-    public int DivisionQuestionComplexity;    
+    public int DivisionQuestionComplexity;
+    public string CurrentCharacter;
+    public bool IsInvincible;
+    public int CursorSize;
+    public float MusicVolume;
+    public float SFXVolume;
+        
     //---------------------------------------------------IN-GAME LOGIC-----------------------------------------------------------
     public bool IsNewUser;
     public bool IsNewGame;
@@ -97,6 +100,8 @@ public class PlayerGameDataController : MonoBehaviour
         data.CurrentCharacter = CurrentCharacter;
         data.IsInvincible = IsInvincible;
         data.CursorSize = CursorSize;
+        data.MusicVolume = MusicVolume;
+        data.SFXVolume = SFXVolume;
         return data;
     }
 
@@ -119,6 +124,8 @@ public class PlayerGameDataController : MonoBehaviour
         CurrentCharacter = data.CurrentCharacter;
         IsInvincible = data.IsInvincible;
         CursorSize = data.CursorSize;
+        MusicVolume = data.MusicVolume;
+        SFXVolume = data.SFXVolume;
     }
 
     public PlayerGameData DefaultGameDataFile(string firstName, string nickName, int codeNumber)
@@ -138,6 +145,8 @@ public class PlayerGameDataController : MonoBehaviour
         data.CurrentCharacter = "DC_Woman_2";
         data.IsInvincible = false;
         data.CursorSize = 10;
+        data.MusicVolume = 1.0f;
+        data.SFXVolume = 1.0f;
         return data;
     }
 

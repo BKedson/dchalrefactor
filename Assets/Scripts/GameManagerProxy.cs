@@ -50,6 +50,32 @@ public class GameManagerProxy : MonoBehaviour
         }
     }
 
+    public void SetMusicVolume(float vol){
+        if (GameManager.manager) {
+            GameManager.manager.SetMusicVolume(vol);
+        }
+    }
+
+    public void SetSFXVolume(float vol){
+        if (GameManager.manager) {
+            GameManager.manager.SetSFXVolume(vol);
+        }
+    }
+
+    public float GetMusicVolume(){
+        if (GameManager.manager) {
+            return GameManager.manager.GetMusicVolume();
+        }
+        return 1;
+    }
+
+    public float GetSFXVolume(){
+        if (GameManager.manager) {
+            return GameManager.manager.GetSFXVolume();
+        }
+        return 1;
+    }
+
     public void ChangeSkin() {
         if (GameManager.manager) {
             GameManager.manager.ChangeSkin();
