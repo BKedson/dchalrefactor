@@ -223,6 +223,11 @@ public class FoundryManager : BaseInteractable
     public override void OnInteract()
     {
         int totalAns = 0;
+        List<int> remainingPowerLvs = new List<int>(targetPowerLvs.Count);
+        for (int i = 0; i < targetPowerLvs.Count; i++){
+            remainingPowerLvs.Add(targetPowerLvs[i]);
+        }
+        
         switch (windowQuestion.subject)
         {
             case Subject.Addition:
@@ -235,7 +240,7 @@ public class FoundryManager : BaseInteractable
                     }
                     //if this set of intakes is correct, give feedback
                     bool match = false;
-                    foreach (int power in targetPowerLvs){
+                    foreach (int power in remainingPowerLvs){
                         if (ans == power){
                             foreach (FoundryIntakeManager intake in intakeGroups[i]) {
                                 intake.CorrectFeedback();
@@ -243,6 +248,8 @@ public class FoundryManager : BaseInteractable
                             match = true;
                         }
                     } 
+                    //remove this answer from the key if it is there to prevent the same ore being marked correct twice when the answer only needs it once
+                    remainingPowerLvs.Remove(ans);
                     //if not, give incorrect feedback
                     if(!match){
                         foreach (FoundryIntakeManager intake in intakeGroups[i]) {
@@ -263,7 +270,7 @@ public class FoundryManager : BaseInteractable
 
                     //if this set of intakes is correct, give feedback
                     bool match = false;
-                    foreach (int power in targetPowerLvs){
+                    foreach (int power in remainingPowerLvs){
                         if (ans == power){
                             foreach (FoundryIntakeManager intake in intakeGroups[i]) {
                                 intake.CorrectFeedback();
@@ -271,6 +278,8 @@ public class FoundryManager : BaseInteractable
                             match = true;
                         }
                     } 
+                    //remove this answer from the key if it is there to prevent the same ore being marked correct twice when the answer only needs it once
+                    remainingPowerLvs.Remove(ans);
                     //if not, give incorrect feedback
                     if(!match){
                         foreach (FoundryIntakeManager intake in intakeGroups[i]) {
@@ -294,7 +303,7 @@ public class FoundryManager : BaseInteractable
 
                     //if this set of intakes is correct, give feedback
                     bool match = false;
-                    foreach (int power in targetPowerLvs){
+                    foreach (int power in remainingPowerLvs){
                         if (ans == power){
                             foreach (FoundryIntakeManager intake in intakeGroups[i]) {
                                 intake.CorrectFeedback();
@@ -302,6 +311,8 @@ public class FoundryManager : BaseInteractable
                             match = true;
                         }
                     } 
+                    //remove this answer from the key if it is there to prevent the same ore being marked correct twice when the answer only needs it once
+                    remainingPowerLvs.Remove(ans);
                     //if not, give incorrect feedback
                     if(!match){
                         foreach (FoundryIntakeManager intake in intakeGroups[i]) {
@@ -323,7 +334,7 @@ public class FoundryManager : BaseInteractable
 
                     //if this set of intakes is correct, give feedback
                     bool match = false;
-                    foreach (int power in targetPowerLvs){
+                    foreach (int power in remainingPowerLvs){
                         if (ans == power){
                             foreach (FoundryIntakeManager intake in intakeGroups[i]) {
                                 intake.CorrectFeedback();
@@ -331,6 +342,8 @@ public class FoundryManager : BaseInteractable
                             match = true;
                         }
                     } 
+                    //remove this answer from the key if it is there to prevent the same ore being marked correct twice when the answer only needs it once
+                    remainingPowerLvs.Remove(ans);
                     //if not, give incorrect feedback
                     if(!match){
                         foreach (FoundryIntakeManager intake in intakeGroups[i]) {
@@ -352,7 +365,7 @@ public class FoundryManager : BaseInteractable
 
             tutorial.IntakeCorrectlySubmitted();
 
-            // Give correct feedback if answer was reached through a different method than foundry was looking for
+            // Give correct feedback even if answer was reached through a different method than foundry was looking for
             for(int i = 0; i < intakeGroups.Length; i++){
                 foreach (FoundryIntakeManager intake in intakeGroups[i]) {
                     intake.CorrectFeedback();
