@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 // This script controls player interaction with objects with BaseInteractable.cs component
 public class PlayerGeneralInteraction : MonoBehaviour
@@ -20,6 +21,9 @@ public class PlayerGeneralInteraction : MonoBehaviour
 
     private BaseInteractable targetInteractable;  // Private helper variable that records the target interactable object
 
+    public delegate void InteractionInput();
+    public event InteractionInput OnInter;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,7 +37,6 @@ public class PlayerGeneralInteraction : MonoBehaviour
         playerInputAction.Player.Interact.performed += Interact;
 
         audioSource = GetComponent<AudioSource>();
-        //audioSource.clip = interactSound;
     }
 
     private void Update()
@@ -67,6 +70,7 @@ public class PlayerGeneralInteraction : MonoBehaviour
         if (targetInteractable) {
             //audioSource.Play();
             audioSource.PlayOneShot(interactSound);
+            OnInter?.Invoke();
             targetInteractable.OnInteract();
         }
     }

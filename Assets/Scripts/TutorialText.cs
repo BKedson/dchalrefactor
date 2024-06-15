@@ -21,7 +21,7 @@ public class TutorialText : MonoBehaviour
     private int numMessages;
     private int currMessage;
     private bool last;
-    private int[] lastMessages = {1, 2, 3, 4, 5, 8, 9, 10, 11};
+    private int[] lastMessages = {1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12};
 
     //variables for the tutorial text and its open/collapsed container
     [SerializeField] private GameObject text;
@@ -38,6 +38,8 @@ public class TutorialText : MonoBehaviour
     private PlayerCollectibles collectScript;
     private CompletionSound completeScript;
     private PlayerCharacter deathScript;
+    private PlayerGeneralInteraction interactScript;
+    private PlayerFoundryInteraction pickupScript;
     
 
     void Awake()
@@ -61,7 +63,7 @@ public class TutorialText : MonoBehaviour
 
         //all external script references and their assignment to variables
         moveScript = player.GetComponent<PlayerMovement>();
-        moveScript.enabled = false;
+        //moveScript.enabled = false;
 
         collectScript = player.GetComponent<PlayerCollectibles>();
         collectScript.OnCollection += OnCollection;
@@ -71,16 +73,19 @@ public class TutorialText : MonoBehaviour
 
         deathScript = player.GetComponent<PlayerCharacter>();
         deathScript.OnDeath += OnDeath;
+
+        interactScript = player.GetComponent<PlayerGeneralInteraction>();
+        interactScript.OnInter += OnInter;
+
+        pickupScript = player.GetComponent<PlayerFoundryInteraction>();
+        pickupScript.OnPickup += OnPickup;
+
     }
 
     void Update()
     {
         //calls helper to check if a message is the last in its cycle
         TextCheck();
-
-        if (currMessage == 10 || currMessage == 11) {
-            StartCoroutine(WaitToDeactivate());
-        }
 
         //handles t press interactions
         if (Input.GetKeyDown("t")){
@@ -137,9 +142,9 @@ public class TutorialText : MonoBehaviour
         if (currMessage == 1) {
             KeyInput(new string[]{"w", "a", "s", "d"}, 2);
         }
-        if (currMessage == 2) {
-            KeyInput(new string[]{"e"}, 3);
-        }
+        //if (currMessage == 2 && !player.activeSelf) {
+            //NoInput(3);
+        //}
         if (currMessage == 3) {
             KeyInput(new string[]{"a", "d"}, 4);
         }
@@ -157,6 +162,9 @@ public class TutorialText : MonoBehaviour
         if (lastMessages.Contains(currMessage)) {
             last = true;
             moveScript.enabled = true;
+            if (currMessage == 11 || currMessage == 12) {
+                StartCoroutine(WaitToDeactivate());
+            }
         }
         else {
             last = false;
@@ -166,15 +174,30 @@ public class TutorialText : MonoBehaviour
 
     //series of event subscriptions to trigger certain tutorial messages
     private void OnCollection(string name) {
-        NoInput(9);
-    }
-
-    private void OnCompletion() {
         NoInput(10);
     }
 
-    private void OnDeath() {
+    private void OnCompletion() {
         NoInput(11);
+    }
+
+    private void OnDeath() {
+        NoInput(12);
+    }
+
+    private void OnInter() {
+        if (currMessage == 2) {
+            NoInput(3);
+        }
+        if (currMessage == 8) {
+            NoInput(9);
+        }
+    }
+
+    private void OnPickup() {
+        if (currMessage == 7) {
+            NoInput(8);
+        }
     }
 
     //helper to reset event subscriptions
@@ -182,6 +205,7 @@ public class TutorialText : MonoBehaviour
         collectScript.OnCollection -= OnCollection;
         completeScript.OnCompletion -= OnCompletion;
         deathScript.OnDeath -= OnDeath;
+        interactScript.OnInter -= OnInter;
 
         /*
         moveScript = null;
@@ -193,9 +217,10 @@ public class TutorialText : MonoBehaviour
 
     //helper to deactivate the tutorial
     private IEnumerator WaitToDeactivate(){
-        yield return new WaitForSeconds(8.0f);
+        yield return new WaitForSeconds(4.0f);
         textBoxContainer.SetActive(false);
         collapsedContainer.SetActive(false);
+        Destroy(this);
     }
 
 }
