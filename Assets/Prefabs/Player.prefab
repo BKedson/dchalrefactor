@@ -1343,16 +1343,28 @@ MonoBehaviour:
   - {fileID: 3657948267345135192}
   - {fileID: 2529901404118091059}
   - {fileID: 1203479963439973545}
+  orientation: {fileID: 0}
   walkSpeed: 5
   runSpeed: 8
   gravity: 10
+  dashSpeed: 10
+  dashSpeedChangeFactor: 0
+  dashDuration: 0
+  dashCd: 0
   whatIsEnvironment:
     serializedVersion: 2
     m_Bits: 33554432
-  groundCheckRadius: 0.05
+  groundCheckRadius: 0.1
   jumpInterval: 1.4
   jumpForce: 10
   fallingBonus: 1
+  useCameraForward: 1
+  allowAllDirections: 1
+  disableGravity: 0
+  resetVel: 1
+  dashForce: 0
+  dashUpwardForce: 0
+  dashing: 0
 --- !u!114 &2060490633984790731
 MonoBehaviour:
   m_ObjectHideFlags: 0
