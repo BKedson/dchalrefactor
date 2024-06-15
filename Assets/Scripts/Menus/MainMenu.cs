@@ -19,11 +19,25 @@ public class MainMenu : MonoBehaviour
             continueButton.SetActive(false);
         }
 
-        musicMixer.SetFloat("MusicVol", Mathf.Log10(PlayerGameDataController.Instance.MusicVolume)*20);
-        Debug.Log(PlayerGameDataController.Instance.MusicVolume);
-        sfxMixer.SetFloat("SFXVol", Mathf.Log10(PlayerGameDataController.Instance.SFXVolume)*20);
-        Debug.Log(PlayerGameDataController.Instance.SFXVolume);
-        
+        StartCoroutine(SetAudioLevels());
+    }
+
+    private IEnumerator SetAudioLevels(){
+
+        //wait to ensure game data is properly set
+        yield return new WaitForSeconds(0.5f);
+
+        float musicVol = PlayerGameDataController.Instance.MusicVolume;
+        float sfxVol = PlayerGameDataController.Instance.SFXVolume;
+        //ensure valid volume levels, unsure how or where but sometimes it seems to round to 0
+        if(musicVol == 0){
+            musicVol = 0.0001f;
+        }
+        if(sfxVol == 0){
+            sfxVol = 0.0001f;
+        }
+        musicMixer.SetFloat("MusicVol", Mathf.Log10(musicVol)*20);
+        sfxMixer.SetFloat("SFXVol", Mathf.Log10(sfxVol)*20);
     }
     // sets the game type depending on whether the user chose to continue or start New Game
     public void SetGameType(bool gameType) 

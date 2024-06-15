@@ -145,8 +145,8 @@ public class PlayerGameDataController : MonoBehaviour
         data.CurrentCharacter = "DC_Woman_2";
         data.IsInvincible = false;
         data.CursorSize = 10;
-        data.MusicVolume = 1.0f;
-        data.SFXVolume = 1.0f;
+        data.MusicVolume = 0.5f;
+        data.SFXVolume = 0.5f;
         return data;
     }
 
