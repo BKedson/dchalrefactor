@@ -8,6 +8,10 @@ public class PlayerFoundryInteraction : MonoBehaviour
     public AudioClip interactSound;
     private AudioSource audioSource;
 
+    public delegate void PickupInput();
+    public event PickupInput OnPickup;
+
+
     // Singleton
     public static PlayerFoundryInteraction _instance;
 
@@ -143,6 +147,7 @@ public class PlayerFoundryInteraction : MonoBehaviour
     // Behavior when mouse button left (or other attack keybind) is pressed
     private void PickupOrInsert(InputAction.CallbackContext ctx)
     {
+        OnPickup?.Invoke();
 
         // If targeting at an ore, then pick it up
         if (targetedOre)
