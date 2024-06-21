@@ -29,12 +29,6 @@ public class PlayerMovement : MonoBehaviour
     // Player movement vector is based on a physics-based calculation using custom gravity strength
     // Thus the global gravity factor has no effect on the player. Adjust the value below instead if necessary
     [SerializeField] private float gravity = 9.8f;
-    [SerializeField] private float dashSpeed = 10f;
-    [SerializeField] private float dashSpeedChangeFactor;
-    public float dashDuration;
-    public float dashCd;
-    private float dashCdTimer;
-    private Vector3 delayedForceToApply;
 
     // Collider mask of walls and floors the player can collide with
     [SerializeField] private LayerMask whatIsEnvironment;
@@ -75,12 +69,12 @@ public class PlayerMovement : MonoBehaviour
    // private float exitWallTimer;
 
     [Header("Dash Settings")]
-    public bool useCameraForward = true;
     public bool allowAllDirections = true;
     public bool disableGravity = false;
-    public bool resetVel = true;
     public float dashForce;
-    public float dashUpwardForce;
+    public float dashDuration;
+    public float dashCd;
+    private float dashCdTimer;
 
     private PlayerInputAction playerInputAction;
 
@@ -106,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 horizontalVelocity;
     private float yVelocity = 0f;
     // the velocity vector (combination of the two above) of the player
+    Vector3 forceToApply;
     private Vector3 movement;
     //private PlayerInventory stuff;
     private bool movementDisabled = false;  // Movement disabling flag
@@ -216,16 +211,18 @@ public class PlayerMovement : MonoBehaviour
             horizontalVelocity = playerInputAction.Player.Movement.ReadValue<Vector2>();
 
 
-           
-                // Running/walking speed
+            if(dashing){
+                movement.y = 0;
+                Debug.Log("in update vector: " + movement);
+            }
+            else{
+                   // Running/walking speed
                 movement =
-                    (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized *
-                    (sprinting ? runSpeed : walkSpeed);
-                // Sprinting: if the player is walking/running slowly or running/running fast
-           // 
+                (transform.right * horizontalVelocity.x + transform.forward * horizontalVelocity.y).normalized *
+                (sprinting ? runSpeed : walkSpeed);
 
-            movement.y = yVelocity;
-
+                movement.y = yVelocity;
+            }
             characterController.Move(movement * Time.fixedDeltaTime);
 
             // Ground check
@@ -289,12 +286,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Dash(InputAction.CallbackContext ctx){
-        Debug.Log("dash");
+        //Debug.Log("dash");
         if (dashCdTimer > 0) return;
         else dashCdTimer = dashCd;
 
         dashing = true;
-
 
         Transform forwardT;
 
@@ -302,23 +298,25 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 direction = GetDirection(forwardT);
 
-        Vector3 forceToApply = direction * dashForce;
+        forceToApply = direction * dashForce;
+
+        Debug.Log("in dash vector: " + forceToApply);
 
         if (disableGravity)
             rb.useGravity = false;
 
-        delayedForceToApply = forceToApply;
-        Invoke(nameof(DelayedDashForce), 0.025f);
+        movement = forceToApply;
+        //Invoke(nameof(DelayedDashForce), 0.025f);
 
         Invoke(nameof(ResetDash), dashDuration);
     }
-    private void DelayedDashForce()
+    /*private void DelayedDashForce()
     {
         if (resetVel)
             rb.velocity = Vector3.zero;
 
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
-    }
+    }*/
 
     private void ResetDash()
     {
@@ -329,22 +327,23 @@ public class PlayerMovement : MonoBehaviour
     }
     private Vector3 GetDirection(Transform forwardT)
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = playerInputAction.Player.Movement.ReadValue<Vector2>().x;
+        float verticalInput = playerInputAction.Player.Movement.ReadValue<Vector2>().y;
 
-        Debug.Log("hInput: " + horizontalInput + " vInput: " + verticalInput);
+        //Debug.Log("hInput: " + horizontalInput + " vInput: " + verticalInput);
 
-        Vector3 direction = new Vector3();
+        Vector3 d;
 
         if (allowAllDirections)
-            direction = forwardT.forward * verticalInput + forwardT.right * horizontalInput;
+            d = forwardT.forward * verticalInput + forwardT.right * horizontalInput;
         else
-            direction = forwardT.forward;
+            d = forwardT.forward;
 
         if (verticalInput == 0 && horizontalInput == 0)
-            direction = forwardT.forward;
+            d = forwardT.forward;
 
-        return direction.normalized;
+        //Debug.Log("DIRECTION VECTOR: " + d.normalized);
+        return d.normalized;
     }
 
     // Combat related code. Consider moving it to a separate script

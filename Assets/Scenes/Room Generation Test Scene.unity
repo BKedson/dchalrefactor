@@ -1662,6 +1662,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &935804359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9042462791547560110, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+  m_PrefabInstance: {fileID: 8579289496863477011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &964385431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 43056539992570879, guid: 2d54a4263c490734186b31b0a0ffa720, type: 3}
@@ -4358,8 +4363,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: dashCd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: dashForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: jumpForce
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 935804359}
+    - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: dashDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: jumpInterval
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595008621439088279, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+      propertyPath: dashSpeedChangeFactor
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7766422304734531714, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
       propertyPath: gameManager
@@ -4487,6 +4516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7998689033227445536, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
+    - {fileID: 4683315741217518438, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1117081000492188306, guid: 47fa3f9e489665d4d92846369873430e, type: 3}
     m_AddedGameObjects: []
