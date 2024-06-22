@@ -42,6 +42,9 @@ public class WindowQuestion : BaseQuestion
     // Track last generated divisor for division questions
     private int lastDivisor = 1;
 
+    // Keep track of subject settings
+    public int subjectSetting;
+
     void Start()
     {
         // Find the game manager script
@@ -51,9 +54,22 @@ public class WindowQuestion : BaseQuestion
             // Error
         }
 
-        subject = subject == null ? Subject.Addition : subject;
-
-        gameManager.SetCurrSubject(subject);
+        subjectSetting = gameManager.GetSubjectSetting();
+        
+        switch(subjectSetting){
+            case 1:
+                subject = Subject.Subtraction;
+                break;
+            case 2: 
+                subject = Subject.Multiplication;
+                break;
+            case 3:
+                subject = Subject.Division;
+                break;
+            default:
+                subject = Subject.Addition;
+                break;
+        }
 
         switch(subject) {
                 case Subject.Addition:
@@ -128,7 +144,22 @@ public class WindowQuestion : BaseQuestion
             // Error
         }
 
-        subject = subject == null ? Subject.Addition : subject;
+        subjectSetting = gameManager.GetSubjectSetting();
+        
+        switch(subjectSetting){
+            case 1:
+                subject = Subject.Subtraction;
+                break;
+            case 2: 
+                subject = Subject.Multiplication;
+                break;
+            case 3:
+                subject = Subject.Division;
+                break;
+            default:
+                subject = Subject.Addition;
+                break;
+        }
 
         switch(subject) {
                 case Subject.Addition:

@@ -91,6 +91,10 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene("Settings");
     }
 
+    public void Operands() {
+        SceneManager.LoadScene("Operands");
+    }
+
     public void Quit() {
         Application.Quit();
     }

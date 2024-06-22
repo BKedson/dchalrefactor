@@ -47,16 +47,32 @@ public class FoundryManager : BaseInteractable
 
     private void Awake()
     {
-        // float rand = UnityEngine.Random.Range(0f, 1f);
-        // if (rand <= 0.2f) {
-        //    windowQuestion.SetSubject(Subject.Multiplication);
-        // } else if (rand > 0.2f && rand <= 0.4f) {
-        //     windowQuestion.SetSubject(Subject.Division);
-        // } else {
-        //     windowQuestion.SetSubject(Subject.Addition);
-        // }
 
-        windowQuestion.SetSubject(Subject.Addition);
+        int subjectSetting = windowQuestion.subjectSetting;
+        switch(subjectSetting){
+            case 0:
+                windowQuestion.SetSubject(Subject.Addition);
+                break;
+            case 1:
+                windowQuestion.SetSubject(Subject.Subtraction);
+                break;
+            case 2: 
+                windowQuestion.SetSubject(Subject.Multiplication);
+                break;
+            case 3:
+                windowQuestion.SetSubject(Subject.Division);
+                break;
+            default:
+                float rand = UnityEngine.Random.Range(0f, 1f);
+                if (rand <= 0.2f) {
+                windowQuestion.SetSubject(Subject.Multiplication);
+                } else if (rand > 0.2f && rand <= 0.4f) {
+                    windowQuestion.SetSubject(Subject.Division);
+                } else {
+                    windowQuestion.SetSubject(Subject.Addition);
+                }
+                break;
+        }
 
         // Prompt the windowQuestion to generate a question
         windowQuestion.GenerateInitialQuestion();

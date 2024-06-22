@@ -76,6 +76,12 @@ public class GameManagerProxy : MonoBehaviour
         return 1;
     }
 
+    public void SetSubjectSetting(int subject) {
+        if (GameManager.manager) {
+            GameManager.manager.SetSubjectSetting(subject);
+        }
+    }
+
     public void ChangeSkin() {
         if (GameManager.manager) {
             GameManager.manager.ChangeSkin();
