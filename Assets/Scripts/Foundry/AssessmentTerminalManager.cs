@@ -73,6 +73,7 @@ public class AssessmentTerminalManager : BaseInteractable
 
         // Prepare UI
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         inputField.Select();
         inputField.ActivateInputField();
 
