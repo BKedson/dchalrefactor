@@ -396,20 +396,38 @@ public class GameManager : MonoBehaviour
 
     public int GetQuestionComplexity() {
         switch (currSubject) {
+            // temporarily keep complexity low --> FIX THIS LATER ************************************************************
             case Subject.Addition:
-                return addQuestionComplexity;
+                if(addQuestionComplexity >= 3){
+                    return 2;
+                }else{
+                    return addQuestionComplexity;
+                }
             break;
             case Subject.Subtraction:
-                return subQuestionComplexity;
+                if(subQuestionComplexity >= 3){
+                    return 2;
+                }else{
+                    return subQuestionComplexity;
+                }
             break;
             case Subject.Multiplication:
-                return multQuestionComplexity;
+                if(multQuestionComplexity >= 3){
+                    return 2;
+                }else{
+                    return multQuestionComplexity;
+                }
             break;                
             case Subject.Division:
-                return divQuestionComplexity;
+                if(divQuestionComplexity >= 3){
+                    return 2;
+                }else{
+                    return divQuestionComplexity;
+                }
             break;
             default:
-                return addQuestionComplexity;
+                //return addQuestionComplexity;
+                return 0;
             break;
         }
     }

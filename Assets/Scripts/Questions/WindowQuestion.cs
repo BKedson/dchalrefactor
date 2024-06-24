@@ -432,17 +432,19 @@ public class WindowQuestion : BaseQuestion
 
     // Set initial question complexity and based on difficulty and adjust variables based on that complexity
     private void SetInitialComplexity () {
-        switch (difficulty) {
-            case Difficulty.Easy:
-                questionComplexity = 0;
-                break;
-            case Difficulty.Medium:
-                questionComplexity = 3;
-                break;
-            case Difficulty.Hard:
-                questionComplexity = 7;
-                break;
-        }
+        // temporarily keep complexity low --> FIX THIS LATER **************************************************************************
+        questionComplexity = 0;
+        // switch (difficulty) {
+        //     case Difficulty.Easy:
+        //         questionComplexity = 0;
+        //         break;
+        //     case Difficulty.Medium:
+        //         questionComplexity = 3;
+        //         break;
+        //     case Difficulty.Hard:
+        //         questionComplexity = 7;
+        //         break;
+        // }
         SetParameters();
     }
 

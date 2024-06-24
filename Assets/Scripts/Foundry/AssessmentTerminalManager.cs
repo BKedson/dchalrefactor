@@ -45,7 +45,15 @@ public class AssessmentTerminalManager : BaseInteractable
     // Update is called once per frame
     void Update()
     {
-
+        //This is a little scuffed but its to make sure the pause screen doesn't lock the cursor/unfocus the input field
+        if(open && Cursor.lockState == CursorLockMode.Locked){
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            inputField.Select();
+            inputField.ActivateInputField();
+        }else if(!open){
+            playerRef.SetActive(true);
+        }
     }
 
     public override void OnInteract()
