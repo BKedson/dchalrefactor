@@ -49,6 +49,7 @@ public class PlayerGameDataController : MonoBehaviour
     //---------------------------------------------------IN-GAME LOGIC-----------------------------------------------------------
     public bool IsNewUser;
     public bool IsNewGame;
+    public bool IsTutorial;
 
     private void Awake()
     {
@@ -168,6 +169,16 @@ public class PlayerGameDataController : MonoBehaviour
     public bool CheckIfNewGame()
     {
         return IsNewGame;
+    }
+
+    public void IndicateTutorial(bool type)
+    {
+        IsTutorial = type;
+    }
+
+    public bool CheckIfTutorial()
+    {
+        return IsTutorial;
     }
 
     public void UpdateCharacter(string s)

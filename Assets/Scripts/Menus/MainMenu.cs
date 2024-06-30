@@ -43,5 +43,6 @@ public class MainMenu : MonoBehaviour
     public void SetGameType(bool gameType) 
     {
         PlayerGameDataController.Instance.IndicateNewGame(gameType);
+        PlayerGameDataController.Instance.IndicateTutorial(gameType);
     }
 }

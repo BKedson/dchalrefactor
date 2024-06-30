@@ -44,13 +44,23 @@ public class TutorialText : MonoBehaviour
 
     void Awake()
     {
+    
+        if (PlayerGameDataController.Instance.CheckIfTutorial() == false) {
+            textBoxContainer.SetActive(false);
+            collapsedContainer.SetActive(false);
+            Destroy(this);
+        }
+        else {
+            textBoxContainer.SetActive(true);
+        }
+
         //setting up tutorial start
         numMessages = messages.Length;
         currMessage = 0;
         last = false;
 
         //automatically display tutorial text container
-        textBoxContainer.SetActive(true);
+        //textBoxContainer.SetActive(true);
         collapsedContainer.SetActive(false);
 
         if (text) {
@@ -162,9 +172,6 @@ public class TutorialText : MonoBehaviour
         if (lastMessages.Contains(currMessage)) {
             last = true;
             moveScript.enabled = true;
-            if (currMessage == 11 || currMessage == 12) {
-                StartCoroutine(WaitToDeactivate());
-            }
         }
         else {
             last = false;
@@ -179,10 +186,15 @@ public class TutorialText : MonoBehaviour
 
     private void OnCompletion() {
         NoInput(11);
+        PlayerGameDataController.Instance.IndicateTutorial(false);
     }
 
     private void OnDeath() {
         NoInput(12);
+        textBoxContainer.SetActive(false);
+        collapsedContainer.SetActive(false);
+        Destroy(this);
+        PlayerGameDataController.Instance.IndicateTutorial(false);
     }
 
     private void OnInter() {
@@ -217,10 +229,9 @@ public class TutorialText : MonoBehaviour
 
     //helper to deactivate the tutorial
     private IEnumerator WaitToDeactivate(){
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(2.0f);
         textBoxContainer.SetActive(false);
         collapsedContainer.SetActive(false);
-        Destroy(this);
     }
 
 }
