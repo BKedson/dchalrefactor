@@ -1347,10 +1347,6 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 8
   gravity: 10
-  dashSpeed: 10
-  dashSpeedChangeFactor: 0
-  dashDuration: 0
-  dashCd: 0
   whatIsEnvironment:
     serializedVersion: 2
     m_Bits: 33554432
@@ -1358,12 +1354,11 @@ MonoBehaviour:
   jumpInterval: 1.4
   jumpForce: 10
   fallingBonus: 1
-  useCameraForward: 1
   allowAllDirections: 1
   disableGravity: 0
-  resetVel: 1
   dashForce: 0
-  dashUpwardForce: 0
+  dashDuration: 0
+  dashCd: 0
   dashing: 0
 --- !u!114 &2060490633984790731
 MonoBehaviour:
@@ -1378,7 +1373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactSound: {fileID: 8300000, guid: 9aaece1c71d0c46b983bf10fb875cf07, type: 3}
-  detectRadius: 2
+  detectRadius: 4
   whatIsInteractable:
     serializedVersion: 2
     m_Bits: 2097152
