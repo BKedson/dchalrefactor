@@ -45,7 +45,7 @@ public class AssessmentTerminalManager : BaseInteractable
     // Update is called once per frame
     void Update()
     {
-        //This is a little scuffed but its to make sure the pause screen doesn't lock the cursor/unfocus the input field
+        //This is a scuffed but its to make sure the pause screen doesn't lock the cursor/unfocus the input field
         if(open && Cursor.lockState == CursorLockMode.Locked){
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -58,8 +58,7 @@ public class AssessmentTerminalManager : BaseInteractable
 
     public override void OnInteract()
     {
-        //TEMPORARY SKIP, FIX LATER
-        StartCoroutine("QuitAssessmentChallenge");
+        StartCoroutine("StartAssessmentChallenge");
     }
 
     public void OnQuitAssessmentChallenge()
@@ -69,12 +68,14 @@ public class AssessmentTerminalManager : BaseInteractable
 
     IEnumerator StartAssessmentChallenge()
     {
-        open = true;
+        
         //tutorial.TerminalOpened();
 
         // Start transition blackscreen
         TransitionUIManager._instance.StartTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
+
+        open = true;
 
         // Switch to the surveillance camera view
         playerRef.SetActive(false);
@@ -103,12 +104,15 @@ public class AssessmentTerminalManager : BaseInteractable
         TransitionUIManager._instance.StartTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
 
+        open = false;
+
         // Switch to the player camera view
         surveillanceCam.SetActive(false);
         playerRef.SetActive(true);
 
         // Resume UI settings
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         // Remove the wall to reveal the foundry
         separatorWall.SetActive(false);
@@ -116,8 +120,6 @@ public class AssessmentTerminalManager : BaseInteractable
         // Remove transition blackscreen
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
-        open = false;
-
     }
 
     // Check question
