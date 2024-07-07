@@ -27,7 +27,7 @@ public class AssessmentTerminalManager : BaseInteractable
     private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
     private bool submitted; // Verify if player has already gotten the correct answer to prevent repeat submissions
 
-    private TextboxBehavior tutorial;
+    //private TextboxBehavior tutorial;
 
     void Awake()
     {
@@ -39,7 +39,7 @@ public class AssessmentTerminalManager : BaseInteractable
         open = false;
         submitted = false;
 
-        tutorial = GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>();
+        //tutorial = GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>();
     }
 
     // Update is called once per frame
@@ -58,7 +58,8 @@ public class AssessmentTerminalManager : BaseInteractable
 
     public override void OnInteract()
     {
-        StartCoroutine("StartAssessmentChallenge");
+        //TEMPORARY SKIP, FIX LATER
+        StartCoroutine("QuitAssessmentChallenge");
     }
 
     public void OnQuitAssessmentChallenge()
@@ -69,7 +70,7 @@ public class AssessmentTerminalManager : BaseInteractable
     IEnumerator StartAssessmentChallenge()
     {
         open = true;
-        tutorial.TerminalOpened();
+        //tutorial.TerminalOpened();
 
         // Start transition blackscreen
         TransitionUIManager._instance.StartTransition();
@@ -92,7 +93,6 @@ public class AssessmentTerminalManager : BaseInteractable
 
     IEnumerator QuitAssessmentChallenge()
     {
-        open = false;
         submitted = true;
         audioSource.Play();
 
@@ -116,6 +116,7 @@ public class AssessmentTerminalManager : BaseInteractable
         // Remove transition blackscreen
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
+        open = false;
 
     }
 
@@ -136,7 +137,7 @@ public class AssessmentTerminalManager : BaseInteractable
                     if (windowQuestion.IsCorrect(ans))
                     {
                         rightAnswerOverlay.GetComponent<WindowAnswerFeedback>().RightAnswerUI();
-                        tutorial.TerminalCorrectlySubmitted();
+                        //tutorial.TerminalCorrectlySubmitted();
                         DisplayAnswer(ans);
                         StartCoroutine("QuitAssessmentChallenge");
                     }
