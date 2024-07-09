@@ -111,9 +111,14 @@ public class Spawner : BaseEnemy
     public void OnDestroy(){
 		if (destroyedByPlayer && GameObject.FindGameObjectsWithTag("enemy").Count() < 1)
 		{
-			if (DungeonGenerator._instance) {
-                DungeonGenerator._instance.ProceedLv();
-            }
+			// if (DungeonGenerator._instance) {
+            //     DungeonGenerator._instance.ProceedLv();
+            // }
+
+            GameObject transitionManager = GameObject.Find("Transition Manager");
+		    if (transitionManager) {
+			    transitionManager.GetComponent<TransitionManager>().RestartLevel();
+		    }
 		}
 	}
 
