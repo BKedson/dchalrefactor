@@ -53,7 +53,6 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
             PromptErrorText.GetComponent<TMP_Text>().text = errorMessage;
             //Indicate error
             IndicateError();
-            Debug.Log("Login Invalid!");
         }
 
         public void OnLoginInputError()
@@ -66,8 +65,6 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
 
         public void OnLoginValid()
         {
-            //Load the user's data into the game - go to Main menu
-            Debug.Log("Load the Main Menu");
             //load the main menu
             transitionManager.Menu();
         }
@@ -91,7 +88,6 @@ namespace dchalrefactor.Scripts.UserVerificationSystem
         public void OnRegisterValid()
         {
             //Load new user's data into the game - go to Main menu
-            Debug.Log("Load the Main Menu");
             transitionManager.Menu();
         }
 

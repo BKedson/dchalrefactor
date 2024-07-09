@@ -103,7 +103,7 @@ public class UserVerificationController : BaseController<UserVerificationControl
             HandleInputAction(UVAction.RegisterUserCreated);
         }
         else {
-            uvManager.SetErrorMessage("Cannot register, user already exists.");
+            uvManager.SetErrorMessage("Cannot register, user already exists or cloud is unavailable.");
             HandleInputAction(UVAction.RegisterErrorUserExists);
         }
     }
@@ -128,7 +128,7 @@ public class UserVerificationController : BaseController<UserVerificationControl
         }
         else
         {
-            uvManager.SetErrorMessage("Names or number are incorrect.");
+            uvManager.SetErrorMessage("Names or number are incorrect, or cloud is unavailable.");
             HandleInputAction(UVAction.LoginErrorNoSuchUser);
         }    
     }
@@ -202,7 +202,7 @@ public class UserVerificationController : BaseController<UserVerificationControl
         //if bigger than 9, reject
         if(n < 0 || n > 9)
         {
-            uvManager.SetErrorMessage("Number must be between 0 and 9");
+            uvManager.SetErrorMessage("Number must be between 0 and 9.");
             return false;
         }
         return true;
