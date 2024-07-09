@@ -24,7 +24,7 @@ public class AssessmentTerminalManager : BaseInteractable
 
     [SerializeField] private GameObject[] answerDisplays;
 
-    private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
+    public bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
     private bool submitted; // Verify if player has already gotten the correct answer to prevent repeat submissions
 
     private TextboxBehavior tutorial;
@@ -45,15 +45,7 @@ public class AssessmentTerminalManager : BaseInteractable
     // Update is called once per frame
     void Update()
     {
-        //This is a little scuffed but its to make sure the pause screen doesn't lock the cursor/unfocus the input field
-        if(open && Cursor.lockState == CursorLockMode.Locked){
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            inputField.Select();
-            inputField.ActivateInputField();
-        }else if(!open){
-            playerRef.SetActive(true);
-        }
+        
     }
 
     public override void OnInteract()
@@ -117,6 +109,17 @@ public class AssessmentTerminalManager : BaseInteractable
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
 
+    }
+
+    public void QuitFromPauseMenu(){
+        // Switch to the player camera view
+        surveillanceCam.SetActive(false);
+        playerRef.SetActive(true);
+    }
+
+    public void ContinueFromPauseMenu(){
+        inputField.Select();
+        inputField.ActivateInputField();
     }
 
     // Check question
