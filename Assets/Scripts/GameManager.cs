@@ -98,11 +98,11 @@ public class GameManager : MonoBehaviour
             player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
         }
 
-        if (DungeonGenerator._instance) {
-            DungeonGenerator._instance.ResetLv();
-        } else {
-            ResetPlayerPos();
-        }
+        // if (DungeonGenerator._instance) {
+        //     DungeonGenerator._instance.ResetLv();
+        // } else {
+        //      ResetPlayerPos();
+        // }
     }
 
     public void NewGame() {

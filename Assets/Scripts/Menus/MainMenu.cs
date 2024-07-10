@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject continueButton;
     public AudioMixer musicMixer;
     public AudioMixer sfxMixer;
+    public TransitionManager transManager;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,15 @@ public class MainMenu : MonoBehaviour
         {
             //if the user is new, they should not have the option to continue
             continueButton.SetActive(false);
+        }
+
+        //ensure menu is set up correctly
+        transManager.ArrivedAtMenu();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        if (GameManager.manager) {
+            GameManager.manager.DisablePlayerSound();
+            GameManager.manager.Save();
         }
 
         StartCoroutine(SetAudioLevels());
