@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028381, g: 0.22571406, b: 0.30692294, a: 1}
+  m_IndirectSpecularColor: {r: 0.18306373, g: 0.22874236, b: 0.30670118, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff72e7fa47eb7fb4b86d2669f013776c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonRoot: {fileID: 854916289}
+  dungeonRoot: {fileID: 0}
   roomPrefab: {fileID: 3992400806503070519, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
   initialGenOffset: {x: 0, y: 0, z: 0}
   genOffset: {x: 0, y: 0, z: 0}
@@ -906,6 +906,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 414573942818879397, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 496052398136612098, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 848992703618024293, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -914,7 +922,19 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1113977160967789713, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: referenceObject
+      value: 
+      objectReference: {fileID: 2134734428}
     - target: {fileID: 1195819116650205689, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563964400587950031, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_Name
+      value: SM_Door_A 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563964400587950031, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -933,6 +953,10 @@ PrefabInstance:
     - target: {fileID: 3542083224137286717, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872113245111983800, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3992400806503070519, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_Name
@@ -982,6 +1006,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5174833952031934974, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5221084598687518275, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -990,13 +1018,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5686996043461584204, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796322228244186114, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: door1Animator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796322228244186114, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: door2Animator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7414129442373780183, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8964163306870815874, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_Name
+      value: SM_Door_A 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964163306870815874, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061254117925392057, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9132305147905317455, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1013,14 +1065,10 @@ PrefabInstance:
     - {fileID: 4265701847941815025, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
     - {fileID: 860932972100976147, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
     - {fileID: 848992703618024293, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+    - {fileID: 3872113245111983800, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
---- !u!4 &854916289 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6860344548199256826, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
-  m_PrefabInstance: {fileID: 854916287}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &867591302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,6 +3494,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &2134734428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8964163306870815874, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+  m_PrefabInstance: {fileID: 854916287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
