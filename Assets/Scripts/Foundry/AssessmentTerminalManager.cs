@@ -24,10 +24,10 @@ public class AssessmentTerminalManager : BaseInteractable
 
     [SerializeField] private GameObject[] answerDisplays;
 
-    private bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
+    public bool open; // Verify if the assessment terminal is actually open, for fixing a bug that double submits the question
     private bool submitted; // Verify if player has already gotten the correct answer to prevent repeat submissions
 
-    //private TextboxBehavior tutorial;
+    private TextboxBehavior tutorial;
 
     void Awake()
     {
@@ -39,21 +39,13 @@ public class AssessmentTerminalManager : BaseInteractable
         open = false;
         submitted = false;
 
-        //tutorial = GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>();
+        tutorial = GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //This is a scuffed but its to make sure the pause screen doesn't lock the cursor/unfocus the input field
-        if(open && Cursor.lockState == CursorLockMode.Locked){
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            inputField.Select();
-            inputField.ActivateInputField();
-        }else if(!open){
-            playerRef.SetActive(true);
-        }
+        
     }
 
     public override void OnInteract()
@@ -68,14 +60,12 @@ public class AssessmentTerminalManager : BaseInteractable
 
     IEnumerator StartAssessmentChallenge()
     {
-        
-        //tutorial.TerminalOpened();
+        open = true;
+        tutorial.TerminalOpened();
 
         // Start transition blackscreen
         TransitionUIManager._instance.StartTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
-
-        open = true;
 
         // Switch to the surveillance camera view
         playerRef.SetActive(false);
@@ -94,6 +84,7 @@ public class AssessmentTerminalManager : BaseInteractable
 
     IEnumerator QuitAssessmentChallenge()
     {
+        open = false;
         submitted = true;
         audioSource.Play();
 
@@ -104,15 +95,12 @@ public class AssessmentTerminalManager : BaseInteractable
         TransitionUIManager._instance.StartTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
 
-        open = false;
-
         // Switch to the player camera view
         surveillanceCam.SetActive(false);
         playerRef.SetActive(true);
 
         // Resume UI settings
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
         // Remove the wall to reveal the foundry
         separatorWall.SetActive(false);
@@ -120,6 +108,18 @@ public class AssessmentTerminalManager : BaseInteractable
         // Remove transition blackscreen
         TransitionUIManager._instance.EndTransition();
         yield return new WaitForSeconds(TransitionUIManager._instance.GetEndTransitionSpan());
+
+    }
+
+    public void QuitFromPauseMenu(){
+        // Switch to the player camera view
+        surveillanceCam.SetActive(false);
+        playerRef.SetActive(true);
+    }
+
+    public void ContinueFromPauseMenu(){
+        inputField.Select();
+        inputField.ActivateInputField();
     }
 
     // Check question
@@ -139,7 +139,7 @@ public class AssessmentTerminalManager : BaseInteractable
                     if (windowQuestion.IsCorrect(ans))
                     {
                         rightAnswerOverlay.GetComponent<WindowAnswerFeedback>().RightAnswerUI();
-                        //tutorial.TerminalCorrectlySubmitted();
+                        tutorial.TerminalCorrectlySubmitted();
                         DisplayAnswer(ans);
                         StartCoroutine("QuitAssessmentChallenge");
                     }

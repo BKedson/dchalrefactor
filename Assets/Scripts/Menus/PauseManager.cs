@@ -21,9 +21,24 @@ public class PauseManager : MonoBehaviour
         PauseCanvas.SetActive(true);
     }
 
+    //Prevent bugs when quitting during assessment terminal challenge
+    public void OnQuit(){
+        AssessmentTerminalManager TermMan = GameObject.Find("Assessment Terminal").GetComponent<AssessmentTerminalManager>();
+        if(TermMan){
+            TermMan.QuitFromPauseMenu();
+        }
+    }
+
     public void OnPlay(){
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
+        AssessmentTerminalManager TermMan = GameObject.Find("Assessment Terminal").GetComponent<AssessmentTerminalManager>();
+        if(TermMan){
+            if(!TermMan.open){
+                Cursor.lockState = CursorLockMode.Locked;
+            }else{
+                TermMan.ContinueFromPauseMenu();
+            }
+        }
         PauseCanvas.SetActive(false);
     }
 }
