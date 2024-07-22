@@ -226,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
             characterController.Move(movement * Time.fixedDeltaTime);
 
             // Ground check
-            grounded = Physics.CheckSphere(transform.position, groundCheckRadius, whatIsEnvironment);
+            grounded = Physics.CheckSphere(transform.position - new Vector3(0.5f, 1.0f, 0.0f), groundCheckRadius, whatIsEnvironment);
 
             // Combat related code. Consider moving it to a separate script
             if (playerInputAction.Player.Fire.phase == InputActionPhase.Performed) { weaponManager.currentAttack(false); }
