@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private Subject currSubject;
     //0 for add, 1 for subtract, 2 for multiply, 3 for divide, -1 for random
-    private int subjectSetting = 0;
+    [SerializeField] private int subjectSetting = 0;
 
     // The solution and list of enemy strengths for the current question
     private double currQuestionSol;

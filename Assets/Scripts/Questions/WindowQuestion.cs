@@ -45,7 +45,7 @@ public class WindowQuestion : BaseQuestion
     // Keep track of subject settings
     public int subjectSetting;
 
-    void Start()
+    void Awake()
     {
         // Find the game manager script
         if (GameManager.manager) {
@@ -54,47 +54,47 @@ public class WindowQuestion : BaseQuestion
             // Error
         }
 
-        subjectSetting = gameManager.GetSubjectSetting();
+        // subjectSetting = gameManager.GetSubjectSetting();
         
-        switch(subjectSetting){
-            case 1:
-                subject = Subject.Subtraction;
-                break;
-            case 2: 
-                subject = Subject.Multiplication;
-                break;
-            case 3:
-                subject = Subject.Division;
-                break;
-            default:
-                subject = Subject.Addition;
-                break;
-        }
+        // switch(subjectSetting){
+        //     case 1:
+        //         subject = Subject.Subtraction;
+        //         break;
+        //     case 2: 
+        //         subject = Subject.Multiplication;
+        //         break;
+        //     case 3:
+        //         subject = Subject.Division;
+        //         break;
+        //     default:
+        //         subject = Subject.Addition;
+        //         break;
+        // }
 
-        switch(subject) {
-                case Subject.Addition:
-                    difficulty = gameManager.GetAddDifficulty();
-                    break;
-                case Subject.Subtraction:
-                    difficulty = gameManager.GetSubtractDifficulty();
-                    break;
-                case Subject.Multiplication:
-                    difficulty = gameManager.GetMultiplyDifficulty();
-                    break;
-                case Subject.Division:
-                    difficulty = gameManager.GetDivideDifficulty();
-                    break;
-                default:
-                    difficulty = gameManager.GetAddDifficulty();
-                    break;
-        }
+        // switch(subject) {
+        //         case Subject.Addition:
+        //             difficulty = gameManager.GetAddDifficulty();
+        //             break;
+        //         case Subject.Subtraction:
+        //             difficulty = gameManager.GetSubtractDifficulty();
+        //             break;
+        //         case Subject.Multiplication:
+        //             difficulty = gameManager.GetMultiplyDifficulty();
+        //             break;
+        //         case Subject.Division:
+        //             difficulty = gameManager.GetDivideDifficulty();
+        //             break;
+        //         default:
+        //             difficulty = gameManager.GetAddDifficulty();
+        //             break;
+        // }
 
-        if (gameManager.GetQuestionComplexity() == null) {
-            SetInitialComplexity();
-        } else {
-            questionComplexity = gameManager.GetQuestionComplexity();
-            SetParameters();
-        }
+        // if (gameManager.GetQuestionComplexity() == null) {
+        //     SetInitialComplexity();
+        // } else {
+        //     questionComplexity = gameManager.GetQuestionComplexity();
+        //     SetParameters();
+        // }
         //GenerateQuestion();
     }
 
@@ -144,22 +144,22 @@ public class WindowQuestion : BaseQuestion
             // Error
         }
 
-        subjectSetting = gameManager.GetSubjectSetting();
+        // subjectSetting = gameManager.GetSubjectSetting();
         
-        switch(subjectSetting){
-            case 1:
-                subject = Subject.Subtraction;
-                break;
-            case 2: 
-                subject = Subject.Multiplication;
-                break;
-            case 3:
-                subject = Subject.Division;
-                break;
-            default:
-                subject = Subject.Addition;
-                break;
-        }
+        // switch(subjectSetting){
+        //     case 1:
+        //         subject = Subject.Subtraction;
+        //         break;
+        //     case 2: 
+        //         subject = Subject.Multiplication;
+        //         break;
+        //     case 3:
+        //         subject = Subject.Division;
+        //         break;
+        //     default:
+        //         subject = Subject.Addition;
+        //         break;
+        // }
 
         switch(subject) {
                 case Subject.Addition:
@@ -304,34 +304,39 @@ public class WindowQuestion : BaseQuestion
             //make last enemy remaining amount to get to the solution
 
             enemyStrengths.Add(remainingLargeEnemy);
+        }else{
+            //window question will resemble a typical window question, actual subtraction only happens in the foundry
+            GenerateAdditionQuestion(); 
+        }
+
 
         //otherwise, generate large enemy and subtracting enemies before setting the solution to the remainder
-        } else {
-            // The strength of the large enemy
-            int largeEnemy = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
+        // } else {
+        //     // The strength of the large enemy
+        //     int largeEnemy = addSolutionFactor * UnityEngine.Random.Range(1, 10*(questionComplexity + 1));
 
-            enemyStrengths.Add(largeEnemy);
+        //     enemyStrengths.Add(largeEnemy);
 
-            int remainingLargeEnemy = largeEnemy;
+        //     int remainingLargeEnemy = largeEnemy;
 
-            // Generate individual enemy strengths and store the results
-            for (int i = numEnemies; i > 1; i--) {
-                int enemyStrength;
-                if (noCarry) {
-                    int ones = UnityEngine.Random.Range(1, (remainingLargeEnemy % 10) - (i - 1));
-                    int tens = 10 * UnityEngine.Random.Range(0, (remainingLargeEnemy / 10));
-                    enemyStrength = ones + tens;
-                    Debug.Log(tens + " + " + ones);
-                } else {
-                    enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
-                }
-                enemyStrengths.Add(-1*enemyStrength);
-                remainingLargeEnemy -= enemyStrength;
-            }
+        //     // Generate individual enemy strengths and store the results
+        //     for (int i = numEnemies; i > 1; i--) {
+        //         int enemyStrength;
+        //         if (noCarry) {
+        //             int ones = UnityEngine.Random.Range(1, (remainingLargeEnemy % 10) - (i - 1));
+        //             int tens = 10 * UnityEngine.Random.Range(0, (remainingLargeEnemy / 10));
+        //             enemyStrength = ones + tens;
+        //             Debug.Log(tens + " + " + ones);
+        //         } else {
+        //             enemyStrength = UnityEngine.Random.Range(1, remainingLargeEnemy - (i - 1));
+        //         }
+        //         enemyStrengths.Add(-1*enemyStrength);
+        //         remainingLargeEnemy -= enemyStrength;
+        //     }
 
-            // After all of the small enemies have been subtrated, what remains is the solution
-            solution = remainingLargeEnemy;
-        }
+        //     // After all of the small enemies have been subtrated, what remains is the solution
+        //     solution = remainingLargeEnemy;
+        // }
     }
 
     // All enemies have the same strength and can be added or multiplied, multiplication is faster

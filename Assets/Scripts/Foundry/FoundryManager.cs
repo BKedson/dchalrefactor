@@ -47,8 +47,9 @@ public class FoundryManager : BaseInteractable
 
     private void Awake()
     {
+        GameManager gameManager = GameManager.manager;
 
-        int subjectSetting = windowQuestion.subjectSetting;
+        int subjectSetting = gameManager.GetSubjectSetting();
         switch(subjectSetting){
             case 0:
                 windowQuestion.SetSubject(Subject.Addition);
@@ -65,10 +66,12 @@ public class FoundryManager : BaseInteractable
             default:
                 float rand = UnityEngine.Random.Range(0f, 1f);
                 if (rand <= 0.2f) {
-                windowQuestion.SetSubject(Subject.Multiplication);
+                    windowQuestion.SetSubject(Subject.Multiplication);
                 } else if (rand > 0.2f && rand <= 0.4f) {
                     windowQuestion.SetSubject(Subject.Division);
-                } else {
+                } else if (rand > 0.4f && rand <= 0.6f){
+                    windowQuestion.SetSubject(Subject.Subtraction);
+                }else{
                     windowQuestion.SetSubject(Subject.Addition);
                 }
                 break;

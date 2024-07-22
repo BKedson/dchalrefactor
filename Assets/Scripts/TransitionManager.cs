@@ -37,6 +37,7 @@ public class TransitionManager : MonoBehaviour
         if (GameManager.manager) {
             GameManager.manager.ResetComplexity();
 			GameManager.manager.Restart();
+            GameManager.manager.ResetPlayerPos();
             SceneManager.LoadScene("Prefab in Scene");
             GameManager.manager.Save();
 		} else {
@@ -48,6 +49,7 @@ public class TransitionManager : MonoBehaviour
         if (GameManager.manager) {
             GameManager.manager.ResetComplexity();
 			GameManager.manager.Restart();
+            GameManager.manager.ResetPlayerPos();
             SceneManager.LoadScene("Prefab in Scene");
             GameManager.manager.Save();
 		} else {
