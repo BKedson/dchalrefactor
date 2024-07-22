@@ -98,11 +98,11 @@ public class GameManager : MonoBehaviour
             player.GetComponent<PlayerCollectibles>().GetActiveCharacterWeapons().DeactivateAllWeapons();
         }
 
-        if (DungeonGenerator._instance) {
-            DungeonGenerator._instance.ResetLv();
-        } else {
-            ResetPlayerPos();
-        }
+        // if (DungeonGenerator._instance) {
+        //     DungeonGenerator._instance.ResetLv();
+        // } else {
+        //      ResetPlayerPos();
+        // }
     }
 
     public void NewGame() {
@@ -396,38 +396,20 @@ public class GameManager : MonoBehaviour
 
     public int GetQuestionComplexity() {
         switch (currSubject) {
-            // temporarily keep complexity low --> FIX THIS LATER ************************************************************
             case Subject.Addition:
-                if(addQuestionComplexity >= 3){
-                    return 2;
-                }else{
-                    return addQuestionComplexity;
-                }
-            break;
+                return addQuestionComplexity;
+                break;
             case Subject.Subtraction:
-                if(subQuestionComplexity >= 3){
-                    return 2;
-                }else{
-                    return subQuestionComplexity;
-                }
-            break;
+                return subQuestionComplexity;
+                break;
             case Subject.Multiplication:
-                if(multQuestionComplexity >= 3){
-                    return 2;
-                }else{
-                    return multQuestionComplexity;
-                }
-            break;                
+                return multQuestionComplexity;
+                break;                
             case Subject.Division:
-                if(divQuestionComplexity >= 3){
-                    return 2;
-                }else{
-                    return divQuestionComplexity;
-                }
-            break;
+                return divQuestionComplexity;
+                break;
             default:
-                //return addQuestionComplexity;
-                return 0;
+                return addQuestionComplexity;
             break;
         }
     }

@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class TransitionManager : MonoBehaviour
 {
+    private bool exitToMenu = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        if(SceneManager.GetActiveScene().name == "Prefab in Scene"){
+            if (TransitionUIManager._instance) {
+                TransitionUIManager._instance.EndTransition();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -32,10 +37,10 @@ public class TransitionManager : MonoBehaviour
         if (GameManager.manager) {
             GameManager.manager.ResetComplexity();
 			GameManager.manager.Restart();
-            SceneManager.LoadScene("Room Generation Test Scene");
+            SceneManager.LoadScene("Prefab in Scene");
             GameManager.manager.Save();
 		} else {
-            SceneManager.LoadScene("Room Generation Test Scene");
+            SceneManager.LoadScene("Prefab in Scene");
         }
     }
 
@@ -43,19 +48,30 @@ public class TransitionManager : MonoBehaviour
         if (GameManager.manager) {
             GameManager.manager.ResetComplexity();
 			GameManager.manager.Restart();
-            SceneManager.LoadScene("Room Generation Test Scene");
+            SceneManager.LoadScene("Prefab in Scene");
             GameManager.manager.Save();
 		} else {
-            SceneManager.LoadScene("Room Generation Test Scene");
+            SceneManager.LoadScene("Prefab in Scene");
         }
     }
 
     // Tells the GameManager to reset everything marked as DoNotDestroy, then resets the scene
     public void RestartLevel() {
+        //prevent ondestroy method of enemies from restarting the scene when exiting to main menu
+        if(!exitToMenu){
+            if (TransitionUIManager._instance) {
+                TransitionUIManager._instance.StartTransition();
+            }
+            StartCoroutine(RestartTransition());
+        }
+    }
+
+    public IEnumerator RestartTransition(){
+        yield return new WaitForSeconds(TransitionUIManager._instance.GetStartTransitionSpan());
         if (GameManager.manager) {
-            Debug.Log(GameManager.manager.GetAddDifficulty());
             GameManager.manager.Restart();
             GameManager.manager.Save();
+            GameManager.manager.ResetPlayerPos();
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -69,6 +85,7 @@ public class TransitionManager : MonoBehaviour
     }
 
     public void Menu() {
+        exitToMenu = true;
         SceneManager.LoadScene("Main Menu");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -101,5 +118,9 @@ public class TransitionManager : MonoBehaviour
 
     public void CharacterPage() {
         SceneManager.LoadScene("Character Selection");
+    }
+
+    public void ArrivedAtMenu(){
+        exitToMenu = false;
     }
 }
