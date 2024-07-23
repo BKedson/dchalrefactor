@@ -44,10 +44,13 @@ public class FoundryManager : BaseInteractable
     private int targetPower;
 
     private TextboxBehavior tutorial;
+    [SerializeField] private GameManager gameManager;
 
     private void Awake()
     {
-        GameManager gameManager = GameManager.manager;
+        if (GameManager.manager) {
+            gameManager = GameManager.manager;
+        }
 
         int subjectSetting = gameManager.GetSubjectSetting();
         switch(subjectSetting){
