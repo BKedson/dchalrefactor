@@ -2305,6 +2305,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 182820665713923654, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 414573942818879397, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2428,6 +2432,10 @@ PrefabInstance:
     - target: {fileID: 4624863534376331858, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: MaxDistance
       value: 451.19922
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781410023857051629, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5174833952031934974, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_IsActive
@@ -2602,6 +2610,10 @@ PrefabInstance:
       value: -3.78
       objectReference: {fileID: 0}
     - target: {fileID: 7414129442373780183, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462144912210106297, guid: 5092ea2a20bd35541845e46a219a09ee, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -5210,6 +5222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93257d6dbbe05843a7751235d5524f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  subjectSetting: 0
   currEnemyStrengths: 
   isInvincible: 0
   currentCharacter: 0
