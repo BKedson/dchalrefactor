@@ -21,6 +21,9 @@ public class FoundryRoom : BaseRoom
     // Someone added this here and I do not know what it is for  -- Nofer
     [SerializeField] private GameObject cameraHelper;
 
+    public delegate void ForgedInput();
+    public event ForgedInput OnForged;
+
     //private bool doorOpened = false;
 
     // Start is called before the first frame update
@@ -59,6 +62,7 @@ public class FoundryRoom : BaseRoom
     public void OnWeaponForged()
     {
         audioSource.PlayOneShot(audioClips[0]);
+        OnForged?.Invoke();
         StartCoroutine(SoundDelay());
         // door1Animator.SetBool("Door Opened", true);
         door1.SetActive(false);

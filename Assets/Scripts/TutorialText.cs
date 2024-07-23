@@ -34,12 +34,14 @@ public class TutorialText : MonoBehaviour
 
     //script variables for referencing certain player events under the Player
     public GameObject player;
+    public GameObject foundryRoom;
     private PlayerMovement moveScript;
     private PlayerCollectibles collectScript;
     private CompletionSound completeScript;
     private PlayerCharacter deathScript;
     private PlayerGeneralInteraction interactScript;
     private PlayerFoundryInteraction pickupScript;
+    private FoundryRoom foundryScript;
     
 
     void Awake()
@@ -89,6 +91,9 @@ public class TutorialText : MonoBehaviour
 
         pickupScript = player.GetComponent<PlayerFoundryInteraction>();
         pickupScript.OnPickup += OnPickup;
+
+        foundryScript = foundryRoom.GetComponent<FoundryRoom>();
+        foundryScript.OnForged += OnForged;
 
     }
 
@@ -201,6 +206,9 @@ public class TutorialText : MonoBehaviour
         if (currMessage == 2) {
             NoInput(3);
         }
+    }
+
+    private void OnForged() {
         if (currMessage == 8) {
             NoInput(9);
         }
@@ -212,12 +220,15 @@ public class TutorialText : MonoBehaviour
         }
     }
 
+    
     //helper to reset event subscriptions
     void OnDestroy() {
         collectScript.OnCollection -= OnCollection;
         completeScript.OnCompletion -= OnCompletion;
         deathScript.OnDeath -= OnDeath;
         interactScript.OnInter -= OnInter;
+        foundryScript.OnForged -= OnForged;
+
 
         /*
         moveScript = null;
