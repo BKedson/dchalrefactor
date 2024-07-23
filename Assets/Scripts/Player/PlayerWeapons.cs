@@ -11,11 +11,15 @@ namespace dchalrefactor.Scripts.Player
         public GameObject[] Weapons;
         //stores an instance of the PlayerWeaponsData class to map Weapon names to indices
         private PlayerWeaponsData playerWeaponsData;
+        private PlayerMovement playerMovement;
+
+        public bool weaponEquipped;
         // Start is called before the first frame update
         void Start()
         {
             //initialize the player weapons data
             playerWeaponsData = new PlayerWeaponsData();
+            playerMovement = GetComponentInParent<PlayerMovement>();
             //Deactivates all weapons at start
             DeactivateAllWeapons(); 
         }
@@ -32,6 +36,8 @@ namespace dchalrefactor.Scripts.Player
             gameObject.GetComponent<PlayerAnimations>().CancelAttack();
             // Let tutorial know the weapon was collected
             GameObject.Find("Tutorial Manager").GetComponent<TextboxBehavior>().SwordEquipped();
+
+            playerMovement.weaponEquipped = true;
         }
 
         public void DeactivateWeapon(string name)
@@ -42,6 +48,8 @@ namespace dchalrefactor.Scripts.Player
             Weapons[index].SetActive(false);
             //Set the Player Animations class to NOT EQUIPPED
             gameObject.GetComponent<PlayerAnimations>().EquipWeapon(false);
+
+            playerMovement.weaponEquipped = false;
         }
 
         public void DeactivateAllWeapons()

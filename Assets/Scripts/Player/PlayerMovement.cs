@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using dchalrefactor.Scripts.Animations.PlayerMovement;
+using dchalrefactor.Scripts.Player;
 //using UnityEditor.Callbacks;
 
 // This is the player movement script featuring walking, sprinting, jumping, and wall running
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     // I strongly recommand moving these combat-relate codes to a separate script
     private WeaponManager weaponManager;
+    public bool weaponEquipped = false;
     private int _health;
 
     private CharacterController characterController;
@@ -128,7 +130,6 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         // Combat related code. Consider moving it to a separate script
         weaponManager = GetComponentInChildren<WeaponManager>();
-    
         //stuff = GetComponent<PlayerInventory>();
     }
 
@@ -287,29 +288,33 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Dash(InputAction.CallbackContext ctx){
-        //Debug.Log("dash");
-        if (dashCdTimer > 0) return;
-        else dashCdTimer = dashCd;
+        //dash only works in combat situations, a.k.a. when the weapon is equipped
+        if(weaponEquipped){
+            //Debug.Log("dash");
+            if (dashCdTimer > 0) return;
+            else dashCdTimer = dashCd;
 
-        dashing = true;
+            dashing = true;
 
-        Transform forwardT;
+            Transform forwardT;
 
-        forwardT = orientation; /// where you're facing (no up or down)
+            forwardT = orientation; /// where you're facing (no up or down)
 
-        Vector3 direction = GetDirection(forwardT);
+            Vector3 direction = GetDirection(forwardT);
 
-        forceToApply = direction * dashForce;
+            forceToApply = direction * dashForce;
 
-        Debug.Log("in dash vector: " + forceToApply);
+            Debug.Log("in dash vector: " + forceToApply);
 
-        if (disableGravity)
-            rb.useGravity = false;
+            if (disableGravity)
+                rb.useGravity = false;
 
-        movement = forceToApply;
-        //Invoke(nameof(DelayedDashForce), 0.025f);
+            movement = forceToApply;
+            //Invoke(nameof(DelayedDashForce), 0.025f);
 
-        Invoke(nameof(ResetDash), dashDuration);
+            Invoke(nameof(ResetDash), dashDuration);
+        }
+        
     }
     /*private void DelayedDashForce()
     {
