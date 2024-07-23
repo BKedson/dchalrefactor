@@ -179,12 +179,8 @@ public class WindowQuestion : BaseQuestion
                     break;
         }
         
-        if (gameManager.GetQuestionComplexity() == null) {
-            SetInitialComplexity();
-        } else {
-            questionComplexity = gameManager.GetQuestionComplexity();
-            SetParameters();
-        }
+        questionComplexity = gameManager.GetQuestionComplexity();
+        SetParameters();
 
         GenerateQuestion();
     }
@@ -483,7 +479,7 @@ public class WindowQuestion : BaseQuestion
     }
 
     // GETTERS AND SETTERS
-    public void SetSubject(Subject sub) {
+    new public void SetSubject(Subject sub) {
         subject = sub;
     }
 

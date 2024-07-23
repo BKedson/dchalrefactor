@@ -398,19 +398,14 @@ public class GameManager : MonoBehaviour
         switch (currSubject) {
             case Subject.Addition:
                 return addQuestionComplexity;
-                break;
             case Subject.Subtraction:
                 return subQuestionComplexity;
-                break;
             case Subject.Multiplication:
                 return multQuestionComplexity;
-                break;                
             case Subject.Division:
                 return divQuestionComplexity;
-                break;
             default:
                 return addQuestionComplexity;
-            break;
         }
     }
 

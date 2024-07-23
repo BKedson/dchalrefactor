@@ -43,8 +43,8 @@ public class CombatRoom : BaseRoom
 
     private GameManager gameManager;
     private GameObject player;
-    private float wallHeight = 2.5f;
-    private float wallThickness = 1.2f;
+    //private float wallHeight = 2.5f;
+    //private float wallThickness = 1.2f;
     private int numEnemies = 5;
     private List<int> enemyStrengths = new List<int>();
 
