@@ -37,8 +37,10 @@ public class EnemyHurtbox : MonoBehaviour
 	}
 
     IEnumerator DamageLoop(Collider col) {
+        // yield return new WaitForSeconds(cooldown);
         Hit(col);
         yield return new WaitForSeconds(cooldown);
+        // take out?
         if (hitting) {
             StartCoroutine(DamageLoop(col));
         }
