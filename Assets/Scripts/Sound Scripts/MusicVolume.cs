@@ -20,8 +20,8 @@ public class MusicVolume : MonoBehaviour
 
     public void SetMusicMixerVolume(float volume)
     {
-        mixer.SetFloat(mixerVolume, Mathf.Log10(slider.value)*20);
-        gameManager.SetMusicVolume(slider.value);
+        mixer.SetFloat(mixerVolume, Mathf.Log10(volume)*20);
+        gameManager.SetMusicVolume(volume);
     }
 
     public void OnSliderValueChanged()
