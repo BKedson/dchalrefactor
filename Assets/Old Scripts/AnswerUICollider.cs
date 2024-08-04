@@ -10,7 +10,7 @@ public class AnswerUICollider : MonoBehaviour
 {
     public GameObject mainCanvas; 
     //stores the canvas - The canvas is obtained during gameplay
-    public GameObject playerAnswer;
+    public GameObject player;
     //stores the integers to be tested
     public int firstNumberCheck;
     public int secondNumberCheck;
@@ -23,7 +23,7 @@ public class AnswerUICollider : MonoBehaviour
     //stores a reference to the door of this collider
     public GameObject doorReference;
     //stores a reference to the audioManager
-    public SoundEffectsManager manager;
+    //public SoundEffectsManager manager;
     //stores a reference to the indicator lights
     public GameObject indicator1;
     public GameObject indicator2;
@@ -60,15 +60,14 @@ public class AnswerUICollider : MonoBehaviour
         //we want the question to be updated
 
         //get the canvas to obtain the answer and update the question
-        playerAnswer = GameObject.Find("Canvas");
+        player = GameObject.Find("Player");
         //get reference to the UI elements
-
         //
-        padlockRed = playerAnswer.transform.Find("Answer UI").GetChild(3).gameObject;
-        padlockGreen = playerAnswer.transform.Find("Answer UI").GetChild(2).gameObject;
+        padlockRed = mainCanvas.transform.Find("Answer UI").GetChild(3).gameObject;
+        padlockGreen = mainCanvas.transform.Find("Answer UI").GetChild(2).gameObject;
 
         //get the element that represent the question holder.
-        questionHolder = playerAnswer.transform.Find("Answer UI").GetChild(0).gameObject;
+        questionHolder = mainCanvas.transform.Find("Answer UI").GetChild(0).gameObject;
         //update the respective elements
         questionHolder.transform.Find("Q_Operand1").gameObject.GetComponent<TMP_Text>().text = firstNumberCheck.ToString();
         questionHolder.transform.Find("Q_Operand2").gameObject.GetComponent<TMP_Text>().text = secondNumberCheck.ToString();
@@ -82,10 +81,10 @@ public class AnswerUICollider : MonoBehaviour
             padlockGreen.SetActive(false);
             //UIController is a class that controls the UI of the game
             //Set AnswerTriggerFire of the UI controller class to true
-            UIController.AnswerTriggerFire = true;
+            mainCanvas.transform.Find("Answer UI").gameObject.SetActive(true);
             hasBeenOverlapped = true;
-            //fire the answer UI sound
-            manager.play("AnswerPopup");
+            //fire the HUD sound
+            //manager.play("AnswerPopup");
         }
     }
 
@@ -111,12 +110,12 @@ public class AnswerUICollider : MonoBehaviour
         if ( (Input.GetKeyDown("return") || Input.GetKeyDown("enter")) && warning.activeSelf)
         {
             //get the input answer
-            if (playerAnswer.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text.Any(char.IsDigit))
+            if (mainCanvas.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text.Any(char.IsDigit))
             {
-                answerInput = int.Parse(playerAnswer.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text);
+                answerInput = int.Parse(mainCanvas.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text);
             }
             //clear the answer
-            playerAnswer.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text = "";
+            mainCanvas.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text = "";
             //check wrong or right
             //if answers are same
             if (answerCheck(answerInput))
@@ -139,7 +138,7 @@ public class AnswerUICollider : MonoBehaviour
         {
             Debug.Log("BYE!!!");
             //UIController is a class that controls the UI of the game
-            //Resume(): UIController: remove the Answer UI 
+            //Resume(): UIController: remove the HUD 
             UIController.resumeCalled = true;
             //if the door is still closed: there was no work done
             if (!doorOpen)
@@ -150,7 +149,7 @@ public class AnswerUICollider : MonoBehaviour
             }
             else
             {
-                //door is Open so we have completed a successful overlap. Work was done! Future overlaps won't trigger the answer UI.
+                //door is Open so we have completed a successful overlap. Work was done! Future overlaps won't trigger the HUD.
                 //doorReset(); 
                 hasBeenOverlapped = true;
             }
@@ -226,9 +225,9 @@ public class AnswerUICollider : MonoBehaviour
         warning.SetActive(false);
 
         //play the openDoor sound: the sound for doorClosing is used for both opening and closing scenarios
-        manager.play("DoorClosing");
+        //manager.play("DoorClosing");
         //play the correctAnswer sound
-        manager.play("CorrectAnswer");
+        //manager.play("CorrectAnswer");
         //turn the indicator lights green - Using GameObject.Indicator.ColorChange.changeLight();
         indicator1.GetComponent<ColorChange>().changeLight("green");
         indicator2.GetComponent<ColorChange>().changeLight("green");
@@ -243,12 +242,12 @@ public class AnswerUICollider : MonoBehaviour
     public void wrongAnswer()
     {
         //play the Wrong Answer sound
-        manager.play("WrongAnswer");
+        //manager.play("WrongAnswer");
         //turn the indicator lights red - Using GameObject.Indicator.ColorChange.changeLight();
         indicator1.GetComponent<ColorChange>().changeLight("red");
         indicator2.GetComponent<ColorChange>().changeLight("red");
         //we also want to reset the activation of the input Text field
-        playerAnswer.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
+        mainCanvas.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
         //deduct 9 points from the indicator
        // PointsAndScoreController.Instance.updateDoorPoints(-9);
     }
@@ -257,16 +256,16 @@ public class AnswerUICollider : MonoBehaviour
     IEnumerator padlockOpen()
     {
         //set the padlock green and wait half a second
-        //playerAnswer is the reference to the canvas, canvas contains the green and red padlock as Children 1 and 2 and AnswerUI
-        //playerAnswer.transform.Find("Answer UI").GetChild(2).SetActive(false); //red
+        //player is the reference to the canvas, canvas contains the green and red padlock as Children 1 and 2 and AnswerUI
+        //player.transform.Find("HUD").GetChild(2).SetActive(false); //red
         padlockRed.SetActive(false);
-        //playerAnswer.transform.Find("Answer UI").GetChild(1).SetActive(true); //green
+        //player.transform.Find("HUD").GetChild(1).SetActive(true); //green
         padlockGreen.SetActive(true);
         yield return new WaitForSeconds(0.125f);
         //after a half second - we can remove the UI - remember to reset the padlocks
 
         //remove UI
-        //Resume(): UIController: remove the Answer UI
+        //Resume(): UIController: remove the HUD
         UIController.resumeCalled = true;
         //open the Door actions
         openDoorAnim.ResetTrigger("closeDoor");

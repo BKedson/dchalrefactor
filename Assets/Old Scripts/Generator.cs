@@ -6,7 +6,7 @@ using TMPro;
 public class Generator : MonoBehaviour
 {
     //reference to this door's box collider
-    public GameObject theCollider;
+    //public GameObject theCollider;
     //stores the corresponding difficulties for the operations
     public int addition_Difficulty;
     public int minus_Difficulty;
@@ -31,7 +31,7 @@ public class Generator : MonoBehaviour
 
     public void generate(){
         //get the diffManager
-        diffManager = GameObject.Find("DifficultyManager");
+        diffManager = GameObject.Find("Game Manager");
         //get the operator
         operatorSign = operation.text;
         //get the respective difficulties

@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class CursorBehavior : MonoBehaviour
 {
-    [SerializeField] private GameManagerProxy gameManager;
+    //[SerializeField] private GameManagerProxy gameManager;
     
     void Start()
     {
-        int initialSize = gameManager.GetCursorSize();
-        if(initialSize < 2){
-            initialSize = 10;
-        }
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(initialSize, initialSize);
-        gameManager.SetPlayerCursor(this);
+      //  int initialSize = gameManager.GetCursorSize();
+        //if(initialSize < 2){
+          //  initialSize = 10;
+        //}
+        //gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(initialSize, initialSize);
+        //gameManager.SetPlayerCursor(this);
 
     }
 
