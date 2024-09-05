@@ -16,6 +16,9 @@ public class TutorialText : MonoBehaviour
         the need for the moevement script to be disabled.
     */
 
+    //goals: link to box at start after tutorial round to allow or NPC to reactivate tutorial
+    //give a finish prompt on next run when tutorial completed without walk script glitch
+
     //variables for keeping track of messages and which message is the last in each cycle
     [SerializeField] private string[] messages;
     private int numMessages;
@@ -239,10 +242,13 @@ public class TutorialText : MonoBehaviour
     }
 
     //helper to deactivate the tutorial
+    //not being used at the moment
+    /*
     private IEnumerator WaitToDeactivate(){
         yield return new WaitForSeconds(2.0f);
         textBoxContainer.SetActive(false);
         collapsedContainer.SetActive(false);
     }
+    */
 
 }
